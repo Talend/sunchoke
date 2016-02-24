@@ -1,0 +1,29 @@
+{
+  "name": "sunchoke",
+  "description": "Talend front-end common widgets",
+  "main": ["dist/sunchoke.js", "src/sunchoke.scss"],
+  "authors": [
+    "Talend"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "bourbon": "^4.2.6"
+  },
+  "license": "SEE LICENSE IN https://github.com/Talend/sunchoke/blob/master/LICENSE",
+  "keywords": [
+    "Talend",
+    "widget",
+    "front-end",
+    "angular",
+    "sunchoke"
+  ],
+  "homepage": "https://github.com/Talend/sunchoke",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
