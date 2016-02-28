@@ -1,0 +1,14 @@
+/**
+ * @ngdoc controller
+ * @name <%= module.name %>.controller:<%= controller.name %>
+ * @description <%= component.description %> controller
+ */
+export default class <%= controller.name %> {
+    constructor() {
+
+    }
+
+    $onInit() {
+
+    }
+}

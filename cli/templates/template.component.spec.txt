@@ -1,0 +1,29 @@
+describe('<%= component.description %> component', () => {
+    let scope, createElement;
+
+    beforeEach(angular.mock.module('<%= module.name %>'));
+
+    beforeEach(inject(($rootScope, $compile) => {
+        scope = $rootScope.$new();
+
+        createElement = () => {
+            //TODO add component bindings and transclusion
+            var template = `
+                <<%= component.selectorKebab %>></<%= component.selectorKebab %>>
+            `;
+            const element = $compile(template)(scope);
+            scope.$digest();
+            return element;
+        };
+    }));
+
+    it('should ', () => {
+        //given
+
+        //when
+        const element = createElement();
+
+        //then
+        expect(true).toBe(true);
+    });
+});

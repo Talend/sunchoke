@@ -1,0 +1,16 @@
+/**
+ * @ngdoc component
+ * @name <%= module.name %>.component:<%= component.name %>
+ * @description <%= component.description %>
+ * @restrict E
+ * @usage <<%= component.selectorKebab %>></<%= component.selectorKebab %>> //TODO add component usage doc
+ * @param {type} name Description //TODO add component bindings doc
+ */
+const <%= component.name %> = {
+    template: ``, //TODO insert component template
+    bindings: {
+        //TODO add component bindings
+    }
+};
+
+export default <%= component.name %>;

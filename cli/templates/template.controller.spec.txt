@@ -1,0 +1,23 @@
+describe('<%= component.description %> component controller', () => {
+    let scope, createController;
+
+    beforeEach(angular.mock.module('<%= module.name %>'));
+
+    beforeEach(inject(($rootScope, $componentController) => {
+        scope = $rootScope.$new();
+
+        createController = () => {
+            return $componentController('<%= component.selectorCamel %>', {$scope: scope}); //TODO insert component init vars
+        };
+    }));
+
+    it('should ', () => {
+        //given
+
+        //when
+        const ctrl = createController();
+
+        //then
+        expect(true).toEqual(true);
+    });
+});
