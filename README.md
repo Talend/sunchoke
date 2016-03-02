@@ -20,10 +20,27 @@ npm install sunchoke
 bower install sunchoke
 ```
 
+##### Main files
+Npm and Bower "main files" configuration refers to
+* the non minified distribution file
+* the main Sass file (not the generated css)
+
+Feel free to override the configuration as you need in your project configuration
+```
+"overrides": {
+    "sunchoke": {
+      "main": [
+        "dist/sunchoke.min.js",
+        "dist/sunchoke.min.css"
+      ]
+    },
+}
+```
+
 ### CONTRIBUTE
 
 ##### CLI
-To create a new widget, please use the CLI to create the files and follow our conventions.
+To create a new widget, please use the CLI to create the files and follow our naming conventions.
 ```
 npm run add:component
 ```
@@ -31,11 +48,43 @@ This will launch a CLI. You will have to answer 2 questions
 * The component name in camelCase with a capital letter (ex: FancyButton)
 * Choose the optional entities (style file, controller file)
 
+##### Lint
+You can lint your code with eslint
+```
+npm run lint
+```
+
+##### Tests
+```
+npm run test
+```
+
+To run the tests in watch mode
+```
+npm run test:auto
+```
+
+The tests run generates a code coverage, available in the created `coverage/` folder.
+
+##### Distribution
+To generate distribution files
+```
+npm run dist
+```
+
+This will generate in a `dist/` folder containing 
+* a minified Sunchoke lib, 
+* a non minified one
+* a generated minified css file
+* a non minified one
+
 ##### Git
 You can freely submit a pull request. [Github documentation](https://help.github.com/articles/using-pull-requests/)
 
 Before that : 
-* clean your code
+* use ES6
+* use Sass and bourbon mixins
+* lint and clean your code
 * test your code
 * Please squash ! [Documentation](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits)
 
