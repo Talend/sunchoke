@@ -42,10 +42,10 @@ Feel free to override the configuration as you need in your project configuratio
 ##### CLI
 To create a new widget, please use the CLI to create the files and follow our naming conventions.
 ```
-npm run add:component
+npm run add:widget
 ```
 This will launch a CLI. You will have to answer 2 questions
-* The component name in camelCase with a capital letter (ex: FancyButton)
+* The widget name in camelCase with a capital letter (ex: FancyButton)
 * Choose the optional entities (style file, controller file)
 
 ##### Lint

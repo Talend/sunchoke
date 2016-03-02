@@ -69,15 +69,15 @@ const questions = [
     {
         type: 'input',
         name: 'name',
-        message: 'Enter your component name. It must be in camelCase starting with a capital letter first (ex: MySuperAccordion)\n',
+        message: 'Enter your widget name. It must be in camelCase starting with a capital letter first (ex: MySuperAccordion)\n',
         validate: (name) => {
             if (!name.match(/^([A-Z][a-z]+)+$/)) {
-                return 'Component name must be in camelCase starting with a capital letter first (ex: MySuperAccordion)';
+                return 'Widget name must be in camelCase starting with a capital letter first (ex: MySuperAccordion)';
             }
 
             const properties = getComponentBaseProperties(name);
             if (fs.existsSync(properties.folder.path)) {
-                return `Error : The component ${properties.component.name} already exists.`;
+                return `Error : The widget ${properties.component.name} already exists.`;
             }
 
             return true;
@@ -86,7 +86,7 @@ const questions = [
     {
         type: 'checkbox',
         name: 'options',
-        message: 'What do you need for your component ?\n',
+        message: 'What do you need for your widget ?\n',
         choices: [
             {name: 'Style', checked: true},
             {name: 'Controller', checked: true}
