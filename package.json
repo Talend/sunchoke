@@ -2,7 +2,7 @@
   "name": "sunchoke",
   "version": "1.0.0",
   "description": "Talend front-end common widgets",
-  "main": "dist/sunchoke.js",
+  "main": ["dist/sunchoke.js", "src/sunchoke.scss"],
   "scripts": {
     "clean": "rimraf ./dist",
     "scripts": "webpack --config webpack.config.dev.js",
