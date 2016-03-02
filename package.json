@@ -1,0 +1,33 @@
+{
+  "name": "sunchoke-documentation",
+  "version": "1.0.0",
+  "description": "Talend Sunchoke Documentation",
+  "scripts": {
+    "clean": "rimraf ./gitbook/_book",
+    "install:dep": "gitbook install ./gitbook",
+    "prebuild": "npm run install:dep",
+    "build": "gitbook build ./gitbook ./doc",
+    "prestart": "npm run install:dep",
+    "start": "gitbook serve ./gitbook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Talend/sunchoke.git"
+  },
+  "keywords": [
+    "Talend",
+    "sunchoke",
+    "widget",
+    "angularjs"
+  ],
+  "author": "Talend",
+  "license": "SEE LICENSE IN https://github.com/Talend/sunchoke/blob/master/LICENSE",
+  "bugs": {
+    "url": "https://github.com/Talend/sunchoke/issues"
+  },
+  "homepage": "https://github.com/Talend/sunchoke#readme",
+  "devDependencies": {
+    "gitbook-cli": "^2.0.1",
+    "rimraf": "^2.5.2"
+  }
+}
