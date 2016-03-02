@@ -35,5 +35,8 @@ node_modules
 # Build directory
 dist/
 
+# Documentation directory
+gitbook/
+
 # IDE
 .idea

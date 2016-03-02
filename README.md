@@ -1,14 +1,13 @@
-Talend Sunchoke
-=======
+# [Talend Sunchoke](http://talend.github.io/sunchoke/doc/index.html)
 
 Sunchoke is a set of reusable components built with [AngularJS](https://angularjs.org/) and [Bourbon](http://bourbon.io/)
 
-### DEPENDENCIES
+### Dependencies
 * angularJS 1.5 min. The widgets are based on the component helper definition introduced with version 1.5.
 * angular-animate. Some widgets use angular-animate to perform some animations
 * Bourbon 4. Bourbon is a sass library.
 
-### GETTING STARTED
+### Getting started
 
 ##### With NPM
 ```
@@ -37,7 +36,7 @@ Feel free to override the configuration as you need in your project configuratio
 }
 ```
 
-### CONTRIBUTE
+### Contribute
 
 ##### CLI
 To create a new widget, please use the CLI to create the files and follow our naming conventions.
@@ -93,7 +92,7 @@ Before that :
 
 Please refer to gh-pages branch README to add your documentation.
 
-### LICENCE
+### Licence
 Apache License Version 2.0, January 2004
 
 See LICENCE file
