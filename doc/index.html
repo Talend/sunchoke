@@ -53,7 +53,7 @@
         data-chapter-title="Introduction"
         data-filepath="README.md"
         data-basepath="."
-        data-revision="Wed Mar 02 2016 16:34:07 GMT+0100 (CET)"
+        data-revision="Wed Mar 02 2016 17:51:49 GMT+0100 (CET)"
         data-innerlanguage="">
     
 
@@ -151,12 +151,77 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="talend-sunchoke">Talend Sunchoke</h1>
+                        <h1 id="talend-sunchoke"><a href="http://talend.github.io/sunchoke/doc/index.html" target="_blank">Talend Sunchoke</a></h1>
 <p>Sunchoke is a set of reusable components built with <a href="https://angularjs.org/" target="_blank">AngularJS</a> and <a href="http://bourbon.io/" target="_blank">Bourbon</a></p>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li>angularJS 1.5 min. The widgets are based on the component helper definition introduced with version 1.5.</li>
+<li>angular-animate. Some widgets use angular-animate to perform some animations</li>
+<li>Bourbon 4. Bourbon is a sass library.</li>
+</ul>
 <h3 id="getting-started">Getting started</h3>
-<p>//TODO : bower, angular module dep</p>
-<h3 id="how-to-navigate">How to navigate</h3>
-<p>//TODO : guide to doc</p>
+<h5 id="with-npm">With NPM</h5>
+<pre><code>npm install sunchoke
+</code></pre><h5 id="with-bower">With Bower</h5>
+<pre><code>bower install sunchoke
+</code></pre><h5 id="main-files">Main files</h5>
+<p>Npm and Bower &quot;main files&quot; configuration refers to</p>
+<ul>
+<li>the non minified distribution file</li>
+<li>the main Sass file (not the generated css)</li>
+</ul>
+<p>Feel free to override the configuration as you need in your project configuration</p>
+<pre><code>&quot;overrides&quot;: {
+    &quot;sunchoke&quot;: {
+      &quot;main&quot;: [
+        &quot;dist/sunchoke.min.js&quot;,
+        &quot;dist/sunchoke.min.css&quot;
+      ]
+    },
+}
+</code></pre><h3 id="contribute">Contribute</h3>
+<h5 id="cli">CLI</h5>
+<p>To create a new widget, please use the CLI to create the files and follow our naming conventions.</p>
+<pre><code>npm run add:widget
+</code></pre><p>This will launch a CLI. You will have to answer 2 questions</p>
+<ul>
+<li>The widget name in camelCase with a capital letter (ex: FancyButton)</li>
+<li>Choose the optional entities (style file, controller file)</li>
+</ul>
+<h5 id="lint">Lint</h5>
+<p>You can lint your code with eslint</p>
+<pre><code>npm run lint
+</code></pre><h5 id="tests">Tests</h5>
+<pre><code>npm run test
+</code></pre><p>To run the tests in watch mode</p>
+<pre><code>npm run test:auto
+</code></pre><p>The tests run generates a code coverage, available in the created <code>coverage/</code> folder.</p>
+<h5 id="distribution">Distribution</h5>
+<p>To generate distribution files</p>
+<pre><code>npm run dist
+</code></pre><p>This will generate in a <code>dist/</code> folder containing </p>
+<ul>
+<li>a minified Sunchoke lib, </li>
+<li>a non minified one</li>
+<li>a generated minified css file</li>
+<li>a non minified one</li>
+</ul>
+<h5 id="git">Git</h5>
+<p>You can freely submit a pull request. <a href="https://help.github.com/articles/using-pull-requests/" target="_blank">Github documentation</a></p>
+<p>Before that : </p>
+<ul>
+<li>use ES6</li>
+<li>use Sass and bourbon mixins</li>
+<li>lint and clean your code</li>
+<li>test your code</li>
+<li>Please squash ! <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits" target="_blank">Documentation</a></li>
+</ul>
+<h5 id="documentation">Documentation</h5>
+<p><a href="http://talend.github.io/sunchoke/doc/index.html" target="_blank">Sunchoke user documentation</a> is hosted by Github Pages. It is based on gitbook.</p>
+<p>Please refer to gh-pages branch README to add your documentation.</p>
+<h3 id="licence">Licence</h3>
+<p>Apache License Version 2.0, January 2004</p>
+<p>See LICENCE file</p>
 
                     
                     </section>
