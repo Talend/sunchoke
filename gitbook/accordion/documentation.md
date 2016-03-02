@@ -1,7 +1,7 @@
 # Accordion Documentation
 
 ### Usage
-```
+```html
     <sc-accordion>
     
         <sc-accordion-item>
@@ -29,9 +29,9 @@
 
 ### Inputs
 
-| **Name** | **Type** | **Element** | **Description** |
+| **Name** | **Type** | **Element** | **Default** | **Description** |
 | -- | -- | -- | -- |
-| default | boolean | sc-accordion-item | If the item is the default item, it will be opened on component creation. |
+| default | boolean | sc-accordion-item | false | If the item is the default item, it will be opened on component creation. |
 
 
 ### Outputs

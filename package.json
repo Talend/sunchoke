@@ -8,7 +8,8 @@
     "prebuild": "npm run install:dep",
     "build": "gitbook build ./gitbook ./doc",
     "prestart": "npm run install:dep",
-    "start": "gitbook serve ./gitbook"
+    "start": "gitbook serve ./gitbook",
+    "add:widget": "node cli/add-widget.js && npm start"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
   "homepage": "https://github.com/Talend/sunchoke#readme",
   "devDependencies": {
     "gitbook-cli": "^2.0.1",
+    "inquirer": "^0.12.0",
+    "lodash": "^4.6.0",
     "rimraf": "^2.5.2"
   }
 }

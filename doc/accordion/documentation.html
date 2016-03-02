@@ -39,8 +39,6 @@
         
     
     
-    <link rel="next" href="../accordion/example.html" />
-    
     
     <link rel="prev" href="../accordion/index.html" />
     
@@ -55,7 +53,7 @@
         data-chapter-title="Documentation"
         data-filepath="accordion/documentation.md"
         data-basepath=".."
-        data-revision="Wed Mar 02 2016 13:18:56 GMT+0100 (CET)"
+        data-revision="Wed Mar 02 2016 16:34:07 GMT+0100 (CET)"
         data-innerlanguage="">
     
 
@@ -115,21 +113,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="accordion/example.html">
-            
-                
-                    <a href="../accordion/example.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        Example
-                    </a>
-            
-            
-        </li>
-    
 
             </ul>
             
@@ -170,25 +153,26 @@
                     
                         <h1 id="accordion-documentation">Accordion Documentation</h1>
 <h3 id="usage">Usage</h3>
-<pre><code>    &lt;sc-accordion&gt;
+<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-title">sc-accordion</span>&gt;</span>
 
-        &lt;sc-accordion-item&gt;
-            &lt;trigger&gt;My first item&lt;/trigger&gt;
-            &lt;content&gt;
-                &lt;p&gt;My content&lt;/p&gt;
-                &lt;button&gt;Click me&lt;/button&gt;
-            &lt;/content&gt;
-        &lt;/sc-accordion-item&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-accordion-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">trigger</span>&gt;</span>My first item<span class="hljs-tag">&lt;/<span class="hljs-title">trigger</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">content</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>My content<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">content</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-accordion-item</span>&gt;</span>
 
-         &lt;sc-accordion-item&gt;
-            &lt;trigger&gt;My second item&lt;/trigger&gt;
-            &lt;content&gt;
-                &lt;p&gt;My second content&lt;/p&gt;
-            &lt;/content&gt;
-        &lt;/sc-accordion-item&gt;
+         <span class="hljs-tag">&lt;<span class="hljs-title">sc-accordion-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">trigger</span>&gt;</span>My second item<span class="hljs-tag">&lt;/<span class="hljs-title">trigger</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">content</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>My second content<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">content</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-accordion-item</span>&gt;</span>
 
-    &lt;/sc-accordion&gt;
-</code></pre><p><code>&lt;sc-accordion&gt;</code> is the parent element that will coordinate the accordion items. On item open, all the other accordions item with the same parent will be hidden.</p>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">sc-accordion</span>&gt;</span>
+</code></pre>
+<p><code>&lt;sc-accordion&gt;</code> is the parent element that will coordinate the accordion items. On item open, all the other accordions item with the same parent will be hidden.</p>
 <p><code>&lt;sc-accordion-item&gt;</code> is an item. It contains <code>&lt;trigger&gt;</code> and <code>&lt;content&gt;</code> elements.</p>
 <h3 id="inputs">Inputs</h3>
 <table>
@@ -197,6 +181,7 @@
 <th><strong>Name</strong></th>
 <th><strong>Type</strong></th>
 <th><strong>Element</strong></th>
+<th><strong>Default</strong></th>
 <th><strong>Description</strong></th>
 </tr>
 </thead>
@@ -205,6 +190,7 @@
 <td>default</td>
 <td>boolean</td>
 <td>sc-accordion-item</td>
+<td>false</td>
 <td>If the item is the default item, it will be opened on component creation.</td>
 </tr>
 </tbody>
@@ -243,10 +229,8 @@
         </div>
 
         
-        <a href="../accordion/index.html" class="navigation navigation-prev " aria-label="Previous page: Accordion"><i class="fa fa-angle-left"></i></a>
+        <a href="../accordion/index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Accordion"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../accordion/example.html" class="navigation navigation-next " aria-label="Next page: Example"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
