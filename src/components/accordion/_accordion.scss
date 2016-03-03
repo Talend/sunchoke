@@ -11,17 +11,28 @@
 
   ============================================================================*/
 
+$sc-accordion-background: $discrete-light;
+
 sc-accordion-item {
+  .sc-accordion {
+    list-style: none;
+  }
+
   .trigger-container {
     cursor: pointer;
-    padding: 7px 0;
+    padding: 10px;
   }
 
   .content-container {
-    background-color: rgb(226, 226, 227);
+    background-color: $sc-accordion-background;
     height: 0;
     visibility: hidden;
     transition: height 0.2s linear;
+
+    content {
+      display: block;
+      padding: 20px;
+    }
 
     &.opening,
     &.closing {
