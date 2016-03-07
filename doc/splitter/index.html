@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Documentation | Talend Sunchoke</title>
+        <title>Splitter | Talend Sunchoke</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="../color/index.html" />
+    <link rel="next" href="../splitter/documentation.html" />
     
     
-    <link rel="prev" href="../accordion/index.html" />
+    <link rel="prev" href="../color/index.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="1.1"
-        data-chapter-title="Documentation"
-        data-filepath="accordion/documentation.md"
+        data-level="3"
+        data-chapter-title="Splitter"
+        data-filepath="splitter/README.md"
         data-basepath=".."
         data-revision="Mon Mar 07 2016 12:12:00 GMT+0100 (CET)"
         data-innerlanguage="">
@@ -100,7 +100,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="accordion/documentation.html">
+        <li class="chapter " data-level="1.1" data-path="accordion/documentation.html">
             
                 
                     <a href="../accordion/documentation.html">
@@ -135,7 +135,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="splitter/index.html">
+        <li class="chapter active" data-level="3" data-path="splitter/index.html">
             
                 
                     <a href="../splitter/index.html">
@@ -204,89 +204,9 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="accordion-documentation">Accordion Documentation</h1>
-<h3 id="usage">Usage</h3>
-<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-title">sc-accordion</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-title">sc-accordion-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">trigger</span>&gt;</span>My first item<span class="hljs-tag">&lt;/<span class="hljs-title">trigger</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">content</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>My content<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">content</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-accordion-item</span>&gt;</span>
-
-         <span class="hljs-tag">&lt;<span class="hljs-title">sc-accordion-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">trigger</span>&gt;</span>My second item<span class="hljs-tag">&lt;/<span class="hljs-title">trigger</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">content</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>My second content<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">content</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-accordion-item</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-title">sc-accordion</span>&gt;</span>
-</code></pre>
-<p><code>&lt;sc-accordion&gt;</code> is the parent element that will coordinate the accordion items. On item open, all the other accordions item with the same parent will be hidden.</p>
-<p><code>&lt;sc-accordion-item&gt;</code> is an item. It contains <code>&lt;trigger&gt;</code> and <code>&lt;content&gt;</code> elements.</p>
-<h3 id="inputs">Inputs</h3>
-<table>
-<thead>
-<tr>
-<th><strong>Name</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Element</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>boolean</td>
-<td>sc-accordion-item</td>
-<td>false</td>
-<td>If the item is the default item, it will be opened on component creation.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="outputs">Outputs</h3>
-<table>
-<thead>
-<tr>
-<th><strong>Name</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Element</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>on-open</td>
-<td>function</td>
-<td>sc-accordion-item</td>
-<td>Callback triggered on details open</td>
-</tr>
-</tbody>
-</table>
-<h3 id="transclusion">Transclusion</h3>
-<p><code>`&lt;trigger&gt;</code> will be transcluded into the displayed part. On click, its details is toggled.</p>
-<p><code>`&lt;content&gt;</code> will be transcluded into the details part.</p>
-<h3 id="style-customisation">Style customisation</h3>
-<table>
-<thead>
-<tr>
-<th><strong>Name</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$sc-accordion-background</td>
-<td>$discrete-light</td>
-<td>Defines the background color of the accordion details</td>
-</tr>
-</tbody>
-</table>
+                        <h1 id="splitter">Splitter</h1>
+<p>The Splitter widget is a pane splitter. It allows to separate a div into 2 divs, with a handler in the middle that allow resizing. </p>
+<p><p data-height="700" data-theme-id="0" data-slug-hash="MyKbqR" data-default-tab="result" data-user="jso-technologies" class="codepen">See the Pen <a href="http://codepen.io/jso-technologies/pen/MyKbqR/"></a> by jso-technologies (<a href="http://codepen.io/jso-technologies">@jso-technologies</a>) on <a href="http://codepen.io">CodePen</a>.</p></p>
 
                     
                     </section>
@@ -297,10 +217,10 @@
         </div>
 
         
-        <a href="../accordion/index.html" class="navigation navigation-prev " aria-label="Previous page: Accordion"><i class="fa fa-angle-left"></i></a>
+        <a href="../color/index.html" class="navigation navigation-prev " aria-label="Previous page: Colors"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../color/index.html" class="navigation navigation-next " aria-label="Next page: Colors"><i class="fa fa-angle-right"></i></a>
+        <a href="../splitter/documentation.html" class="navigation navigation-next " aria-label="Next page: Documentation"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -48,4 +48,6 @@
 
 ### Style customisation
 
-//TODO
+| **Name** | **Default** | **Description** |
+| -- | -- | -- |
+| $sc-accordion-background | $discrete-light | Defines the background color of the accordion details |
