@@ -13,6 +13,7 @@
 
 (() => {
     angular.module('talend.sunchoke', [
-        'talend.sunchoke.accordion'
+        'talend.sunchoke.accordion',
+        'talend.sunchoke.splitter'
     ]);
 })();

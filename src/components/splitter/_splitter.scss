@@ -1,0 +1,107 @@
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+
+$split-handler-background: $discrete-lighter;
+$split-handler-size: 12px;
+
+sc-splitter {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .split-container {
+
+    @mixin fullContainer() {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    @include fullContainer();
+
+    .split-handler {
+      position: absolute;
+      text-align: center;
+      background: $split-handler-background;
+
+      @include display(flex);
+      @include align-items(center);
+      @include justify-content(center);
+
+      .split-handler-square {
+        margin: 0 2px;
+        width: 3px;
+        height: 3px;
+        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.3) inset;
+        background: white;
+      }
+    }
+
+    .split-first-pane,
+    .split-second-pane {
+      @include fullContainer();
+
+      >* {
+        @include fullContainer();
+        overflow: auto;
+      }
+    }
+
+    //--------------------------------Horizontal-----------------------------------
+    &.horizontal {
+      .split-handler {
+        @include flex-direction(column);
+
+        width: $split-handler-size;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        cursor: ew-resize;
+
+        .split-handler-square {
+          margin: 2px 0;
+        }
+      }
+
+      .split-first-pane  {
+        right: 50%;
+      }
+
+      .split-second-pane {
+        @include calc(left, "50% + #{$split-handler-size}");
+      }
+    }
+
+    //---------------------------------Vertical------------------------------------
+    &.vertical {
+      .split-handler {
+        height: $split-handler-size;
+        top: 50%;
+        left: 0;
+        right: 0;
+        cursor: ns-resize;
+      }
+
+      .split-first-pane  {
+        bottom: 50%;
+      }
+
+      .split-second-pane {
+        @include calc(top, "50% + #{$split-handler-size}");
+      }
+    }
+  }
+}

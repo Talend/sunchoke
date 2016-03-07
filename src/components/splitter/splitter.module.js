@@ -11,5 +11,14 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/splitter/splitter";
+import ScSplitterComponent from './splitter.component.js';
+
+(() => {
+    /**
+     * @ngdoc object
+     * @name talend.sunchoke.splitter
+     * @description Splitter
+     */
+    angular.module('talend.sunchoke.splitter', [])
+        .component('scSplitter', ScSplitterComponent);
+})();
