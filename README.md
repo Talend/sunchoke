@@ -9,11 +9,6 @@ Sunchoke is a set of reusable components built with [AngularJS](https://angularj
 
 ### Getting started
 
-##### With NPM
-```
-npm install sunchoke
-```
-
 ##### With Bower
 ```
 bower install sunchoke
