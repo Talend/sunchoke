@@ -19,11 +19,12 @@ export default ($animate) => {
                 $animate.addClass(element, 'opening', {
                         to: { height: element[0].scrollHeight + 'px' }
                     })
-                    .then(() => element.removeClass('opening').addClass('open'));
+                    .then(() => element.removeClass('opening').addClass('open').css('height', ''));
             }
 
             function close() {
                 $animate.addClass(element, 'closing', {
+                        from: { height: element[0].scrollHeight + 'px' },
                         to: { height: '0' }
                     })
                     .then(() => element.removeClass('closing').removeClass('open'));
