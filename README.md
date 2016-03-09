@@ -31,6 +31,14 @@ Feel free to override the configuration as you need in your project configuratio
 }
 ```
 
+##### Add sunchoke module to your project
+```
+angular.module('my-app', [
+    'talend.sunchoke'
+    ... your other dependencies
+])
+```
+
 ### Contribute
 
 ##### CLI
