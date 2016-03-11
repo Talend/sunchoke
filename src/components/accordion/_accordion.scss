@@ -11,7 +11,7 @@
 
   ============================================================================*/
 
-$sc-accordion-background: $discrete-light;
+$sc-accordion-background: $discrete-light !default;
 
 sc-accordion-item {
   .sc-accordion {

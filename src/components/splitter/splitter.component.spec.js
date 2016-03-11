@@ -12,7 +12,7 @@
   ============================================================================*/
 
 describe('Splitter component', () => {
-    let scope, createElement, element = 'toto';
+    let scope, createElement, element;
 
     beforeEach(angular.mock.module('talend.sunchoke.splitter'));
 

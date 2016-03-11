@@ -11,8 +11,8 @@
 
   ============================================================================*/
 
-$split-handler-background: $discrete-lighter;
-$split-handler-size: 12px;
+$split-handler-background: $discrete-lighter !default;
+$split-handler-size: 12px !default;
 
 sc-splitter {
   display: block;

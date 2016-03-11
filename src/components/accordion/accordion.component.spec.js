@@ -12,7 +12,7 @@
  ============================================================================*/
 
 describe('Accordion component', () => {
-    let createElement, scope;
+    let createElement, scope, element;
 
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
 
@@ -36,15 +36,19 @@ describe('Accordion component', () => {
                     </sc-accordion-item>
                 </sc-accordion>
             `;
-            const element = $compile(template)(scope);
+            element = $compile(template)(scope);
             scope.$digest();
-            return element;
         };
     }));
 
+    afterEach(() => {
+        scope.$destroy();
+        element.remove();
+    });
+
     it('should render accordion', () => {
         //when
-        const element = createElement();
+        createElement();
 
         //then
         expect(element.find('>ul').length).toBe(1); //sc-accordion

@@ -14,6 +14,7 @@
 (() => {
     angular.module('talend.sunchoke', [
         'talend.sunchoke.accordion',
-        'talend.sunchoke.splitter'
+        'talend.sunchoke.splitter',
+        'talend.sunchoke.tabs'
     ]);
 })();

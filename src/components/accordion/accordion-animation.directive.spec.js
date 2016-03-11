@@ -12,7 +12,7 @@
  ============================================================================*/
 
 describe('Accordion animation directive', () => {
-    let createElement, scope;
+    let createElement, scope, element;
     let $animate;
 
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
@@ -28,16 +28,20 @@ describe('Accordion animation directive', () => {
                    Angular : https://www.angularjs.org
                 </div>
             `;
-            const element = $compile(template)(scope);
+            element = $compile(template)(scope);
             scope.$digest();
-            return element;
         };
     }));
+
+    afterEach(() => {
+        scope.$destroy();
+        element.remove();
+    });
 
     it('should animate open classes', () => {
         //given
         scope.isOpened = false;
-        const element = createElement();
+        createElement();
         $animate.flush();
 
         expect(element.hasClass('opening')).toBe(false);
@@ -60,7 +64,7 @@ describe('Accordion animation directive', () => {
     it('should animate close classes', () => {
         //given
         scope.isOpened = true;
-        const element = createElement();
+        createElement();
         $animate.flush();
 
         element.addClass('open');

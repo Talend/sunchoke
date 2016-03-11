@@ -1,5 +1,5 @@
 describe('<%= component.description %> component', () => {
-    let scope, createElement;
+    let createElement, scope, element;
 
     beforeEach(angular.mock.module('<%= module.name %>'));
 
@@ -11,19 +11,23 @@ describe('<%= component.description %> component', () => {
             var template = `
                 <<%= component.selectorKebab %>></<%= component.selectorKebab %>>
             `;
-            const element = $compile(template)(scope);
+            element = $compile(template)(scope);
             scope.$digest();
-            return element;
         };
     }));
+
+    afterEach(() => {
+        scope.$destroy();
+        element.remove();
+    });
 
     it('should ', () => {
         //given
 
         //when
-        const element = createElement();
+        createElement();
 
         //then
-        expect(true).toBe(true);
+        expect(element).toBeTruthy();
     });
 });

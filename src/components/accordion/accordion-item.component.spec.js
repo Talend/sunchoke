@@ -12,7 +12,7 @@
  ============================================================================*/
 
 describe('Accordion item component', () => {
-    let createElement, scope;
+    let createElement, scope, element;
 
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
 
@@ -29,16 +29,15 @@ describe('Accordion item component', () => {
                     </sc-accordion-item>
                 </sc-accordion>
             `;
-            const element = $compile(template)(scope);
+            element = $compile(template)(scope);
             scope.$digest();
-            return element;
         };
     }));
 
     describe('render', () => {
         it('should transclude trigger/content in the right container', () => {
             //when
-            const element = createElement();
+            createElement();
 
             //then
             expect(element.find('.sc-accordion').eq(0).find('.trigger-container').eq(0).text()).toBe('Angular');
@@ -52,7 +51,7 @@ describe('Accordion item component', () => {
             scope.isDefault = false;
 
             //when
-            const element = createElement();
+            createElement();
 
             //then
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(false);
@@ -63,7 +62,7 @@ describe('Accordion item component', () => {
             scope.isDefault = true;
 
             //when
-            const element = createElement();
+            createElement();
 
             //then
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(true);
@@ -73,7 +72,7 @@ describe('Accordion item component', () => {
     describe('trigger click', () => {
         it('should toggle accordion', () => {
             //given
-            const element = createElement();
+            createElement();
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(false);
 
             //when

@@ -11,6 +11,23 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
+/**
+ * @ngdoc controller
+ * @name talend.sunchoke.tabs.controller:ScTabsItemCtrl
+ * @description Tabs item controller
+ */
+export default class ScTabsItemCtrl {
+    constructor($scope) {
+        'ngInject';
+        this.$scope = $scope;
+    }
+
+    $onInit() {
+        this.tabsCtrl.register(this);
+        if (this.isDefault) {
+            this.tabsCtrl.select(this);
+        }
+
+        this.$scope.$on('$destroy', () => this.tabsCtrl.unregister(this));
+    }
+}

@@ -11,6 +11,16 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
+import ScTabsComponent from './tabs.component';
+import ScTabsItemComponent from './tabs-item.component';
+
+(() => {
+    /**
+     * @ngdoc object
+     * @name talend.sunchoke.tabs
+     * @description Tabs
+     */
+    angular.module('talend.sunchoke.tabs', [])
+        .component('scTabsItem', ScTabsItemComponent)
+        .component('scTabs', ScTabsComponent);
+})();
