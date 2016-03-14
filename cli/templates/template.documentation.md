@@ -47,3 +47,7 @@
 ### Style customisation
 
 > *TODO* add Sass variables that can be overridden to customise the component
+
+| **Name** | **Default** | **Description** |
+| -- | -- | -- |
+|  |  |  |

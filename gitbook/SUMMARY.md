@@ -7,3 +7,6 @@
 
 * [Splitter](splitter/README.md)
     * [Documentation](splitter/documentation.md)
+
+* [Tabs](tabs/README.md)
+    * [Documentation](tabs/documentation.md)
