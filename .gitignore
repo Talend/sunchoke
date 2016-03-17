@@ -40,3 +40,6 @@ gitbook/
 
 # IDE
 .idea
+
+#bower
+bower_components/
