@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Colors | Talend Sunchoke</title>
+        <title>Documentation | Talend Sunchoke</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,8 @@
         
     
     
-    <link rel="next" href="../splitter/index.html" />
     
-    
-    <link rel="prev" href="../accordion/documentation.html" />
+    <link rel="prev" href="../tabs/index.html" />
     
 
         
@@ -51,9 +49,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Colors"
-        data-filepath="color/README.md"
+        data-level="4.1"
+        data-chapter-title="Documentation"
+        data-filepath="tabs/documentation.md"
         data-basepath=".."
         data-revision="Thu Mar 17 2016 13:51:51 GMT+0100 (CET)"
         data-innerlanguage="">
@@ -120,7 +118,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="color/index.html">
+        <li class="chapter " data-level="2" data-path="color/index.html">
             
                 
                     <a href="../color/index.html">
@@ -187,7 +185,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1" data-path="tabs/documentation.html">
+        <li class="chapter active" data-level="4.1" data-path="tabs/documentation.html">
             
                 
                     <a href="../tabs/documentation.html">
@@ -240,9 +238,113 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="color">Color</h1>
-<p>Available default colors as Sass variables.</p>
-<p><p data-height="500" data-theme-id="0" data-slug-hash="eZNxeO" data-default-tab="result" data-user="jso-technologies" class="codepen">See the Pen <a href="http://codepen.io/jso-technologies/pen/eZNxeO/"></a> by jso-technologies (<a href="http://codepen.io/jso-technologies">@jso-technologies</a>) on <a href="http://codepen.io">CodePen</a>.</p></p>
+                        <h1 id="accordion-documentation">Accordion Documentation</h1>
+<h3 id="usage">Usage</h3>
+<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-title">sc-tabs</span> <span class="hljs-attribute">selected-tab</span>=<span class="hljs-value">&quot;selectedTab&quot;</span> <span class="hljs-attribute">on-tab-change</span>=<span class="hljs-value">&quot;onchange()&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-tabs-item</span> <span class="hljs-attribute">tab-title</span>=<span class="hljs-value">&quot;tab 1 title&quot;</span>&gt;</span>
+            Content tab 1
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-tabs-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-tabs-item</span> <span class="hljs-attribute">tab-title</span>=<span class="hljs-value">&quot;tab 2 title&quot;</span> <span class="hljs-attribute">is-default</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
+            Content tab 2
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-tabs-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-tabs-item</span> <span class="hljs-attribute">tab-title</span>=<span class="hljs-value">&quot;tab 3 title&quot;</span>&gt;</span>
+            Content tab 3
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-tabs-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">sc-tabs</span>&gt;</span>
+</code></pre>
+<p><code>&lt;sc-tabs&gt;</code> is the parent element that will coordinate the tabs items. On item open, all the other tabs item with the same parent will be hidden, only the selected one will be visible.</p>
+<p><code>&lt;sc-tabs-item&gt;</code> is an item. It contains the tab detailed content.</p>
+<h3 id="inputs">Inputs</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Element</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selectedTab</td>
+<td>number</td>
+<td>sc-tabs</td>
+<td>0</td>
+<td>The variable allows you to control the selected tab from the outside. On change, the tab at the specified index will be selected.</td>
+</tr>
+<tr>
+<td>is-default</td>
+<td>boolean</td>
+<td>sc-tabs-item</td>
+<td>false</td>
+<td>Indicate if the item is the default item. The default item is displayed on tabs creation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outputs">Outputs</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Element</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onTabChange</td>
+<td>function</td>
+<td>sc-tabs</td>
+<td>Callback triggered everytime a new tab is selected.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transclusion">Transclusion</h3>
+<p>There is no specific transclusion point. Everything is transcluded in item content part.</p>
+<h3 id="style-customisation">Style customisation</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$sc-tabs-headers-background</td>
+<td>$discrete-lighter</td>
+<td>Headers background.</td>
+</tr>
+<tr>
+<td>$sc-tabs-header-background-disabled</td>
+<td>$discrete-lighter</td>
+<td>Header background color when the item is disabled.</td>
+</tr>
+<tr>
+<td>$sc-tabs-header-background-enabled</td>
+<td>$wave-dark</td>
+<td>Header background color when the item is enabled.</td>
+</tr>
+<tr>
+<td>$sc-tabs-header-color-disabled</td>
+<td>$discrete</td>
+<td>Header text color when the item is disabled.</td>
+</tr>
+<tr>
+<td>$sc-tabs-header-color-enabled</td>
+<td>$light</td>
+<td>Header text color when the item is enabled.</td>
+</tr>
+<tr>
+<td>$sc-tabs-header-padding</td>
+<td>10px</td>
+<td>Header text padding.</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -253,10 +355,8 @@
         </div>
 
         
-        <a href="../accordion/documentation.html" class="navigation navigation-prev " aria-label="Previous page: Documentation"><i class="fa fa-angle-left"></i></a>
+        <a href="../tabs/index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Tabs"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../splitter/index.html" class="navigation navigation-next " aria-label="Next page: Splitter"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
