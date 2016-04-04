@@ -16,72 +16,89 @@
   border: 2px solid;
 }
 
-.button-peace {
-  @include sc-button($peace, white);
-}
-.button-peace-dark {
-  @include sc-button($peace-dark, white);
-}
-.button-peace-light {
-  @include sc-button($peace-light, white);
-}
-.button-peace-lighter {
-  @include sc-button($peace-lighter, white);
-}
+.button {
 
-.button-ground {
-  @include sc-button($ground, white);
-}
-.button-ground-dark {
-  @include sc-button($ground-dark, white);
-}
+  &-peace {
+    @include sc-button($peace, white);
+  }
 
-.button-wave {
-  @include sc-button($wave, white);
-}
-.button-wave-dark {
-  @include sc-button($wave-dark, white);
-}
-.button-wave-light {
-  @include sc-button($wave-light, white);
-}
-.button-wave-lighter {
-  @include sc-button($wave-lighter, white);
-}
-.button-wave-pale {
-  @include sc-button($wave-pale, white);
-}
+  &-peace-dark {
+    @include sc-button($peace-dark, white);
+  }
 
-.button-discrete {
-  @include sc-button($discrete, white);
-}
-.button-discrete-dark {
-  @include sc-button($discrete-dark, white);
-}
-.button-discrete-light {
-  @include sc-button($discrete-light, white);
-}
-.button-discrete-lighter {
-  @include sc-button($discrete-lighter, white);
-}
+  &-peace-light {
+    @include sc-button($peace-light, white);
+  }
 
-.button-juice {
-  @include sc-button($juice, white);
-}
-.button-juice-light {
-  @include sc-button($juice-light, white);
-}
+  &-peace-lighter {
+    @include sc-button($peace-lighter, white);
+  }
 
-.button-aggressive {
-  @include sc-button($aggressive, white);
-}
-.button-aggressive-light {
-  @include sc-button($aggressive-light, white);
-}
+  &-ground {
+    @include sc-button($ground, white);
+  }
 
-.button-light {
-  @include sc-button($light, black);
-}
-.button-dark {
-  @include sc-button($dark, white);
+  &-ground-dark {
+    @include sc-button($ground-dark, white);
+  }
+
+  .button-wave {
+    @include sc-button($wave, white);
+  }
+
+  &-wave-dark {
+    @include sc-button($wave-dark, white);
+  }
+
+  &-wave-light {
+    @include sc-button($wave-light, white);
+  }
+
+  &-wave-lighter {
+    @include sc-button($wave-lighter, white);
+  }
+
+  &-wave-pale {
+    @include sc-button($wave-pale, white);
+  }
+
+  &-discrete {
+    @include sc-button($discrete, white);
+  }
+
+  &-discrete-dark {
+    @include sc-button($discrete-dark, white);
+  }
+
+  &-discrete-light {
+    @include sc-button($discrete-light, white);
+  }
+
+  &-discrete-lighter {
+    @include sc-button($discrete-lighter, white);
+  }
+
+  &-juice {
+    @include sc-button($juice, white);
+  }
+
+  &-juice-light {
+    @include sc-button($juice-light, white);
+  }
+
+  &-aggressive {
+    @include sc-button($aggressive, white);
+  }
+
+  &-aggressive-light {
+    @include sc-button($aggressive-light, white);
+  }
+
+  &-light {
+    @include sc-button($light, black);
+  }
+
+  &-dark {
+    @include sc-button($dark, white);
+  }
 }
