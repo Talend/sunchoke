@@ -42,7 +42,7 @@
     @include sc-button($ground-dark, white);
   }
 
-  .button-wave {
+  &-wave {
     @include sc-button($wave, white);
   }
 
