@@ -1,0 +1,86 @@
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+
+.sc-dropdown-container {
+  $sc-dropdown-menu-background: $discrete-light !default;
+
+  line-height: 1.5em;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+
+  .sc-dropdown-action {
+    cursor: pointer;
+    min-width: 20px;
+    outline: 0;
+    display: flex;
+    .sc-dropdown-action-button:before{
+      content: "\25BE";
+      margin: 0 5px;
+    }
+  }
+
+  .sc-dropdown-menu {
+    border-radius: 3px;
+    cursor: pointer;
+    display: none;
+    overflow: visible;
+    position: fixed;
+    z-index: 20;
+    outline: 0;
+    background-color: $sc-dropdown-menu-background;
+
+    &:before {
+      position: absolute;
+      top: -1.2em;
+      right: 0;
+      bottom:  auto;
+      left: 0;
+      color: $sc-dropdown-menu-background;
+      content: "\25b2";
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 -2px 2px transparentize(black, 0.7);
+    }
+
+    &.top {
+      &:before {
+        content: "";
+      }
+
+      &:after {
+        position: absolute;
+        top: auto;
+        right: 0;
+        bottom:  -1.2em;
+        left:   0;
+        color: $sc-dropdown-menu-background;
+        content: "\25bc";
+        font-size: 1.4em;
+        pointer-events: none;
+        text-shadow: 0 6px 2px transparentize(black, 0.7);
+      }
+    }
+
+    &.right {
+      &:before,
+      &:after {
+        left: auto;
+      }
+    }
+  }
+
+  .show-menu {
+    display: block;
+  }
+}
