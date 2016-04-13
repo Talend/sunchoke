@@ -10,13 +10,13 @@
   }
 }
 
-[class*='button-'] {
+[class*='sc-button-'] {
   padding: 10px 15px;
   font-weight: bold;
   border: 2px solid;
 }
 
-.button {
+.sc-button {
 
   &-peace {
     @include sc-button($peace, white);
