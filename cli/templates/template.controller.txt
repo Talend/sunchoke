@@ -11,4 +11,16 @@ export default class <%= controller.name %> {
     $onInit() {
 
     }
+
+    $onChanges() {
+
+    }
+
+    $onDestroy() {
+
+    }
+
+    $postLink() {
+
+    }
 }

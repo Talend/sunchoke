@@ -8,7 +8,7 @@ describe('<%= component.description %> component', () => {
 
         createElement = () => {
             //TODO add component bindings and transclusion
-            var template = `
+            const template = `
                 <<%= component.selectorKebab %>></<%= component.selectorKebab %>>
             `;
             element = $compile(template)(scope);

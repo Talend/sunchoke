@@ -11,7 +11,14 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/dropdown-menu/dropdown-menu";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
+import ScDropdownMenuComponent from './dropdown-menu.component.js';
+
+(() => {
+    /**
+     * @ngdoc object
+     * @name talend.sunchoke.dropdown-menu
+     * @description Dropdown menu
+     */
+    angular.module('talend.sunchoke.dropdown-menu', [])
+        .component('scDropdownMenu', ScDropdownMenuComponent);
+})();

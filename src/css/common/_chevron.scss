@@ -1,0 +1,11 @@
+@mixin chevron($size: 25px, $color: $dark) {
+    @include transform(rotate(135deg));
+    border: 1px solid $color;
+    border-width: 1px 1px 0 0;
+    width: $size;
+    height: $size;
+    top: 40%;
+    line-height: 0;
+    font-size: 0;
+    display: inline-block;
+}
