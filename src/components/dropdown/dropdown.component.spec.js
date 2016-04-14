@@ -11,310 +11,384 @@
 
  ============================================================================*/
 
+const clickDropdownTrigger = (elm) => {
+    elm.find('.sc-dropdown-trigger').eq(0).click();
+};
+
+const clickDropdownContent = (elm) => {
+    elm.find('.sc-dropdown-content').eq(0).click();
+};
+
 describe('Dropdown component', () => {
-    let scope, element;
+    'use strict';
+
+    let scope, element, createElement;
 
     beforeEach(angular.mock.module('talend.sunchoke.dropdown'));
-
-    let clickDropdownToggle = (elm) => {
-        elm = elm || element;
-        elm.find('.sc-dropdown-action').eq(0).click();
-    };
-
-    let clickDropdownItem =  (elm) => {
-        elm = elm || element;
-        elm.find('a[role="menuitem"]').eq(0).click();
-    };
 
     afterEach(() => {
         scope.$destroy();
         element.remove();
     });
 
-    describe('closeable dropdown', () => {
+    beforeEach(inject(($rootScope, $compile) => {
+        scope = $rootScope.$new();
+        scope.onOpen = jasmine.createSpy('onOpen');
 
-        beforeEach(inject(($rootScope, $compile) => {
-
-            scope = $rootScope.$new();
-
-            const html = `<sc-dropdown>
-                            <sc-dropdown-action>
-                                <div class="grid-header-title">{{ column.id }}</div>
-                                <div class="grid-header-type">{{ column.type }}</div>
-                            </sc-dropdown-action>
-                            <sc-dropdown-menu>
-                                <ul class="grid-header-menu">
-                                    <li role="presentation"><a role="menuitem" href="#">Hide Column</a></li>
-                                    <li class="divider"></li>
-                                    <li role="presentation"><a role="menuitem" href="#">Split first Space</a></li>
-                                    <li role="presentation"><a role="menuitem" href="#">Uppercase</a></li>
-                                </ul>
-                            </sc-dropdown-menu>
-                        </sc-dropdown>`;
-            const body = angular.element('body');
-            body.append(element);
-            element = $compile(html)(scope);
+        createElement = () => {
+            element = angular.element(`
+                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect">
+                    <sc-dropdown-trigger id="trigger">
+                        Trigger
+                    </sc-dropdown-trigger>
+                    <sc-dropdown-content id="content">
+                        Content
+                    </sc-dropdown-content>
+                </sc-dropdown>
+            `);
+            angular.element('body').append(element);
+            $compile(element)(scope);
             scope.$digest();
-        }));
+        }
+    }));
 
-        it('should show dropdown-menu on dropdown-action click', () => {
-            //given
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            expect(menu.hasClass('show-menu')).toBe(false);
-
+    describe('render', () => {
+        it('should transclude sc-dropdown-trigger', () => {
             //when
-            clickDropdownToggle();
+            createElement();
 
             //then
-            expect(menu.hasClass('show-menu')).toBe(true);
+            expect(element.find('.sc-dropdown-trigger').find('#trigger').length).toBe(1);
         });
 
-        it('should hide dropdown-menu on item click', () => {
-            //given
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            menu.addClass('show-menu');
-
+        it('should transclude sc-dropdown-content', () => {
             //when
-            clickDropdownItem();
+            createElement();
 
             //then
-            expect(menu.hasClass('show-menu')).toBe(false);
+            expect(element.find('.sc-dropdown-content').find('#content').length).toBe(1);
         });
 
-        it('should register window scroll handler on open', inject(($window) => {
-            //given
-            expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
-
+        it('should hide dropdown content by default', () => {
             //when
-            clickDropdownToggle();
+            createElement();
 
             //then
-            expect($._data(angular.element($window)[0], 'events')).toBeDefined();
-            expect($._data(angular.element($window)[0], 'events').scroll.length).toBe(1);
-        }));
+            expect(element.hasClass('show')).toBe(false);
+        });
+    });
 
-        it('should unregister window scroll on close', inject(($window) => {
+    describe('dropdown action', () => {
+        it('should show dropdown on action click', () => {
             //given
-            clickDropdownToggle();
-            expect($._data(angular.element($window)[0], 'events').scroll.length).toBe(1);
+            createElement();
+            expect(element.hasClass('show')).toBe(false);
 
             //when
-            clickDropdownToggle();
+            clickDropdownTrigger(element);
 
             //then
-            expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
-        }));
+            expect(element.hasClass('show')).toBe(true);
+        });
+    });
 
-        it('should hide dropdown-menu on body mousedown',() => {
+    describe('body listeners', () => {
+        it('should register body event listeners on dropdown display', () => {
             //given
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            menu.addClass('show-menu');
+            createElement();
+            expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            const listeners = $._data(angular.element('body')[0], 'events');
+            expect(listeners).toBeDefined();
+            expect(listeners.mousedown.length).toBe(1);
+            expect(listeners.keydown.length).toBe(1);
+        });
+
+        it('should unregister body event listeners on dropdown hide', () => {
+            //given
+            createElement();
+            clickDropdownTrigger(element);
+            expect($._data(angular.element('body')[0], 'events')).toBeDefined();
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
+        });
+
+        it('should unregister body event listeners on destroy', () => {
+            //given
+            createElement();
+            clickDropdownTrigger(element);
+            expect($._data(angular.element('body')[0], 'events')).toBeDefined();
+
+            //when
+            scope.$destroy();
+
+            //then
+            expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
+        });
+
+        it('should hide dropdown on body mousedown', () => {
+            //given
+            createElement();
+            clickDropdownTrigger(element);
+            expect(element.hasClass('show')).toBe(true);
 
             //when
             angular.element('body').mousedown();
 
             //then
-            expect(menu.hasClass('show-menu')).toBe(false);
-
-            angular.element('body').off('mousedown');
+            expect(element.hasClass('show')).toBe(false);
         });
 
-        it('should unregister body mousedown on element remove', () => {
+        it('should hide dropdown on body ESC keydown', () => {
             //given
-            expect($._data(angular.element('body')[0], 'events').mousedown.length).toBe(1);
+            createElement();
+            clickDropdownTrigger(element);
+            expect(element.hasClass('show')).toBe(true);
 
-            //when
-            scope.$destroy();
-            //then
-            expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
-        });
-
-        it('should stop mousedown propagation on dropdown-menu mousedown', () => {
-            //given
-            let  bodyMouseDown = false;
-            const  mouseDownCallBack = function () {
-                bodyMouseDown = true;
-            };
-            angular.element('body').mousedown(mouseDownCallBack);
-
-            //when
-            element.find('.sc-dropdown-menu').mousedown();
-
-            //then
-            expect(bodyMouseDown).toBe(false);
-
-            angular.element('body').off('mousedown', mouseDownCallBack);
-        });
-
-        it('should hide dropdown menu on ESC', () => {
-            //given
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            menu.addClass('show-menu');
-
-            let event = angular.element.Event('keydown');
+            const event = angular.element.Event('keydown');
             event.keyCode = 27;
 
             //when
-            menu.trigger(event);
+            angular.element('body').trigger(event);
 
             //then
-            expect(menu.hasClass('show-menu')).toBe(false);
+            expect(element.hasClass('show')).toBe(false);
         });
 
-        it('should not hide dropdown menu on not ESC keydown',() => {
+        it('should NOT hide dropdown on body NON ESC keydown', () => {
             //given
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            menu.addClass('show-menu');
+            createElement();
+            clickDropdownTrigger(element);
+            expect(element.hasClass('show')).toBe(true);
 
-            let event = angular.element.Event('keydown');
-            event.keyCode = 13;
+            const event = angular.element.Event('keydown');
+            event.keyCode = 14;
 
             //when
-            menu.trigger(event);
+            angular.element('body').trigger(event);
 
             //then
-            expect(menu.hasClass('show-menu')).toBe(true);
+            expect(element.hasClass('show')).toBe(true);
         });
     });
 
-    describe('not closeable on click dropdown',() => {
-        beforeEach(inject(($rootScope, $compile) => {
-            scope = $rootScope.$new();
-
-            const html = `<sc-dropdown close-on-select="false">
-                            <sc-dropdown-action>
-                                <div class="grid-header-title">{{ column.id }}</div>
-                                <div class="grid-header-type">{{ column.type }}</div>
-                            </sc-dropdown-action>
-                            <sc-dropdown-menu>
-                                <ul class="grid-header-menu">
-                                    <li role="presentation"><a role="menuitem" href="#">Hide Column</a></li>
-                                    <li class="divider"></li>
-                                    <li role="presentation"><a role="menuitem" href="#">Split first Space</a></li>
-                                    <li role="presentation"><a role="menuitem" href="#">Uppercase</a></li>
-                                </ul>
-                            </sc-dropdown-menu>
-                        </sc-dropdown>`;
-
-            element = $compile(html)(scope);
-            scope.$digest();
-        }));
-
-        it('should not hide dropdown-menu on item click if closeOnSelect is false', () => {
+    describe('window listeners', () => {
+        it('should register window event listeners on dropdown display', inject(($window) => {
             //given
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            menu.addClass('show-menu');
+            createElement();
+            expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
 
             //when
-            clickDropdownItem();
+            clickDropdownTrigger(element);
 
             //then
-            expect(menu.hasClass('show-menu')).toBe(true);
-        });
-    });
-
-    describe('with onOpen action', () => {
-        beforeEach(inject(($rootScope, $compile) => {
-            scope = $rootScope.$new();
-            scope.onOpen = jasmine.createSpy('onOpen');
-
-            const html = `<sc-dropdown on-open="onOpen()">
-                            <sc-dropdown-action>
-                                <div class="grid-header-title">{{ column.id }}</div>
-                                <div class="grid-header-type">{{ column.type }}</div>
-                            </sc-dropdown-action>
-                            <sc-dropdown-menu>
-                                <ul class="grid-header-menu">
-                                    <li role="presentation"><a role="menuitem" href="#">Hide Column</a></li>
-                                    <li class="divider"></li>
-                                    <li role="presentation"><a role="menuitem" href="#">Split first Space</a></li>
-                                    <li role="presentation"><a role="menuitem" href="#">Uppercase</a></li>
-                                </ul>
-                            </sc-dropdown-menu>
-                        </sc-dropdown>`;
-
-            element = $compile(html)(scope);
-            scope.$digest();
+            const listeners = $._data(angular.element($window)[0], 'events');
+            expect(listeners).toBeDefined();
+            expect(listeners.resize.length).toBe(1);
+            expect(listeners.scroll.length).toBe(1);
         }));
 
-        it('should call action on open click',() => {
+        it('should unregister window event listeners on dropdown hide', inject(($window) => {
             //given
+            createElement();
+            clickDropdownTrigger(element);
+            expect($._data(angular.element($window)[0], 'events')).toBeDefined();
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
+        }));
+
+        it('should unregister window event listeners on destroy', inject(($window) => {
+            //given
+            createElement();
+            clickDropdownTrigger(element);
+            expect($._data(angular.element($window)[0], 'events')).toBeDefined();
+
+            //when
+            scope.$destroy();
+
+            //then
+            expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
+        }));
+    });
+
+    describe('open callback', () => {
+        it('should execute open callback on dropdown open', () => {
+            //given
+            createElement();
             expect(scope.onOpen).not.toHaveBeenCalled();
 
             //when
-            clickDropdownToggle();
+            clickDropdownTrigger(element);
 
             //then
             expect(scope.onOpen).toHaveBeenCalled();
         });
     });
 
-    describe('force placement side', () => {
-        let createElement;
+    describe('horizontal position (side)', () => {
+        const assertContentIsOnTheLeft = (content) => {
+            expect(content.hasClass('right')).toBe(false);
+            expect(content[0].style.left).not.toBe('auto');
+            expect(content[0].style.right).toBe('auto');
+        };
 
-        beforeEach(inject(($rootScope, $compile) => {
-            scope = $rootScope.$new();
+        const assertContentIsOnTheRight = (content) => {
+            expect(content.hasClass('right')).toBe(true);
+            expect(content[0].style.left).toBe('auto');
+            expect(content[0].style.right).not.toBe('auto');
+        };
 
-            createElement = () => {
-                const html = `<sc-dropdown side="{{side}}">
-                            <sc-dropdown-action>
-                                Action
-                            </sc-dropdown-action>
-                            <sc-dropdown-menu>
-                                <ul class="grid-header-menu">
-                                   <li role="presentation">toto</li>
-                                </ul>
-                            </sc-dropdown-menu>
-                        </sc-dropdown>`;
-                element = angular.element(html);
-                $compile(element)(scope);
-                scope.$digest();
-            };
-        }));
-
-        it('should set menu placement to the right by default', () => {
-            //given
-            scope.side = null;
-            createElement();
-
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            expect(menu.hasClass('right')).toBe(false);
-
-            //when
-            clickDropdownToggle();
-
-            //then
-            expect(menu.hasClass('right')).toBe(true);
-        });
-
-        it('should force menu placement to the left', () => {
+        it('should force side to left', () => {
             //given
             scope.side = 'left';
             createElement();
+            const content = element.find('.sc-dropdown-content').eq(0);
 
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            menu.addClass('right');
+            expect(content.hasClass('right')).toBe(false);
 
             //when
-            clickDropdownToggle();
+            clickDropdownTrigger(element);
 
             //then
-            expect(menu.hasClass('right')).toBe(false);
+            assertContentIsOnTheLeft(content);
         });
 
-        it('should force menu placement to the right', () => {
+        it('should force side to right', () => {
             //given
             scope.side = 'right';
             createElement();
+            const content = element.find('.sc-dropdown-content').eq(0);
 
-            const menu = element.find('.sc-dropdown-menu').eq(0);
-            expect(menu.hasClass('right')).toBe(false);
+            expect(content.hasClass('right')).toBe(false);
 
             //when
-            clickDropdownToggle();
+            clickDropdownTrigger(element);
 
             //then
-            expect(menu.hasClass('right')).toBe(true);
+            assertContentIsOnTheRight(content);
+        });
+
+        it('should set side to right by default', () => {
+            //given
+            scope.side = '';
+            createElement();
+            const content = element.find('.sc-dropdown-content').eq(0);
+
+            expect(content.hasClass('right')).toBe(false);
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            assertContentIsOnTheRight(content);
+        });
+
+        it('should set side to left by default when content\'s left border is out of window', () => {
+            //given
+            scope.side = '';
+            createElement();
+            const content = element.find('.sc-dropdown-content').eq(0);
+
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({left: -5}); //left border is out of the window
+            expect(content.hasClass('right')).toBe(false);
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            assertContentIsOnTheLeft(content);
+        });
+    });
+
+    describe('horizontal position (side)', () => {
+        it('should put the content on the bottom', () => {
+            //given
+            scope.side = 'left';
+            createElement();
+            const content = element.find('.sc-dropdown-content').eq(0);
+
+            expect(content.hasClass('top')).toBe(false);
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            expect(content.hasClass('top')).toBe(false);
+        });
+
+        it('should put the content on the top when content\'s bottom border is out of window', inject(($window) => {
+            //given
+            scope.side = '';
+            createElement();
+            const content = element.find('.sc-dropdown-content').eq(0);
+            const windowHeight = angular.element($window)[0].innerHeight;
+
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 50, height: windowHeight, bottom: windowHeight + 50}); //bottom border out of window
+            expect(content.hasClass('top')).toBe(false);
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            expect(content.hasClass('top')).toBe(true);
+        }));
+    });
+
+    describe('close on select', () => {
+        it('should stop content mousedown propagation to avoid body callback that hide it', () => {
+            //given
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            //when
+            element.find('.sc-dropdown-content').eq(0).mousedown();
+
+            //then
+            expect(element.hasClass('show')).toBe(true);
+        });
+
+        it('should close dropdown on dropdown content click', () => {
+            //given
+            scope.closeOnSelect = true;
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            //when
+            clickDropdownContent(element);
+
+            //then
+            expect(element.hasClass('show')).toBe(false);
+        });
+
+        it('should NOT close dropdown on dropdown content click', () => {
+            //given
+            scope.closeOnSelect = false;
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            //when
+            clickDropdownContent(element);
+
+            //then
+            expect(element.hasClass('show')).toBe(true);
         });
     });
 });

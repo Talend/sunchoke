@@ -1,173 +1,152 @@
 /*  ============================================================================
+
  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
  This source code is available under agreement available at
  https://github.com/Talend/data-prep/blob/master/LICENSE
+
  You should have received a copy of the agreement
  along with this program; if not, write to Talend SA
  9 rue Pages 92150 Suresnes, France
+
  ============================================================================*/
+
+const CARRET_HEIGHT = 5;
+const VISIBILITY_CLASS = 'show';
 
 /**
  * @ngdoc controller
- * @name talend.sunchoke.splitter.controller:ScDropdownCtrl
+ * @name talend.sunchoke.dropdown.controller:ScDropdownCtrl
  * @description Dropdown controller
  */
 export default class ScDropdownCtrl {
-    constructor($scope, $element, $window, $timeout, $document) {
+    constructor($window, $element, $timeout, $document) {
         'ngInject';
 
-        this.CARRET_HEIGHT = 5;
         this.$element = $element;
-        this.$scope = $scope;
-        this.windowElement = angular.element($window);
         this.$timeout = $timeout;
-        this.$document = $document;
+
+        this.body = angular.element($document[0].body);
+        this.window = angular.element($window);
+        this.visible = false;
+
+        this._escHideContent = this._escHideContent.bind(this);
+        this._hideContent = this._hideContent.bind(this);
+        this._showContent = this._showContent.bind(this);
+        this._positionContent = this._positionContent.bind(this);
     }
 
-    $onInit() {
-        this.hideMenu = this.hideMenu.bind(this);
-        this.showMenu = this.showMenu.bind(this);
-        this.positionMenu = this.positionMenu.bind(this);
-
-        this.initElements();
-        this.attachListeners();
+    $postLink() {
+        this.trigger = this.$element.children().eq(0);
+        this.content = this.$element.children().eq(1);
+        this.content.on('mousedown', (e) => e.stopPropagation());
     }
 
     $onDestroy () {
-        this.body.off('mousedown', this.hideMenu);
-        this.windowElement.off('scroll', this.positionMenu);
+        this._removeListeners();
     }
 
-    initElements() {
-        this.body = this.$document.find('body').eq(0);
-        this.container = angular.element(this.$element[0].querySelector('.sc-dropdown-container'));
-        this.action = angular.element(this.$element[0].querySelector('.sc-dropdown-action'));
-        this.menu = angular.element(this.$element[0].querySelector('.sc-dropdown-menu'));
-        this.button = angular.element(this.$element[0].querySelector('.sc-dropdown-action-button'));
+    _attachListeners() {
+        this.body.on('mousedown', this._hideContent);
+        this.body.on('keydown', this._escHideContent);
+        this.window.on('resize', this._positionContent);
+        this.window.on('scroll', this._positionContent);
     }
 
-    attachListeners() {
-        //Mousedown : stop propagation not to hide dropdown
-        this.menu.on('mousedown', (event) => {
-            event.stopPropagation();
-        });
-
-        //ESC keydown : hide menu, set focus on dropdown action and stop propagation
-        this.menu.on('keydown', (event) => {
-            if (event.keyCode === 27) {
-                this.hideMenu();
-                event.stopPropagation();
-                this.setFocusOn(this.action);
-            }
-        });
-
-        //make action and menu focusable
-        this.action.attr('tabindex', '1');
-        this.menu.attr('tabindex', '2');
-
-        //hide menu on body mousedown
-        this.body.on('mousedown' ,this.hideMenu);
+    _removeListeners() {
+        this.body.off('mousedown', this._hideContent);
+        this.body.off('keydown', this._escHideContent);
+        this.window.off('resize', this._positionContent);
+        this.window.off('scroll', this._positionContent);
     }
 
-    onMenuClick(event) {
-        event.stopPropagation();
-        if (this.closeOnSelect !== false) {
-            this.hideMenu();
+    //------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------VISIBILITY----------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    _escHideContent(event) {
+        if (event.keyCode === 27) {
+            this._hideContent();
         }
     }
 
-    //Set the focus on a specific element
-    setFocusOn(element) {
-        this.$timeout(() => {
-            element[0].focus();
-        }, 100, false);
+    _hideContent() {
+        this.visible = false;
+        this.$element.removeClass(VISIBILITY_CLASS);
+        this._removeListeners();
     }
 
-    //Hide every dropdown in the page
-    hideAllDropDowns() {
-        this.body.find('.sc-dropdown-menu').removeClass('show-menu');
-    }
-
-    //Hide current dropdown menu
-    hideMenu() {
-        this.menu.removeClass('show-menu');
-        this.windowElement.off('scroll', this.positionMenu);
-    }
-
-    //Show current dropdown menu and set focus on it
-    showMenu() {
-        this.menu.addClass('show-menu');
-        this.positionMenu();
+    _showContent() {
+        this.visible = true;
         this.onOpen();
-        this.windowElement.on('scroll', this.positionMenu);
-        this.setFocusOn(this.menu);
+        this.$element.addClass(VISIBILITY_CLASS);
+        this._positionContent();
+        this._attachListeners();
     }
 
-    positionMenu() {
-        this.positionHorizontalMenu();
-        this.positionVerticalMenu();
-    }
-
-    alignMenuRight(position) {
-        this.menu.addClass('right');
-        this.menu.css('right', '' + (this.windowElement[0].innerWidth  - position.right) + 'px');
-        this.menu.css('left', 'auto');
-    }
-
-    alignMenuLeft(position) {
-        this.menu.removeClass('right');
-        this.menu.css('left', '' + position.left + 'px');
-        this.menu.css('right', 'auto');
-    }
-
-    //Move the menu to the left if its left part is out of the window
-    //Otherwise it is put to the right
-    //if a side is forced by input, the position follows
-    positionHorizontalMenu() {
-        const position = this.button[0].getBoundingClientRect();
-        switch (this.side) {
-            case 'left':
-                this.alignMenuLeft(position);
-                break;
-            case 'right':
-                this.alignMenuRight(position);
-                break;
-            default:
-                this.alignMenuRight(position);
-                const menuPosition = this.menu[0].getBoundingClientRect();
-                if (menuPosition.left < 0) {
-                    this.alignMenuLeft(position);
-                }
+    onMenuClick() {
+        if (this.closeOnSelect !== false) {
+            this._hideContent();
         }
-    }
-
-    //Move the menu to the top if its bottom is not visible (out of the window)
-    //Otherwise it is put at the bottom of trigger button
-    positionVerticalMenu() {
-        const positionContainer = this.container[0].getBoundingClientRect();
-        const positionMenu = this.menu[0].getBoundingClientRect();
-        const positionAction = this.action[0].getBoundingClientRect();
-        let menuTopPosition = positionAction.bottom + this.CARRET_HEIGHT;
-
-        //when menu bottom is outside of the window, we position the menu at the top of the button
-        if ((positionAction.bottom +  positionMenu.height + this.CARRET_HEIGHT)> this.windowElement[0].innerHeight) {
-            menuTopPosition = positionContainer.top - this.CARRET_HEIGHT - positionMenu.height;
-            this.menu.addClass('top');
-        }
-        else {
-            this.menu.removeClass('top');
-        }
-        this.menu.css('top', '' + menuTopPosition + 'px');
     }
 
     toggleMenu() {
-        const isVisible = this.menu.hasClass('show-menu');
-        this.hideAllDropDowns();
-        if (isVisible) {
-            this.hideMenu();
+        this.visible ? this._hideContent() : this._showContent();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------POSITION-----------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    _alignMenuRight(position) {
+        this.content.addClass('right');
+        this.content.css('right', '' + (this.window[0].innerWidth  - position.right) + 'px');
+        this.content.css('left', 'auto');
+    }
+
+    _alignMenuLeft(position) {
+        this.content.removeClass('right');
+        this.content.css('left', '' + position.left + 'px');
+        this.content.css('right', 'auto');
+    }
+
+    _positionHorizontalMenu() {
+        const position = this.$element[0].getBoundingClientRect();
+        switch (this.side) {
+            case 'left':
+                this._alignMenuLeft(position);
+                break;
+            case 'right':
+                this._alignMenuRight(position);
+                break;
+            default: {
+                this._alignMenuRight(position);
+                const menuPosition = this.content[0].getBoundingClientRect();
+                if (menuPosition.left < 0) {
+                    this._alignMenuLeft(position);
+                }
+            }
+        }
+    }
+
+    _positionVerticalMenu() {
+        const positionAction = this.trigger[0].getBoundingClientRect();
+        const positionMenu = this.content[0].getBoundingClientRect();
+        let menuTopPosition = positionAction.bottom + CARRET_HEIGHT;
+
+        //when menu bottom is outside of the window, we position the menu at the top of the button
+        if ((positionAction.bottom +  positionMenu.height + CARRET_HEIGHT)> this.window[0].innerHeight) {
+            menuTopPosition = positionAction.top - CARRET_HEIGHT - positionMenu.height;
+            this.content.addClass('top');
         }
         else {
-            this.showMenu();
+            this.content.removeClass('top');
         }
+        this.content.css('top', menuTopPosition + 'px');
+    }
+
+    _positionContent() {
+        this._positionHorizontalMenu();
+        this._positionVerticalMenu();
     }
 }

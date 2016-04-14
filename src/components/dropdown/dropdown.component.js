@@ -16,18 +16,12 @@ import ScDropdownCtrl from './dropdown.controller.js';
  * @restrict E
  * @usage
  <sc-dropdown close-on-select="false" on-open="open()" side="left">
-     <sc-dropdown-action>
-        <div class="grid-header-title">{{ column.id }}</div>
-        <div class="grid-header-type">{{ column.type }}</div>
-     </sc-dropdown-action>
-     <sc-dropdown-menu>
-        <ul class="grid-header-menu">
-            <li role="presentation"><a role="menuitem" href="#">Hide Column</a></li>
-            <li class="divider"></li>
-            <li role="presentation"><a role="menuitem" href="#">Split first Space</a></li>
-            <li role="presentation"><a role="menuitem" href="#">Uppercase</a></li>
-        </ul>
-     </sc-dropdown-menu>
+     <sc-dropdown-trigger>
+        Click me !
+     </sc-dropdown-trigger>
+     <sc-dropdown-content>
+        My menu content
+     </sc-dropdown-content>
  </sc-dropdown>`
  * @param {boolean} closeOnSelect Default `true`. If set to false, dropdown will not close on inner item click
  * @param {function} onOpen The callback to execute on dropdown open
@@ -35,21 +29,23 @@ import ScDropdownCtrl from './dropdown.controller.js';
  */
 const ScDropdownComponent = {
     template: `
-     <div class="sc-dropdown-container">
-        <div class="sc-dropdown-action" ng-click="$ctrl.toggleMenu()">
-            <div class="sc-dropdown-action-content" ng-transclude="sc-dropdown-action"></div>
-            <div class="sc-dropdown-action-button"></div>
+        <div class="sc-dropdown-trigger"
+             ng-click="$ctrl.toggleMenu()"
+             ng-transclude="sc-dropdown-trigger">
         </div>
-        <div class="sc-dropdown-menu" ng-transclude="sc-dropdown-menu"  ng-click="$ctrl.onMenuClick($event)"></div>
-     </div>`,
+        <div class="sc-dropdown-content"
+             ng-click="$ctrl.onMenuClick($event)"
+             ng-transclude="sc-dropdown-content">
+        </div>
+    `,
     bindings: {
-        closeOnSelect: '=',
+        closeOnSelect: '<',
         onOpen: '&',
         side: '@'
     },
     transclude: {
-        'sc-dropdown-action': 'scDropdownAction',
-        'sc-dropdown-menu': 'scDropdownMenu'
+        'sc-dropdown-trigger': 'scDropdownTrigger',
+        'sc-dropdown-content': 'scDropdownContent'
     },
     controller: ScDropdownCtrl
 };

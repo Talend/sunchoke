@@ -21,7 +21,7 @@ export default class ScSplitterCtrl {
         'ngInject';
         this.drag = false;
         this.$element = $element;
-        this.windowElement = angular.element($window);
+        this.window = angular.element($window);
         this.$scope = $scope;
     }
 
@@ -50,9 +50,9 @@ export default class ScSplitterCtrl {
         this.splitHandler.on('mousedown', () => this.drag = true);
 
         const onmouseup = () => this.drag = false;
-        this.windowElement.on('mouseup', onmouseup);
+        this.window.on('mouseup', onmouseup);
 
-        this.$scope.$on('$destroy', () => this.windowElement.off('mouseup', onmouseup));
+        this.$scope.$on('$destroy', () => this.window.off('mouseup', onmouseup));
     }
 
     updateSize(event) {

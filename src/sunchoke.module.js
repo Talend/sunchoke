@@ -14,9 +14,9 @@
 (() => {
     angular.module('talend.sunchoke', [
         'talend.sunchoke.accordion',
+        'talend.sunchoke.dropdown',
         'talend.sunchoke.dropdown-menu',
         'talend.sunchoke.splitter',
-        'talend.sunchoke.tabs',
-        'talend.sunchoke.dropdown'
+        'talend.sunchoke.tabs'
     ]);
 })();
