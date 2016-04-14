@@ -1,4 +1,4 @@
-# Accordion Documentation
+# Dropdown menu Documentation
 
 ### Usage
 

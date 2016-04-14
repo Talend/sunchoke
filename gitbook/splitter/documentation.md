@@ -1,4 +1,4 @@
-# Accordion Documentation
+# Splitter Documentation
 
 ### Usage
 

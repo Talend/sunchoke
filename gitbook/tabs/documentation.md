@@ -1,4 +1,4 @@
-# Accordion Documentation
+# Tabs Documentation
 
 ### Usage
 

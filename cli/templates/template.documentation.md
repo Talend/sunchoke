@@ -1,4 +1,4 @@
-# Accordion Documentation
+# <%= widget.description %> Documentation
 
 ### Usage
 
