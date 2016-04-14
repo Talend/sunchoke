@@ -22,7 +22,7 @@
     </sc-dropdown-menu>
 ```
 
-```<sc-accordion>``` contains a trigger part (```<sc-dropdown-menu-trigger>```) and a dropdown part ```<sc-dropdown-menu-dropdown>```
+```<sc-dropdown-menu>``` contains a trigger part (```<sc-dropdown-menu-trigger>```) and a dropdown part ```<sc-dropdown-menu-dropdown>```
 
 ```.sc-dropdown-menu-icon``` The trigger icon
 

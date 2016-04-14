@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Accordion | Talend Sunchoke</title>
+        <title>Documentation | Talend Sunchoke</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="../accordion/documentation.html" />
+    <link rel="next" href="../dropdown-menu/index.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../dropdown/index.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="1"
-        data-chapter-title="Accordion"
-        data-filepath="accordion/README.md"
+        data-level="3.1"
+        data-chapter-title="Documentation"
+        data-filepath="dropdown/documentation.md"
         data-basepath=".."
         data-revision="Thu Apr 14 2016 17:31:39 GMT+0200 (CEST)"
         data-innerlanguage="">
@@ -84,7 +84,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="accordion/index.html">
+        <li class="chapter " data-level="1" data-path="accordion/index.html">
             
                 
                     <a href="../accordion/index.html">
@@ -151,7 +151,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="dropdown/documentation.html">
+        <li class="chapter active" data-level="3.1" data-path="dropdown/documentation.html">
             
                 
                     <a href="../dropdown/documentation.html">
@@ -312,10 +312,110 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="accordion">Accordion</h1>
-<p>Accordion is a component that displays a list of items with hidden details.
-On click, the selected accordion details is revealed/hidden.</p>
-<p><p data-height="500" data-theme-id="0" data-slug-hash="ZWYrbz" data-default-tab="result" data-user="jso-technologies" class="codepen">See the Pen <a href="http://codepen.io/jso-technologies/pen/ZWYrbz/"></a> by jso-technologies (<a href="http://codepen.io/jso-technologies">@jso-technologies</a>) on <a href="http://codepen.io">CodePen</a>.</p></p>
+                        <h1 id="accordion-documentation">Accordion Documentation</h1>
+<h3 id="usage">Usage</h3>
+<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-title">sc-dropdown</span> <span class="hljs-attribute">close-on-select</span>=<span class="hljs-value">&quot;false&quot;</span> <span class="hljs-attribute">on-open</span>=<span class="hljs-value">&quot;open()&quot;</span> <span class="hljs-attribute">side</span>=<span class="hljs-value">&quot;left&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-dropdown-trigger</span>&gt;</span>
+            Click Me !
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-dropdown-trigger</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-dropdown-content</span>&gt;</span>
+            Dropdown content
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-dropdown-content</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">sc-dropdown</span>&gt;</span>
+</code></pre>
+<p><code>&lt;sc-dropdown&gt;</code> contains a trigger part (<sc-dropdown-trigger>) and a content part <sc-dropdown-content></sc-dropdown-content></sc-dropdown-trigger></p>
+<h3 id="inputs">Inputs</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Element</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close-on-select</td>
+<td>boolean</td>
+<td>sc-dropdown</td>
+<td>true</td>
+<td>If set to false, dropdown menu will not close on content click</td>
+</tr>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>sc-dropdown</td>
+<td>right</td>
+<td>Force display on the specified side (left or right)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outputs">Outputs</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Element</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>on-open</td>
+<td>function</td>
+<td>sc-dropdown</td>
+<td>The callback to execute when the dropdown opens</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transclusion">Transclusion</h3>
+<p><code>&lt;sc-dropdown-trigger&gt;</code> will be transcluded into the div that trigger content visibility.</p>
+<p><code>&lt;sc-dropdown-content&gt;</code> will be transcluded into the dropdown content.</p>
+<h3 id="style-customisation">Style customisation</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$sc-dropdown-height</td>
+<td>1.5em</td>
+<td>The trigger height.</td>
+</tr>
+<tr>
+<td>$sc-dropdown-content-background</td>
+<td>$light</td>
+<td>The content background.</td>
+</tr>
+<tr>
+<td>$sc-dropdown-content-color</td>
+<td>$discrete-dark</td>
+<td>The content text color.</td>
+</tr>
+<tr>
+<td>$sc-dropdown-content-border-color</td>
+<td>$discrete</td>
+<td>the content border color.</td>
+</tr>
+<tr>
+<td>$sc-dropdown-content-border-radius</td>
+<td>3px</td>
+<td>The content corder radius.</td>
+</tr>
+<tr>
+<td>$sc-dropdown-content-z-index</td>
+<td>20</td>
+<td>The content z-index</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -326,10 +426,10 @@ On click, the selected accordion details is revealed/hidden.</p>
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../dropdown/index.html" class="navigation navigation-prev " aria-label="Previous page: Dropdown"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../accordion/documentation.html" class="navigation navigation-next " aria-label="Next page: Documentation"><i class="fa fa-angle-right"></i></a>
+        <a href="../dropdown-menu/index.html" class="navigation navigation-next " aria-label="Next page: Dropdown menu"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,6 +5,9 @@
 
 * [Colors](color/README.md)
 
+* [Dropdown](dropdown/README.md)
+    * [Documentation](dropdown/documentation.md)
+
 * [Dropdown menu](dropdown-menu/README.md)
     * [Documentation](dropdown-menu/documentation.md)
 
