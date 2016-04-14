@@ -21,7 +21,7 @@ $sc-dropdown-menu-item-color: $discrete-dark!default;
 $sc-dropdown-menu-item-color-hover: $light!default;
 
 sc-dropdown-menu {
-    display: block;
+    display: inline-block;
     position: relative;
 
     .sc-dropdown-menu-trigger > * {
