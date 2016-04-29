@@ -1,6 +1,6 @@
 {
   "name": "sunchoke",
-  "version": "1.0.0",
+  "version": "0.1.0-snapshot.3",
   "description": "Talend front-end common widgets",
   "main": ["dist/sunchoke.js", "src/sunchoke.scss"],
   "scripts": {
