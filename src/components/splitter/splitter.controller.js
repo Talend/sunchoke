@@ -39,6 +39,9 @@ export default class ScSplitterCtrl {
     }
 
     attachListeners() {
+        const startDrag = () => { this.drag = true };
+        const stopDrag = () => { this.drag = false };
+
         this.$element.on('mousemove', (event) => {
             if (!this.drag) {
                 return;
@@ -47,12 +50,9 @@ export default class ScSplitterCtrl {
             this.updateSize(event);
         });
 
-        this.splitHandler.on('mousedown', () => this.drag = true);
-
-        const onmouseup = () => this.drag = false;
-        this.window.on('mouseup', onmouseup);
-
-        this.$scope.$on('$destroy', () => this.window.off('mouseup', onmouseup));
+        this.splitHandler.on('mousedown', startDrag);
+        this.window.on('mouseup', stopDrag);
+        this.$scope.$on('$destroy', () => this.window.off('mouseup', stopDrag));
     }
 
     updateSize(event) {
