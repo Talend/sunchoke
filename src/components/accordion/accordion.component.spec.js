@@ -12,7 +12,9 @@
  ============================================================================*/
 
 describe('Accordion component', () => {
-    let createElement, scope, element;
+    let createElement;
+    let scope;
+    let element;
 
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
 
@@ -20,7 +22,7 @@ describe('Accordion component', () => {
         scope = $rootScope.$new();
 
         createElement = () => {
-            var template = `
+            const template = `
                 <sc-accordion>
                     <sc-accordion-item>
                         <trigger>Angular</trigger>
@@ -47,11 +49,11 @@ describe('Accordion component', () => {
     });
 
     it('should render accordion', () => {
-        //when
+        // when
         createElement();
 
-        //then
-        expect(element.find('>ul').length).toBe(1); //sc-accordion
-        expect(element.find('>ul sc-accordion-item').length).toBe(3); //sc-accordion-items
+        // then
+        expect(element.find('>ul').length).toBe(1); // sc-accordion
+        expect(element.find('>ul sc-accordion-item').length).toBe(3); // sc-accordion-items
     });
 });

@@ -47,9 +47,9 @@ const ScDropdownMenuComponent = {
     `,
     transclude: {
         'sc-dropdown-menu-trigger': '?scDropdownMenuTrigger',
-        'sc-dropdown-menu-dropdown': '?scDropdownMenuDropdown'
+        'sc-dropdown-menu-dropdown': '?scDropdownMenuDropdown',
     },
-    controller: ScDropdownMenuCtrl
+    controller: ScDropdownMenuCtrl,
 };
 
 export default ScDropdownMenuComponent;

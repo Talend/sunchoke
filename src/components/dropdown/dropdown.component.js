@@ -23,7 +23,8 @@ import ScDropdownCtrl from './dropdown.controller.js';
         My menu content
      </sc-dropdown-content>
  </sc-dropdown>`
- * @param {boolean} closeOnSelect Default `true`. If set to false, dropdown will not close on inner item click
+ * @param {boolean} closeOnSelect Default `true`.
+ * If set to false, dropdown will not close on inner item click
  * @param {function} onOpen The callback to execute on dropdown open
  * @param {string} side Force display on the specified side (left | right)
  */
@@ -41,13 +42,13 @@ const ScDropdownComponent = {
     bindings: {
         closeOnSelect: '<',
         onOpen: '&',
-        side: '@'
+        side: '@',
     },
     transclude: {
         'sc-dropdown-trigger': 'scDropdownTrigger',
-        'sc-dropdown-content': 'scDropdownContent'
+        'sc-dropdown-content': 'scDropdownContent',
     },
-    controller: ScDropdownCtrl
+    controller: ScDropdownCtrl,
 };
 
 export default ScDropdownComponent;

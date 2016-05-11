@@ -1,5 +1,5 @@
 {
-  "extends": "eslint:recommended",
+  "extends": "airbnb/base",
   "plugins": ["angular"],
   "rules": {
     "angular/angularelement": 1,
@@ -27,10 +27,13 @@
     "angular/typecheck-function": 2,
     "angular/typecheck-number": 2,
     "angular/typecheck-object": 2,
-    "angular/typecheck-regexp": 2,
     "angular/typecheck-string": 2,
     "angular/watchers-execution": [2, "$digest"],
-    "angular/window-service": 2
+    "angular/window-service": 2,
+
+    "brace-style": [2, "stroustrup"],
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }]
   },
   "env": {
     "es6": true,

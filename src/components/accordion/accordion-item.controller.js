@@ -18,26 +18,17 @@
  */
 export default class ScAccordionItemCtrl {
 
-    constructor($scope) {
-        'ngInject';
-        this.$scope = $scope;
-        /**
-         * @ngdoc property
-         * @name active
-         * @propertyOf talend.sunchoke.accordion.controller:ScAccordionItemCtrl
-         * @description Flag that indicates if the accordion is opened (active).
-         * @type {boolean}
-         */
-        this.opened = false;
-    }
-
     $onInit() {
+        this.opened = false;
         this.parent.register(this);
-        this.$scope.$on('$destroy', () => this.parent.unregister(this));
 
-        if(this.default) {
+        if (this.default) {
             this.toggle();
         }
+    }
+
+    $onDestroy() {
+        this.parent.unregister(this);
     }
 
     /**
@@ -57,7 +48,7 @@ export default class ScAccordionItemCtrl {
      * @description Open the accordion.
      */
     open() {
-        if(this.opened) {
+        if (this.opened) {
             return;
         }
         this.opened = true;

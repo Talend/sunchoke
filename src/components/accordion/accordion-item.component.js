@@ -1,15 +1,15 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
 import ScAccordionItemCtrl from './accordion-item.controller';
 
@@ -41,22 +41,26 @@ import ScAccordionItemCtrl from './accordion-item.controller';
 const ScAccordionItemComponent = {
     template: `
     <li class="sc-accordion" ng-class="{open: $ctrl.opened}">
-        <div class="trigger-container" ng-transclude="trigger" ng-click="$ctrl.toggle()"></div>
-        <div class="content-container" ng-transclude="content" sc-accordion-animation="$ctrl.opened"></div>
+        <div class="trigger-container"
+             ng-transclude="trigger"
+             ng-click="$ctrl.toggle()"></div>
+        <div class="content-container"
+             ng-transclude="content"
+             sc-accordion-animation="$ctrl.opened"></div>
     </li>
     `,
     transclude: {
         trigger: 'trigger',
-        content: '?content'
+        content: '?content',
     },
     bindings: {
         onOpen: '&',
-        default: '<'
+        default: '<',
     },
     require: {
-        parent: '^^scAccordion'
+        parent: '^^scAccordion',
     },
-    controller: ScAccordionItemCtrl
+    controller: ScAccordionItemCtrl,
 };
 
 export default ScAccordionItemComponent;

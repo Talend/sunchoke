@@ -11,53 +11,55 @@
 
  ============================================================================*/
 
+import ScTabsItemCtrl from './tabs-item.controller';
+
 describe('Tabs component controller', () => {
-    let scope, createController;
+    let scope;
+    let createController;
 
     beforeEach(angular.mock.module('talend.sunchoke.tabs'));
 
     beforeEach(inject(($rootScope, $componentController) => {
         scope = $rootScope.$new();
 
-        createController = () => {
-            return $componentController(
+        createController = () =>
+            $componentController(
                 'scTabs',
-                { $scope: scope},
-                {onTabChange: jasmine.createSpy('onTabChange')}
+                { $scope: scope },
+                { onTabChange: jasmine.createSpy('onTabChange') }
             );
-        };
     }));
 
     describe('register', () => {
         it('should register tabs', () => {
-            //given
-            const tab1 = {tabTitle: 'Flash'};
-            const tab2 = {tabTitle: 'Arrow'};
+            // given
+            const tab1 = new ScTabsItemCtrl();
+            const tab2 = new ScTabsItemCtrl();
 
             const ctrl = createController();
             expect(ctrl.tabs.length).toBe(0);
 
-            //when
+            // when
             ctrl.register(tab1);
             ctrl.register(tab2);
 
-            //then
+            // then
             expect(ctrl.tabs).toEqual([tab1, tab2]);
         });
 
         it('should set first added tab as active tab', () => {
-            //given
-            const tab1 = {tabTitle: 'Flash'};
-            const tab2 = {tabTitle: 'Arrow'};
+            // given
+            const tab1 = new ScTabsItemCtrl();
+            const tab2 = new ScTabsItemCtrl();
 
             const ctrl = createController();
             expect(ctrl.tabs.length).toBe(0);
 
-            //when
+            // when
             ctrl.register(tab1);
             ctrl.register(tab2);
 
-            //then
+            // then
             expect(tab1.active).toBeTruthy();
             expect(tab2.active).toBeFalsy();
         });
@@ -66,10 +68,10 @@ describe('Tabs component controller', () => {
     describe('select', () => {
         describe('manually', () => {
             it('should set selected tab as active', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
                 ctrl.register(tab1);
@@ -78,18 +80,18 @@ describe('Tabs component controller', () => {
 
                 expect(tab3.active).toBeFalsy();
 
-                //when
+                // when
                 ctrl.select(tab3);
 
-                //then
+                // then
                 expect(tab3.active).toBeTruthy();
             });
 
             it('should set selected tab as active', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
                 ctrl.register(tab1);
@@ -98,19 +100,19 @@ describe('Tabs component controller', () => {
 
                 tab1.active = true;
 
-                //when
+                // when
                 ctrl.select(tab3);
 
-                //then
+                // then
                 expect(tab1.active).toBeFalsy();
                 expect(tab2.active).toBeFalsy();
             });
 
             it('should call tab change callback', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
                 ctrl.register(tab1);
@@ -119,90 +121,82 @@ describe('Tabs component controller', () => {
 
                 expect(ctrl.onTabChange).not.toHaveBeenCalled();
 
-                //when
+                // when
                 ctrl.select(tab3);
 
-                //then
+                // then
                 expect(ctrl.onTabChange).toHaveBeenCalled();
             });
         });
 
         describe('programmatically', () => {
             it('should set selected tab as active', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
-                ctrl.$onInit();
                 ctrl.register(tab1);
                 ctrl.register(tab2);
                 ctrl.register(tab3);
 
                 expect(tab3.active).toBeFalsy();
 
-                //when
-                ctrl.selectedTab = 2;
-                scope.$digest();
+                // when
+                ctrl.$onChanges({ selectedTab: { currentValue: 2 } });
 
-                //then
+                // then
                 expect(tab3.active).toBeTruthy();
             });
 
-            it('should set selected tab as active', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+            it('should set previous selected tab as inactive', () => {
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
-                ctrl.$onInit();
                 ctrl.register(tab1);
                 ctrl.register(tab2);
                 ctrl.register(tab3);
 
                 tab1.active = true;
 
-                //when
-                ctrl.selectedTab = 2;
-                scope.$digest();
+                // when
+                ctrl.$onChanges({ selectedTab: { currentValue: 2 } });
 
-                //then
+                // then
                 expect(tab1.active).toBeFalsy();
-                expect(tab2.active).toBeFalsy();
             });
 
             it('should call tab change callback', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
-                ctrl.$onInit();
                 ctrl.register(tab1);
                 ctrl.register(tab2);
                 ctrl.register(tab3);
 
                 expect(ctrl.onTabChange).not.toHaveBeenCalled();
 
-                //when
-                ctrl.selectedTab = 2;
-                scope.$digest();
+                // when
+                ctrl.$onChanges({ selectedTab: { currentValue: 2 } });
 
-                //then
+                // then
                 expect(ctrl.onTabChange).toHaveBeenCalled();
             });
 
             it('should do nothing if the index is out of bound', () => {
-                //given
-                const tab1 = {tabTitle: 'Flash'};
-                const tab2 = {tabTitle: 'Arrow'};
-                const tab3 = {tabTitle: 'Superman'};
+                // given
+                const tab1 = new ScTabsItemCtrl();
+                const tab2 = new ScTabsItemCtrl();
+                const tab3 = new ScTabsItemCtrl();
 
                 const ctrl = createController();
-                ctrl.$onInit();
                 ctrl.register(tab1);
                 ctrl.register(tab2);
                 ctrl.register(tab3);
@@ -212,11 +206,10 @@ describe('Tabs component controller', () => {
                 expect(tab3.active).toBeFalsy();
                 expect(ctrl.onTabChange).not.toHaveBeenCalled();
 
-                //when
-                ctrl.selectedTab = 10;
-                scope.$digest();
+                // when
+                ctrl.$onChanges({ selectedTab: { currentValue: 10 } });
 
-                //then
+                // then
                 expect(tab1.active).toBeTruthy();
                 expect(tab2.active).toBeFalsy();
                 expect(tab3.active).toBeFalsy();
@@ -227,19 +220,18 @@ describe('Tabs component controller', () => {
 
     describe('unregister', () => {
         it('should unregister tab', () => {
-            //given
-            const tab1 = {tabTitle: 'Flash'};
-            const tab2 = {tabTitle: 'Arrow'};
+            // given
+            const tab1 = new ScTabsItemCtrl();
+            const tab2 = new ScTabsItemCtrl();
 
             const ctrl = createController();
             ctrl.tabs = [tab1, tab2];
 
-            //when
+            // when
             ctrl.unregister(tab2);
 
-            //then
+            // then
             expect(ctrl.tabs).toEqual([tab1]);
         });
     });
-
 });

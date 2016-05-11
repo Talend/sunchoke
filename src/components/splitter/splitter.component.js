@@ -48,13 +48,13 @@ const ScSplitterComponent = {
     </div>`,
     bindings: {
         orientation: '@',
-        minSize: '@'
+        minSize: '@',
     },
     transclude: {
         'split-first-pane': 'scSplitFirstPane',
-        'split-second-pane': 'scSplitSecondPane'
+        'split-second-pane': 'scSplitSecondPane',
     },
-    controller: ScSplitterCtrl
+    controller: ScSplitterCtrl,
 };
 
 export default ScSplitterComponent;

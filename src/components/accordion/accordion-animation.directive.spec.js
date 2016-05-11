@@ -12,7 +12,9 @@
  ============================================================================*/
 
 describe('Accordion animation directive', () => {
-    let createElement, scope, element;
+    let createElement;
+    let scope;
+    let element;
     let $animate;
 
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
@@ -23,7 +25,7 @@ describe('Accordion animation directive', () => {
         scope = $rootScope.$new();
 
         createElement = () => {
-            var template = `
+            const template = `
                 <div sc-accordion-animation="isOpened">
                    Angular : https://www.angularjs.org
                 </div>
@@ -39,7 +41,7 @@ describe('Accordion animation directive', () => {
     });
 
     it('should animate open classes', () => {
-        //given
+        // given
         scope.isOpened = false;
         createElement();
         $animate.flush();
@@ -47,7 +49,7 @@ describe('Accordion animation directive', () => {
         expect(element.hasClass('opening')).toBe(false);
         expect(element.hasClass('open')).toBe(false);
 
-        //when
+        // when
         scope.isOpened = true;
 
         scope.$digest();
@@ -56,13 +58,13 @@ describe('Accordion animation directive', () => {
 
         $animate.flush();
 
-        //then
+        // then
         expect(element.hasClass('opening')).toBe(false);
         expect(element.hasClass('open')).toBe(true);
     });
 
     it('should animate close classes', () => {
-        //given
+        // given
         scope.isOpened = true;
         createElement();
         $animate.flush();
@@ -71,7 +73,7 @@ describe('Accordion animation directive', () => {
         expect(element.hasClass('closing')).toBe(false);
         expect(element.hasClass('open')).toBe(true);
 
-        //when
+        // when
         scope.isOpened = false;
 
         scope.$digest();
@@ -80,7 +82,7 @@ describe('Accordion animation directive', () => {
 
         $animate.flush();
 
-        //then
+        // then
         expect(element.hasClass('closing')).toBe(false);
         expect(element.hasClass('open')).toBe(false);
     });

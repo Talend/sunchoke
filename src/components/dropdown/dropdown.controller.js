@@ -43,7 +43,7 @@ export default class ScDropdownCtrl {
         this.content.on('mousedown', (e) => e.stopPropagation());
     }
 
-    $onDestroy () {
+    $onDestroy() {
         this._removeListeners();
     }
 
@@ -61,9 +61,9 @@ export default class ScDropdownCtrl {
         this.window.off('scroll', this._positionContent);
     }
 
-    //------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------VISIBILITY----------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
+    // -------------------------------------------VISIBILITY---------------------------------------
+    // --------------------------------------------------------------------------------------------
 
     _escHideContent(event) {
         if (event.keyCode === 27) {
@@ -93,22 +93,27 @@ export default class ScDropdownCtrl {
     }
 
     toggleMenu() {
-        this.visible ? this._hideContent() : this._showContent();
+        if (this.visible) {
+            this._hideContent();
+        }
+        else {
+            this._showContent();
+        }
     }
 
-    //------------------------------------------------------------------------------------------------------------------
-    //-----------------------------------------------------POSITION-----------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
+    // ----------------------------------------POSITION--------------------------------------------
+    // --------------------------------------------------------------------------------------------
 
     _alignMenuRight(position) {
         this.content.addClass('right');
-        this.content.css('right', '' + (this.window[0].innerWidth  - position.right) + 'px');
+        this.content.css('right', `${this.window[0].innerWidth - position.right}px`);
         this.content.css('left', 'auto');
     }
 
     _alignMenuLeft(position) {
         this.content.removeClass('right');
-        this.content.css('left', '' + position.left + 'px');
+        this.content.css('left', `${position.left}px`);
         this.content.css('right', 'auto');
     }
 
@@ -121,13 +126,14 @@ export default class ScDropdownCtrl {
             case 'right':
                 this._alignMenuRight(position);
                 break;
-            default: {
-                this._alignMenuRight(position);
-                const menuPosition = this.content[0].getBoundingClientRect();
-                if (menuPosition.left < 0) {
-                    this._alignMenuLeft(position);
+            default:
+                {
+                    this._alignMenuRight(position);
+                    const menuPosition = this.content[0].getBoundingClientRect();
+                    if (menuPosition.left < 0) {
+                        this._alignMenuLeft(position);
+                    }
                 }
-            }
         }
     }
 
@@ -136,15 +142,16 @@ export default class ScDropdownCtrl {
         const positionMenu = this.content[0].getBoundingClientRect();
         let menuTopPosition = positionAction.bottom + CARRET_HEIGHT;
 
-        //when menu bottom is outside of the window, we position the menu at the top of the button
-        if ((positionAction.bottom +  positionMenu.height + CARRET_HEIGHT)> this.window[0].innerHeight) {
+        // when menu bottom is outside of the window, we position the menu at the top of the button
+        const bottomPosition = positionAction.bottom + positionMenu.height + CARRET_HEIGHT;
+        if (bottomPosition > this.window[0].innerHeight) {
             menuTopPosition = positionAction.top - CARRET_HEIGHT - positionMenu.height;
             this.content.addClass('top');
         }
         else {
             this.content.removeClass('top');
         }
-        this.content.css('top', menuTopPosition + 'px');
+        this.content.css('top', `${menuTopPosition}px`);
     }
 
     _positionContent() {

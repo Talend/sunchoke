@@ -17,10 +17,9 @@
  * @description Dropdown menu controller
  */
 export default class ScDropdownMenuCtrl {
-    constructor($scope, $element, $document, $timeout) {
+    constructor($element, $document, $timeout) {
         'ngInject';
 
-        this.$scope = $scope;
         this.$element = $element;
         this.$timeout = $timeout;
         this.bodyElement = angular.element($document[0].body);
@@ -43,6 +42,8 @@ export default class ScDropdownMenuCtrl {
     }
 
     _hideMenu() {
-        this.$timeout(() => this.visible = false);
+        this.$timeout(() => {
+            this.visible = false;
+        });
     }
 }

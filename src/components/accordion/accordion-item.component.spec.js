@@ -12,7 +12,9 @@
  ============================================================================*/
 
 describe('Accordion item component', () => {
-    let createElement, scope, element;
+    let createElement;
+    let scope;
+    let element;
 
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
 
@@ -21,7 +23,7 @@ describe('Accordion item component', () => {
         scope.onOpen = jasmine.createSpy('onOpen');
 
         createElement = () => {
-            var template = `
+            const template = `
                 <sc-accordion>
                     <sc-accordion-item default="isDefault" on-open="onOpen()">
                         <trigger>Angular</trigger>
@@ -36,49 +38,61 @@ describe('Accordion item component', () => {
 
     describe('render', () => {
         it('should transclude trigger/content in the right container', () => {
-            //when
+            // when
             createElement();
 
-            //then
-            expect(element.find('.sc-accordion').eq(0).find('.trigger-container').eq(0).text()).toBe('Angular');
-            expect(element.find('.sc-accordion').eq(0).find('.content-container').eq(0).text()).toBe('https://www.angularjs.org');
+            // then
+            expect(element
+                .find('.sc-accordion')
+                .eq(0)
+                .find('.trigger-container')
+                .eq(0)
+                .text())
+                .toBe('Angular');
+            expect(element
+                .find('.sc-accordion')
+                .eq(0)
+                .find('.content-container')
+                .eq(0)
+                .text())
+                .toBe('https://www.angularjs.org');
         });
     });
 
     describe('default flag', () => {
         it('should NOT set open class to NON default accordion', () => {
-            //given
+            // given
             scope.isDefault = false;
 
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(false);
         });
 
         it('should set open class to default accordion', () => {
-            //given
+            // given
             scope.isDefault = true;
 
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(true);
         });
     });
 
     describe('trigger click', () => {
         it('should toggle accordion', () => {
-            //given
+            // given
             createElement();
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(false);
 
-            //when
+            // when
             element.find('.trigger-container').eq(0).click();
 
-            //then
+            // then
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(true);
         });
     });

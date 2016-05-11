@@ -10,9 +10,12 @@
   9 rue Pages 92150 Suresnes, France
 
   ============================================================================*/
+/* eslint-disable no-underscore-dangle */
 
 describe('Dropdown menu component', () => {
-    let createElement, scope, element;
+    let createElement;
+    let scope;
+    let element;
 
     beforeEach(angular.mock.module('talend.sunchoke.dropdown-menu'));
 
@@ -47,54 +50,54 @@ describe('Dropdown menu component', () => {
 
     describe('transclusion', () => {
         it('should transclude sc-dropdown-menu-trigger', () => {
-            //given
+            // given
 
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-trigger').find('#trigger').length).toBe(1);
         });
 
         it('should transclude sc-dropdown-menu-dropdown', () => {
-            //given
+            // given
             createElement();
             const ctrl = element.controller('scDropdownMenu');
 
-            //when
+            // when
             ctrl.visible = true;
             scope.$digest();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-dropdown').find('#dropdown').length).toBe(1);
         });
     });
 
     describe('menu', () => {
         it('should be hidden by default', () => {
-            //given
+            // given
 
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(0);
         });
 
         it('should be rendered on trigger click', () => {
-            //given
+            // given
             createElement();
 
-            //when
+            // when
             element.find('.sc-dropdown-menu-trigger').eq(0).click();
             scope.$digest();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(1);
         });
 
         it('should be removed on trigger click when it was initially rendered', () => {
-            //given
+            // given
             createElement();
             const ctrl = element.controller('scDropdownMenu');
             ctrl.visible = true;
@@ -102,16 +105,16 @@ describe('Dropdown menu component', () => {
 
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(1);
 
-            //when
+            // when
             element.find('.sc-dropdown-menu-trigger').eq(0).click();
             scope.$digest();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(0);
         });
 
         it('should be removed on menu click', () => {
-            //given
+            // given
             createElement();
             const ctrl = element.controller('scDropdownMenu');
             ctrl.visible = true;
@@ -119,18 +122,18 @@ describe('Dropdown menu component', () => {
 
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(1);
 
-            //when
+            // when
             element.find('.sc-dropdown-menu-dropdown').eq(0).click();
             scope.$digest();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(0);
         });
     });
 
     describe('body events', () => {
         it('should hide menu', inject(($timeout) => {
-            //given
+            // given
             createElement();
             const ctrl = element.controller('scDropdownMenu');
             ctrl.visible = true;
@@ -138,16 +141,16 @@ describe('Dropdown menu component', () => {
 
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(1);
 
-            //when
+            // when
             angular.element('body').eq(0).mousedown();
             $timeout.flush();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(0);
         }));
 
         it('should stop propagation on element mousedown to prevent body mousedown', () => {
-            //given
+            // given
             createElement();
             const ctrl = element.controller('scDropdownMenu');
             ctrl.visible = true;
@@ -155,26 +158,27 @@ describe('Dropdown menu component', () => {
 
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(1);
 
-            const event = angular.element.Event('mousedown');
+            const event = new angular.element.Event('mousedown');
             spyOn(event, 'stopPropagation');
 
-            //when
+            // when
             element.trigger(event);
 
-            //then
+            // then
             expect(event.stopPropagation).toHaveBeenCalled();
         });
 
         it('should unregister body mousedown on element remove', () => {
-            //given
+            // given
             createElement();
             expect($._data(angular.element('body')[0], 'events').mousedown.length).toBe(1);
 
-            //when
+            // when
             scope.$destroy();
 
-            //then
+            // then
             expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
         });
     });
 });
+/* eslint-enable no-underscore-dangle */

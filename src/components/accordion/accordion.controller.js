@@ -57,7 +57,7 @@ export default class ScAccordionCtrl {
      * @description Open/close an accordion and hide the others
      */
     toggle(accordion) {
-        var wasActive = accordion.opened;
+        const wasActive = accordion.opened;
         this.accordions.forEach((next) => next.close());
 
         if (!wasActive) {

@@ -10,6 +10,7 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
+/* eslint-disable no-underscore-dangle */
 
 const clickDropdownTrigger = (elm) => {
     elm.find('.sc-dropdown-trigger').eq(0).click();
@@ -20,9 +21,9 @@ const clickDropdownContent = (elm) => {
 };
 
 describe('Dropdown component', () => {
-    'use strict';
-
-    let scope, element, createElement;
+    let scope;
+    let element;
+    let createElement;
 
     beforeEach(angular.mock.module('talend.sunchoke.dropdown'));
 
@@ -50,59 +51,59 @@ describe('Dropdown component', () => {
             angular.element('body').append(element);
             $compile(element)(scope);
             scope.$digest();
-        }
+        };
     }));
 
     describe('render', () => {
         it('should transclude sc-dropdown-trigger', () => {
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-trigger').find('#trigger').length).toBe(1);
         });
 
         it('should transclude sc-dropdown-content', () => {
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.find('.sc-dropdown-content').find('#content').length).toBe(1);
         });
 
         it('should hide dropdown content by default', () => {
-            //when
+            // when
             createElement();
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(false);
         });
     });
 
     describe('dropdown action', () => {
         it('should show dropdown on action click', () => {
-            //given
+            // given
             createElement();
             expect(element.hasClass('show')).toBe(false);
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(true);
         });
     });
 
     describe('body listeners', () => {
         it('should register body event listeners on dropdown display', () => {
-            //given
+            // given
             createElement();
             expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             const listeners = $._data(angular.element('body')[0], 'events');
             expect(listeners).toBeDefined();
             expect(listeners.mousedown.length).toBe(1);
@@ -110,87 +111,87 @@ describe('Dropdown component', () => {
         });
 
         it('should unregister body event listeners on dropdown hide', () => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect($._data(angular.element('body')[0], 'events')).toBeDefined();
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
         });
 
         it('should unregister body event listeners on destroy', () => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect($._data(angular.element('body')[0], 'events')).toBeDefined();
 
-            //when
+            // when
             scope.$destroy();
 
-            //then
+            // then
             expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
         });
 
         it('should hide dropdown on body mousedown', () => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect(element.hasClass('show')).toBe(true);
 
-            //when
+            // when
             angular.element('body').mousedown();
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(false);
         });
 
         it('should hide dropdown on body ESC keydown', () => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect(element.hasClass('show')).toBe(true);
 
-            const event = angular.element.Event('keydown');
+            const event = new angular.element.Event('keydown');
             event.keyCode = 27;
 
-            //when
+            // when
             angular.element('body').trigger(event);
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(false);
         });
 
         it('should NOT hide dropdown on body NON ESC keydown', () => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect(element.hasClass('show')).toBe(true);
 
-            const event = angular.element.Event('keydown');
+            const event = new angular.element.Event('keydown');
             event.keyCode = 14;
 
-            //when
+            // when
             angular.element('body').trigger(event);
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(true);
         });
     });
 
     describe('window listeners', () => {
         it('should register window event listeners on dropdown display', inject(($window) => {
-            //given
+            // given
             createElement();
             expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             const listeners = $._data(angular.element($window)[0], 'events');
             expect(listeners).toBeDefined();
             expect(listeners.resize.length).toBe(1);
@@ -198,42 +199,42 @@ describe('Dropdown component', () => {
         }));
 
         it('should unregister window event listeners on dropdown hide', inject(($window) => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect($._data(angular.element($window)[0], 'events')).toBeDefined();
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
         }));
 
         it('should unregister window event listeners on destroy', inject(($window) => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
             expect($._data(angular.element($window)[0], 'events')).toBeDefined();
 
-            //when
+            // when
             scope.$destroy();
 
-            //then
+            // then
             expect($._data(angular.element($window)[0], 'events')).not.toBeDefined();
         }));
     });
 
     describe('open callback', () => {
         it('should execute open callback on dropdown open', () => {
-            //given
+            // given
             createElement();
             expect(scope.onOpen).not.toHaveBeenCalled();
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             expect(scope.onOpen).toHaveBeenCalled();
         });
     });
@@ -252,159 +253,168 @@ describe('Dropdown component', () => {
         };
 
         it('should force side to left', () => {
-            //given
+            // given
             scope.side = 'left';
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
             expect(content.hasClass('right')).toBe(false);
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             assertContentIsOnTheLeft(content);
         });
 
         it('should force side to right', () => {
-            //given
+            // given
             scope.side = 'right';
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
             expect(content.hasClass('right')).toBe(false);
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             assertContentIsOnTheRight(content);
         });
 
         it('should set side to right by default', () => {
-            //given
+            // given
             scope.side = '';
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
             expect(content.hasClass('right')).toBe(false);
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             assertContentIsOnTheRight(content);
         });
 
-        it('should set side to left by default when content\'s left border is out of window', () => {
-            //given
+        it('should set side to left by default ' +
+            'when content\'s left border is out of window', () => {
+            // given
             scope.side = '';
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
-            spyOn(content[0], 'getBoundingClientRect').and.returnValue({left: -5}); //left border is out of the window
+            spyOn(content[0], 'getBoundingClientRect')
+                .and.returnValue({ left: -5 }); // left border is out of the window
             expect(content.hasClass('right')).toBe(false);
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             assertContentIsOnTheLeft(content);
         });
     });
 
     describe('horizontal position (side)', () => {
         it('should put the content on the bottom', () => {
-            //given
+            // given
             scope.side = 'left';
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
             expect(content.hasClass('top')).toBe(false);
 
-            //when
+            // when
             clickDropdownTrigger(element);
 
-            //then
+            // then
             expect(content.hasClass('top')).toBe(false);
         });
 
-        it('should put the content on the top when content\'s bottom border is out of window', inject(($window) => {
-            //given
-            scope.side = '';
-            createElement();
-            const content = element.find('.sc-dropdown-content').eq(0);
-            const windowHeight = angular.element($window)[0].innerHeight;
+        it('should put the content on the top when content\'s bottom border is out of window',
+            inject(($window) => {
+                // given
+                scope.side = '';
+                createElement();
+                const content = element.find('.sc-dropdown-content').eq(0);
+                const windowHeight = angular.element($window)[0].innerHeight;
 
-            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 50, height: windowHeight, bottom: windowHeight + 50}); //bottom border out of window
-            expect(content.hasClass('top')).toBe(false);
+                spyOn(content[0], 'getBoundingClientRect').and.returnValue({
+                    top: 50,
+                    height: windowHeight,
+                    bottom: windowHeight + 50, // bottom border out of window
+                });
+                expect(content.hasClass('top')).toBe(false);
 
-            //when
-            clickDropdownTrigger(element);
+                // when
+                clickDropdownTrigger(element);
 
-            //then
-            expect(content.hasClass('top')).toBe(true);
-        }));
+                // then
+                expect(content.hasClass('top')).toBe(true);
+            })
+        );
     });
 
     describe('close on select', () => {
         it('should stop content mousedown propagation to avoid body callback that hide it', () => {
-            //given
+            // given
             createElement();
             clickDropdownTrigger(element);
 
             expect(element.hasClass('show')).toBe(true);
 
-            //when
+            // when
             element.find('.sc-dropdown-content').eq(0).mousedown();
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(true);
         });
 
         it('should close dropdown on dropdown content click', () => {
-            //given
+            // given
             scope.closeOnSelect = true;
             createElement();
             clickDropdownTrigger(element);
 
             expect(element.hasClass('show')).toBe(true);
 
-            //when
+            // when
             clickDropdownContent(element);
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(false);
         });
 
         it('should NOT close dropdown on dropdown content click', () => {
-            //given
+            // given
             scope.closeOnSelect = false;
             createElement();
             clickDropdownTrigger(element);
 
             expect(element.hasClass('show')).toBe(true);
 
-            //when
+            // when
             clickDropdownContent(element);
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(true);
-        }); 
-        
+        });
+
         it('should close dropdown on "sc-dropdown-close" element click', () => {
-            //given
+            // given
             scope.closeOnSelect = false; // do NOT close on content click
             createElement();
             clickDropdownTrigger(element);
 
             expect(element.hasClass('show')).toBe(true);
 
-            //when
+            // when
             element.find('#close').eq(0).click();
 
-            //then
+            // then
             expect(element.hasClass('show')).toBe(false);
         });
     });
 });
+/* eslint-disable no-underscore-dangle */

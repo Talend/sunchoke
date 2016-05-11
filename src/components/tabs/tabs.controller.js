@@ -1,15 +1,15 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
 /**
  * @ngdoc controller
@@ -17,10 +17,7 @@
  * @description Tabs controller
  */
 export default class ScTabsCtrl {
-    constructor($scope) {
-        'ngInject';
-        this.$scope = $scope;
-
+    constructor() {
         /**
          * @ngdoc property
          * @name tabs
@@ -31,11 +28,10 @@ export default class ScTabsCtrl {
         this.tabs = [];
     }
 
-    $onInit() {
-        this.$scope.$watch(
-            () => this.selectedTab,
-            (index) => this.setSelectedTab(index)
-        );
+    $onChanges(changes) {
+        if (changes.selectedTab) {
+            this.setSelectedTab(changes.selectedTab.currentValue);
+        }
     }
 
     /**
@@ -46,7 +42,7 @@ export default class ScTabsCtrl {
      */
     register(tab) {
         if (this.tabs.length === 0) {
-            tab.active = true;
+            tab.setActive(true);
         }
         this.tabs.push(tab);
     }
@@ -59,9 +55,9 @@ export default class ScTabsCtrl {
      */
     select(tab) {
         this.tabs.forEach((tabToDeactivate) => {
-            tabToDeactivate.active = false;
+            tabToDeactivate.setActive(false);
         });
-        tab.active = true;
+        tab.setActive(true);
         this.onTabChange();
     }
 
@@ -72,7 +68,7 @@ export default class ScTabsCtrl {
      * @description Set selected tab
      */
     setSelectedTab(index) {
-        var tabToSelect = this.tabs[index];
+        const tabToSelect = this.tabs[index];
         if (tabToSelect) {
             this.select(tabToSelect);
         }
@@ -86,7 +82,7 @@ export default class ScTabsCtrl {
      * @description Delete a tab
      */
     unregister(tab) {
-        var index = this.tabs.indexOf(tab);
+        const index = this.tabs.indexOf(tab);
         this.tabs.splice(index, 1);
     }
 }

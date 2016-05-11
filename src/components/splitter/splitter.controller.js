@@ -1,15 +1,15 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
 /**
  * @ngdoc controller
@@ -17,17 +17,23 @@
  * @description Splitter controller
  */
 export default class ScSplitterCtrl {
-    constructor($scope, $element, $window) {
+    constructor($element, $window) {
         'ngInject';
         this.drag = false;
         this.$element = $element;
         this.window = angular.element($window);
-        this.$scope = $scope;
+
+        this.startDrag = this.startDrag.bind(this);
+        this.stopDrag = this.stopDrag.bind(this);
     }
 
     $onInit() {
         this.initElements();
         this.attachListeners();
+    }
+
+    $onDestroy() {
+        this.window.off('mouseup', this.stopDrag);
     }
 
     initElements() {
@@ -39,9 +45,6 @@ export default class ScSplitterCtrl {
     }
 
     attachListeners() {
-        const startDrag = () => { this.drag = true };
-        const stopDrag = () => { this.drag = false };
-
         this.$element.on('mousemove', (event) => {
             if (!this.drag) {
                 return;
@@ -50,9 +53,16 @@ export default class ScSplitterCtrl {
             this.updateSize(event);
         });
 
-        this.splitHandler.on('mousedown', startDrag);
-        this.window.on('mouseup', stopDrag);
-        this.$scope.$on('$destroy', () => this.window.off('mouseup', stopDrag));
+        this.splitHandler.on('mousedown', this.startDrag);
+        this.window.on('mouseup', this.stopDrag);
+    }
+
+    startDrag() {
+        this.drag = true;
+    }
+
+    stopDrag() {
+        this.drag = false;
     }
 
     updateSize(event) {
@@ -66,9 +76,9 @@ export default class ScSplitterCtrl {
                 return;
             }
 
-            this.firstPane.css('bottom', (bounds.height - pos) + 'px');
-            this.splitHandler.css('top', pos + 'px');
-            this.secondPane.css('top', (pos + this.splitHandlerSize) + 'px');
+            this.firstPane.css('bottom', `${bounds.height - pos}px`);
+            this.splitHandler.css('top', `${pos}px`);
+            this.secondPane.css('top', `${pos + this.splitHandlerSize}px`);
         }
         else {
             this.splitHandlerSize = this.splitHandlerSize || this.splitHandler[0].offsetWidth;
@@ -78,9 +88,9 @@ export default class ScSplitterCtrl {
                 return;
             }
 
-            this.firstPane.css('right', (bounds.width - pos) + 'px');
-            this.splitHandler.css('left', pos + 'px');
-            this.secondPane.css('left', (pos + this.splitHandlerSize) + 'px');
+            this.firstPane.css('right', `${bounds.width - pos}px`);
+            this.splitHandler.css('left', `${pos}px`);
+            this.secondPane.css('left', `${pos + this.splitHandlerSize}px`);
         }
     }
 }
