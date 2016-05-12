@@ -13,6 +13,7 @@
 
 const CARRET_HEIGHT = 5;
 const VISIBILITY_CLASS = 'show';
+const CLOSE_CLASS = 'sc-dropdown-close';
 
 /**
  * @ngdoc controller
@@ -49,14 +50,14 @@ export default class ScDropdownCtrl {
     _attachListeners() {
         this.body.on('mousedown', this._hideContent);
         this.body.on('keydown', this._escHideContent);
-        this.window.on('resize', this._positionContent);
+        this.window.on('resize', this._hideContent);
         this.window.on('scroll', this._positionContent);
     }
 
     _removeListeners() {
         this.body.off('mousedown', this._hideContent);
         this.body.off('keydown', this._escHideContent);
-        this.window.off('resize', this._positionContent);
+        this.window.off('resize', this._hideContent);
         this.window.off('scroll', this._positionContent);
     }
 
@@ -73,6 +74,7 @@ export default class ScDropdownCtrl {
     _hideContent() {
         this.visible = false;
         this.$element.removeClass(VISIBILITY_CLASS);
+        this._resetPositionContent();
         this._removeListeners();
     }
 
@@ -84,8 +86,8 @@ export default class ScDropdownCtrl {
         this._attachListeners();
     }
 
-    onMenuClick() {
-        if (this.closeOnSelect !== false) {
+    onMenuClick(event) {
+        if (this.closeOnSelect !== false || event.target.classList.contains(CLOSE_CLASS)) {
             this._hideContent();
         }
     }
@@ -148,5 +150,11 @@ export default class ScDropdownCtrl {
     _positionContent() {
         this._positionHorizontalMenu();
         this._positionVerticalMenu();
+    }
+
+    _resetPositionContent() {
+        this.content.css('top', 'auto');
+        this.content.css('left', 'auto');
+        this.content.css('right', 'auto');
     }
 }

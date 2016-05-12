@@ -43,6 +43,7 @@ describe('Dropdown component', () => {
                     </sc-dropdown-trigger>
                     <sc-dropdown-content id="content">
                         Content
+                        <button id="close" class="sc-dropdown-close">Close</button>
                     </sc-dropdown-content>
                 </sc-dropdown>
             `);
@@ -389,6 +390,21 @@ describe('Dropdown component', () => {
 
             //then
             expect(element.hasClass('show')).toBe(true);
+        }); 
+        
+        it('should close dropdown on "sc-dropdown-close" element click', () => {
+            //given
+            scope.closeOnSelect = false; // do NOT close on content click
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            //when
+            element.find('#close').eq(0).click();
+
+            //then
+            expect(element.hasClass('show')).toBe(false);
         });
     });
 });
