@@ -9,11 +9,14 @@
         </sc-dropdown-trigger>
         <sc-dropdown-content>
             Dropdown content
+            <button class="sc-dropdown-close">Close me</button>
         </sc-dropdown-content>
     </sc-dropdown>
 ```
 
 ```<sc-dropdown>``` contains a trigger part (<sc-dropdown-trigger>) and a content part <sc-dropdown-content>
+
+```.sc-dropdown-close``` class mark the html tag to close the dropdown on click
 
 ### Inputs
 
