@@ -2,19 +2,27 @@
   "name": "sunchoke",
   "version": "1.0.0",
   "description": "Talend front-end common widgets",
-  "main": ["dist/sunchoke.js", "src/sunchoke.scss"],
+  "main": "dist/sunchoke.js",
   "scripts": {
-    "clean": "rimraf ./dist",
-    "scripts": "webpack --config webpack.config.dev.js",
-    "scripts:prod": "webpack --config webpack.config.prod.js",
-    "scripts:all": "npm run scripts && npm run scripts:prod",
-    "styles": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.css",
-    "styles:prod": "node-sass --output-style compressed --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.min.css",
-    "styles:all": "npm run styles  && npm run styles:prod",
-    "dist": "npm run clean && npm run scripts:all && npm run styles:all",
+    "clean": "npm run clean:dist && npm run clean:coverage",
+      "clean:dist": "rimraf ./dist",
+      "clean:coverage": "rimraf ./coverage",
+
+    "scripts": "npm run scripts:dev && npm run scripts:prod",
+      "scripts:dev": "webpack --config webpack.config.dev.js",
+      "scripts:prod": "webpack --config webpack.config.prod.js",
+
+    "styles": "npm run styles:dev && npm run styles:prod",
+      "styles:dev": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.css",
+      "styles:prod": "node-sass --output-style compressed --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.min.css",
+
+    "dist": "npm run clean && npm run scripts && npm run styles",
+
     "test": "karma start",
-    "test:auto": "karma start --auto",
+      "test:auto": "karma start --auto",
+
     "lint": "eslint --config .eslintrc src/**/*.js",
+
     "add:widget": "node cli/add-widget.js"
   },
   "repository": {
