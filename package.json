@@ -1,8 +1,8 @@
 {
   "name": "sunchoke",
-  "version": "1.0.0",
+  "version": "0.1.0-snapshot",
   "description": "Talend front-end common widgets",
-  "main": "dist/sunchoke.js",
+  "main": "index.js",
   "scripts": {
     "clean": "npm run clean:dist && npm run clean:coverage",
       "clean:dist": "rimraf ./dist",
@@ -14,7 +14,7 @@
 
     "styles": "npm run styles:dev && npm run styles:prod",
       "styles:dev": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.css",
-      "styles:prod": "node-sass --output-style compressed --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.min.css",
+      "styles:prod": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ --output-style compressed src/sunchoke.full.scss dist/sunchoke.min.css",
 
     "dist": "npm run clean && npm run scripts && npm run styles",
 

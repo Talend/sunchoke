@@ -23,7 +23,7 @@ function getLicence() {
 
 function getDefaultConfig(options) {
     return {
-        entry: path.resolve(__dirname, './modules.webpack.js'),
+        entry: path.resolve(__dirname, './src/sunchoke.module.js'),
         output: {
             path: path.resolve(__dirname, './dist'),
             filename: 'sunchoke.js'

@@ -10,18 +10,23 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
+
+import angular from 'angular';
+
 import ScAccordionAnimation from './accordion-animation.directive';
 import ScAccordionItemComponent from './accordion-item.component';
 import ScAccordionComponent from './accordion.component';
 
-(() => {
-    /**
-     * @ngdoc object
-     * @name talend.sunchoke.accordion
-     * @description Accordion widget
-     */
-    angular.module('talend.sunchoke.accordion', ['ngAnimate'])
-        .directive('scAccordionAnimation', ScAccordionAnimation)
-        .component('scAccordionItem', ScAccordionItemComponent)
-        .component('scAccordion', ScAccordionComponent);
-})();
+const MODULE_NAME = 'talend.sunchoke.accordion';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.accordion
+ * @description Accordion widget
+ */
+angular.module(MODULE_NAME, ['ngAnimate'])
+    .directive('scAccordionAnimation', ScAccordionAnimation)
+    .component('scAccordionItem', ScAccordionItemComponent)
+    .component('scAccordion', ScAccordionComponent);
+
+export default MODULE_NAME;

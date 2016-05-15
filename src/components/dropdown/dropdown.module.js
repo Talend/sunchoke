@@ -11,14 +11,17 @@
 
  ============================================================================*/
 
+import angular from 'angular';
 import ScDropdownComponent from './dropdown.component.js';
 
-(() => {
-    /**
-     * @ngdoc object
-     * @name talend.sunchoke.dropdown
-     * @description Dropdown
-     */
-    angular.module('talend.sunchoke.dropdown', [])
-        .component('scDropdown', ScDropdownComponent);
-})();
+const MODULE_NAME = 'talend.sunchoke.dropdown';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.dropdown
+ * @description Dropdown
+ */
+angular.module(MODULE_NAME, [])
+    .component('scDropdown', ScDropdownComponent);
+
+export default MODULE_NAME;
