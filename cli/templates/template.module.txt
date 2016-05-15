@@ -1,11 +1,15 @@
+import angular from 'angular';
+
 import <%= component.name %> from './<%= component.fileName %>';
 
-(() => {
-    /**
-     * @ngdoc object
-     * @name <%= module.name %>
-     * @description <%= module.description %>
-     */
-    angular.module('<%= module.name %>', [])
-        .component('<%= component.selectorCamel %>', <%= component.name %>);
-})();
+const MODULE_NAME = '<%= module.name %>';
+
+/**
+ * @ngdoc object
+ * @name <%= module.name %>
+ * @description <%= module.description %>
+ */
+angular.module(MODULE_NAME, [])
+    .component('<%= component.selectorCamel %>', <%= component.name %>);
+
+export default MODULE_NAME;
