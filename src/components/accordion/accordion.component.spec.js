@@ -19,7 +19,7 @@ describe('Accordion component', () => {
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
 
     beforeEach(inject(($rootScope, $compile) => {
-        scope = $rootScope.$new();
+        scope = $rootScope.$new(true);
 
         createElement = () => {
             const template = `

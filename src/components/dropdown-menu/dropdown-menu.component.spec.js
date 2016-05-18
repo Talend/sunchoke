@@ -20,7 +20,7 @@ describe('Dropdown menu component', () => {
     beforeEach(angular.mock.module('talend.sunchoke.dropdown-menu'));
 
     beforeEach(inject(($rootScope, $compile) => {
-        scope = $rootScope.$new();
+        scope = $rootScope.$new(true);
 
         createElement = () => {
             element = angular.element(`

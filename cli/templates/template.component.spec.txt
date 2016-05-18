@@ -4,7 +4,7 @@ describe('<%= component.description %> component', () => {
     beforeEach(angular.mock.module('<%= module.name %>'));
 
     beforeEach(inject(($rootScope, $compile) => {
-        scope = $rootScope.$new();
+        scope = $rootScope.$new(true);
 
         createElement = () => {
             //TODO add component bindings and transclusion

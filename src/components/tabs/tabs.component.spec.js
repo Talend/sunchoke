@@ -19,7 +19,7 @@ describe('Tabs component', () => {
     beforeEach(angular.mock.module('talend.sunchoke.tabs'));
 
     beforeEach(inject(($rootScope, $compile) => {
-        scope = $rootScope.$new();
+        scope = $rootScope.$new(true);
         scope.onTabChange = jasmine.createSpy('onTabChange');
 
         createElement = () => {

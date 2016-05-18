@@ -1,0 +1,149 @@
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+
+$sc-modal-medium-screen: em(640) !default;
+$sc-modal-large-screen: em(860) !default;
+$sc-modal-x-large-screen: em(1824) !default;
+
+$sc-modal-overlay-background: rgba(0, 0, 0, 0.7) !default;
+$sc-modal-background: $light !default;
+$sc-modal-border-radius: 3px !default;
+$sc-modal-padding: 1.5em 2em !default;
+$sc-modal-z-index: 20 !default;
+
+$sc-modal-header-border-color: $discrete !default;
+$sc-modal-close-color: $discrete-light !default;
+
+@include keyframes(fadeIn) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@include keyframes(fadeOut) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+sc-modal {
+  .sc-modal-overlay {
+    @include display(flex);
+    @include justify-content(center);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $sc-modal-z-index;
+
+    background: $sc-modal-overlay-background;
+
+    @media screen and (min-width: $sc-modal-medium-screen) {
+      padding-top: 2em;
+    }
+
+    @media screen and (min-width: $sc-modal-large-screen) {
+      padding-top: 4em;
+    }
+
+    @media screen and (min-width: $sc-modal-x-large-screen) {
+      padding-top: 8em;
+    }
+
+    &.ng-enter {
+      @include animation(fadeIn 0.25s ease-in);
+    }
+    &.ng-leave {
+      @include animation(fadeOut 0.2s ease-in);
+    }
+  }
+
+  .sc-modal-inner {
+    background: $sc-modal-background;
+    border-radius: $sc-modal-border-radius;
+    margin: 0 auto auto;
+    overflow: hidden;
+    padding: $sc-modal-padding;
+    position: relative;
+    width: 95%;
+
+    @media screen and (min-width: $sc-modal-medium-screen) {
+      width: 80%;
+    }
+
+    @media screen and (min-width: $sc-modal-large-screen) {
+      max-width: 900px;
+    }
+  }
+
+  .sc-modal-header {
+    @include display(flex);
+    @include justify-content(space-between);
+    @include align-items(center);
+
+    margin-bottom: 1.5em;
+    position: relative;
+  }
+
+  .sc-modal-title {
+    @include flex-grow(1);
+    @include display(flex);
+
+    font-weight: 300;
+    font-size: 1.6em;
+    overflow: hidden;
+    text-transform: uppercase;
+
+    sc-modal-header {
+      @include flex-grow(1);
+      border-bottom: 1px solid $sc-modal-header-border-color;
+    }
+  }
+
+  .sc-modal-close-btn {
+    @include size(2em);
+
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+
+    &:after,
+    &:before {
+      @include transform(rotate(45deg));
+      @include size(0.15em 2em);
+
+      position: absolute;
+      left: 50%;
+      background: $sc-modal-close-color;
+      content: '';
+      display: block;
+    }
+
+    &:hover:after,
+    &:hover:before {
+      background: darken($sc-modal-close-color, 10%);
+    }
+
+    &:before {
+      @include transform(rotate(-45deg));
+    }
+  }
+}

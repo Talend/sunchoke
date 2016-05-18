@@ -11,9 +11,19 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/dropdown-menu/dropdown-menu";
-@import "../components/dropdown/dropdown";
-@import "../components/modal/modal";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
+import angular from 'angular';
+
+import AUTOFOCUS_MODULE from '../autofocus/autofocus.module.js';
+import ScModalComponent from './modal.component.js';
+
+const MODULE_NAME = 'talend.sunchoke.modal';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.modal
+ * @description Modal
+ */
+angular.module(MODULE_NAME, [AUTOFOCUS_MODULE])
+    .component('scModal', ScModalComponent);
+
+export default MODULE_NAME;

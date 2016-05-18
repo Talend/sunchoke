@@ -19,7 +19,7 @@ describe('Accordion item component', () => {
     beforeEach(angular.mock.module('talend.sunchoke.accordion'));
 
     beforeEach(inject(($rootScope, $compile) => {
-        scope = $rootScope.$new();
+        scope = $rootScope.$new(true);
         scope.onOpen = jasmine.createSpy('onOpen');
 
         createElement = () => {
