@@ -11,6 +11,9 @@
 * [Dropdown menu](dropdown-menu/README.md)
     * [Documentation](dropdown-menu/documentation.md)
 
+* [Modal](modal/README.md)
+    * [Documentation](modal/documentation.md)
+    
 * [Splitter](splitter/README.md)
     * [Documentation](splitter/documentation.md)
 

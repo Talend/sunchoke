@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Splitter | Talend Sunchoke</title>
+        <title>Documentation | Talend Sunchoke</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="../splitter/documentation.html" />
+    <link rel="next" href="../splitter/index.html" />
     
     
-    <link rel="prev" href="../modal/documentation.html" />
+    <link rel="prev" href="../modal/index.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="6"
-        data-chapter-title="Splitter"
-        data-filepath="splitter/README.md"
+        data-level="5.1"
+        data-chapter-title="Documentation"
+        data-filepath="modal/documentation.md"
         data-basepath=".."
         data-revision="Wed Jul 20 2016 18:14:54 GMT+0200 (Paris, Madrid (heure d’été))"
         data-innerlanguage="">
@@ -223,7 +223,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="modal/documentation.html">
+        <li class="chapter active" data-level="5.1" data-path="modal/documentation.html">
             
                 
                     <a href="../modal/documentation.html">
@@ -243,7 +243,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6" data-path="splitter/index.html">
+        <li class="chapter " data-level="6" data-path="splitter/index.html">
             
                 
                     <a href="../splitter/index.html">
@@ -348,9 +348,147 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="splitter">Splitter</h1>
-<p>The Splitter widget is a pane splitter. It allows to separate a div into 2 divs, with a handler in the middle that allow resizing. </p>
-<p><p data-height="700" data-theme-id="0" data-slug-hash="MyKbqR" data-default-tab="result" data-user="jso-technologies" class="codepen">See the Pen <a href="http://codepen.io/jso-technologies/pen/MyKbqR/"></a> by jso-technologies (<a href="http://codepen.io/jso-technologies">@jso-technologies</a>) on <a href="http://codepen.io">CodePen</a>.</p></p>
+                        <h1 id="modal-documentation">Modal Documentation</h1>
+<h3 id="usage">Usage</h3>
+<pre><code class="lang-html">    <span class="hljs-tag">&lt;<span class="hljs-title">sc-modal</span> <span class="hljs-attribute">visible</span>=<span class="hljs-value">&quot;isVisible&quot;</span>
+              <span class="hljs-attribute">close-button</span>=<span class="hljs-value">&quot;closeButton&quot;</span>
+              <span class="hljs-attribute">close-on-escape</span>=<span class="hljs-value">&quot;closeOnEscape&quot;</span>
+              <span class="hljs-attribute">close-on-overlay-click</span>=<span class="hljs-value">&quot;closeOnOverlayClick&quot;</span>
+              <span class="hljs-attribute">validate-on-enter</span>=<span class="hljs-value">&quot;validateOnEnter&quot;</span>
+              <span class="hljs-attribute">before-close</span>=<span class="hljs-value">&quot;beforeClose()&quot;</span>
+              <span class="hljs-attribute">on-close</span>=<span class="hljs-value">&quot;onClose()&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-modal-header</span>&gt;</span>My title<span class="hljs-tag">&lt;/<span class="hljs-title">sc-modal-header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">sc-modal-content</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;sc-modal-close&quot;</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;close-button&quot;</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;sc-modal-primary&quot;</span> <span class="hljs-attribute">ng-click</span>=<span class="hljs-value">&quot;primaryClick()&quot;</span>&gt;</span>Primary<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">sc-modal-content</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">sc-modal</span>&gt;</span>
+</code></pre>
+<p>Any clickable element tagged with the class <code>sc-modal-close</code> will close the modal on click.</p>
+<h3 id="inputs">Inputs</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Element</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>sc-modal</td>
+<td>-</td>
+<td>Flag that controls the modal visibility</td>
+</tr>
+<tr>
+<td>close-button</td>
+<td>boolean</td>
+<td>sc-modal</td>
+<td>false</td>
+<td>Flag that indicates if the close button should be displayed</td>
+</tr>
+<tr>
+<td>close-on-escape</td>
+<td>boolean</td>
+<td>sc-modal</td>
+<td>false</td>
+<td>Flag that indicates if the modal should be closed on ESC keydown</td>
+</tr>
+<tr>
+<td>close-on-overlay-click</td>
+<td>boolean</td>
+<td>sc-modal</td>
+<td>false</td>
+<td>Flag that indicates if the modal should be closed on overlay click</td>
+</tr>
+<tr>
+<td>validate-on-enter</td>
+<td>boolean</td>
+<td>sc-modal</td>
+<td>false</td>
+<td>Flag that indicates if the primary element should be clicked on ENTER keydown. The primary element is tagged by the class name <code>sc-modal-primary</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="outputs">Outputs</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Element</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before-close</td>
+<td>function</td>
+<td>sc-modal</td>
+<td>Function called before the modal close. If the function returns explicitly <code>false</code>, the close is canceled.</td>
+</tr>
+<tr>
+<td>on-close</td>
+<td>function</td>
+<td>sc-modal</td>
+<td>Function before when the modal close.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transclusion">Transclusion</h3>
+<p><code>&lt;sc-modal-header&gt;</code> will be transcluded into the header part. For example, insert the modal title here.</p>
+<p><code>&lt;sc-modal-content&gt;</code> will be transcluded into the body part.</p>
+<h3 id="style-customisation">Style customisation</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$sc-modal-background</td>
+<td>$light</td>
+<td>The modal box background.</td>
+</tr>
+<tr>
+<td>$sc-modal-border-radius</td>
+<td>3px</td>
+<td>The modal box border radius.</td>
+</tr>
+<tr>
+<td>$sc-modal-close-color</td>
+<td>$discrete-light</td>
+<td>The close cross color.</td>
+</tr>
+<tr>
+<td>$sc-modal-header-border-color</td>
+<td>$discrete</td>
+<td>The modal box header text color.</td>
+</tr>
+<tr>
+<td>$sc-modal-overlay-background</td>
+<td>rgba(0, 0, 0, 0.7)</td>
+<td>The overlay background.</td>
+</tr>
+<tr>
+<td>$sc-modal-padding</td>
+<td>1.5em 2em</td>
+<td>The modal box padding.</td>
+</tr>
+<tr>
+<td>$sc-modal-z-index</td>
+<td>20</td>
+<td>The modal z-index.</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -361,10 +499,10 @@
         </div>
 
         
-        <a href="../modal/documentation.html" class="navigation navigation-prev " aria-label="Previous page: Documentation"><i class="fa fa-angle-left"></i></a>
+        <a href="../modal/index.html" class="navigation navigation-prev " aria-label="Previous page: Modal"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../splitter/documentation.html" class="navigation navigation-next " aria-label="Next page: Documentation"><i class="fa fa-angle-right"></i></a>
+        <a href="../splitter/index.html" class="navigation navigation-next " aria-label="Next page: Splitter"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
