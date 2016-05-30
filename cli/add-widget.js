@@ -40,6 +40,7 @@ function getComponentProperties(inputs) {
     const advancedProperties = {
         module: {
             name: `talend.sunchoke.${properties.input.kebabName}`,
+            constant: `${properties.input.kebabName.replace(/-/g, '_').toUpperCase()}_MODULE`,
             fileName: `${properties.input.kebabName}.module.js`,
             description: description
         },
