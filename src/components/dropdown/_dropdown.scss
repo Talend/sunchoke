@@ -11,93 +11,133 @@
 
   ============================================================================*/
 
-$sc-dropdown-height: 1.5em !default;
-$sc-dropdown-content-background: $light!default;
-$sc-dropdown-content-color: $discrete-dark!default;
-$sc-dropdown-content-border-color: $discrete !default;
-$sc-dropdown-content-border-radius: 3px !default;
-$sc-dropdown-content-z-index: 20 !default;
+$talend-dropdown-trigger-color: $light !default;
+$talend-dropdown-trigger-height: 60px !default;
+$talend-dropdown-content-background-color: $light !default;
+$talend-dropdown-content-border: 1px solid $discrete !default;
+$talend-dropdown-content-border-radius: 3px !default;
+$talend-dropdown-content-box-shadow:0 6px 8px transparentize($dark, 0.7) !default;
+$talend-dropdown-content-color: $discrete-dark !default;
+$talend-dropdown-content-height: 1.5em!default;
+$talend-dropdown-menu-background-color: $light !default;
+$talend-dropdown-menu-border: none !default;
+$talend-dropdown-menu-border-radius: 0 !default;
+$talend-dropdown-menu-box-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
+$talend-dropdown-menu-color: #555964 !default;
+$talend-dropdown-menu-height: 20px !default;
+$talend-dropdown-menu-item-color-hover: #E3E3E3 !default;
 
-sc-dropdown {
-    display: inline-block;
-    position: relative;
+.talend-dropdown {
+  display: block;
+  position: relative;
 
-    line-height: $sc-dropdown-height;
+  .talend-dropdown-trigger {
+    @include align-items(center);
+    color: $talend-dropdown-trigger-color;
+    cursor: pointer;
+    line-height: $talend-dropdown-trigger-height;
+    padding: 0 10px;
 
-    .sc-dropdown-trigger {
-        cursor: pointer;
-        position: relative;
-        padding: 0 20px 0 7px;
-        min-width: 20px;
-
-        &:after {
-            @include position(absolute, 0 5px auto auto);
-            content: '\25BE';
-        }
+    .talend-dropdown-trigger-icon,.talend-dropdown-trigger-title {
+      display: inline-block;
     }
 
-    .sc-dropdown-content {
-        background-color: $sc-dropdown-content-background;
-        border: 1px solid $sc-dropdown-content-border-color;
-        border-radius: $sc-dropdown-content-border-radius;
-        box-shadow: 0 6px 8px transparentize($dark, 0.7);
-        color: $sc-dropdown-content-color;
-        overflow: visible;
-
-        display: none;
-        position: fixed;
-        z-index: $sc-dropdown-content-z-index;
-
-        > * {
-            display: block;
-            padding: 10px;
-        }
-
-        &:before {
-            position: absolute;
-            top: -0.7em;
-            bottom: auto;
-            right: 0;
-            left: 0;
-            color: $sc-dropdown-content-background;
-            content: "\25b2";
-            font-size: 1.4em;
-            pointer-events: none;
-            text-shadow: 0 -2px 2px transparentize($dark, 0.7);
-        }
-
-        &:after {
-            position: absolute;
-            top: auto;
-            right: 0;
-            bottom: -0.5em;
-            left: 0;
-            color: $sc-dropdown-content-background;
-            content: "";
-            font-size: 1.4em;
-            pointer-events: none;
-            text-shadow: 0 6px 2px transparentize($dark, 0.7);
-        }
-
-        &.top {
-            &:before {
-                content: "";
-            }
-
-            &:after {
-                content: "\25bc";
-            }
-        }
-
-        &.right {
-            &:before,
-            &:after {
-                left: auto;
-            }
-        }
+    .talend-dropdown-trigger-title.arrow:after {
+      content: '\25BE';
+      margin-left: 5px;
     }
 
-    &.show .sc-dropdown-content {
-        display: block;
+    .talend-dropdown-trigger-title.arrow.opened:after {
+      content: '\25B4';
+      margin-left: 5px;
     }
+  }
+
+  .talend-dropdown-content {
+    background-color: $talend-dropdown-content-background-color;
+    border: $talend-dropdown-content-border;
+    border-radius: $talend-dropdown-content-border-radius;
+    box-shadow: $talend-dropdown-content-box-shadow;
+    color: $talend-dropdown-content-color;
+    line-height: $talend-dropdown-content-height;
+    position: fixed;
+
+    > * {
+      display: block;
+      padding: 10px;
+    }
+
+    &:before {
+      position: absolute;
+      top: -0.7em;
+      bottom: auto;
+      right: 0;
+      left: 0;
+      color: $talend-dropdown-content-background-color;
+      content: "\25b2";
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 -2px 2px transparentize($dark, 0.7);
+    }
+
+    &:after {
+      position: absolute;
+      top: auto;
+      right: 0;
+      bottom: -0.5em;
+      left: 0;
+      color: $talend-dropdown-content-background-color;
+      content: "";
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 6px 2px transparentize($dark, 0.7);
+    }
+
+    &.top {
+      &:before {
+        content: "";
+      }
+
+      &:after {
+        content: "\25bc";
+      }
+    }
+
+    &.right {
+      right: 0;
+    }
+
+    &.left {
+      left: 0;
+    }
+  }
+
+  .talend-dropdown-menu {
+    background-color: $talend-dropdown-menu-background-color;
+    border: $talend-dropdown-menu-border;
+    border-radius: $talend-dropdown-menu-border-radius;
+    box-shadow: $talend-dropdown-menu-box-shadow;
+    color: $talend-dropdown-menu-color;
+    line-height: $talend-dropdown-menu-height;
+    padding: 0;
+    position: absolute;
+
+    .talend-dropdown-menu-item {
+      cursor: pointer;
+      display: block;
+      padding: 10px;
+
+      &:hover {
+        background-color: $talend-dropdown-menu-item-color-hover;
+      }
+    }
+
+    &.right {
+      right: 0;
+    }
+
+    &.left {
+      left: 0;
+    }
+  }
 }
