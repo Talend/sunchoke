@@ -33,6 +33,7 @@
     "angular/window-service": 2
   },
   "env": {
+    "d3" : true,
     "es6": true,
     "browser": true,
     "jasmine": true
