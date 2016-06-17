@@ -14,9 +14,10 @@
 import angular from 'angular';
 
 import ACCORDION_MODULE from './components/accordion/accordion.module.js';
-import DROPDOWN_MODULE from './components/dropdown/dropdown.module.js';
 import DROPDOWN_MENU_MODULE from './components/dropdown-menu/dropdown-menu.module.js';
+import DROPDOWN_MODULE from './components/dropdown/dropdown.module.js';
 import HORIZONTAL_BARCHART_MODULE from './components/horizontal-barchart/horizontal-barchart.module.js';
+import SLIDABLE_MODULE from './components/slidable/slidable.module.js';
 import SPLITTER_MODULE from './components/splitter/splitter.module.js';
 import TABS_MODULE from './components/tabs/tabs.module.js';
 import VERTICAL_BARCHART_MODULE from './components/vertical-barchart/vertical-barchart.module.js';
@@ -25,9 +26,10 @@ const SUNCHOKE_MODULE = 'talend.sunchoke';
 
 angular.module(SUNCHOKE_MODULE, [
     ACCORDION_MODULE,
-    DROPDOWN_MODULE,
     DROPDOWN_MENU_MODULE,
+    DROPDOWN_MODULE,
     HORIZONTAL_BARCHART_MODULE,
+    SLIDABLE_MODULE,
     SPLITTER_MODULE,
     TABS_MODULE,
     VERTICAL_BARCHART_MODULE
