@@ -3,6 +3,10 @@
 Sunchoke is a set of reusable components built with [AngularJS](https://angularjs.org/) and [Bourbon](http://bourbon.io/)
 
 ### Dependencies
+
+[![Dependency Status](https://david-dm.org/talend/sunchoke.svg)](https://david-dm.org/talend/sunchoke)
+[![devDependency Status](https://david-dm.org/talend/sunchoke/dev-status.svg)](https://david-dm.org/talend/sunchoke#info=devDependencies)
+
 * angularJS 1.5 min. The widgets are based on the component helper definition introduced with version 1.5.
 * angular-animate. Some widgets use angular-animate to perform some animations
 * Bourbon 4. Bourbon is a sass library.
