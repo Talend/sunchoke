@@ -177,7 +177,6 @@ describe('Slidable component', () => {
         //then
         var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
         var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
-        var hiddenActionText = actionOnlySpan.find('span.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('‹');
     });
 
@@ -192,7 +191,6 @@ describe('Slidable component', () => {
         //then
         var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
         var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
-        var hiddenActionText = actionOnlySpan.find('span.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('‹');
     });
 
@@ -207,7 +205,6 @@ describe('Slidable component', () => {
         //then
         var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
         var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
-        var hiddenActionText = actionOnlySpan.find('span.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('›');
     });
 
@@ -312,8 +309,7 @@ describe('Slidable component', () => {
 
                 //when
                 angular.element($window).trigger(event);
-                const window = angular.element($window);
-                const width = window[0].innerWidth - 400;
+                const width = $window.innerWidth - 400;
                 //then
                 expect(element.css('flex')).toBe('0 1 ' + width + 'px');
 
