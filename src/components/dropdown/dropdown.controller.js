@@ -21,15 +21,13 @@ const CLOSE_CLASS = 'sc-dropdown-close';
  * @description Dropdown controller
  */
 export default class ScDropdownCtrl {
-    constructor($window, $element, $timeout, $document) {
+    constructor($window, $element, $document) {
         'ngInject';
 
         this.$element = $element;
-        this.$timeout = $timeout;
 
         this.body = angular.element($document[0].body);
         this.window = angular.element($window);
-        this.visible = false;
 
         this._escHideContent = this._escHideContent.bind(this);
         this._hideContent = this._hideContent.bind(this);
@@ -41,9 +39,12 @@ export default class ScDropdownCtrl {
         this.trigger = this.$element.children().eq(0);
         this.content = this.$element.children().eq(1);
         this.content.on('mousedown', (e) => e.stopPropagation());
+        if (this.visible) {
+            this._showContent();
+        }
     }
 
-    $onDestroy () {
+    $onDestroy() {
         this._removeListeners();
     }
 
@@ -102,7 +103,7 @@ export default class ScDropdownCtrl {
 
     _alignMenuRight(position) {
         this.content.addClass('right');
-        this.content.css('right', '' + (this.window[0].innerWidth  - position.right) + 'px');
+        this.content.css('right', '' + (this.window[0].innerWidth - position.right) + 'px');
         this.content.css('left', 'auto');
     }
 
@@ -121,7 +122,8 @@ export default class ScDropdownCtrl {
             case 'right':
                 this._alignMenuRight(position);
                 break;
-            default: {
+            default:
+            {
                 this._alignMenuRight(position);
                 const menuPosition = this.content[0].getBoundingClientRect();
                 if (menuPosition.left < 0) {
@@ -132,19 +134,41 @@ export default class ScDropdownCtrl {
     }
 
     _positionVerticalMenu() {
-        const positionAction = this.trigger[0].getBoundingClientRect();
-        const positionMenu = this.content[0].getBoundingClientRect();
-        let menuTopPosition = positionAction.bottom + CARRET_HEIGHT;
+        const blocAction = this.trigger[0];
+        const blocContent = this.content[0];
+        const positionAction = blocAction.getBoundingClientRect();
+        const positionContent = blocContent.getBoundingClientRect();
+        const windowSize = this.window[0].innerHeight;
 
-        //when menu bottom is outside of the window, we position the menu at the top of the button
-        if ((positionAction.bottom +  positionMenu.height + CARRET_HEIGHT)> this.window[0].innerHeight) {
-            menuTopPosition = positionAction.top - CARRET_HEIGHT - positionMenu.height;
-            this.content.addClass('top');
-        }
-        else {
+        //display the menu where there is most space top or bottom
+        const freeSpaceBottom = windowSize - positionAction.top;
+        const freeSpaceTop = positionContent.top;
+        const heightContent = positionContent.height;
+        const offsetBorder = parseInt(this.distanceFromBorder);
+
+        //display menu at the bottom
+        if (freeSpaceBottom > freeSpaceTop) {
+            //scrollbar needed?
+            if (positionContent.top + heightContent >= windowSize) {
+                const newContentSize = heightContent - ((positionContent.top + heightContent + offsetBorder) - windowSize );
+                this.content.children().css('height', newContentSize);
+            }
             this.content.removeClass('top');
         }
-        this.content.css('top', menuTopPosition + 'px');
+        //display menu at the top
+        else {
+            //scrollbar needed?
+            if (heightContent > positionAction.top) {
+                const newContentSize = positionAction.top - offsetBorder - CARRET_HEIGHT;
+                this.content.children().eq(0).css('height', newContentSize + "px");
+                //display menu at top with offset supplied
+                this.content.css('top', offsetBorder);
+            }
+            else {
+                this.content.css('top', positionAction.top + 'px');
+            }
+            this.content.addClass('top');
+        }
     }
 
     _positionContent() {
@@ -153,6 +177,7 @@ export default class ScDropdownCtrl {
     }
 
     _resetPositionContent() {
+        this.content.children().css('height', "auto");
         this.content.css('top', 'auto');
         this.content.css('left', 'auto');
         this.content.css('right', 'auto');

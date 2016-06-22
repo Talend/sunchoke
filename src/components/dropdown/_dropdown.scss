@@ -48,6 +48,11 @@ sc-dropdown {
         position: fixed;
         z-index: $sc-dropdown-content-z-index;
 
+        sc-dropdown-content{
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
         > * {
             display: block;
             padding: 10px;
