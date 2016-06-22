@@ -14,6 +14,7 @@
 import angular from 'angular';
 
 import ACCORDION_MODULE from './components/accordion/accordion.module.js';
+import DATE_PICKER_MODULE from './components/date-picker/date-picker.module.js';
 import DROPDOWN_MENU_MODULE from './components/dropdown-menu/dropdown-menu.module.js';
 import DROPDOWN_MODULE from './components/dropdown/dropdown.module.js';
 import HORIZONTAL_BARCHART_MODULE from './components/horizontal-barchart/horizontal-barchart.module.js';
@@ -26,6 +27,7 @@ const SUNCHOKE_MODULE = 'talend.sunchoke';
 
 angular.module(SUNCHOKE_MODULE, [
     ACCORDION_MODULE,
+    DATE_PICKER_MODULE,
     DROPDOWN_MENU_MODULE,
     DROPDOWN_MODULE,
     HORIZONTAL_BARCHART_MODULE,
