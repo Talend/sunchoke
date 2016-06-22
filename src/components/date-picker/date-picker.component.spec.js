@@ -21,7 +21,7 @@ describe('Date picker component', () => {
 
         createElement = (config) => {
 
-            if( config === undefined ){
+            if( angular.isUndefined(config) ){
                 config = '{}';
             }
 
@@ -30,7 +30,10 @@ describe('Date picker component', () => {
             `;
 
             element = $compile(template)(scope);
+            //$document provide not the same data
+            /* eslint-disable angular/document-service */
             element.appendTo(document.body);
+            /* eslint-enable angular/document-service */
             scope.$digest();
             ctrl = element.controller('scDatePicker');
         };
@@ -102,7 +105,7 @@ describe('Date picker component', () => {
 
     describe('should test the constructor', () => {
 
-        it('should test the non presence of the ghost button', inject(($document) => {
+        it('should test the non presence of the ghost button', () => {
             //given
             const configuration = '{\"noneButton\":false, \"field\":\"testValue\", \"controller\":\"testController\"}';
             createElement(configuration);
@@ -114,9 +117,9 @@ describe('Date picker component', () => {
             expect(ctrl.pikaday.controller).not.toBe("testController");
             expect(ctrl.pikaday.field).not.toBe("testValue");
             expect(ctrl.ngModel).toBeUndefined();
-        }));
+        });
 
-        it('should test the timestamp initilisation', inject(($document) => {
+        it('should test the timestamp initilisation', () => {
             //given
             const configuration = '{\"noneButton\":false, \"field\":\"testValue\", \"controller\":\"testController\", \"defaultTimeStamp\":1464818400000}';
             createElement(configuration);
@@ -126,7 +129,7 @@ describe('Date picker component', () => {
             scope.$digest();
 
             expect(ctrl.ngModel).toBe(1464818400000);
-        }));
+        });
 
     });
 
@@ -148,10 +151,15 @@ describe('Date picker component', () => {
                 const date = new Date(randomDay.data('pika-year'), randomDay.data('pika-month'), randomDay.data('pika-day') );
                 randomDay[0].dispatchEvent(new Event('mousedown'));
 
+
+                //Test setTimeout Third part library
+                /* eslint-disable angular/timeout-service */
                 setTimeout(function(){
                     expect(ctrl.ngModel).toBe(date.getTime());
                     done();
                 },101);
+                /* eslint-enable angular/timeout-service */
+
 
             })
         });
@@ -172,17 +180,23 @@ describe('Date picker component', () => {
                 const date = new Date(randomDay.data('pika-year'), randomDay.data('pika-month'), randomDay.data('pika-day') );
                 randomDay[0].dispatchEvent(new Event('mousedown'));
 
+                //Test setTimeout Third part library
+                /* eslint-disable angular/timeout-service */
                 setTimeout(function(){
                     expect(ctrl.ngModel).toBe(date.getTime());
 
                     element.find('input')[0].focus();
                     const noneButton = angular.element($document.find(".ghost-button")[0]);
                     noneButton[0].dispatchEvent(new Event('mousedown'));
+                    //Test setTimeout Third part library
+                    /* eslint-disable angular/timeout-service */
                     setTimeout(function(){
                         expect(ctrl.ngModel).toBeNull();
                         done();
                     },101);
+                    /* eslint-enable angular/timeout-service */
                 },101);
+                /* eslint-enable angular/timeout-service */
 
             })
         });
