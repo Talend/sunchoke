@@ -123,7 +123,7 @@ describe('Slidable component', () => {
         createResizableElement('left');
         let slidable = element.find('.slidable').eq(0);
         expect(slidable.hasClass('slide-hide')).toBe(true);
-        $window.localStorage.setItem(resizableId, '900px');
+        $window.localStorage.setItem(resizableId, '900');
 
         //when
         element.find('.action').eq(0).click();
@@ -223,7 +223,7 @@ describe('Slidable component', () => {
 
     it('should set flex constant size on slidable creation if there is a size in localStorage', inject(function($window) {
         //given
-        $window.localStorage.setItem(resizableId, '500px');
+        $window.localStorage.setItem(resizableId, '500');
         scope.visible = true;
         scope.controlBar = true;
 
@@ -262,18 +262,19 @@ describe('Slidable component', () => {
                 scope.visible = true;
 
                 createResizableElement('left');
-
-                const event = angular.element.Event('mouseup');
-                event.clientX = 700;
+                const eventMove = angular.element.Event('mousemove');
+                eventMove.clientX = 700;
+                const eventUp = angular.element.Event('mouseup');
                 const ctrl = element.controller('scSlidable');
                 ctrl.drag = true;
 
                 //when
-                angular.element($window).trigger(event);
+                angular.element($window).trigger(eventMove);
+                angular.element($window).trigger(eventUp);
 
                 //then
                 expect(ctrl.drag).toBe(false);
-                expect($window.localStorage.getItem(resizableId)).toBe('700px');
+                expect($window.localStorage.getItem(resizableId)).toBe('700');
 
             }));
 
@@ -317,7 +318,7 @@ describe('Slidable component', () => {
 
             it('should do nothing on mouse move without drag on', inject(function($window) {
                 //given
-                $window.localStorage.setItem(resizableId, '500px');
+                $window.localStorage.setItem(resizableId, '500');
                 scope.visible = true;
                 scope.controlBar = true;
                 createResizableElement('right');

@@ -42,18 +42,19 @@ export default class ScSlidableCtrl {
         if (this.resizableKey) {
             const width = this.$window.localStorage.getItem(this.resizableKey);
             if (width && this.visible) {
-                this.$element.css('flex', '0 0 ' + width);
+                this.$element.css('flex', '0 0 ' + width + "px");
             }
             this.attachListeners();
         }
     }
 
     attachListeners() {
+        let resizedWidth;
         const startDrag = () => { this.drag = true };
         const stopDrag = (event) => {
             if (this.drag) {
-                const width = event.clientX + 'px';
-                this.$window.localStorage.setItem(this.resizableKey, width);
+                //let width = event.clientX + 'px';
+                this.$window.localStorage.setItem(this.resizableKey, resizedWidth);
             }
             this.drag = false
         };
@@ -63,11 +64,11 @@ export default class ScSlidableCtrl {
                 return;
             }
             event.preventDefault();
-            let width = event.clientX;
+            resizedWidth = event.clientX;
             if (this.side === 'right') {
-                width = this.window[0].innerWidth - width;
+                resizedWidth = this.window[0].innerWidth - resizedWidth;
             }
-            this.$element.css('flex', '0 0' + width + 'px');
+            this.$element.css('flex', '0 0' + resizedWidth + 'px');
         }
 
         //retrieving resizeBar to add mouse down
@@ -88,12 +89,12 @@ export default class ScSlidableCtrl {
         this.visible = ! this.visible;
         //in case of resize we need to resize back the slidable when hiding it
         if (!this.visible) {
-            this.$element.css('flex', '0 0 20px');
+            this.$element.css('flex', '0 0 0px');
         } else {
             //else retrieve from the localstorage
             const width = this.$window.localStorage.getItem(this.resizableKey);
             if (width) {
-                this.$element.css('flex', '0 0 ' + width);
+                this.$element.css('flex', '0 0 ' + width + "px");
             }
         }
 
