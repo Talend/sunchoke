@@ -41,7 +41,9 @@ const ScDropdownComponent = {
     bindings: {
         closeOnSelect: '<',
         onOpen: '&',
-        side: '@'
+        side: '@',
+        visible: '=',
+        distanceFromBorder: '@'
     },
     transclude: {
         'sc-dropdown-trigger': 'scDropdownTrigger',
