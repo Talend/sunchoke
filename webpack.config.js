@@ -44,7 +44,7 @@ function getDefaultConfig(options) {
             })
         ],
         babel: {
-            presets: ['es2015']
+            presets: ['es2015', 'stage-2']
         },
         devtool: options.devtool,
         debug: options.debug,
@@ -74,7 +74,7 @@ function addTestConfig(config) {
         embedSource: true,
         noAutoWrap: true,
         babel: {
-            presets: ['es2015']
+            presets: ['es2015', 'stage-2']
         }
     };
     config.module.preLoaders.push({test: /\.js$/, loader: 'isparta', exclude: [/node_modules/, /\.spec\.js$/]});

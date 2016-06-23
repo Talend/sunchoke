@@ -11,9 +11,18 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/dropdown-menu/dropdown-menu";
-@import "../components/dropdown/dropdown";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
-@import "../components/vertical-barchart/vertical-barchart";
+import angular from 'angular';
+
+import ScVerticalBarchartComponent from './vertical-barchart.component.js';
+
+const MODULE_NAME = 'talend.sunchoke.vertical-barchart';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.vertical-barchart
+ * @description Vertical barchart
+ */
+angular.module(MODULE_NAME, [])
+    .component('scVerticalBarchart', ScVerticalBarchartComponent);
+
+export default MODULE_NAME;
