@@ -20,6 +20,7 @@ import Pikaday from "./pikaday-override";
  */
 export default class ScDatePickerCtrl {
   constructor( $element ) {
+    'ngInject';
     this.$element = $element;
     this.focusState = false;
   }
