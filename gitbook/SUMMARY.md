@@ -11,6 +11,9 @@
 * [Dropdown menu](dropdown-menu/README.md)
     * [Documentation](dropdown-menu/documentation.md)
 
+* [Horizontal barchart](horizontal-barchart/README.md)
+    * [Documentation](horizontal-barchart/documentation.md)
+
 * [Splitter](splitter/README.md)
     * [Documentation](splitter/documentation.md)
 
