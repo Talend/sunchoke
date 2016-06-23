@@ -11,9 +11,18 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/dropdown-menu/dropdown-menu";
-@import "../components/dropdown/dropdown";
-@import "../components/slidable/slidable";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
+import angular from 'angular';
+
+import ScSlidableComponent from './slidable.component.js';
+
+const MODULE_NAME = 'talend.sunchoke.slidable';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.slidable
+ * @description Slidable
+ */
+angular.module(MODULE_NAME, [])
+    .component('scSlidable', ScSlidableComponent);
+
+export default MODULE_NAME;
