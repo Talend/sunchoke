@@ -38,6 +38,7 @@
     "jasmine": true
   },
   "globals": {
+    "d3":true,
     "angular": true,
     "inject": true,
     "$": true
