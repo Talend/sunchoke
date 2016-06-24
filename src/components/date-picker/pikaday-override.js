@@ -1020,8 +1020,6 @@ import "moment";
         {
             var field, pEl, width, height, viewportWidth, viewportHeight, scrollTop, left, top, clientRect;
 
-            if (this._o.container) return;
-
             this.el.style.position = 'absolute';
 
             if( this.el.classList.contains('top') ){
@@ -1035,6 +1033,10 @@ import "moment";
             viewportWidth = window.innerWidth || document.documentElement.clientWidth;
             viewportHeight = window.innerHeight || document.documentElement.clientHeight;
             scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
+
+            if( this._o.container ){
+                scrollTop += this._o.container.scrollTop;
+            }
 
             if (typeof field.getBoundingClientRect === 'function') {
                 clientRect = field.getBoundingClientRect();
@@ -1066,6 +1068,11 @@ import "moment";
             ) {
                 top = top - height - field.offsetHeight;
                 this.el.classList.add('top');
+            }
+
+            if( this._o.container ){
+                //in order to fit the input
+                top += scrollTop - 5;
             }
 
             this.el.style.left = left + 'px';
