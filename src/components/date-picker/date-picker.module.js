@@ -11,9 +11,18 @@
 
   ============================================================================*/
 
-@import "../components/accordion/accordion";
-@import "../components/date-picker/date-picker";
-@import "../components/dropdown-menu/dropdown-menu";
-@import "../components/dropdown/dropdown";
-@import "../components/splitter/splitter";
-@import "../components/tabs/tabs";
+import angular from 'angular';
+
+import ScDatePickerComponent from './date-picker.component.js';
+
+const MODULE_NAME = 'talend.sunchoke.date-picker';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.date-picker
+ * @description Date picker
+ */
+angular.module(MODULE_NAME, [])
+    .component('scDatePicker', ScDatePickerComponent);
+
+export default MODULE_NAME;
