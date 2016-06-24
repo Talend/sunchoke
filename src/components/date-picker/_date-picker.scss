@@ -1,0 +1,345 @@
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+
+$sc-datepicker-headers-background: $discrete-lighter !default;
+$sc-datepicker-header-background-disabled: $discrete-lighter !default;
+$sc-datepicker-header-background-enabled: $wave-dark !default;
+$sc-datepicker-header-color-disabled: $discrete !default;
+$sc-datepicker-header-color-enabled: $light !default;
+
+.sc-date-picker {
+  position: relative;
+
+  input{
+    height: 24px;
+    padding-left: 30px;
+    width: 205px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .calendar-icon{
+    position: absolute;
+    height: 15px;
+    width: 14px;
+    top:7px;
+    left: 7px;
+    pointer-events: none;
+    opacity: 0.5;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzQ2MDNGNjIyNjM5MTFFNkE4QkJGQzY0Qjc3NEY4MzYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzQ2MDNGNjMyNjM5MTFFNkE4QkJGQzY0Qjc3NEY4MzYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDNDYwM0Y2MDI2MzkxMUU2QThCQkZDNjRCNzc0RjgzNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDNDYwM0Y2MTI2MzkxMUU2QThCQkZDNjRCNzc0RjgzNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvsCzUgAAAAzSURBVHjaYvj//z8DCAMBiPhPDB8MyNXICBUgGVCuEegERqI0MDL+H9U4DDXSLckBBBgAoedmy4KzrZgAAAAASUVORK5CYII=');
+    &.active{
+      opacity:1;
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjZBQzlEMjkyNjM5MTFFNjkzRUVBRjA1RTVCRDI2RTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjZBQzlEMkEyNjM5MTFFNjkzRUVBRjA1RTVCRDI2RTAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCNkFDOUQyNzI2MzkxMUU2OTNFRUFGMDVFNUJEMjZFMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCNkFDOUQyODI2MzkxMUU2OTNFRUFGMDVFNUJEMjZFMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjJMeW4AAABBSURBVHjaYvz//z8DCKgnTgYzbs7PZSSGz8RAJmBUS5j0nxyNZNvIAmPA3E4IwPxKto2jGgeVRhb0iKW5jQABBgAFphdPQ9tHiQAAAABJRU5ErkJggg==');
+    }
+  }
+
+}
+
+// Variables
+// Declare any of these variables before importing this SCSS file to easily override defaults
+// Variables are namespaced with the pd (pikaday) prefix
+
+// Colours
+$pd-text-color: $light !default;
+$pd-title-color: $light !default;
+$pd-title-bg: $wave-dark !default;
+$pd-picker-bg: #fff !default;
+$pd-picker-border: #ccc !default;
+$pd-picker-border-bottom: #bbb !default;
+$pd-picker-shadow: rgba(0,0,0,.5) !default;
+$pd-th-color: #999 !default;
+$pd-day-color: rgba(0,0,0,.75) !default;
+$pd-day-bg: #fff !default;
+$pd-day-hover-color: #fff !default;
+$pd-day-hover-bg: #fff !default;
+$pd-day-today-color: $wave-dark !default;
+$pd-day-selected-color: #fff !default;
+$pd-day-selected-bg: $wave-dark !default;
+$pd-day-selected-shadow: #178fe5 !default;
+$pd-day-disabled-color: #999 !default;
+$pd-week-color: #999 !default;
+
+// Font
+$pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+
+.pika-single {
+  z-index: 9999;
+  display: block;
+  position: relative;
+  color: $pd-text-color;
+  background: transparent;
+  border-top-width: 0;
+  border-bottom-color: $pd-picker-border-bottom;
+  font-family: $pd-font-family;
+
+  &:not(.top):before{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $pd-title-bg;
+    margin-left: 110px;
+  }
+
+  &.top > div:after{
+    content: '';
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    width: 10px;
+    margin-top: -5px;
+    height: 10px;
+    display: block;
+    transform: rotate(-45deg);
+    background: white;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
+    margin-left: 110px;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+
+  &.is-bound {
+    position: absolute;
+    box-shadow: 0 5px 3px -5px $pd-picker-shadow;
+  }
+
+  &.top{
+    box-shadow: none !important;
+  }
+}
+
+.pika-single {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after { clear: both }
+}
+
+.pika-lendar {
+  float: left;
+  width: 240px;
+}
+
+.pika-title {
+  position: relative;
+  text-align: center;
+  color:$sc-datepicker-header-color-enabled;
+  background-color: $sc-datepicker-header-background-enabled;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  select {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9998;
+    margin: 0;
+    left: 0;
+    top: 5px;
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+}
+
+.pika-label {
+  display: inline-block;
+  *display: inline;
+  position: relative;
+  z-index: 9999;
+  overflow: hidden;
+  margin: 0;
+  padding: 5px 3px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  color: $pd-title-color;
+  background-color: $pd-title-bg;
+}
+
+.pika-prev,
+.pika-next {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: 0;
+  width: 5px;
+  height: 10px;
+  text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 16%;
+  padding: 15px;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.is-disabled {
+    cursor: default;
+    opacity: .2;
+  }
+}
+
+.pika-prev,
+.is-rtl .pika-next {
+  float: left;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MURDRERCNzkzNkM4MTFFNkE0MEJBN0EwQzc2ODVCRUIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MURDRERCN0EzNkM4MTFFNkE0MEJBN0EwQzc2ODVCRUIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRENEREI3NzM2QzgxMUU2QTQwQkE3QTBDNzY4NUJFQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRENEREI3ODM2QzgxMUU2QTQwQkE3QTBDNzY4NUJFQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pqa/abAAAABCSURBVHjaYvz//z8DGihlAAki4RYg/oAs0PgfAj6gC8AF6/6jgg9MQIOZ0W2CaW9H144u8QHdSb0gQUYsjq8DCDAAYruCspJbuowAAAAASUVORK5CYII=');
+  *left: 0;
+}
+
+.pika-next,
+.is-rtl .pika-prev {
+  float: right;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjY4NDM5MDUzNkM4MTFFNjk1NzA5RTg5NUMyRTA5NUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjY4NDM5MDYzNkM4MTFFNjk1NzA5RTg5NUMyRTA5NUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNjg0MzkwMzM2QzgxMUU2OTU3MDlFODk1QzJFMDk1QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyNjg0MzkwNDM2QzgxMUU2OTU3MDlFODk1QzJFMDk1QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhttPiAAAAA9SURBVHjaYvj//38dEDMgYxABAtXYBFEkkAVBoAIkyMKACtpBBBMDJmBG116HbmYjukWN6E5qR3c8QIABADNSiADNw1dZAAAAAElFTkSuQmCC');
+  *right: 0;
+}
+
+.pika-select {
+  display: inline-block;
+  *display: inline;
+}
+
+.table-container{
+  border:1px solid #CCCCCC;
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: center;
+  background: white;
+
+  .ghost-button{
+    background: transparent;
+    border: 1px solid $wave-dark;
+    color: $wave-dark;
+    padding: 7px;
+    border-radius: 4px;
+    margin :7px;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+.pika-table {
+  width: 100%;
+
+  thead{
+    color:$sc-datepicker-header-color-enabled;
+    background-color: $sc-datepicker-header-background-enabled;
+    outline: 1px solid $sc-datepicker-header-background-enabled;
+  }
+
+  th,
+  td {
+    width: 14.285714285714286%;
+    padding: 1px;
+    border: 0;
+  }
+
+  th {
+    font-size: 12px;
+    line-height: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  abbr {
+    border-bottom: none;
+    cursor: default;
+  }
+}
+
+.pika-button {
+  cursor: pointer;
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  text-align: center;
+  border: 0;
+  margin: 0;
+  width: 100%;
+  padding: 5px;
+  color: $pd-day-color;
+  font-size: 12px;
+  line-height: 15px;
+  background: $pd-day-bg;
+
+  .is-today & {
+    color: $pd-day-today-color;
+    font-weight: bold;
+  }
+
+  .is-selected & {
+    color: $pd-day-selected-color;
+    background: $pd-day-selected-bg;
+    border-radius: 3px;
+    font-weight: bold;
+
+    &:hover{
+      color: $pd-day-selected-color;
+      background: $pd-day-selected-bg;
+    }
+  }
+
+  .is-disabled &,
+  .is-outside-current-month & {
+    pointer-events: none;
+    cursor: default;
+    color: $pd-day-disabled-color;
+    opacity: .6;
+  }
+
+  &:hover {
+    background: $pd-day-hover-bg;
+    border: 1px solid $wave-dark;
+    box-shadow: none;
+    border-radius: 3px;
+    padding:4px;
+  }
+}
+
+.pika-week {
+  font-size: 11px;
+  color: $pd-week-color;
+}
+
+.is-inrange .pika-button {
+  background: #D5E9F7;
+}
+
+.is-startrange .pika-button {
+  color: #fff;
+  background: #6CB31D;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+.is-endrange .pika-button {
+  color: #fff;
+  background: #33aaff;
+  box-shadow: none;
+  border-radius: 3px;
+}
