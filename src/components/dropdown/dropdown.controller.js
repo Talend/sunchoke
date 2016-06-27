@@ -21,10 +21,11 @@ const CLOSE_CLASS = 'sc-dropdown-close';
  * @description Dropdown controller
  */
 export default class ScDropdownCtrl {
-    constructor($window, $element, $document) {
+    constructor($window, $element, $document, $timeout) {
         'ngInject';
 
         this.$element = $element;
+        this.$timeout = $timeout;
 
         this.body = angular.element($document[0].body);
         this.window = angular.element($window);
@@ -39,8 +40,11 @@ export default class ScDropdownCtrl {
         this.trigger = this.$element.children().eq(0);
         this.content = this.$element.children().eq(1);
         this.content.on('mousedown', (e) => e.stopPropagation());
-        if (this.visible) {
-            this._showContent();
+
+        if (this.visible && this.visible === true) {
+            this.$timeout( ()=>{
+                this._showContent();
+            });
         }
     }
 

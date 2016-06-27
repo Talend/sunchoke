@@ -22,7 +22,7 @@ const clickDropdownContent = (elm) => {
 describe('Dropdown component', () => {
     'use strict';
 
-    let scope, element, createElement;
+    let scope, element, createElement, ctrl;
 
     beforeEach(angular.mock.module('talend.sunchoke.dropdown'));
 
@@ -37,7 +37,7 @@ describe('Dropdown component', () => {
 
         createElement = () => {
             element = angular.element(`
-                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible="false" distance-from-border="30">
+                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible="visible" distance-from-border="{{distanceFromBorder}}">
                     <sc-dropdown-trigger id="trigger">
                         Trigger
                     </sc-dropdown-trigger>
@@ -50,6 +50,7 @@ describe('Dropdown component', () => {
             angular.element('body').append(element);
             $compile(element)(scope);
             scope.$digest();
+            ctrl = element.controller('scDropdown');
         }
     }));
 
@@ -238,6 +239,34 @@ describe('Dropdown component', () => {
         });
     });
 
+    describe('set to visible', () => {
+        it('should execute open show content', inject(function ($timeout) {
+            //given
+            scope.visible = true;
+
+            //when
+            createElement();
+            spyOn(ctrl, '_showContent');
+            $timeout.flush();
+
+            //then
+            expect(ctrl._showContent).toHaveBeenCalled();
+        }));
+
+        it('should not execute open show content if visible not true', inject(function ($timeout) {
+            //given
+            scope.visible = "test_val_erronée";
+
+            //when
+            createElement();
+            spyOn(ctrl, '_showContent');
+            $timeout.flush();
+
+            //then
+            expect(ctrl._showContent).not.toHaveBeenCalled();
+        }));
+    });
+
     describe('horizontal position (side)', () => {
         const assertContentIsOnTheLeft = (content) => {
             expect(content.hasClass('right')).toBe(false);
@@ -312,7 +341,7 @@ describe('Dropdown component', () => {
             assertContentIsOnTheLeft(content);
         });
     });
-    
+
     describe('vertical position ', () => {
 
         it('should put the content on the bottom if more space at bottom, with scrollbar (content does not fit), ', inject(() => {
@@ -413,8 +442,8 @@ describe('Dropdown component', () => {
 
             //then
             expect(element.hasClass('show')).toBe(true);
-        }); 
-        
+        });
+
         it('should close dropdown on "sc-dropdown-close" element click', () => {
             //given
             scope.closeOnSelect = false; // do NOT close on content click

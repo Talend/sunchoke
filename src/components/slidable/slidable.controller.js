@@ -51,7 +51,7 @@ export default class ScSlidableCtrl {
     attachListeners() {
         let resizedWidth;
         const startDrag = () => { this.drag = true };
-        const stopDrag = (event) => {
+        const stopDrag = () => {
             if (this.drag) {
                 //let width = event.clientX + 'px';
                 this.$window.localStorage.setItem(this.resizableKey, resizedWidth);
