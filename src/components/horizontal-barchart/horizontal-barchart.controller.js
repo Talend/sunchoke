@@ -248,8 +248,16 @@ export default class ScHorizontalBarchartCtrl {
                 this.tooltip.hide(d);
             })
             .on('click', (d) => {
+                const eventKeyPressed = { ctrlPressed : false, shiftPressed : false };
                 //create a new reference as the data object could be modified outside the component
-                this.onClick({item: { ...d}});
+                if(d3.event.ctrlKey || d3.event.metaKey) {
+                    eventKeyPressed.ctrlPressed = true;
+                }
+                else if(d3.event.shiftKey) {
+                    eventKeyPressed.shiftPressed = true;
+                }
+                //create a new reference as the data object could be modified outside the component
+                this.onClick({eventObject: { eventKeyPressed: eventKeyPressed, item: { ...d}}});
             });
     }
 
