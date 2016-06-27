@@ -302,9 +302,17 @@ export default class ScVerticalBarchartCtrl {
                 this.tooltip.hide(d);
             })
             .on('click', (d) => {
+                const eventKeyPressed = { ctrlPressed : false, shiftPressed : false };
+                //create a new reference as the data object could be modified outside the component
+                if(d3.event.ctrlKey || d3.event.metaKey) {
+                    eventKeyPressed.ctrlPressed = true;
+                }
+                else if(d3.event.shiftKey) {
+                    eventKeyPressed.shiftPressed = true;
+                }
                 //create a new reference as the data object could be modified outside the component
                 const rangeInfo = this._getRangeInfos(d);
-                this.onClick({interval: { ...rangeInfo}});
+                this.onClick({eventObject: { eventKeyPressed: eventKeyPressed, interval: { ...rangeInfo}}});
             });
     }
 
