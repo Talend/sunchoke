@@ -23,17 +23,18 @@ import ScDatePickerCtrl from './date-picker.controller.js';
  </sc-date-picker>
  * @param {int} ngModel The value with two way databinding. It represent the timestamp of the selected date
  * @param {object} config The configuration object, the list of attributes is available on Pikaday documentation ( https://github.com/dbushell/Pikaday )
+ * @param {string} placeholder The text input placeholder
  */
 const ScDatePickerComponent = {
     template: `<div class="sc-date-picker">
                     <div class="calendar-icon" ng-class="{'active':$ctrl.focusState}"></div>
-                    <input autocomplete="off" type='text' ng-focus="$ctrl.setFocus(true)" ng-blur="$ctrl.setFocus(false)">
+                    <input autocomplete="off" type='text' ng-focus="$ctrl.setFocus(true)" ng-blur="$ctrl.setFocus(false)" placeholder="{{$ctrl.placeholder}}">
                     <div class="datepicker-container"></div>
                 </div>`,
     bindings: {
         "ngModel":"=",
-        "defaultDate":"@",
-        "config":"<"
+        "config":"<",
+        "placeholder":"<"
     },
     controller: ScDatePickerCtrl
 };
