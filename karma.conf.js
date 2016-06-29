@@ -14,6 +14,8 @@ module.exports = function (config) {
             './node_modules/angular-animate/angular-animate.js',
             './node_modules/angular-mocks/angular-mocks.js',
             './node_modules/phantomjs-polyfill/bind-polyfill.js',
+            './node_modules/phantomjs-polyfill-find/find-polyfill.js',
+            './node_modules/phantomjs-polyfill-find-index/findIndex-polyfill.js',
             'src/**/*.module.js',
             'src/**/*.spec.js'
         ],

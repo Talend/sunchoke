@@ -22,6 +22,7 @@ import SLIDABLE_MODULE from './components/slidable/slidable.module.js';
 import SPLITTER_MODULE from './components/splitter/splitter.module.js';
 import TABS_MODULE from './components/tabs/tabs.module.js';
 import VERTICAL_BARCHART_MODULE from './components/vertical-barchart/vertical-barchart.module.js';
+import FILTER_MODULE from './services/filter/filter-module.js';
 
 const SUNCHOKE_MODULE = 'talend.sunchoke';
 
@@ -30,6 +31,7 @@ angular.module(SUNCHOKE_MODULE, [
     DATE_PICKER_MODULE,
     DROPDOWN_MENU_MODULE,
     DROPDOWN_MODULE,
+    FILTER_MODULE,
     HORIZONTAL_BARCHART_MODULE,
     SLIDABLE_MODULE,
     SPLITTER_MODULE,
