@@ -1020,6 +1020,9 @@ import "moment";
         {
             var field, pEl, width, height, viewportWidth, viewportHeight, scrollTop, left, top, clientRect;
 
+            if( this._o.container ){
+                return;
+            }
             this.el.style.position = 'absolute';
 
             if( this.el.classList.contains('top') ){
@@ -1193,7 +1196,7 @@ import "moment";
                 if (this._o.bound) {
                     removeEvent(document, 'click', this._onClick);
                 }
-                this.el.style.position = 'static'; // reset
+                //this.el.style.position = 'static'; // reset
                 this.el.style.left = 'auto';
                 this.el.style.top = 'auto';
                 addClass(this.el, 'is-hidden');

@@ -35,10 +35,14 @@ export default class ScDatePickerCtrl {
   $onInit() {
     //Get the input in the element dom
     const input = this.$element.find('input')[0];
+    //date picker container
+    const container = this.$element.find('div')[2];
+
     //Config object for pikaday
     const config ={
       showDaysInNextAndPreviousMonths: true,
       controller: this,
+      container:container,
       field : input,
       onClose : this.onCloseHandler,
       i18n: {
@@ -57,7 +61,7 @@ export default class ScDatePickerCtrl {
     //Get all specific configuration
     for ( const configKey in this.config ){
       //protect controller & field parameters
-      if( configKey !== 'controller' && configKey !== 'field'){
+      if( configKey !== 'controller' && configKey !== 'field' && container !== 'container'){
         config[configKey] = this.config[configKey];
       }
     }
