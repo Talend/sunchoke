@@ -31,8 +31,8 @@ sc-tabs {
     @include flex-shrink(0);
 
     background-color: $sc-tabs-headers-background;
-    box-shadow: -2px -5px 2px -4px rgba(0, 0, 0, 0.1) inset;
-    margin-bottom: 0.5em;
+    box-shadow: -2px -5px 2px -4px rgba(0, 0, 0, .1) inset;
+    margin-bottom: .5em;
     padding: 0;
 
     >.tabs-header {
@@ -40,13 +40,12 @@ sc-tabs {
       box-shadow: inherit;
       color: $sc-tabs-header-color-disabled;
       cursor: pointer;
-      font-size: 0.90em;
-      text-transform: uppercase;
-
-      width: auto;
+      font-size: .9em;
+      overflow: hidden;
       padding: $sc-tabs-header-padding;
       position: relative;
-      overflow: hidden;
+      text-transform: uppercase;
+      width: auto;
 
       &.active {
         background-color: $sc-tabs-header-background-enabled;
@@ -55,16 +54,14 @@ sc-tabs {
 
         &:after {
           @include transform(translateX(-50%) rotate(45deg));
-          content: "";
-
           background: $light;
-          box-shadow: -1px -1px 5px 0 rgba(0,0,0,0.3) inset;
-
+          bottom: -25px;
+          box-shadow: -1px -1px 5px 0 rgba(0, 0, 0, .3) inset;
+          content: '';
+          height: 30px;
+          left: 50%;
           position: absolute;
           width: 30px;
-          height: 30px;
-          bottom: -25px;
-          left: 50%;
         }
       }
     }

@@ -26,8 +26,8 @@ sc-accordion-item {
   .content-container {
     background-color: $sc-accordion-background;
     height: 0;
+    transition: height .2s linear;
     visibility: hidden;
-    transition: height 0.2s linear;
 
     content {
       display: block;

@@ -5,24 +5,18 @@
   "main": "index.js",
   "scripts": {
     "clean": "npm run clean:dist && npm run clean:coverage",
-      "clean:dist": "rimraf ./dist",
-      "clean:coverage": "rimraf ./coverage",
-
+    "clean:dist": "rimraf ./dist",
+    "clean:coverage": "rimraf ./coverage",
     "scripts": "npm run scripts:dev && npm run scripts:prod",
-      "scripts:dev": "webpack --config webpack.config.dev.js",
-      "scripts:prod": "webpack --config webpack.config.prod.js",
-
+    "scripts:dev": "webpack --config webpack.config.dev.js",
+    "scripts:prod": "webpack --config webpack.config.prod.js",
     "styles": "npm run styles:dev && npm run styles:prod",
-      "styles:dev": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.css",
-      "styles:prod": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ --output-style compressed src/sunchoke.full.scss dist/sunchoke.min.css",
-
+    "styles:dev": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.css",
+    "styles:prod": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ --output-style compressed src/sunchoke.full.scss dist/sunchoke.min.css",
     "dist": "npm run clean && npm run scripts && npm run styles",
-
     "test": "karma start",
-      "test:auto": "karma start --auto",
-
+    "test:auto": "karma start --auto",
     "lint": "eslint --config .eslintrc src/**/*.js",
-
     "add:widget": "node cli/add-widget.js"
   },
   "repository": {
@@ -72,6 +66,7 @@
     "phantomjs-polyfill": "0.0.1",
     "phantomjs-prebuilt": "^2.1.4",
     "rimraf": "^2.5.2",
+    "sass-lint": "^1.8.2",
     "stripcomment-loader": "^0.1.0",
     "webpack": "^2.1.0-beta.2",
     "yargs": "^4.1.0"

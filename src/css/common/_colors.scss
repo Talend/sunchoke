@@ -23,8 +23,8 @@ $peace-lighter: #e6efa5;  //$green
 //$button-primary: #b6be00; --> replace with $peace-dark
 
 //brown theme
-$ground: #B3AF76;     //$brown
-$ground-dark: #55580D;//$dark-brown
+$ground: #b3af76;     //$brown
+$ground-dark: #55580d;//$dark-brown
 
 //blue theme
 $wave: #4fc1de;       //$blue
@@ -40,8 +40,8 @@ $wave-pale: #b1c6d8;  //$pale-blue
 //grey theme
 $discrete: #99999a;       //$medium-gray
 $discrete-dark: #555964;  //$dark-gray
-$discrete-light: #DDDDDD; //$shadow-gray
-$discrete-lighter: #EEEEEF; //$light-gray
+$discrete-light: #ddd; //$shadow-gray
+$discrete-lighter: #eeeeef; //$light-gray
 //$unknown-color: $medium-gray; --> replace with $discrete
 //$delete-color: $shadow-gray; --> replace with $discrete-light
 //$secondary-text: #99999A; --> replace with $discrete
@@ -54,13 +54,13 @@ $juice-light: #ffcd00;  //$color-warning
 //$color-warning: #ffcd00 ; --> replace with $juice-light
 
 //red theme
-$aggressive: red;
+$aggressive: #f00;
 $aggressive-light: #ce6564;
 //$color-error: #ce6564 ; --> replace with $aggressive-dark
 
 //light/dark theme
-$light: #FFFFFF;      //$white
-$dark: #000000;       //$black
+$light: #fff;      //$white
+$dark: #000;       //$black
 //$empty-color: $white; --> replace with $light
 //$color-overlay-background: #0b1f30; --> replace by dark
 //$button-primary-text: white; --> replace with $light
@@ -69,12 +69,15 @@ $dark: #000000;       //$black
 .peace {
   background-color: $peace;
 }
+
 .peace-dark {
   background-color: $peace-dark;
 }
+
 .peace-light {
   background-color: $peace-light;
 }
+
 .peace-lighter {
   background-color: $peace-lighter;
 }
@@ -82,6 +85,7 @@ $dark: #000000;       //$black
 .ground {
   background-color: $ground;
 }
+
 .ground-dark {
   background-color: $ground-dark;
 }
@@ -89,15 +93,19 @@ $dark: #000000;       //$black
 .wave {
   background-color: $wave;
 }
+
 .wave-dark {
   background-color: $wave-dark;
 }
+
 .wave-light {
   background-color: $wave-light;
 }
+
 .wave-lighter {
   background-color: $wave-lighter;
 }
+
 .wave-pale {
   background-color: $wave-pale;
 }
@@ -105,12 +113,15 @@ $dark: #000000;       //$black
 .discrete {
   background-color: $discrete;
 }
+
 .discrete-dark {
   background-color: $discrete-dark;
 }
+
 .discrete-light {
   background-color: $discrete-light;
 }
+
 .discrete-lighter {
   background-color: $discrete-lighter;
 }
@@ -118,6 +129,7 @@ $dark: #000000;       //$black
 .juice {
   background-color: $juice;
 }
+
 .juice-light {
   background-color: $juice-light;
 }
@@ -125,6 +137,7 @@ $dark: #000000;       //$black
 .aggressive {
   background-color: $aggressive;
 }
+
 .aggressive-light {
   background-color: $aggressive-light;
 }
@@ -132,6 +145,7 @@ $dark: #000000;       //$black
 .light {
   background-color: $light;
 }
+
 .dark {
   background-color: $dark;
 }

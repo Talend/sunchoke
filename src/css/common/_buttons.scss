@@ -1,19 +1,19 @@
 @mixin sc-button($button-color, $second-color) {
-  color: $second-color;
   background-color: $button-color;
   border-color: $second-color;
+  color: $second-color;
 
   &:hover {
-    color: $button-color;
     background-color: $second-color;
     border-color: $button-color;
+    color: $button-color;
   }
 }
 
 [class*='sc-button-'] {
-  padding: 10px 15px;
-  font-weight: bold;
   border: 2px solid;
+  font-weight: bold;
+  padding: 10px 15px;
 }
 
 .sc-button {
