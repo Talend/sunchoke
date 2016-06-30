@@ -16,37 +16,37 @@ $split-handler-size: 12px !default;
 
 sc-splitter {
   display: block;
-  position: relative;
   height: 100%;
+  position: relative;
   width: 100%;
 
   .split-container {
 
     @mixin fullContainer() {
-      position: absolute;
-      top: 0;
       bottom: 0;
       left: 0;
+      position: absolute;
       right: 0;
+      top: 0;
     }
 
     @include fullContainer();
 
     .split-handler {
+      background: $split-handler-background;
       position: absolute;
       text-align: center;
-      background: $split-handler-background;
 
       @include display(flex);
       @include align-items(center);
       @include justify-content(center);
 
       .split-handler-square {
+        background: white;
+        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, .3) inset;
+        height: 3px;
         margin: 0 2px;
         width: 3px;
-        height: 3px;
-        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.3) inset;
-        background: white;
       }
     }
 
@@ -65,11 +65,11 @@ sc-splitter {
       .split-handler {
         @include flex-direction(column);
 
-        width: $split-handler-size;
-        left: 50%;
-        top: 0;
         bottom: 0;
         cursor: ew-resize;
+        left: 50%;
+        top: 0;
+        width: $split-handler-size;
 
         .split-handler-square {
           margin: 2px 0;
@@ -81,18 +81,18 @@ sc-splitter {
       }
 
       .split-second-pane {
-        @include calc(left, "50% + #{$split-handler-size}");
+        @include calc(left, '50% + #{$split-handler-size}');
       }
     }
 
     //---------------------------------Vertical------------------------------------
     &.vertical {
       .split-handler {
+        cursor: ns-resize;
         height: $split-handler-size;
-        top: 50%;
         left: 0;
         right: 0;
-        cursor: ns-resize;
+        top: 50%;
       }
 
       .split-first-pane  {
@@ -100,7 +100,7 @@ sc-splitter {
       }
 
       .split-second-pane {
-        @include calc(top, "50% + #{$split-handler-size}");
+        @include calc(top, '50% + #{$split-handler-size}');
       }
     }
   }
