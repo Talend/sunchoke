@@ -12,10 +12,10 @@
  ============================================================================*/
 
 //green theme
-$peace: #8abc00;
-$peace-dark: #b6be00;     //$dark-green --> hmm that is not really dark...
-$peace-light: #c1d906;    //$green
-$peace-lighter: #e6efa5;  //$green
+$peace: #8ABC00;
+$peace-dark: #B6BE00;     //$dark-green --> hmm that is not really dark...
+$peace-light: #C1D906;    //$green
+$peace-lighter: #E6EFA5;  //$green
 //$ok-color: rgb(138, 188, 0); --> replace with $peace
 //$new-color: #e6efa5; --> replace with $peace-lighter
 //$color-ok:#8abc00 ; --> replace with $peace
@@ -27,20 +27,20 @@ $ground: #B3AF76;     //$brown
 $ground-dark: #55580D;//$dark-brown
 
 //blue theme
-$wave: #4fc1de;       //$blue
+$wave: #4FC1DE;       //$blue
 $wave-dark: #266092;  //$dark-blue
-$wave-light: #c1e9f3; //$update-color
-$wave-lighter: #e1eff2; //$light-blue
-$wave-pale: #b1c6d8;  //$pale-blue
+$wave-light: #C1E9F3; //$update-color
+$wave-lighter: #E1EFF2; //$light-blue
+$wave-pale: #B1C6D8;  //$pale-blue
 //$background-blue: #a1b2c2; --> replace with $wave-lighter ?
 //$update-color: #c1e9f3; --> replace with $wave-light ?
 //$lookup-selected-column: #00a6ce; --> replace with $blue
 //$action-hover-background: #a1b2c2; --> replace with $wave-pale ?
 
 //grey theme
-$discrete: #99999a;       //$medium-gray
+$discrete: #99999A;       //$medium-gray
 $discrete-dark: #555964;  //$dark-gray
-$discrete-light: #DDDDDD; //$shadow-gray
+$discrete-light: #DDD; //$shadow-gray
 $discrete-lighter: #EEEEEF; //$light-gray
 //$unknown-color: $medium-gray; --> replace with $discrete
 //$delete-color: $shadow-gray; --> replace with $discrete-light
@@ -48,19 +48,19 @@ $discrete-lighter: #EEEEEF; //$light-gray
 //$button-secondary: #e2e2e2; --> replace with $discrete-light
 
 //orange theme
-$juice: #ffa616;  //$orange
-$juice-light: #ffcd00;  //$color-warning
+$juice: #FFA616;  //$orange
+$juice-light: #FFCD00;  //$color-warning
 //$nok-color: rgb(247, 168, 0); --> replace with $juice ?
 //$color-warning: #ffcd00 ; --> replace with $juice-light
 
 //red theme
-$aggressive: red;
-$aggressive-light: #ce6564;
+$aggressive: #F00;
+$aggressive-light: #CE6564;
 //$color-error: #ce6564 ; --> replace with $aggressive-dark
 
 //light/dark theme
-$light: #FFFFFF;      //$white
-$dark: #000000;       //$black
+$light: #FFF;      //$white
+$dark: #000;       //$black
 //$empty-color: $white; --> replace with $light
 //$color-overlay-background: #0b1f30; --> replace by dark
 //$button-primary-text: white; --> replace with $light
@@ -69,12 +69,15 @@ $dark: #000000;       //$black
 .peace {
   background-color: $peace;
 }
+
 .peace-dark {
   background-color: $peace-dark;
 }
+
 .peace-light {
   background-color: $peace-light;
 }
+
 .peace-lighter {
   background-color: $peace-lighter;
 }
@@ -82,6 +85,7 @@ $dark: #000000;       //$black
 .ground {
   background-color: $ground;
 }
+
 .ground-dark {
   background-color: $ground-dark;
 }
@@ -89,15 +93,19 @@ $dark: #000000;       //$black
 .wave {
   background-color: $wave;
 }
+
 .wave-dark {
   background-color: $wave-dark;
 }
+
 .wave-light {
   background-color: $wave-light;
 }
+
 .wave-lighter {
   background-color: $wave-lighter;
 }
+
 .wave-pale {
   background-color: $wave-pale;
 }
@@ -105,12 +113,15 @@ $dark: #000000;       //$black
 .discrete {
   background-color: $discrete;
 }
+
 .discrete-dark {
   background-color: $discrete-dark;
 }
+
 .discrete-light {
   background-color: $discrete-light;
 }
+
 .discrete-lighter {
   background-color: $discrete-lighter;
 }
@@ -118,6 +129,7 @@ $dark: #000000;       //$black
 .juice {
   background-color: $juice;
 }
+
 .juice-light {
   background-color: $juice-light;
 }
@@ -125,6 +137,7 @@ $dark: #000000;       //$black
 .aggressive {
   background-color: $aggressive;
 }
+
 .aggressive-light {
   background-color: $aggressive-light;
 }
@@ -132,6 +145,7 @@ $dark: #000000;       //$black
 .light {
   background-color: $light;
 }
+
 .dark {
   background-color: $dark;
 }

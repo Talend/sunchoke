@@ -28,6 +28,7 @@ $sc-modal-close-color: $discrete-light !default;
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -37,6 +38,7 @@ $sc-modal-close-color: $discrete-light !default;
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -71,6 +73,7 @@ sc-modal {
     &.ng-enter {
       @include animation(fadeIn 0.25s ease-in);
     }
+
     &.ng-leave {
       @include animation(fadeOut 0.2s ease-in);
     }

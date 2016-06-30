@@ -11,84 +11,84 @@
 
   ============================================================================*/
 
-$sc-dropdown-menu-trigger-max-width: 130px!default;
-$sc-dropdown-menu-trigger-color: $light!default;
-$sc-dropdown-menu-trigger-height: 50px!default;
-$sc-dropdown-menu-dropdown-border-color: $discrete!default;
-$sc-dropdown-menu-item-background: $light!default;
-$sc-dropdown-menu-item-background-hover: $discrete!default;
-$sc-dropdown-menu-item-color: $discrete-dark!default;
-$sc-dropdown-menu-item-color-hover: $light!default;
+$sc-dropdown-menu-trigger-max-width: 130px !default;
+$sc-dropdown-menu-trigger-color: $light !default;
+$sc-dropdown-menu-trigger-height: 50px !default;
+$sc-dropdown-menu-dropdown-border-color: $discrete !default;
+$sc-dropdown-menu-item-background: $light !default;
+$sc-dropdown-menu-item-background-hover: $discrete !default;
+$sc-dropdown-menu-item-color: $discrete-dark !default;
+$sc-dropdown-menu-item-color-hover: $light !default;
 
 sc-dropdown-menu {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 
-    .sc-dropdown-menu-trigger > * {
-        @include display(flex);
-        @include align-items(center);
+  .sc-dropdown-menu-trigger > * {
+    @include display(flex);
+    @include align-items(center);
 
-        color: $sc-dropdown-menu-trigger-color;
-        cursor: pointer;
-        line-height: $sc-dropdown-menu-trigger-height;
-        padding: 0 20px 0 7px;
+    color: $sc-dropdown-menu-trigger-color;
+    cursor: pointer;
+    line-height: $sc-dropdown-menu-trigger-height;
+    padding: 0 20px 0 7px;
 
-        .sc-dropdown-menu-icon {
-            margin-right: 10px;
-        }
-
-        .sc-dropdown-menu-text {
-            @include ellipsis($sc-dropdown-menu-trigger-max-width);
-        }
-
-        &:after {
-            @include position(absolute, 0 5px auto auto);
-            content: '\25BE';
-        }
-
-        &.opened:after {
-            content : '\25b4';
-        }
+    .sc-dropdown-menu-icon {
+      margin-right: 10px;
     }
 
-    .sc-dropdown-menu-dropdown {
-        @include display(flex);
-        @include flex-direction(column);
-        @include align-items(stretch);
-        min-width: 100%;
-
-        border: 1px solid $sc-dropdown-menu-dropdown-border-color;
-        position: absolute;
-
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        li {
-            @include display(flex);
-            @include align-items(center);
-
-            border-bottom: 1px solid $sc-dropdown-menu-dropdown-border-color;
-            cursor: pointer;
-            color: $sc-dropdown-menu-item-color;
-            background: $sc-dropdown-menu-item-background;
-            line-height: normal;
-            padding: 10px;
-
-            .sc-dropdown-menu-item-icon {
-                font-size: 0.8em;
-                margin-right: 10px;
-            }
-
-            &:hover {
-                color: $sc-dropdown-menu-item-color-hover;
-                background: $sc-dropdown-menu-item-background-hover;
-            }
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
+    .sc-dropdown-menu-text {
+      @include ellipsis($sc-dropdown-menu-trigger-max-width);
     }
+
+    &:after {
+      @include position(absolute, 0 5px auto auto);
+      content: '\25BE';
+    }
+
+    &.opened:after {
+      content: '\25b4';
+    }
+}
+
+  .sc-dropdown-menu-dropdown {
+    @include display(flex);
+    @include flex-direction(column);
+    @include align-items(stretch);
+    border: 1px solid $sc-dropdown-menu-dropdown-border-color;
+    min-width: 100%;
+
+    position: absolute;
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      @include display(flex);
+      @include align-items(center);
+
+      background: $sc-dropdown-menu-item-background;
+      border-bottom: 1px solid $sc-dropdown-menu-dropdown-border-color;
+      color: $sc-dropdown-menu-item-color;
+      cursor: pointer;
+      line-height: normal;
+      padding: 10px;
+
+      .sc-dropdown-menu-item-icon {
+        font-size: 0.8em;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background: $sc-dropdown-menu-item-background-hover;
+        color: $sc-dropdown-menu-item-color-hover;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
 }
