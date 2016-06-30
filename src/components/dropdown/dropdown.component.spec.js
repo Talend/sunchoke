@@ -22,7 +22,7 @@ const clickDropdownContent = (elm) => {
 describe('Dropdown component', () => {
     'use strict';
 
-    let scope, element, createElement;
+    let scope, element, createElement, ctrl;
 
     beforeEach(angular.mock.module('talend.sunchoke.dropdown'));
 
@@ -37,7 +37,7 @@ describe('Dropdown component', () => {
 
         createElement = () => {
             element = angular.element(`
-                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect">
+                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible="visible" distance-from-border="{{distanceFromBorder}}">
                     <sc-dropdown-trigger id="trigger">
                         Trigger
                     </sc-dropdown-trigger>
@@ -50,6 +50,7 @@ describe('Dropdown component', () => {
             angular.element('body').append(element);
             $compile(element)(scope);
             scope.$digest();
+            ctrl = element.controller('scDropdown');
         }
     }));
 
@@ -238,6 +239,34 @@ describe('Dropdown component', () => {
         });
     });
 
+    describe('set to visible', () => {
+        it('should execute open show content', inject(function ($timeout) {
+            //given
+            scope.visible = true;
+
+            //when
+            createElement();
+            spyOn(ctrl, '_showContent');
+            $timeout.flush();
+
+            //then
+            expect(ctrl._showContent).toHaveBeenCalled();
+        }));
+
+        it('should not execute open show content if visible not true', inject(function ($timeout) {
+            //given
+            scope.visible = "test_val_erronée";
+
+            //when
+            createElement();
+            spyOn(ctrl, '_showContent');
+            $timeout.flush();
+
+            //then
+            expect(ctrl._showContent).not.toHaveBeenCalled();
+        }));
+    });
+
     describe('horizontal position (side)', () => {
         const assertContentIsOnTheLeft = (content) => {
             expect(content.hasClass('right')).toBe(false);
@@ -302,7 +331,7 @@ describe('Dropdown component', () => {
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
-            spyOn(content[0], 'getBoundingClientRect').and.returnValue({left: -5}); //left border is out of the window
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({left: - 5}); //left border is out of the window
             expect(content.hasClass('right')).toBe(false);
 
             //when
@@ -313,40 +342,62 @@ describe('Dropdown component', () => {
         });
     });
 
-    describe('horizontal position (side)', () => {
-        it('should put the content on the bottom', () => {
+    describe('vertical position', () => {
+
+        it('should put the content on the bottom if more space at bottom, with scrollbar (content does not fit), ', inject(() => {
             //given
             scope.side = 'left';
             createElement();
-            const content = element.find('.sc-dropdown-content').eq(0);
+            const content = element.find('.sc-dropdown-content');
+            const trigger = element.find('.sc-dropdown-trigger');
 
-            expect(content.hasClass('top')).toBe(false);
+            spyOn(trigger[0], 'getBoundingClientRect').and.returnValue({top: 0, height: 10, bottom: 10});
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 10, height: 400, bottom: 310});
 
             //when
             clickDropdownTrigger(element);
 
             //then
-            expect(content.hasClass('top')).toBe(false);
+            expect(content.children()[0].style.height).toEqual('260px'); // 400 - ((10 + 400 + 30) - 300 );
+        }));
+
+        it('should put the content on the top if more space at top without scrollbar (content does fit)', () => {
+            //given
+            scope.side = 'left';
+            createElement();
+            const content = element.find('.sc-dropdown-content');
+            const trigger = element.find('.sc-dropdown-trigger');
+
+            spyOn(trigger[0], 'getBoundingClientRect').and.returnValue({top: 250, height: 10, bottom: 260});
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 260, height: 100, bottom: 300});
+
+            //when
+            clickDropdownTrigger(element);
+
+            //then
+            expect(content[0].style.top).toEqual('250px');
         });
 
-        it('should put the content on the top when content\'s bottom border is out of window', inject(($window) => {
+        it('should put the content on the top if more space at top with scrollbar (content does not fit), ', inject(() => {
             //given
-            scope.side = '';
+            scope.side = 'left';
             createElement();
-            const content = element.find('.sc-dropdown-content').eq(0);
-            const windowHeight = angular.element($window)[0].innerHeight;
+            const content = element.find('.sc-dropdown-content');
+            const trigger = element.find('.sc-dropdown-trigger');
 
-            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 50, height: windowHeight, bottom: windowHeight + 50}); //bottom border out of window
-            expect(content.hasClass('top')).toBe(false);
+            spyOn(trigger[0], 'getBoundingClientRect').and.returnValue({top: 250, height: 10, bottom: 260});
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 260, height: 500, bottom: 760});
 
             //when
             clickDropdownTrigger(element);
+            scope.$digest();
 
-            //then
-            expect(content.hasClass('top')).toBe(true);
+            //then            .
+            expect(content[0].style.top).toEqual('30px'); // distance from top border
+            expect(content.children()[0].style.height).toEqual('215px'); // 250 - 30 -5
         }));
     });
-
+    
     describe('close on select', () => {
         it('should stop content mousedown propagation to avoid body callback that hide it', () => {
             //given
@@ -390,8 +441,8 @@ describe('Dropdown component', () => {
 
             //then
             expect(element.hasClass('show')).toBe(true);
-        }); 
-        
+        });
+
         it('should close dropdown on "sc-dropdown-close" element click', () => {
             //given
             scope.closeOnSelect = false; // do NOT close on content click
