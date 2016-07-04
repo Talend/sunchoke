@@ -23,6 +23,15 @@ import SPLITTER_MODULE from './components/splitter/splitter.module.js';
 import TABS_MODULE from './components/tabs/tabs.module.js';
 import VERTICAL_BARCHART_MODULE from './components/vertical-barchart/vertical-barchart.module.js';
 import FILTER_MODULE from './services/filter/filter-module.js';
+import FILTER_BAR from './components/filter/bar/filter-bar-module.js';
+import FILTER_ITEM from './components/filter/item/filter-item-module.js';
+import FILTER_ITEM_VALUE from './components/filter/item/value/filter-value-module.js';
+import FILTER_LIST from './components/filter/list/filter-list-module.js';
+import FILTER_MONITOR from './components/filter/monitor/filter-monitor-module.js';
+import FILTER_SEARCH from './components/filter/search/filter-search-module.js';
+import BADGE from './components/badge/badge-module.js';
+import RESIZABLE_INPUT from './components/resizable-input/resizable-input-module.js';
+
 
 const SUNCHOKE_MODULE = 'talend.sunchoke';
 
@@ -36,7 +45,17 @@ angular.module(SUNCHOKE_MODULE, [
     SLIDABLE_MODULE,
     SPLITTER_MODULE,
     TABS_MODULE,
-    VERTICAL_BARCHART_MODULE
+    VERTICAL_BARCHART_MODULE,
+    // filter bar
+    FILTER_BAR,
+    FILTER_ITEM,
+    FILTER_ITEM_VALUE,
+    FILTER_LIST,
+    FILTER_MONITOR,
+    FILTER_SEARCH,
+    BADGE,
+    RESIZABLE_INPUT
+
 ]);
 
 export default SUNCHOKE_MODULE;

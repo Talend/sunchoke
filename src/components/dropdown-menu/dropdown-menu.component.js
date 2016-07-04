@@ -13,25 +13,6 @@
 
 import ScDropdownMenuCtrl from './dropdown-menu.controller.js';
 
-/**
- * @ngdoc component
- * @name talend.sunchoke.dropdown-menu.component:ScDropdownMenuComponent
- * @description Dropdown menu
- * @restrict E
- * @usage
- *      <sc-dropdown-menu>
- *          <sc-dropdown-menu-trigger>
- *              <span class="sc-dropdown-menu-text">Username</span>
- *          </sc-dropdown-menu-trigger>
- *          <sc-dropdown-menu-dropdown>
- *              <ul>
- *                  <li ng-click="$ctrl.logout()">
- *                      <span class="sc-dropdown-menu-item-label">Logout</span>
- *                  </li>
- *              </ul>
- *          </sc-dropdown-menu-dropdown>
- *      </sc-dropdown-menu>
- */
 const ScDropdownMenuComponent = {
     template: `
         <div class="sc-dropdown-menu-trigger"

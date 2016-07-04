@@ -1,0 +1,52 @@
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+
+$badge-font-size: 0.85em !default;
+$badge-color: $light !default;
+$badge-background-color: $wave-dark !default;
+$sourcesanspro: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+$base-font-family: $sourcesanspro;
+
+@mixin badge($background-color: $badge-background-color) {
+  display: inline-block;
+  padding: 2px 5px 1px 5px;
+  font-family: $base-font-family;
+  font-size: $badge-font-size;
+  font-weight: 300;
+  line-height: 24px;
+  color: $badge-color;
+  background-color: $background-color;
+  border: 2px solid $light;
+  border-radius: 7px;
+  box-shadow: 5px 4px 6px -4px $discrete-dark;
+}
+
+.badge {
+  @include badge;
+
+  * {
+    display: inline;
+  }
+
+  &-btn-close {
+    width: 9px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
+    color: $light;
+
+    &:hover {
+      color: darken($light, 10%);
+    }
+  }
+}
