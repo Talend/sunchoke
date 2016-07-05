@@ -17,17 +17,15 @@
  * @description Slidable controller
  */
 export default class ScSlidableCtrl {
-    constructor($window, $element, $scope) {
+    constructor($window, $element) {
         'ngInject';
 
         this.$element = $element;
         this.$window = $window;
         this.window = angular.element($window);
-        this.$scope = $scope;
     }
 
     $onInit() {
-        this.actionCssClass = this.side;
         this.drag = false;
 
         //manage visibility based on localStorage
@@ -50,16 +48,15 @@ export default class ScSlidableCtrl {
 
     attachListeners() {
         let resizedWidth;
-        const startDrag = () => { this.drag = true };
-        const stopDrag = () => {
+        this.startDrag = () => { this.drag = true };
+        this.stopDrag = () => {
             if (this.drag) {
-                //let width = event.clientX + 'px';
                 this.$window.localStorage.setItem(this.resizableKey, resizedWidth);
             }
             this.drag = false
         };
 
-        const onMouseMove = (event) => {
+        this.onMouseMove = (event) => {
             if (!this.drag || !this.visible) {
                 return;
             }
@@ -72,17 +69,12 @@ export default class ScSlidableCtrl {
         }
 
         //retrieving resizeBar to add mouse down
-        const resizeBar =  angular.element(this.$element[0].querySelector('.resize-bar'));
+        this.resizeBar =  angular.element(this.$element[0].querySelector('.resize-bar'));
 
         //add events
-        resizeBar.on('mousedown', startDrag);
-        this.window.on('mouseup', stopDrag);
-        this.window.on('mousemove', onMouseMove);
-
-        //unbind event
-        this.$scope.$on('$destroy', () => this.window.off('mouseup', stopDrag));
-        this.$scope.$on('$destroy', () => this.window.off('mousemove', onMouseMove));
-        this.$scope.$on('$destroy', () => resizeBar.off('mousemove', startDrag));
+        this.resizeBar.on('mousedown', this.startDrag);
+        this.window.on('mouseup', this.stopDrag);
+        this.window.on('mousemove', this.onMouseMove);
     }
 
     toggle() {
@@ -101,6 +93,15 @@ export default class ScSlidableCtrl {
         //set visibility in local storage
         if (this.visibleStateKey) {
             this.$window.localStorage.setItem(this.visibleStateKey, this.visible);
+        }
+    }
+
+    $onDestroy() {
+        //unbind event
+        if (this.resizableKey) {
+            this.window.off('mouseup', this.stopDrag);
+            this.window.off('mousemove', this.onMouseMove);
+            this.resizeBar.off('mousemove', this.startDrag);
         }
     }
 }

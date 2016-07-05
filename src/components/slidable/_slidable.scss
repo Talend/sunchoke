@@ -11,8 +11,8 @@
 
   ============================================================================*/
 
-$slidable-resize-bar-width: 3px;
-$slidable-action-font-size: 3em;
+$sc-slidable-resize-bar-width: 3px;
+$sc-slidable-action-font-size: 3em;
 
 @mixin slidable-common($size, $actionSize) {
   @include flex(0 0 $size);
@@ -134,7 +134,7 @@ sc-slidable {
 
     > .action {
       cursor: pointer;
-      font-size: $slidable-action-font-size;
+      font-size: $sc-slidable-action-font-size;
 
       @include display(flex);
       @include align-items(center);
@@ -152,8 +152,7 @@ sc-slidable {
       @include display(flex);
 
       order: 5;
-      //background-color: black;
-      width: $slidable-resize-bar-width;
+      width: $sc-slidable-resize-bar-width;
       cursor: col-resize;
 
       &.resize-right,
