@@ -300,7 +300,7 @@ export default class RangeFilter extends ScFilter {
     toDSL() {
         let stringToReturn = '';
         this.options.values.forEach((value, index) => {
-            stringToReturn+= this.fieldId + " between ['" + value.min + "', '" + value.max + "']";
+            stringToReturn+= this.fieldId + " between [" + value.min + ", " + value.max + "]";
             index !== this.options.values.length - 1 ? stringToReturn+= ' OR ': '';
         });
         return "(" + stringToReturn + ")";
