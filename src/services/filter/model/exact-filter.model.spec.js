@@ -421,4 +421,18 @@ describe('exact filter model', () => {
             expect(filter.toDSL()).toBe("(Col1 is empty)");
         }));
     });
+
+    describe('get label', () => {
+        it('should return the label', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                options: {values: [""]}
+            };
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.getLabel("toto")).toBe("toto");
+        }));
+    });
 });

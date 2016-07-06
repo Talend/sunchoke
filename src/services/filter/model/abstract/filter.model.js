@@ -60,6 +60,17 @@ export default class ScFilter {
         }
     }
 
+    /**
+     * @ngdoc method
+     * @name getLabel
+     * @methodOf talend.sunchoke.filter.model.abstract:ScFilter
+     * @param value to display
+     * @description converts the value into a label
+     */
+    getLabel(value) {
+        return value;
+    }
+
     static fromTree(/*subtree*/) {
 
     }

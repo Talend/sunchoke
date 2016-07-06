@@ -328,6 +328,17 @@ export default class RangeFilter extends ScFilter {
 
     /**
      * @ngdoc method
+     * @name getLabel
+     * @methodOf talend.sunchoke.filter.model:RangeFilter
+     * @param value to display
+     * @description converts the value into a label
+     */
+    getLabel(value) {
+        return "[" + value.min + ", " + value.max + "[";
+    }
+
+    /**
+     * @ngdoc method
      * @name toggleFilterValues
      * @methodOf talend.sunchoke.filter.model:RangeFilter
      * @param configuration the configuration to apply to the filter list

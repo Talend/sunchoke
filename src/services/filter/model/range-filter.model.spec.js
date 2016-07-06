@@ -643,4 +643,18 @@ describe('range filter model', () => {
             expect(filter.toDSL()).toBe("(Col1 between [5, 10] OR Col1 between [10, 30] OR Col1 between [35, 40])");
         }));
     });
+
+    describe('get label', () => {
+        it('should return the label of the range', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min: 5, max: 10}, {min: 10, max: 30}, {min: 35, max: 40}]}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.getLabel({min: 5, max: 10})).toBe("[5, 10[");
+        }));
+    });
 });
