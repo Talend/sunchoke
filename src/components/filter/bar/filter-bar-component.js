@@ -49,7 +49,8 @@ const ScFilterBarComponent = {
         onFilterRemoveValue : '&',
         onFilterRemove : '&',
         onRemoveAllFilters : '&',
-        removable : '<'
+        removable : '<',
+        onFilterChange: '&'
     },
     controller: Sc$ctrl
 };
