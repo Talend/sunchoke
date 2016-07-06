@@ -21,11 +21,10 @@ export default class ScFilter {
     toggleFilterValues(values) {
         const clone =  this.options.values.slice(0);
         const newFilterValue = [];
-
         //looking for the given filter value in the current filter
         values.forEach((value) => {
             const index = clone.findIndex(filterValue => {
-                return this._compareValues(value, filterValue);
+                return this._compareValues(value, filterValue) === 0;
             });
             if (index > - 1) {
                 //removing them if they were found
@@ -37,6 +36,7 @@ export default class ScFilter {
 
         //adding the new values
         clone.push(...newFilterValue);
+        clone.sort(this._compareValues);
         return clone;
     }
 
@@ -49,7 +49,15 @@ export default class ScFilter {
      * @description default compare function (compares two simple value)
      */
     _compareValues(value, valueToCompare) {
-        return value === valueToCompare;
+        if (value < valueToCompare) {
+            return -1;
+        }
+        if (value > valueToCompare) {
+            return 1;
+        }
+        if (value === valueToCompare) {
+            return 0;
+        }
     }
 
     static fromTree(/*subtree*/) {

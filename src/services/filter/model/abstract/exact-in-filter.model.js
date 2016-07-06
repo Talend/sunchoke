@@ -12,6 +12,7 @@ export default class AbstractExactInFilter extends ScFilter {
 
     constructor(fieldId, fieldName, options, editable) {
         super(fieldId, fieldName, options, editable);
+        this.options.values.sort(this._compareValues);
     }
 
     /**

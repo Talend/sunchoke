@@ -64,7 +64,7 @@ export default class ExactFilter extends AbstractExactInFilter {
         const options = this.options;
         //adding the value to the list
         const newValues = (this.options.values.slice(0));
-        if (this._compareValues(newValues[0], oldValue)) {
+        if (this._compareValues(newValues[0], oldValue) === 0) {
             newValues[0] = newValue;
             //recreating an option object
             const newOptions = {
@@ -88,7 +88,7 @@ export default class ExactFilter extends AbstractExactInFilter {
      */
     toggleValue(value) {
         const newValues = (this.options.values.slice(0));
-        if (this._compareValues(newValues[0], value)) {
+        if (this._compareValues(newValues[0], value) === 0) {
            return null;
         }
         else {

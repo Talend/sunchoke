@@ -139,8 +139,8 @@ describe('exact filter model', () => {
             expect(result.sign).toBe("in");
             expect(result.fieldId).toBe("Col1");
             expect(result.fieldName).toBe("Col1");
-            expect(result.options.values[0]).toBe("toto");
-            expect(result.options.values[1]).toBe("tata");
+            expect(result.options.values[0]).toBe("tata");
+            expect(result.options.values[1]).toBe("toto");
         }));
 
         it('should remove the filter by returning null when same value is passed', inject(function () {
@@ -161,7 +161,6 @@ describe('exact filter model', () => {
                 options: {values: ["toto"]}
             };
             const result = filter.update(newConfiguration);
-
             //then
             expect(result).toBeNull();
         }));
@@ -193,8 +192,8 @@ describe('exact filter model', () => {
             expect(result.fieldId).toBe("Col1");
             expect(result.fieldName).toBe("Col1");
             expect(result.options.values.length).toBe(2);
-            expect(result.options.values[0]).toBe("tata");
-            expect(result.options.values[1]).toBe("bobo");
+            expect(result.options.values[0]).toBe("bobo");
+            expect(result.options.values[1]).toBe("tata");
         }));
 
         it('should remove value and change back to exact filter type', inject(function () {
@@ -260,9 +259,9 @@ describe('exact filter model', () => {
             expect(result.fieldId).toBe("Col1");
             expect(result.fieldName).toBe("Col1");
             expect(result.options.values.length).toBe(3);
-            expect(result.options.values[0]).toBe("toto");
-            expect(result.options.values[1]).toBe("tutu");
-            expect(result.options.values[2]).toBe("tata");
+            expect(result.options.values[0]).toBe("tata");
+            expect(result.options.values[1]).toBe("toto");
+            expect(result.options.values[2]).toBe("tutu");
             // should return only one IN
         }));
     });
@@ -283,8 +282,8 @@ describe('exact filter model', () => {
             //then
             expect(result instanceof InFilter).toBeTruthy();
             expect(result.options.values.length).toBe(2);
-            expect(result.options.values[0]).toBe("toto");
-            expect(result.options.values[1]).toBe("tata");
+            expect(result.options.values[0]).toBe("tata");
+            expect(result.options.values[1]).toBe("toto");
         }));
 
         it('should remove value to the current filter delete the filter by returning null', inject(function () {
@@ -393,8 +392,8 @@ describe('exact filter model', () => {
         //then
         expect(result instanceof InFilter).toBeTruthy();
         expect(result.options.values.length).toBe(2);
-        expect(result.options.values[0]).toBe("toto");
-        expect(result.options.values[1]).toBe("tata");
+        expect(result.options.values[0]).toBe("tata");
+        expect(result.options.values[1]).toBe("toto");
     }));
 
     describe('DSL actions', () => {

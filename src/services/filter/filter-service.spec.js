@@ -36,11 +36,6 @@ describe('Filter service', () => {
             const result = FilterService.updateFilter(currentFilter, configuration);
             //then
             expect(result.length).toBe(1);
-            //console.log(result[0]);
-            //console.log(result[0].constructor);
-            //console.log(InFilter);
-            //console.log(result[0].constructor === InFilter);
-            //expect(result[0] instanceof InFilter).toBeTruthy();
             expect(result[0].options.values.length).toBe(3);
             expect(result[0].sign).toBe("in");
             expect(result[0].options.values[0]).toBe("tata");
@@ -171,9 +166,9 @@ describe('Filter service', () => {
             expect(newFilterArray[1].options.values.length).toBe(3);
             expect(newFilterArray[1] instanceof InFilter);
             expect(newFilterArray[1].sign).toBe("in");
-            expect(newFilterArray[1].options.values[0]).toBe("toto");
+            expect(newFilterArray[1].options.values[0]).toBe("bobo");
             expect(newFilterArray[1].options.values[1]).toBe("tata");
-            expect(newFilterArray[1].options.values[2]).toBe("bobo");
+            expect(newFilterArray[1].options.values[2]).toBe("toto");
         }));
     });
 
@@ -205,8 +200,8 @@ describe('Filter service', () => {
             const newFilterArray = FilterService.updateFilterValue(filterArray, updateConfiguration);
             expect(newFilterArray.length).toBe(2);
             expect(filterArray.length).toBe(2); // not mutated
-            expect(filterArray[1].options.values[0]).toBe("toto"); // not mutated
-            expect(filterArray[1].options.values[1]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[0]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[1]).toBe("toto"); // not mutated
 
             expect(newFilterArray[1] instanceof InFilter);
             expect(newFilterArray[1].sign).toBe("in");
@@ -243,8 +238,8 @@ describe('Filter service', () => {
             const newFilterArray = FilterService.removeFilterValue(filterArray, removeConfiguration);
             expect(newFilterArray.length).toBe(2);
             expect(filterArray.length).toBe(2); // not mutated
-            expect(filterArray[1].options.values[0]).toBe("toto"); // not mutated
-            expect(filterArray[1].options.values[1]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[0]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[1]).toBe("toto"); // not mutated
 
             expect(newFilterArray[1] instanceof ExactFilter);
             expect(newFilterArray[1].options.values.length).toBe(1);
@@ -281,14 +276,14 @@ describe('Filter service', () => {
             const newFilterArray = FilterService.toggleFilterValue(filterArray, toggleConfiguration);
             expect(newFilterArray.length).toBe(1);
             expect(filterArray.length).toBe(2); // not mutated
-            expect(filterArray[1].options.values[0]).toBe("toto"); // not mutated
-            expect(filterArray[1].options.values[1]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[0]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[1]).toBe("toto"); // not mutated
 
             expect(newFilterArray[0] instanceof InFilter);
             expect(newFilterArray[0].options.values.length).toBe(2);
             expect(newFilterArray[0].sign).toBe("in");
-            expect(newFilterArray[0].options.values[0]).toBe("toto");
-            expect(newFilterArray[0].options.values[1]).toBe("tata");
+            expect(newFilterArray[0].options.values[0]).toBe("tata");
+            expect(newFilterArray[0].options.values[1]).toBe("toto");
         }));
 
         it('should remove filter value from filter list', inject(function (FilterService) {
@@ -318,14 +313,14 @@ describe('Filter service', () => {
             const newFilterArray = FilterService.toggleFilterValue(filterArray, toggleConfiguration);
             expect(newFilterArray.length).toBe(2);
             expect(filterArray.length).toBe(2); // not mutated
-            expect(filterArray[1].options.values[0]).toBe("toto"); // not mutated
-            expect(filterArray[1].options.values[1]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[0]).toBe("tata"); // not mutated
+            expect(filterArray[1].options.values[1]).toBe("toto"); // not mutated
 
             expect(newFilterArray[0] instanceof InFilter);
             expect(newFilterArray[0].options.values.length).toBe(2);
             expect(newFilterArray[0].sign).toBe("in");
-            expect(newFilterArray[0].options.values[0]).toBe("toto");
-            expect(newFilterArray[0].options.values[1]).toBe("bobo");
+            expect(newFilterArray[0].options.values[0]).toBe("bobo");
+            expect(newFilterArray[0].options.values[1]).toBe("toto");
         }));
     });
 });

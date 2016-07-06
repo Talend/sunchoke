@@ -50,6 +50,7 @@ export default class InFilter extends AbstractExactInFilter {
            ...options,
            values: options.values.concat(value)
        };
+        newOptions.values.sort(this._compareValues);
        return this.setValues(newOptions);
     }
 
@@ -66,11 +67,12 @@ export default class InFilter extends AbstractExactInFilter {
         const options = this.options;
         const newValues = (this.options.values.slice(0));
         const updateIndex = newValues.findIndex((filterValue) => {
-            return this._compareValues(filterValue, oldValue);
+            return this._compareValues(filterValue, oldValue) === 0;
         });
 
         if (updateIndex > - 1) {
             newValues[updateIndex] = newValue;
+            newValues.sort(this._compareValues);
             //recreating an option object
             const newOptions = {
                 ...options,
@@ -92,18 +94,8 @@ export default class InFilter extends AbstractExactInFilter {
      */
     toggleValue(value) {
         const options = this.options;
-        const newValues = (this.options.values.slice(0));
-        const updateIndex = newValues.findIndex((filterValue) => {
-            return this._compareValues(filterValue, value);
-        });
+        const newValues = this.toggleFilterValues([value]);
 
-        if (updateIndex > - 1) {
-            //removing the filter value
-            newValues.splice(updateIndex, 1);
-        } else {
-            //adding the filter value
-            newValues.push(value);
-        }
         const newOptions = {
             ...options,
             values: newValues

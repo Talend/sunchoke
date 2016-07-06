@@ -56,8 +56,8 @@ describe('filter factory', () => {
             expect(result.sign).toBe("in");
             expect(result.fieldId).toBe("Col1");
             expect(result.fieldName).toBe("Col1");
-            expect(result.options.values[0]).toBe("toto");
-            expect(result.options.values[1]).toBe("tata");
+            expect(result.options.values[0]).toBe("tata");
+            expect(result.options.values[1]).toBe("toto");
         }));
     });
 
@@ -80,8 +80,8 @@ describe('filter factory', () => {
             expect(result.sign).toBe("in");
             expect(result.fieldId).toBe("Col1");
             expect(result.fieldName).toBe("Col1");
-            expect(result.options.values[0]).toBe("toto");
-            expect(result.options.values[1]).toBe("tata");
+            expect(result.options.values[0]).toBe("tata");
+            expect(result.options.values[1]).toBe("toto");
         }));
 
         it('should convert to an exact type filter ', inject(function () {
