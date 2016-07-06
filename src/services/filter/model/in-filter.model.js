@@ -50,7 +50,6 @@ export default class InFilter extends AbstractExactInFilter {
            ...options,
            values: options.values.concat(value)
        };
-        newOptions.values.sort(this._compareValues);
        return this.setValues(newOptions);
     }
 
@@ -72,7 +71,6 @@ export default class InFilter extends AbstractExactInFilter {
 
         if (updateIndex > - 1) {
             newValues[updateIndex] = newValue;
-            newValues.sort(this._compareValues);
             //recreating an option object
             const newOptions = {
                 ...options,
