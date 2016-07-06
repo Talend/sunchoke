@@ -41,8 +41,7 @@ export default class ScFilterItemCtrl {
             }
         }
     }
-
-
+    
     _setSign() {
         if (this.filter) {
             switch (this.filter.sign) {
@@ -52,7 +51,7 @@ export default class ScFilterItemCtrl {
                 case '=':
                     this.sign = ' = ';
                     break;
-                case 'inside_range':
+                case 'range':
                     this.sign = ' in ';
                     break;
                 default:
