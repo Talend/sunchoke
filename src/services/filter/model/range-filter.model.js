@@ -10,7 +10,7 @@ export default class RangeFilter extends ScFilter {
 
     constructor(fieldId, fieldName, options, editable) {
         super(fieldId, fieldName, options, editable);
-        this.sign = 'range';
+        this.sign = 'inside_range';
 
         //sort value
         this.options.values.sort(this._compareValues);

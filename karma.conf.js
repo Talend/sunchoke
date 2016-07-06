@@ -19,7 +19,7 @@ module.exports = function (config) {
             'src/**/*.module.js',
             'src/**/*.spec.js'
         ],
-        exclude: [],
+        exclude: ['src/components/filter/**/*.spec.js', 'src/components/badge/**/*.spec.js', 'src/components/resizable-input/**/*.spec.js'],
 
         frameworks: ['jasmine'],
         browsers: ['PhantomJS'],

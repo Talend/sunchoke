@@ -30,7 +30,7 @@ describe('range filter model', () => {
             //then
             expect(filter instanceof RangeFilter).toBeTruthy();
 
-            expect(filter.sign).toBe("range");
+            expect(filter.sign).toBe("inside_range");
             expect(filter.fieldId).toBe("Col1");
             expect(filter.fieldName).toBe("Col1");
             expect(filter.options.values.length).toBe(3);
