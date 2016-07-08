@@ -1,232 +1,237 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
-describe('filter search controller', function() {
-    'use strict';
+/* TODO To uncomment when implementing feature
 
-    var createController, scope;
-    var stateMock;
+ describe('filter search controller', function() {
+ 'use strict';
 
-    var data = {
-        'metadata': {
-            'columns': [
-                {
-                    'id': '0000',
-                    'name': 'id',
-                    'quality': {
-                        'empty': 5,
-                        'invalid': 10,
-                        'valid': 72
-                    },
-                    'type': 'number'
-                },
-                {
-                    'id': '0001',
-                    'name': 'Postal',
-                    'quality': {
-                        'empty': 5,
-                        'invalid': 10,
-                        'valid': 72
-                    },
-                    'type': 'string'
-                },
-                {
-                    'id': '0002',
-                    'name': 'State',
-                    'quality': {
-                        'empty': 5,
-                        'invalid': 10,
-                        'valid': 72
-                    },
-                    'type': 'string'
-                },
-                {
-                    'id': '0003',
-                    'name': 'Capital',
-                    'quality': {
-                        'empty': 5,
-                        'invalid': 10,
-                        'valid': 72
-                    },
-                    'type': 'string'
-                },
-                {
-                    'id': '0004',
-                    'name': 'MostPopulousCity',
-                    'quality': {
-                        'empty': 5,
-                        'invalid': 10,
-                        'valid': 72
-                    },
-                    'type': 'string'
-                }
-            ]
-        },
-        'records': [
-            {
-                '0000': '1',
-                '0001': 'AL',
-                '0002': 'My Alabama',
-                '0003': 'Montgomery',
-                '0004': 'Birmingham city',
-                tdpId: 0
-            },
-            {
-                '0000': '2',
-                '0001': 'AK',
-                '0002': 'Alaska',
-                '0003': 'Juneau',
-                '0004': 'Anchorage',
-                tdpId: 1
-            },
-            {
-                '0000': '3',
-                '0001': 'AL',
-                '0002': 'My Alabama 2',
-                '0003': 'Montgomery',
-                '0004': 'Birmingham city',
-                tdpId: 2
-            },
-            {
-                '0000': '3',
-                '0001': 'AL',
-                '0002': 'My Alabama 3',
-                '0003': 'Montgomery',
-                '0004': 'Alabama city',
-                tdpId: 3
-            }
-        ]
-    };
+ var createController, scope;
+ var stateMock;
 
-    beforeEach(angular.mock.module('data-prep.filter-search', function ($provide) {
-        stateMock = {playground: {}};
-        $provide.constant('state', stateMock);
-    }));
+ var data = {
+ 'metadata': {
+ 'columns': [
+ {
+ 'id': '0000',
+ 'name': 'id',
+ 'quality': {
+ 'empty': 5,
+ 'invalid': 10,
+ 'valid': 72
+ },
+ 'type': 'number'
+ },
+ {
+ 'id': '0001',
+ 'name': 'Postal',
+ 'quality': {
+ 'empty': 5,
+ 'invalid': 10,
+ 'valid': 72
+ },
+ 'type': 'string'
+ },
+ {
+ 'id': '0002',
+ 'name': 'State',
+ 'quality': {
+ 'empty': 5,
+ 'invalid': 10,
+ 'valid': 72
+ },
+ 'type': 'string'
+ },
+ {
+ 'id': '0003',
+ 'name': 'Capital',
+ 'quality': {
+ 'empty': 5,
+ 'invalid': 10,
+ 'valid': 72
+ },
+ 'type': 'string'
+ },
+ {
+ 'id': '0004',
+ 'name': 'MostPopulousCity',
+ 'quality': {
+ 'empty': 5,
+ 'invalid': 10,
+ 'valid': 72
+ },
+ 'type': 'string'
+ }
+ ]
+ },
+ 'records': [
+ {
+ '0000': '1',
+ '0001': 'AL',
+ '0002': 'My Alabama',
+ '0003': 'Montgomery',
+ '0004': 'Birmingham city',
+ tdpId: 0
+ },
+ {
+ '0000': '2',
+ '0001': 'AK',
+ '0002': 'Alaska',
+ '0003': 'Juneau',
+ '0004': 'Anchorage',
+ tdpId: 1
+ },
+ {
+ '0000': '3',
+ '0001': 'AL',
+ '0002': 'My Alabama 2',
+ '0003': 'Montgomery',
+ '0004': 'Birmingham city',
+ tdpId: 2
+ },
+ {
+ '0000': '3',
+ '0001': 'AL',
+ '0002': 'My Alabama 3',
+ '0003': 'Montgomery',
+ '0004': 'Alabama city',
+ tdpId: 3
+ }
+ ]
+ };
 
-    beforeEach(inject(function($rootScope, $controller, FilterService) {
-        scope = $rootScope.$new();
+ beforeEach(angular.mock.module('talend.sunchoke.filter-search', function ($provide) {
+ stateMock = {playground: {}};
+ $provide.constant('state', stateMock);
+ }));
 
-        createController = function() {
-            return $controller('FilterSearchCtrl', {
-                $scope: scope
-            });
-        };
+ beforeEach(inject(function($rootScope, $controller, FilterService) {
+ scope = $rootScope.$new();
 
-        spyOn(FilterService, 'addFilter').and.returnValue();
-    }));
+ createController = function() {
+ return $controller('FilterSearchCtrl', {
+ $scope: scope
+ });
+ };
 
-    it('should create sorted suggestions based on case insensitive typed word and current data from service', function() {
-        //given
-        stateMock.playground.data = data;
-        var ctrl = createController();
+ spyOn(FilterService, 'addFilter').and.returnValue();
+ }));
 
-        //when
-        var suggestions = ctrl.filterSuggestOptions.suggest('ala');
+ it('should create sorted suggestions based on case insensitive typed word and current data from service', function() {
+ //given
+ stateMock.playground.data = data;
+ var ctrl = createController();
 
-        //then
-        expect(suggestions.length).toBe(2);
-        expect(suggestions[0]).toEqual({
-            label: 'ala in <b>MostPopulousCity</b>',
-            value: 'ala',
-            columnId: '0004',
-            columnName: 'MostPopulousCity'
-        });
-        expect(suggestions[1]).toEqual({
-            label: 'ala in <b>State</b>',
-            value: 'ala',
-            columnId: '0002',
-            columnName: 'State'
-        });
-    });
+ //when
+ var suggestions = ctrl.filterSuggestOptions.suggest('ala');
 
-    it('should create sorted suggestions based on typed word with wildcard', function() {
-        //given
-        stateMock.playground.data = data;
-        var ctrl = createController();
+ //then
+ expect(suggestions.length).toBe(2);
+ expect(suggestions[0]).toEqual({
+ label: 'ala in <b>MostPopulousCity</b>',
+ value: 'ala',
+ columnId: '0004',
+ columnName: 'MostPopulousCity'
+ });
+ expect(suggestions[1]).toEqual({
+ label: 'ala in <b>State</b>',
+ value: 'ala',
+ columnId: '0002',
+ columnName: 'State'
+ });
+ });
 
-        //when
-        var suggestions = ctrl.filterSuggestOptions.suggest('ala*ma');
+ it('should create sorted suggestions based on typed word with wildcard', function() {
+ //given
+ stateMock.playground.data = data;
+ var ctrl = createController();
 
-        //then
-        expect(suggestions.length).toBe(2);
-        expect(suggestions[0]).toEqual({
-            label: 'ala*ma in <b>MostPopulousCity</b>',
-            value: 'ala*ma',
-            columnId: '0004',
-            columnName: 'MostPopulousCity'
+ //when
+ var suggestions = ctrl.filterSuggestOptions.suggest('ala*ma');
 
-        });
-        expect(suggestions[1]).toEqual({
-            label: 'ala*ma in <b>State</b>',
-            value: 'ala*ma',
-            columnId: '0002',
-            columnName: 'State'
-        });
-    });
+ //then
+ expect(suggestions.length).toBe(2);
+ expect(suggestions[0]).toEqual({
+ label: 'ala*ma in <b>MostPopulousCity</b>',
+ value: 'ala*ma',
+ columnId: '0004',
+ columnName: 'MostPopulousCity'
 
-    it('should return empty array if typed string is empty', function() {
-        //given
-        stateMock.playground.data = data;
-        var ctrl = createController();
+ });
+ expect(suggestions[1]).toEqual({
+ label: 'ala*ma in <b>State</b>',
+ value: 'ala*ma',
+ columnId: '0002',
+ columnName: 'State'
+ });
+ });
 
-        //when
-        var suggestions = ctrl.filterSuggestOptions.suggest('');
+ it('should return empty array if typed string is empty', function() {
+ //given
+ stateMock.playground.data = data;
+ var ctrl = createController();
 
-        //then
-        expect(suggestions.length).toBe(0);
-    });
+ //when
+ var suggestions = ctrl.filterSuggestOptions.suggest('');
 
-    it('should reset input search on item selection', function() {
-        //given
-        stateMock.playground.data = data;
-        var ctrl = createController();
-        ctrl.filterSearch = 'ala';
+ //then
+ expect(suggestions.length).toBe(0);
+ });
 
-        //when
-        ctrl.filterSuggestOptions.on_select({
-            label: 'ala in <b>State</b>',
-            value: 'ala',
-            columnName: 'State',
-            columnId: '0002'
-        });
+ it('should reset input search on item selection', function() {
+ //given
+ stateMock.playground.data = data;
+ var ctrl = createController();
+ ctrl.filterSearch = 'ala';
 
-        //then
-        expect(ctrl.filterSearch).toBe('');
-    });
+ //when
+ ctrl.filterSuggestOptions.on_select({
+ label: 'ala in <b>State</b>',
+ value: 'ala',
+ columnName: 'State',
+ columnId: '0002'
+ });
 
-    it('should add filter on item selection', inject(function(FilterService) {
-        //given
-        stateMock.playground.data = data;
-        var ctrl = createController();
-        ctrl.filterSearch = 'ala';
+ //then
+ expect(ctrl.filterSearch).toBe('');
+ });
 
-        expect(FilterService.addFilter).not.toHaveBeenCalled();
+ it('should add filter on item selection', inject(function(FilterService) {
+ //given
+ stateMock.playground.data = data;
+ var ctrl = createController();
+ ctrl.filterSearch = 'ala';
 
-        //when
-        ctrl.filterSuggestOptions.on_select({
-            label: 'ala in <b>State</b>',
-            value: 'ala',
-            columnName: 'State',
-            columnId: '0002'
-        });
+ expect(FilterService.addFilter).not.toHaveBeenCalled();
 
-        //then
-        expect(FilterService.addFilter).toHaveBeenCalledWith('contains', '0002', 'State', {
-            phrase: [
-                {
-                    value: 'ala'
-                }
-            ]
-        });
-    }));
-});
+ //when
+ ctrl.filterSuggestOptions.on_select({
+ label: 'ala in <b>State</b>',
+ value: 'ala',
+ columnName: 'State',
+ columnId: '0002'
+ });
+
+ //then
+ expect(FilterService.addFilter).toHaveBeenCalledWith('contains', '0002', 'State', {
+ phrase: [
+ {
+ value: 'ala'
+ }
+ ]
+ });
+ }));
+ });
+
+
+ */

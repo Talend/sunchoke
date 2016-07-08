@@ -1,19 +1,17 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
-describe('Filter list directive', function() {
-    'use strict';
-
+describe('Filter list component', function () {
     var scope, createElement, element;
 
     var filters = [
@@ -94,24 +92,23 @@ describe('Filter list directive', function() {
         }
     ];
 
-    beforeEach(angular.mock.module('data-prep.filter-list'));
-    beforeEach(angular.mock.module('htmlTemplates'));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-list'));
 
-    beforeEach(inject(function($rootScope, $compile) {
+    beforeEach(inject(function ($rootScope, $compile) {
         scope = $rootScope.$new();
-        createElement = function() {
-            element = angular.element('<filter-list filters="filters"></filter-list>');
+        createElement = function () {
+            element = angular.element('<sc-filter-list filters="filters"></sc-filter-list>');
             $compile(element)(scope);
             scope.$digest();
         };
     }));
 
-    afterEach(function() {
+    afterEach(function () {
         scope.$destroy();
         element.remove();
     });
 
-    it('should render filter list badges', function() {
+    it('should render filter list badges', function () {
         //given
         scope.filters = filters;
 
@@ -119,6 +116,6 @@ describe('Filter list directive', function() {
         createElement();
 
         //then
-        expect(element.find('filter-item').length).toBe(4);
+        expect(element.find('sc-filter-item').length).toBe(4);
     });
 });

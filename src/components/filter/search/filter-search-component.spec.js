@@ -1,115 +1,107 @@
-/*  ============================================================================
+/* TODO To uncomment when implementing feature
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ describe('Filter search component', function() {
+ 'use strict';
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ var scope, createElement, element;
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ beforeEach(angular.mock.module('data-prep.filter-search'));
+ beforeEach(angular.mock.module('htmlTemplates'));
 
-  ============================================================================*/
+ beforeEach(inject(function($rootScope, $compile) {
+ scope = $rootScope.$new();
+ createElement = function() {
+ element = angular.element('<filter-search></filter-search>');
+ $compile(element)(scope);
+ scope.$digest();
+ };
+ }));
 
-describe('Filter search directive', function() {
-    'use strict';
-    
-    var scope, createElement, element;
+ afterEach(function() {
+ scope.$destroy();
+ element.remove();
+ });
 
-    beforeEach(angular.mock.module('data-prep.filter-search'));
-    beforeEach(angular.mock.module('htmlTemplates'));
+ it('should render input with auto-complete', function() {
+ //when
+ createElement();
 
-    beforeEach(inject(function($rootScope, $compile) {
-        scope = $rootScope.$new();
-        createElement = function() {
-            element = angular.element('<filter-search></filter-search>');
-            $compile(element)(scope);
-            scope.$digest();
-        };
-    }));
+ //then
+ expect(element.find('div[mass-autocomplete]').length).toBe(1);
+ expect(element.find('input[type="search"]').length).toBe(1);
+ });
 
-    afterEach(function() {
-        scope.$destroy();
-        element.remove();
-    });
+ it('should stop propagation on ESC key down', function () {
+ //given
+ createElement();
 
-    it('should render input with auto-complete', function() {
-        //when
-        createElement();
+ var bodyEscEvent = false;
+ var escEventListener = function(event) {
+ if(event.keyCode === 27) {
+ bodyEscEvent = true;
+ }
+ };
+ var body = angular.element('body');
+ body.append(element);
+ body.keydown(escEventListener);
 
-        //then
-        expect(element.find('div[mass-autocomplete]').length).toBe(1);
-        expect(element.find('input[type="search"]').length).toBe(1);
-    });
+ var event = angular.element.Event('keydown');
+ event.keyCode = 27;
 
-    it('should stop propagation on ESC key down', function () {
-        //given
-        createElement();
+ //when
+ element.find('input[type="search"]').eq(0).trigger(event);
+ scope.$digest();
 
-        var bodyEscEvent = false;
-        var escEventListener = function(event) {
-            if(event.keyCode === 27) {
-                bodyEscEvent = true;
-            }
-        };
-        var body = angular.element('body');
-        body.append(element);
-        body.keydown(escEventListener);
+ //then
+ expect(bodyEscEvent).toBe(false);
 
-        var event = angular.element.Event('keydown');
-        event.keyCode = 27;
+ //finally
+ body.off('keydown', escEventListener);
+ });
 
-        //when
-        element.find('input[type="search"]').eq(0).trigger(event);
-        scope.$digest();
+ it('should propagate on key down other than ESC', function () {
+ //given
+ createElement();
 
-        //then
-        expect(bodyEscEvent).toBe(false);
+ var bodyEnterEvent = false;
+ var escEventListener = function(event) {
+ if(event.keyCode === 13) {
+ bodyEnterEvent = true;
+ }
+ };
+ var body = angular.element('body');
+ body.append(element);
+ body.keydown(escEventListener);
 
-        //finally
-        body.off('keydown', escEventListener);
-    });
+ var event = angular.element.Event('keydown');
+ event.keyCode = 13;
 
-    it('should propagate on key down other than ESC', function () {
-        //given
-        createElement();
+ //when
+ element.find('input[type="search"]').eq(0).trigger(event);
+ scope.$digest();
 
-        var bodyEnterEvent = false;
-        var escEventListener = function(event) {
-            if(event.keyCode === 13) {
-                bodyEnterEvent = true;
-            }
-        };
-        var body = angular.element('body');
-        body.append(element);
-        body.keydown(escEventListener);
+ //then
+ expect(bodyEnterEvent).toBe(true);
 
-        var event = angular.element.Event('keydown');
-        event.keyCode = 13;
+ //finally
+ body.off('keydown', escEventListener);
+ });
 
-        //when
-        element.find('input[type="search"]').eq(0).trigger(event);
-        scope.$digest();
+ it('should empty the input filter search', function() {
+ //given
+ createElement();
+ var ctrl = element.controller('filterSearch');
+ ctrl.filterSearch = 'toto';
+ var event2 = angular.element.Event('blur');
 
-        //then
-        expect(bodyEnterEvent).toBe(true);
+ //when
+ element.find('input[type="search"]').eq(0).trigger(event2);
+ scope.$digest();
 
-        //finally
-        body.off('keydown', escEventListener);
-    });
+ //then
+ expect(ctrl.filterSearch).toBe('');
+ });
 
-    it('should empty the input filter search', function() {
-        //given
-        createElement();
-        var ctrl = element.controller('filterSearch');
-        ctrl.filterSearch = 'toto';
-        var event2 = angular.element.Event('blur');
+ });
 
-        //when
-        element.find('input[type="search"]').eq(0).trigger(event2);
-        scope.$digest();
-
-        //then
-        expect(ctrl.filterSearch).toBe('');
-    });
-});
+ */

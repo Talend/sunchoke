@@ -12,22 +12,21 @@
  ============================================================================*/
 
 export default class ScFilterBarCtrl {
-    constructor() {
-        'ngInject';
-            }
 
     removeFilter(filter) {
-        this.onFilterRemove({filter:filter});
+        this.onFilterRemove({filter: filter});
     }
 
     removeFilterValue(filter, value) {
-        this.onFilterRemoveValue({filter:filter, value: value});
+        this.onFilterRemoveValue({filter: filter, value: value});
     }
 
-    $onChanges(changes) {
-        if (changes.filters) {
-            this.onFilterChange();
-        }
+    $onChanges(/*changes*/) {
+        /* TODO when implemetning edit
+         if (changes.filters) {
+         this.onFilterChange();
+         }
+         */
     }
 
 }

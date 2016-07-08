@@ -1,28 +1,8 @@
-/*  ============================================================================
-
- Copyright (C) 2006-2016 Talend Inc. - www.talend.com
-
- This source code is available under agreement available at
- https://github.com/Talend/data-prep/blob/master/LICENSE
-
- You should have received a copy of the agreement
- along with this program; if not, write to Talend SA
- 9 rue Pages 92150 Suresnes, France
-
- ============================================================================*/
-
 describe('Talend Badge Component', () => {
-    'use strict';
 
     let scope, createElement, element;
 
-    beforeEach(angular.mock.module('talend.widget'));
-    beforeEach(angular.mock.module('htmlTemplates'));
-
-    afterEach(() => {
-        scope.$destroy();
-        element.remove();
-    });
+    beforeEach(angular.mock.module('talend.sunchoke.badge'));
 
     beforeEach(inject(($rootScope, $compile) => {
         scope = $rootScope.$new();
@@ -30,12 +10,17 @@ describe('Talend Badge Component', () => {
         scope.removable = false;
 
         createElement = () => {
-            const template = `<talend-badge removable="removable" 
-                                            on-remove="onRemove()" ></talend-badge>`;
+            const template = `<sc-talend-badge removable="removable" on-remove="onRemove()" ></sc-talend-badge>`;
             element = $compile(template)(scope);
             scope.$digest();
         };
     }));
+
+    afterEach(() => {
+        scope.$destroy();
+        element.remove();
+    });
+
 
     describe('not removable', () => {
         it('should not render a close button', () => {

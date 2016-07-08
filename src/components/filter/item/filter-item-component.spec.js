@@ -15,44 +15,34 @@ describe('Filter Item Component', () => {
 
     let createElement, scope, element;
 
-    beforeEach(angular.mock.module('data-prep.filter-item'));
-    beforeEach(angular.mock.module('htmlTemplates'));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-item'));
 
     beforeEach(inject(($rootScope, $compile) => {
         scope = $rootScope.$new();
 
         scope.filterItem = {
-            colName: '001',
-            type: 'exact',
-            value: [
-                {
-                    value: 'lorem ipsum dolor 1'
-                },
-                {
-                    value: 'lorem ipsum dolor 2'
-                },
-                {
-                    value: 'lorem ipsum dolor 3'
-                }
-            ]
+            "fieldId": "EmployeeId",
+            "fieldName": "EmployeeId",
+            "sign": "in",
+            "options": {"values": ["TLND-1058", "TLND-1066", "TLND-1067"]}
         };
         scope.editable = false;
         scope.removable = false;
         scope.onEdit = jasmine.createSpy('onEdit');
         scope.onRemove = jasmine.createSpy('onRemove');
+        scope.onRemoveValue = jasmine.createSpy('onRemoveValue');
 
         createElement = () => {
             element = angular.element(
-                `<filter-item value="filterItem"
+                `<sc-filter-item value="filterItem"
                               editable="editable"
                               on-edit="onEdit()"
                               removable="removable"
-                              on-remove="onRemove()"></filter-item>`
+                              on-remove="onRemove()"
+                              on-remove-value="onRemoveValue()"></sc-filter-item>`
             );
-
             $compile(element)(scope);
             scope.$digest();
-            return element;
         };
     }));
 
@@ -72,7 +62,6 @@ describe('Filter Item Component', () => {
             expect(element.find('.filter-value input').size()).toBe(3);
         });
 
-
         it('should submit editable value while pressing enter key', () => {
             //given
             scope.editable = true;
@@ -91,7 +80,10 @@ describe('Filter Item Component', () => {
             expect(inputValue).toBe(newValue);
         });
 
-        it('should call onEdit when a value has changed', () => {
+
+        /** TODO when implements edit feature
+
+         it('should call onEdit when a value has changed', () => {
             //given
             scope.editable = true;
             createElement();
@@ -107,6 +99,8 @@ describe('Filter Item Component', () => {
             //then
             expect(scope.onEdit).toHaveBeenCalled();
         });
+
+         */
 
         it('should render non-editable values with spans', () => {
             //given

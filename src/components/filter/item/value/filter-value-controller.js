@@ -13,7 +13,7 @@
 
 /**
  * @ngdoc controller
- * @name data-prep.filter-item-value.controller:FilterValueCtrl
+ * @name talend.sunchoke.filter-item-value.controller:ScFilterValueCtrl
  * @description FilterItemValue controller.
  */
 export default class ScFilterValueCtrl {

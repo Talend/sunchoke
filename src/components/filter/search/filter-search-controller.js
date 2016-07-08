@@ -17,10 +17,8 @@
  * @description Filter search controller.
  */
 export default function ScFilterSearchCtrl() {
-    'ngInject';
 
-    // TODO code from directive to move into this component
-
+    // TODO code from directive to move into this component when search will be implemented
     /*
      link: function (scope, iElement, attrs, ctrl) {
      iElement.bind('keydown', function (e) {

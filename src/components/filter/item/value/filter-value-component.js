@@ -16,8 +16,6 @@ import ScFilterValueCtrl from './filter-value-controller.js';
 const ScFilterValueComponent = {
     template: `
         <div class="filter-value" ng-switch="$ctrl.editable">
-            
-        
             <input type="text"
                    ng-switch-when="true"
                    ng-model="$ctrl.valueToDisplay"

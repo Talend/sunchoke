@@ -1,55 +1,41 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
-describe('Filter bar directive', function() {
-    'use strict';
+describe('Filter bar component', function () {
 
     var scope, createElement, element;
 
-    var stateMock;
-    beforeEach(angular.mock.module('data-prep.filter-bar', function($provide) {
-        stateMock = {playground: {
-            filter : {
-                gridFilters: [{}]
-            }
-        }};
-        $provide.constant('state', stateMock);
-    }));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-bar'));
 
-    beforeEach(angular.mock.module('htmlTemplates'));
-    beforeEach(angular.mock.module('pascalprecht.translate', function ($translateProvider) {
-        $translateProvider.translations('en', {
-            'REMOVE_ALL_FILTERS': 'Remove all filters'
-        });
-        $translateProvider.preferredLanguage('en');
-    }));
-
-    beforeEach(inject(function($rootScope, $compile) {
+    beforeEach(inject(function ($rootScope, $compile) {
         scope = $rootScope.$new();
-        createElement = function() {
-            element = angular.element('<filter-bar></filter-bar>');
+        createElement = function () {
+            element = angular.element(`<sc-filter-bar id="playground-filter-bar" filters="filters"></sc-filter-bar>`);
             $compile(element)(scope);
             scope.$digest();
         };
     }));
 
-    afterEach(function() {
+    afterEach(function () {
         scope.$destroy();
         element.remove();
     });
 
-    it('should render "remove all" icon when there are filters', function() {
+
+    it('should render "remove all" icon when there are filters', function () {
         //when
+        scope.filters = [{myfilter: 'myFilter'}]
+
         createElement();
 
         //then
@@ -57,50 +43,59 @@ describe('Filter bar directive', function() {
         expect(element.find('#reset-filters').attr('title')).toBe('Remove all filters');
     });
 
-    it('should NOT render "remove all" icon when there are not filters', function() {
+
+    it('should NOT render "remove all" icon when there are not filters', function () {
         //when
-        stateMock.playground.filter.gridFilters = [];
         createElement();
 
         //then
         expect(element.find('#reset-filters').length).toBe(0);
     });
 
-    it('should execute reset callback on "remove all" icon click', function() {
-        //given
-        createElement();
+    /* TODO when when features will be implemented in TDS
+     it('should execute reset callback on "remove all" icon click', function() {
+     //given
 
-        var ctrl = element.controller('filterBar');
-        ctrl.filterService.removeAllFilters = jasmine.createSpy('removeAllFilters');
+     createElement();
+     scope.onRemoveAllFilters = function () {
+     console.log('remove all called')
+     };
 
-        //when
-        element.find('#reset-filters').click();
 
-        //then
-        expect(ctrl.filterService.removeAllFilters).toHaveBeenCalled();
-    });
+     //when
+     element.find('#reset-filters').click();
 
-    it('should render filter search', function() {
-        //when
-        createElement();
+     //then
+     expect(scope.onRemoveAllFilters).toHaveBeenCalled();
+     });
 
-        //then
-        expect(element.find('filter-search').length).toBe(1);
-    });
 
-    it('should render filter list', function() {
-        //when
-        createElement();
+     it('should render filter search', function() {
+     //when
+     createElement();
 
-        //then
-        expect(element.find('filter-list').length).toBe(1);
-    });
+     //then
+     expect(element.find('filter-search').length).toBe(1);
+     });
 
-    it('should render filter monitor', function() {
+     */
+
+    it('should render filter list', function () {
         //when
         createElement();
 
         //then
-        expect(element.find('filter-monitor').length).toBe(1);
+        expect(element.find('sc-filter-list').length).toBe(1);
     });
+
+    /* TODO when when features will be implemented in TDS
+     it('should render filter monitor', function() {
+     //when
+     createElement();
+
+     //then
+     expect(element.find('filter-monitor').length).toBe(1);
+     });
+     */
+
 });

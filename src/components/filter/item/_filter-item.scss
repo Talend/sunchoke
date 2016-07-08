@@ -86,6 +86,7 @@ $matches-color: $ground;
     }
 
     input[type="text"] {
+      text-overflow: ellipsis;
       margin: 0;
       padding: 2px;
       width: 30px;
@@ -98,6 +99,7 @@ $matches-color: $ground;
 
     &.multi {
       input[type="text"] {
+        text-overflow: ellipsis;
         margin-right: -20px;
         padding-right: 15px;
         transition: .2s width;

@@ -85,10 +85,7 @@ export default class ScVerticalBarchartCtrl {
         this.$timeout.cancel(this.renderSecondaryTimeout);
         this.$timeout.cancel(this.updateLimitsTimeout);
     }
-
-    $postLink() {
-
-    }
+    
 
     //------------------------------------------------------------------------------------------------------
     //------------------------------------------ Data adaptation -------------------------------------------

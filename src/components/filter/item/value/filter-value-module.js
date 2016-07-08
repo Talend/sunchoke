@@ -15,8 +15,8 @@ import ScFilterValueComponent from './filter-value-component';
 
 const MODULE_NAME = 'talend.sunchoke.filter-item-value';
 
-    angular
-        .module(MODULE_NAME, [])
-        .component('scFilterValue', ScFilterValueComponent);
+angular
+    .module(MODULE_NAME, [])
+    .component('scFilterValue', ScFilterValueComponent);
 
 export default MODULE_NAME;

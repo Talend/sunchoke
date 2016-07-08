@@ -22,7 +22,7 @@ describe('Filter item value controller', () => {
     const originalFilterValue = 'lorem ipsum';
     const newFilterValue = 'LOREM ISPUM DOLOR';
 
-    beforeEach(angular.mock.module('data-prep.filter-item-value'));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-item-value'));
 
     beforeEach(inject(($rootScope, $componentController) => {
         scope = $rootScope.$new();
@@ -34,7 +34,7 @@ describe('Filter item value controller', () => {
         onRemoveFn = jasmine.createSpy('onRemoveFn');
 
         createController = () => {
-            const ctrl = $componentController('filterValue', {
+            const ctrl = $componentController('scFilterValue', {
                 $scope: scope
             }, {
                 value: filterValue,

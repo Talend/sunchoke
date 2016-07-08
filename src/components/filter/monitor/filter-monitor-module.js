@@ -15,8 +15,8 @@ import ScFilterMonitorComponent from './filter-monitor-component';
 
 const MODULE_NAME = 'talend.sunchoke.filter-monitor';
 
-    angular.module(MODULE_NAME, [])
-        .component('scFilterMonitor', ScFilterMonitorComponent);
+angular.module(MODULE_NAME, [])
+    .component('scFilterMonitor', ScFilterMonitorComponent);
 
 export default MODULE_NAME;
 

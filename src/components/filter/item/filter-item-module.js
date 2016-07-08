@@ -16,7 +16,7 @@ import ScFilterItemComponent from './filter-item-component';
 const MODULE_NAME = 'talend.sunchoke.filter-item';
 
 angular
-    .module(MODULE_NAME, [])
+    .module(MODULE_NAME, ['talend.sunchoke.filter-item-value', 'talend.sunchoke.badge'])
     .component('scFilterItem', ScFilterItemComponent);
 
 export default MODULE_NAME;

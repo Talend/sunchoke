@@ -12,12 +12,10 @@
  ============================================================================*/
 
 describe('Resizable input directive', () => {
-    'use strict';
 
-    let scope, createElement, element;
+    let createElement, scope, element;
 
-    beforeEach(angular.mock.module('talend.widget'));
-    beforeEach(angular.mock.module('htmlTemplates'));
+    beforeEach(angular.mock.module('talend.sunchoke.resizable-input'));
 
     const defaultInput = {
         content: 'Lorem ipsum',

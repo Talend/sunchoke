@@ -12,47 +12,52 @@
  ============================================================================*/
 
 describe('Filter item controller', () => {
-    'use strict';
-
     let createController, scope;
 
     let filter,
         editable, onEditFn,
-        removable, onRemoveFn;
+        removable, onRemoveFn, onRemoveValueFn;
 
-    beforeEach(angular.mock.module('data-prep.filter-item'));
-    beforeEach(angular.mock.module('pascalprecht.translate', $translateProvider => {
-        $translateProvider.translations('en', {
-            'COLON': ': '
-        });
-        $translateProvider.preferredLanguage('en');
-    }));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-item'));
+
+    /*
+     beforeEach(angular.mock.module('pascalprecht.translate', $translateProvider => {
+     $translateProvider.translations('en', {
+     'COLON': ': '
+     });
+     $translateProvider.preferredLanguage('en');
+     }));
+     */
+
 
     beforeEach(inject(($rootScope, $componentController) => {
         scope = $rootScope.$new();
 
         filter = {
-            type: 'exact',
-            value: [
-                {
-                    value: 'lorem ipsum'
-                }
-            ]
+            fieldId: 'fieldId',
+            fieldName: 'fieldName',
+            sign: 'in',
+            options: {
+                values: ['val1', 'val2']
+            }
         };
         editable = false;
         onEditFn = jasmine.createSpy('onEditFn');
         removable = false;
         onRemoveFn = jasmine.createSpy('onRemoveFn');
+        onRemoveValueFn = jasmine.createSpy('onRemoveValueFn');
 
         createController = () => {
-            const ctrl = $componentController('filterItem', {
+            const ctrl = $componentController('scFilterItem', {
                 $scope: scope
             }, {
                 value: filter,
                 editable: editable,
                 onEdit: onEditFn,
                 removable: removable,
-                onRemove: onRemoveFn
+                onRemove: onRemoveFn,
+                onRemoveValue: onRemoveValueFn
+
             });
             ctrl.$onInit();
             return ctrl;
@@ -62,7 +67,12 @@ describe('Filter item controller', () => {
     it('should set the sign character to : in', () => {
         //given
         filter = {
-            type: 'inside_range'
+            fieldId: 'fieldId',
+            fieldName: 'fieldName',
+            sign: 'inside_range',
+            options: {
+                values: ['val1', 'val2']
+            }
         };
         const ctrl = createController();
 
@@ -72,30 +82,51 @@ describe('Filter item controller', () => {
 
     it('should set the sign character to : ":"', () => {
         //given
-        filter ={
-            type: 'valid_records'
-        };
-        const ctrl = createController();
-
-        //then
-        expect(ctrl.sign).toEqual(': ');
-    });
-
-    it('should set the sign character to : "≅"', () => {
-        //given
         filter = {
-            type: 'contains'
+            fieldId: 'fieldId',
+            fieldName: 'fieldName',
+            sign: 'valid_records',
+            options: {
+                values: ['val1', 'val2']
+            }
         };
         const ctrl = createController();
 
         //then
-        expect(ctrl.sign).toEqual(' ≅ ');
+        expect(ctrl.sign).toEqual(' : ');
     });
+
+
+    /*
+
+     TODO when implementing contains
+
+     it('should set the sign character to : "≅"', () => {
+     //given
+     filter = {
+     fieldId: 'fieldId',
+     fieldName: 'fieldName',
+     sign :'contains',
+     options : {
+     values: ['val1', 'val2']
+     }
+     };
+     const ctrl = createController();
+
+     //then
+     expect(ctrl.sign).toEqual(' ≅ ');
+     });
+     */
 
     it('should set the sign character to : "=" ', () => {
         //given
-        filter ={
-            type: 'exact'
+        filter = {
+            fieldId: 'fieldId',
+            fieldName: 'fieldName',
+            sign: '=',
+            options: {
+                values: ['val1', 'val2']
+            }
         };
         const ctrl = createController();
 
@@ -103,33 +134,46 @@ describe('Filter item controller', () => {
         expect(ctrl.sign).toEqual(' = ');
     });
 
-    it('should execute edit callback when submit is called', () => {
-        //given
-        const ctrl = createController();
 
-        //when
-        ctrl.submit();
+    /*
 
-        //then
-        expect(onEditFn).toHaveBeenCalledWith({
-            filter: filter,
-            value: filter.value
-        });
-    });
+     TODO when implementing EDIT
 
-    it('should execute edit callback when remove is called', () => {
-        //given
-        const ctrl = createController();
+     it('should execute edit callback when submit is called', () => {
+     //given
+     const ctrl = createController();
 
-        //when
-        ctrl.remove(0);
+     //when
+     ctrl.submit();
 
-        //then
-        expect(onEditFn).toHaveBeenCalledWith({
-            filter: filter,
-            value: []
-        });
-    });
+     //then
+     expect(onEditFn).toHaveBeenCalledWith({
+     filter: filter,
+     value: filter.value
+     });
+     });
+
+
+
+
+
+
+     it('should execute edit callback when remove is called', () => {
+     //given
+     const ctrl = createController();
+
+     //when
+     ctrl.remove(0);
+
+     //then
+     expect(onEditFn).toHaveBeenCalledWith({
+     filter: filter,
+     value: []
+     });
+     });
+
+
+     */
 
     it('should execute remove callback when close is called', () => {
         //given
@@ -142,5 +186,8 @@ describe('Filter item controller', () => {
         expect(onRemoveFn).toHaveBeenCalledWith({
             filter: filter
         });
+
+
     });
+
 });

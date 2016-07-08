@@ -13,8 +13,7 @@
 
 describe('Filter Item Value Component', () => {
 
-    beforeEach(angular.mock.module('data-prep.filter-item-value'));
-    beforeEach(angular.mock.module('htmlTemplates'));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-item-value'));
 
     let createElement, scope, element;
 
@@ -29,16 +28,15 @@ describe('Filter Item Value Component', () => {
 
         createElement = () => {
             element = angular.element(
-                `<filter-value value="filterValue"
+                `<sc-filter-value value="filterValue"
                                editable="editable"
                                on-edit="onEdit()"
                                removable="removable"
-                               on-remove="onRemove()"></filter-value>`
+                               on-remove="onRemove()"></sc-filter-value>`
             );
 
             $compile(element)(scope);
             scope.$digest();
-            return element;
         };
     }));
 

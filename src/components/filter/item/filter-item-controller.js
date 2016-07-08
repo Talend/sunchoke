@@ -11,23 +11,12 @@
 
  ============================================================================*/
 
-/**
- * @ngdoc controller
- * @name data-prep.filter-item.controller:FilterItemCtrl
- * @description FilterItem controller.
- */
 export default class ScFilterItemCtrl {
-
-    constructor($translate) {
-        'ngInject';
-        this.$translate = $translate;
-    }
 
     $onInit() {
         this.filter = this.value;
         this.filterValues = this.filter.options.values;
         this._setSign();
-
     }
 
     $onChanges(changes) {
@@ -55,7 +44,7 @@ export default class ScFilterItemCtrl {
                     this.sign = ' in ';
                     break;
                 default:
-                    this.sign = this.$translate.instant('COLON');
+                    this.sign = ' : '; // TODO to put in constants via translateprovider
             }
         }
     }
@@ -66,12 +55,17 @@ export default class ScFilterItemCtrl {
      * @methodOf data-prep.filter-item:FilterItemCtrl
      * @description Apply changes
      */
-    edit(index, value) {
+    edit(/*index, value*/) {
+
+        //TODO WHEN IMPLEMENTING EDIT
+
+        /*
          const filterValue = this.filterValues[index];
          if (filterValue) {
-            filterValue.value = value;
-            this.submit();
+         filterValue.value = value;
+         this.submit();
          }
+         */
 
     }
 
@@ -84,7 +78,7 @@ export default class ScFilterItemCtrl {
      */
     remove(indexToRemove) {
         const valueToDelete = this.filterValues.filter((value, index) => index === indexToRemove)[0];
-        this.onEdit({
+        this.onRemoveValue({
             filter: this.filter,
             value: valueToDelete
         });
@@ -97,10 +91,10 @@ export default class ScFilterItemCtrl {
      * @description Submit updated filter values
      */
     submit() {
-         this.onEdit({
-         filter: this.filter,
-         value: this.filterValues
-         });
+        this.onEdit({
+            filter: this.filter,
+            value: this.filterValues
+        });
     }
 
     /**
