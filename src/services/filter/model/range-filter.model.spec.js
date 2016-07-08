@@ -148,6 +148,33 @@ describe('range filter model', () => {
             expect(result.options.values[2].max).toBe(90);
         }));
 
+        it('should split range when selecting a range included in the current ones', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min:20, max:30}, {min:40, max:90}]}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+
+            //when
+            const newConfiguration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min:80, max:90}]}
+            };
+            const result = filter.update(newConfiguration);
+            //then
+            expect(result instanceof RangeFilter).toBeTruthy();
+            expect(result.options.values.length).toBe(2);
+            expect(result.options.values[0].min).toBe(20);
+            expect(result.options.values[0].max).toBe(30);
+            expect(result.options.values[1].min).toBe(40);
+            expect(result.options.values[1].max).toBe(80);
+        }));
+
         it('should merge previous range with given one', inject(function () {
             //given
             const configuration = {
@@ -642,6 +669,18 @@ describe('range filter model', () => {
             const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
             expect(filter.toDSL()).toBe("(Col1 between [5, 10] or Col1 between [10, 30] or Col1 between [35, 40])");
         }));
+
+        it('return filter in tql form with comparison when in single value range', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min: 5, max: 10}, {min: 11, max: 11}] , isSingleValueRange: true}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.toDSL()).toBe("((Col1 >= 5 and Col1 <= 10) or (Col1 >= 11 and Col1 <= 11))");
+        }));
     });
 
     describe('get label', () => {
@@ -655,6 +694,30 @@ describe('range filter model', () => {
             };
             const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
             expect(filter.getLabel({min: 5, max: 10})).toBe("[5, 10[");
+        }));
+
+        it('should return the label of the range with max in range', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min: 5, max: 10}, {min: 10, max: 30}, {min: 35, max: 40}], isSingleValueRange: true}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.getLabel({min: 5, max: 10})).toBe("[5, 10]");
+        }));
+
+        it('should return value alone', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min: 5, max: 5}, {min: 10, max: 30}, {min: 35, max: 40}]}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.getLabel({min: 5, max: 5})).toBe("[5]");
         }));
     });
 });

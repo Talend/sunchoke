@@ -24,7 +24,7 @@ export default class RangeFilter extends ScFilter {
      * @description updates the current filter with the given configuration if the type and field matches
      */
     update(configuration) {
-        if(configuration.fieldId === this.fieldId && configuration.type === FILTER_TYPE.INSIDE_RANGE) {
+        if (configuration.fieldId === this.fieldId && configuration.type === FILTER_TYPE.INSIDE_RANGE) {
             //overwrite the filter with the current configuration values
             if (configuration.overwriteMode) {
                 return new RangeFilter(this.fieldId, this.fieldName, configuration.options);
@@ -78,7 +78,7 @@ export default class RangeFilter extends ScFilter {
                             return newRange.max >= filterValue.min && newRange.max <= filterValue.max;
                         });
 
-                        if (rangeToUpdate > - 1) {
+                        if (rangeToUpdate > -1) {
                             //as when using merge mode the begining point is always the min of the smallest range
                             clone[rangeToUpdate].min = newRange.min;
                         }
@@ -121,7 +121,7 @@ export default class RangeFilter extends ScFilter {
      */
     stepsOnCurrentRanges(filterValues, range) {
         const rangeContainingValue = filterValues.filter((filterValue) => {
-            return (range.min > filterValue.min  && range.min < filterValue.max) ||
+            return (range.min > filterValue.min && range.min < filterValue.max) ||
                 (range.max < filterValue.max && range.max > filterValue.min);
         })
 
@@ -141,7 +141,7 @@ export default class RangeFilter extends ScFilter {
      */
     removeDuplicateRange(filterValues, range) {
         const rangeContainingValue = filterValues.filter((filterValue) => {
-            return filterValue.min >= range.min && filterValue.max >= range.max;
+            return !(filterValue.min >= range.min && filterValue.max <= range.max);
         });
         return rangeContainingValue;
     }
@@ -213,7 +213,7 @@ export default class RangeFilter extends ScFilter {
             return this._compareValues(filterValue, oldValue) === 0;
         });
 
-        if (updateIndex > - 1) {
+        if (updateIndex > -1) {
             const updatedValue = newValues.splice(updateIndex, 1)[0];
             updatedValue.min = newValue.min;
             updatedValue.max = newValue.max;
@@ -272,14 +272,14 @@ export default class RangeFilter extends ScFilter {
         });
 
         //if the given range is consecutive to an existing range (after or before), fuse them together
-        if (previousRangeIndex > - 1) {
+        if (previousRangeIndex > -1) {
             filterList[previousRangeIndex].max = value.max;
         }
-        if (nextRangeIndex > - 1) {
+        if (nextRangeIndex > -1) {
             filterList[nextRangeIndex].min = value.min;
         }
 
-        if (previousRangeIndex > - 1 && nextRangeIndex > - 1) {
+        if (previousRangeIndex > -1 && nextRangeIndex > -1) {
             //merging the 3 ranges
             filterList[previousRangeIndex].max = filterList[nextRangeIndex].max;
             filterList.splice(nextRangeIndex, 1);
@@ -299,10 +299,19 @@ export default class RangeFilter extends ScFilter {
      */
     toDSL() {
         let stringToReturn = '';
-        this.options.values.forEach((value, index) => {
-            stringToReturn+= this.fieldId + " between [" + value.min + ", " + value.max + "]";
-            index !== this.options.values.length - 1 ? stringToReturn+= ' or ': '';
-        });
+
+        if (this.options.isSingleValueRange) {
+            this.options.values.forEach((value, index) => {
+                //if the min = max then it's just like an equal
+                stringToReturn += "(" + this.fieldId + " >= " + value.min + " and " + this.fieldId + " <= " + value.max + ")";
+                index !== this.options.values.length - 1 ? stringToReturn += ' or ' : '';
+            });
+        } else {
+            this.options.values.forEach((value, index) => {
+                stringToReturn += this.fieldId + " between [" + value.min + ", " + value.max + "]";
+                index !== this.options.values.length - 1 ? stringToReturn += ' or ' : '';
+            });
+        }
         return "(" + stringToReturn + ")";
     }
 
@@ -334,7 +343,11 @@ export default class RangeFilter extends ScFilter {
      * @description converts the value into a label
      */
     getLabel(value) {
-        return "[" + value.min + ", " + value.max + "[";
+        if (value.min !== value.max) {
+            return !this.options.isSingleValueRange ? ("[" + value.min + ", " + value.max + "[") :
+                ("[" + value.min + ", " + value.max + "]");
+        }
+        return "["+ value.min + "]";
     }
 
     /**
@@ -345,7 +358,7 @@ export default class RangeFilter extends ScFilter {
      * @description process the configuration for simple value filter
      */
     toggleFilterValues(values) {
-        let clone =  this.options.values.slice(0);
+        let clone = this.options.values.slice(0);
 
         //looking for the given filter value in the current filter
         values.forEach((value) => {
@@ -353,21 +366,32 @@ export default class RangeFilter extends ScFilter {
                 return this._compareValues(value, filterValue) === 0;
             });
             //if exactly the same one is found remove it
-            if (index > - 1) {
+            if (index > -1) {
                 //removing them if they were found
                 clone.splice(index, 1);
             }
             //else we need to check if it's part of another existing range
-            else if(!this.stepsOnCurrentRanges(clone, value)) {
+            else if (!this.stepsOnCurrentRanges(clone, value)) {
                 this.processMergeableRange(clone, value);
             } else {
-                //in another range, split range into 2
-                if (this.inAnotherRange(clone, value)) {
+                //in another range, split range into 2 if not in single value range
+                //as we're not able to know previous range value in that case
+                if (this.inAnotherRange(clone, value) && !this.options.isSingleValueRange) {
                     //find the first range which included the new range
                     const rangeToUpdate = clone.findIndex((filterValue) => {
                         return value.min >= filterValue.min && value.max <= filterValue.max;
                     });
-                    const newRanges = [{min: clone[rangeToUpdate].min, max: value.min}, {min: value.max, max: clone[rangeToUpdate].max}];
+
+                    //default range (split case)
+                    let newRanges = [{min: clone[rangeToUpdate].min, max: value.min}, {
+                        min: value.max,
+                        max: clone[rangeToUpdate].max
+                    }];
+
+                    //if the range to update is the first one
+                    if (clone[rangeToUpdate].max === value.max) {
+                        newRanges = [{min: clone[rangeToUpdate].min, max: value.min}];
+                    }
                     clone.splice(rangeToUpdate, 1);
                     clone = clone.concat(newRanges);
                 }
@@ -394,7 +418,7 @@ export default class RangeFilter extends ScFilter {
         if (colA.max <= colB.min && colA.min < colB.min) {
             return -1;
         }
-        if (colA.min >= colB.max &&  colA.max > colB.max) {
+        if (colA.min >= colB.max && colA.max > colB.max) {
             return 1;
         }
         else if (colA.min === colB.min && colA.max === colB.max) {
