@@ -21,12 +21,10 @@ export default class ScFilterBarCtrl {
         this.onFilterRemoveValue({filter: filter, value: value});
     }
 
-    $onChanges(/*changes*/) {
-        /* TODO when implemetning edit
-         if (changes.filters) {
-         this.onFilterChange();
-         }
-         */
+    $onChanges(changes) {
+        if (changes.filters) {
+            this.onFilterChange();
+        }
     }
 
 }

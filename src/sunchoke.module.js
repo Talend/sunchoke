@@ -27,8 +27,10 @@ import FILTER_BAR from './components/filter/bar/filter-bar-module.js';
 import FILTER_ITEM from './components/filter/item/filter-item-module.js';
 import FILTER_ITEM_VALUE from './components/filter/item/value/filter-value-module.js';
 import FILTER_LIST from './components/filter/list/filter-list-module.js';
+/*
 import FILTER_MONITOR from './components/filter/monitor/filter-monitor-module.js';
 import FILTER_SEARCH from './components/filter/search/filter-search-module.js';
+*/
 import BADGE from './components/badge/badge-module.js';
 import RESIZABLE_INPUT from './components/resizable-input/resizable-input-module.js';
 
@@ -51,8 +53,10 @@ angular.module(SUNCHOKE_MODULE, [
     FILTER_ITEM,
     FILTER_ITEM_VALUE,
     FILTER_LIST,
+    /*
     FILTER_MONITOR,
     FILTER_SEARCH,
+    */
     BADGE,
     RESIZABLE_INPUT
 
