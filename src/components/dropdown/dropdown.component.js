@@ -7,47 +7,32 @@
  9 rue Pages 92150 Suresnes, France
  ============================================================================*/
 
-import ScDropdownCtrl from './dropdown.controller.js';
+import TalendDropdownTemplate from './dropdown.template.html';
+import TalendDropdownCtrl from './dropdown.controller.js';
 
 /**
  * @ngdoc component
- * @name talend.sunchoke.dropdown.component:ScDropdownComponent
+ * @name talend.sunchoke.dropdown.component:TalendDropdownComponent
  * @description Dropdown widget.
  * @restrict E
- * @usage
- <sc-dropdown close-on-select="false" on-open="open()" side="left">
-     <sc-dropdown-trigger>
-        Click me !
-     </sc-dropdown-trigger>
-     <sc-dropdown-content>
-        My menu content
-     </sc-dropdown-content>
- </sc-dropdown>`
  * @param {boolean} closeOnSelect Default `true`. If set to false, dropdown will not close on inner item click
  * @param {function} onOpen The callback to execute on dropdown open
- * @param {string} side Force display on the specified side (left | right)
  */
-const ScDropdownComponent = {
-    template: `
-        <div class="sc-dropdown-trigger"
-             ng-click="$ctrl.toggleMenu()"
-             ng-transclude="sc-dropdown-trigger">
-        </div>
-        <div class="sc-dropdown-content"
-             ng-click="$ctrl.onMenuClick($event)"
-             ng-transclude="sc-dropdown-content">
-        </div>
-    `,
+const TalendDropdownComponent = {
+    restrict: 'E',
+    scope: false,
+    template: TalendDropdownTemplate,
     bindings: {
         closeOnSelect: '<',
-        onOpen: '&',
-        side: '@'
+        onOpen: '&'
     },
     transclude: {
-        'sc-dropdown-trigger': 'scDropdownTrigger',
-        'sc-dropdown-content': 'scDropdownContent'
+        'talend-dropdown-trigger': '?talendDropdownTrigger',
+        'talend-dropdown-content': '?talendDropdownContent',
+        'talend-dropdown-menu': '?talendDropdownMenu'
     },
-    controller: ScDropdownCtrl
+    controller: TalendDropdownCtrl,
+    controllerAs: 'dropdown'
 };
 
-export default ScDropdownComponent;
+export default TalendDropdownComponent;

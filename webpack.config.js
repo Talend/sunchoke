@@ -34,7 +34,8 @@ function getDefaultConfig(options) {
         module: {
             preLoaders: [],
             loaders: [
-                {test: /\.js$/, loaders: ['ng-annotate', 'babel'],  exclude: [/node_modules/]}
+                {test: /\.js$/, loaders: ['ng-annotate', 'babel'],  exclude: [/node_modules/]},
+                {test: /\.html$/, loader: 'raw'}
             ]
         },
         plugins: [

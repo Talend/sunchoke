@@ -1,0 +1,7 @@
+<div class="talend-dropdown-trigger" ng-click="$parent.$parent.dropdown.toggleMenu()">
+  <i ng-if="$ctrl.iconClass" class="talend-dropdown-trigger-icon" ng-class="$ctrl.iconClass"></i>
+  <span ng-class="{opened:$parent.$parent.dropdown.visible, arrow:$ctrl.useArrow}"
+        class="talend-dropdown-trigger-title">
+    {{$ctrl.text}}
+  </span>
+</div>
