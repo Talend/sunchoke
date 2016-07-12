@@ -52,7 +52,7 @@ export default class AbstractExactInFilter extends ScFilter {
      * @methodOf talend.sunchoke.filter.model:ExactFilter
      * @param newOptions the options for the new filter
      * @description creates a new filter from the current one using the given options object
-     * @return the new filter
+     * @return { Object } the new filter
      */
     setValues(newOptions) {
         if(newOptions.values.length > 1) {

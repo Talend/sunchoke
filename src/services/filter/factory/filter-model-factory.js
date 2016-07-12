@@ -2,6 +2,7 @@ import { FILTER_TYPE } from "../model/filter-const.js";
 import ExactFilter from "../model/exact-filter.model.js";
 import InFilter from "../model/in-filter.model.js";
 import RangeFilter from "../model/range-filter.model.js";
+import PatternFilter from "../model/pattern-filter.model.js";
 
 export default class FilterModelFactory {
     constructor() {
@@ -37,6 +38,8 @@ export default class FilterModelFactory {
                     //return new InFilter(configuration.fieldId, configuration.fieldName, configuration.options);
                 case FILTER_TYPE.INSIDE_RANGE:
                     return new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+                case FILTER_TYPE.PATTERN:
+                    return new PatternFilter(configuration.fieldId, configuration.fieldName, configuration.options);
                 /*case FILTER_TYPE.INVALID_RECORDS:
                     return;
                 case FILTER_TYPE.MATCHES:

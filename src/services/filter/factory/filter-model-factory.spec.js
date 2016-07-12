@@ -14,6 +14,7 @@ import FilterModelFactory from './filter-model-factory.js';
 import { FILTER_TYPE } from './../model/filter-const.js';
 import ExactFilter from '../model/exact-filter.model.js';
 import InFilter from "../model/in-filter.model.js";
+import PatternFilter from "../model/pattern-filter.model.js";
 
 describe('filter factory', () => {
     describe('creating an Exact filter', () => {
@@ -104,6 +105,29 @@ describe('filter factory', () => {
             expect(result.fieldName).toBe("Col1");
             expect(result.options.values.length).toBe(1);
             expect(result.options.values[0]).toBe("toto");
+        }));
+    });
+
+    describe('creating an pattern type filter', () => {
+        it('should create PatterFilter', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.PATTERN,
+                options: {values: ["toto", "tata"]}
+            };
+
+            //when
+            const result = new FilterModelFactory().createFilter(configuration);
+            //then
+            expect(result instanceof PatternFilter).toBeTruthy();
+
+            expect(result.sign).toBe("");
+            expect(result.fieldId).toBe("Col1");
+            expect(result.fieldName).toBe("Col1");
+            expect(result.options.values[0]).toBe("tata");
+            expect(result.options.values[1]).toBe("toto");
         }));
     });
 });
