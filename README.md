@@ -56,6 +56,15 @@ You can lint your code with eslint
 npm run lint
 ```
 
+##### Use Sunchoke  locally, without deploy to GitHub (developmment mode for example)
+In order to update Sunchoke dependency locally :
+- At the root of Sunchoke project
+ ``` bower link ```
+- At the root of the project which needs Sunchoke
+ ``` bower link tds-sunchoke-new ```
+
+You can use Sunchoke locally
+
 ##### Tests
 ```
 npm run test
