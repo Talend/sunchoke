@@ -41,12 +41,12 @@ const ScSlidableComponent = {
         </div>
         <div class="action {{::$ctrl.side}}"
              ng-if="$ctrl.controlBar"
-             ng-click="$ctrl.toggle()">
-            <span ng-if="::($ctrl.side == 'left')">
+             ng-click="$ctrl.toggle()" ng-switch="::($ctrl.side)">
+            <span ng-switch-when="left">
                 <span ng-show="$ctrl.visible">&#8249;</span>
                 <span ng-show="!$ctrl.visible">&#8250;</span>
             </span>
-            <span ng-if="::($ctrl.side === 'right')">
+            <span ng-switch-when="right">
                 <span ng-show="$ctrl.visible">&#8250;</span>
                 <span ng-show="!$ctrl.visible">&#8249;</span>
             </span>
