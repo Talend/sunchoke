@@ -61,7 +61,6 @@ export default class PatternFilter extends ScFilter {
     update(configuration) {
         if(configuration.fieldId === this.fieldId && (configuration.type === FILTER_TYPE.PATTERN)) {
 
-            const configurationValues = configuration.options.values; // all values
             //overwrite the filter with the current configuration values
             if (configuration.overwriteMode) {
                 return new PatternFilter(this.fieldId, this.fieldName, configuration.options);

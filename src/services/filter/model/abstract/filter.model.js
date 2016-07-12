@@ -175,7 +175,7 @@ export default class ScFilter {
      * @description creates a new filter from the current one using the given options object
      * @return { Object } the new filter
      */
-    setValues(newOptions) {
+    setValues(/*newOptions*/) {
         //must be override
     }
 
