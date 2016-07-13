@@ -36,13 +36,23 @@ export default class ScDropdownCtrl {
         this._positionContent = this._positionContent.bind(this);
     }
 
+    $onInit() {
+        if (!this.distanceFromBorder || isNaN(this.distanceFromBorder)) {
+            this.offsetBorder = 0;
+        }
+        else {
+            this.offsetBorder = parseInt(this.distanceFromBorder);
+        }
+    }
+
     $postLink() {
         this.trigger = this.$element.children().eq(0);
         this.content = this.$element.children().eq(1);
         this.content.on('mousedown', (e) => e.stopPropagation());
 
-        if (this.visible && this.visible === true) {
-            this.$timeout( ()=>{
+        if (this.visibleOnInit && this.visibleOnInit === true) {
+            //time out needed cause we need to wait for caller to be initialized
+            this.$timeout(()=> {
                 this._showContent();
             });
         }
@@ -137,30 +147,20 @@ export default class ScDropdownCtrl {
     }
 
     _positionVerticalMenu() {
-        const blocAction = this.trigger[0];
-        const blocContent = this.content[0];
-        const positionAction = blocAction.getBoundingClientRect();
-        const positionContent = blocContent.getBoundingClientRect();
+        const positionAction = this.trigger[0].getBoundingClientRect();
+        const positionContent = this.content[0].getBoundingClientRect();
         const windowSize = this.window[0].innerHeight;
 
-
-
-
         //display the menu where there is most space top or bottom
-        const freeSpaceBottom = windowSize - positionAction.bottom;
-        const freeSpaceTop = positionContent.top;
+        const freeSpaceBottom = windowSize - positionAction.bottom - this.offsetBorder;
+        const freeSpaceTop = positionContent.top - this.offsetBorder;
         const heightContent = positionContent.height;
-        let offsetBorder = parseInt(this.distanceFromBorder);
-
-        if (isNaN(offsetBorder)){
-            offsetBorder = 30;
-        }
 
         //display menu at the bottom
         if (freeSpaceBottom > freeSpaceTop) {
             //scrollbar needed?
-            if (positionContent.top + heightContent >= windowSize) {
-                const newContentSize = heightContent - ((positionContent.top + heightContent + offsetBorder) - windowSize );
+            if (positionContent.top + heightContent + this.offsetBorder >= windowSize) {
+                const newContentSize = heightContent - ((positionContent.top + heightContent + this.offsetBorder) - windowSize );
                 this.content.children().css('height', newContentSize + 'px');
             }
             this.content.removeClass('top');
@@ -168,11 +168,11 @@ export default class ScDropdownCtrl {
         //display menu at the top
         else {
             //scrollbar needed?
-            if (heightContent > positionAction.top) {
-                const newContentSize = positionAction.top - offsetBorder - CARRET_HEIGHT;
+            if (heightContent + this.offsetBorder > positionAction.top) {
+                const newContentSize = positionAction.top - this.offsetBorder - CARRET_HEIGHT;
                 this.content.children().css('height', newContentSize + 'px');
                 //display menu at top with offset supplied
-                this.content.css('top', offsetBorder);
+                this.content.css('top', this.offsetBorder);
             }
             else {
                 this.content.css('top', positionAction.top + 'px');

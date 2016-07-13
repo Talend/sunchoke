@@ -37,7 +37,7 @@ describe('Dropdown component', () => {
 
         createElement = () => {
             element = angular.element(`
-                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible="visible" distance-from-border="{{distanceFromBorder}}">
+                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible-on-init="visible" distance-from-border="{{distanceFromBorder}}">
                     <sc-dropdown-trigger id="trigger">
                         Trigger
                     </sc-dropdown-trigger>
@@ -331,7 +331,7 @@ describe('Dropdown component', () => {
             createElement();
             const content = element.find('.sc-dropdown-content').eq(0);
 
-            spyOn(content[0], 'getBoundingClientRect').and.returnValue({left: - 5}); //left border is out of the window
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({left: -5}); //left border is out of the window
             expect(content.hasClass('right')).toBe(false);
 
             //when
@@ -342,28 +342,30 @@ describe('Dropdown component', () => {
         });
     });
 
-    describe('vertical position', () => {
+    describe('vertical position ', () => {
 
         it('should put the content on the bottom if more space at bottom, with scrollbar (content does not fit), ', inject(() => {
             //given
             scope.side = 'left';
+            scope.distanceFromBorder = '30';
             createElement();
             const content = element.find('.sc-dropdown-content');
             const trigger = element.find('.sc-dropdown-trigger');
 
             spyOn(trigger[0], 'getBoundingClientRect').and.returnValue({top: 0, height: 10, bottom: 10});
-            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 10, height: 400, bottom: 310});
+            spyOn(content[0], 'getBoundingClientRect').and.returnValue({top: 10, height: 300, bottom: 310});
 
             //when
             clickDropdownTrigger(element);
 
             //then
-            expect(content.children()[0].style.height).toEqual('260px'); // 400 - ((10 + 400 + 30) - 300 );
+            expect(content.children()[0].style.height).toEqual('260px');
         }));
 
         it('should put the content on the top if more space at top without scrollbar (content does fit)', () => {
             //given
             scope.side = 'left';
+            scope.distanceFromBorder = '30';
             createElement();
             const content = element.find('.sc-dropdown-content');
             const trigger = element.find('.sc-dropdown-trigger');
@@ -381,6 +383,7 @@ describe('Dropdown component', () => {
         it('should put the content on the top if more space at top with scrollbar (content does not fit), ', inject(() => {
             //given
             scope.side = 'left';
+            scope.distanceFromBorder = '30';
             createElement();
             const content = element.find('.sc-dropdown-content');
             const trigger = element.find('.sc-dropdown-trigger');
