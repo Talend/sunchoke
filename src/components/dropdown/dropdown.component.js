@@ -26,6 +26,8 @@ import ScDropdownCtrl from './dropdown.controller.js';
  * @param {boolean} closeOnSelect Default `true`. If set to false, dropdown will not close on inner item click
  * @param {function} onOpen The callback to execute on dropdown open
  * @param {string} side Force display on the specified side (left | right)
+ * @param {boolean} visibleOnInit Force dropdown to load
+ * @param {number} distanceFromBorder Distance from window border in pixel
  */
 const ScDropdownComponent = {
     template: `
@@ -42,7 +44,7 @@ const ScDropdownComponent = {
         closeOnSelect: '<',
         onOpen: '&',
         side: '@',
-        visible: '=',
+        visibleOnInit: '<',
         distanceFromBorder: '@'
     },
     transclude: {

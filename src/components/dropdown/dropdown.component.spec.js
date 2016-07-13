@@ -37,7 +37,7 @@ describe('Dropdown component', () => {
 
         createElement = () => {
             element = angular.element(`
-                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible="visible" distance-from-border="{{distanceFromBorder}}">
+                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect" visible-on-init="visible" distance-from-border="{{distanceFromBorder}}">
                     <sc-dropdown-trigger id="trigger">
                         Trigger
                     </sc-dropdown-trigger>
@@ -347,6 +347,7 @@ describe('Dropdown component', () => {
         it('should put the content on the bottom if more space at bottom, with scrollbar (content does not fit), ', inject(() => {
             //given
             scope.side = 'left';
+            scope.distanceFromBorder = '30';
             createElement();
             const content = element.find('.sc-dropdown-content');
             const trigger = element.find('.sc-dropdown-trigger');
@@ -361,9 +362,11 @@ describe('Dropdown component', () => {
             expect(content.children()[0].style.height).toEqual('260px');
         }));
 
+
         it('should put the content on the top if more space at top without scrollbar (content does fit)', () => {
             //given
             scope.side = 'left';
+            scope.distanceFromBorder = '30';
             createElement();
             const content = element.find('.sc-dropdown-content');
             const trigger = element.find('.sc-dropdown-trigger');
@@ -382,6 +385,7 @@ describe('Dropdown component', () => {
         it('should put the content on the top if more space at top with scrollbar (content does not fit), ', inject(() => {
             //given
             scope.side = 'left';
+            scope.distanceFromBorder = '30';
             createElement();
             const content = element.find('.sc-dropdown-content');
             const trigger = element.find('.sc-dropdown-trigger');
