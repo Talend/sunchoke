@@ -11,6 +11,9 @@
 * [Dropdown menu](dropdown-menu/README.md)
     * [Documentation](dropdown-menu/documentation.md)
 
+* [Slidable](slidable/README.md)
+    * [Documentation](slidable/documentation.md)
+
 * [Splitter](splitter/README.md)
     * [Documentation](splitter/documentation.md)
 
