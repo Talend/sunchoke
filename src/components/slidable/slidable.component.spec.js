@@ -61,7 +61,7 @@ describe('Slidable component', () => {
         expect(element).toBeTruthy();
     });
 
-    it('should hide slidable on creation', function () {
+    it('should hide slidable on creation', () => {
         //given
         scope.visible = false;
 
@@ -73,7 +73,7 @@ describe('Slidable component', () => {
         expect(slidable.hasClass('slide-hide')).toBe(true);
     });
 
-    it('should show slidable on creation', function () {
+    it('should show slidable on creation', () => {
         //given
         scope.visible = true;
 
@@ -85,7 +85,7 @@ describe('Slidable component', () => {
         expect(slidable.hasClass('slide-hide')).toBe(false);
     });
 
-    it('should hide slidable on action click', function () {
+    it('should hide slidable on action click', () => {
         //given
         scope.visible = true;
         scope.controlBar = true;
@@ -100,7 +100,7 @@ describe('Slidable component', () => {
         expect(slidable.hasClass('slide-hide')).toBe(true);
     });
 
-    it('should show slidable on action click', function () {
+    it('should show slidable on action click', () => {
         //given
         scope.visible = false;
         scope.controlBar = true;
@@ -115,7 +115,7 @@ describe('Slidable component', () => {
         expect(slidable.hasClass('slide-hide')).toBe(false);
     });
 
-    it('should show slidable on action click with size in storage', inject(function($window) {
+    it('should show slidable on action click with size in storage', inject(($window) => {
         //given
         scope.visible = false;
         scope.controlBar = true;
@@ -134,7 +134,7 @@ describe('Slidable component', () => {
         expect(element.css('flex')).toBe('0 0 900px');
     }));
 
-    it('should show slidable on action click and set visibility in storage', inject(function($window) {
+    it('should show slidable on action click and set visibility in storage', inject(($window) => {
         //given
         scope.visible = false;
         scope.controlBar = true;
@@ -153,7 +153,7 @@ describe('Slidable component', () => {
         expect(JSON.parse($window.localStorage.getItem(visibleStateKey))).toBeTruthy();
     }));
 
-    it("should show '>' when left slidable is hidden", function () {
+    it("should show '>' when left slidable is hidden", () => {
         //given
         scope.visible = false;
         scope.controlBar = true;
@@ -161,12 +161,12 @@ describe('Slidable component', () => {
         //when
         createElement('left');
         //then
-        var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
-        var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
+        const actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
+        const displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('›');
     });
 
-    it("should show '<' when left slidable is displayed", function () {
+    it("should show '<' when left slidable is displayed", () => {
         //given
         scope.visible = true;
         scope.controlBar = true;
@@ -175,12 +175,12 @@ describe('Slidable component', () => {
         createElement('left');
 
         //then
-        var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
-        var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
+        const actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
+        const displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('‹');
     });
 
-    it("should show '<' when right slidable is hidden", function () {
+    it("should show '<' when right slidable is hidden", () => {
         //given
         scope.visible = false;
         scope.controlBar = true;
@@ -189,12 +189,12 @@ describe('Slidable component', () => {
         createElement('right');
 
         //then
-        var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
-        var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
+        const actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
+        const displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('‹');
     });
 
-    it("should show '>' when right slidable is displayed", function () {
+    it("should show '>' when right slidable is displayed", () => {
         //given
         scope.visible = true;
         scope.controlBar = true;
@@ -203,12 +203,12 @@ describe('Slidable component', () => {
         createElement('right');
 
         //then
-        var actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
-        var displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
+        const actionOnlySpan = element.find('.action').eq(0).find('span').eq(0);
+        const displayedActionText = actionOnlySpan.find('span').not('.ng-hide').eq(0).text();
         expect(displayedActionText).toBe('›');
     });
 
-    it('should set and configure resize feature on left slidable', function() {
+    it('should set and configure resize feature on left slidable', () => {
         //given
         scope.visible = true;
         scope.controlBar = true;
@@ -217,11 +217,11 @@ describe('Slidable component', () => {
         createResizableElement('right');
 
         //then
-        var resizeBar = element.find('.resize-bar.resize-right');
+        const resizeBar = element.find('.resize-bar.resize-right');
         expect(resizeBar.length).toBe(1);
     });
 
-    it('should set flex constant size on slidable creation if there is a size in localStorage', inject(function($window) {
+    it('should set flex constant size on slidable creation if there is a size in localStorage', inject(($window) => {
         //given
         $window.localStorage.setItem(resizableId, '500');
         scope.visible = true;
@@ -316,7 +316,7 @@ describe('Slidable component', () => {
 
             }));
 
-            it('should do nothing on mouse move without drag on', inject(function($window) {
+            it('should do nothing on mouse move without drag on', inject(($window) => {
                 //given
                 $window.localStorage.setItem(resizableId, '500');
                 scope.visible = true;

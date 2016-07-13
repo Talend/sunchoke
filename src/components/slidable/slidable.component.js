@@ -23,6 +23,7 @@ import ScSlidableCtrl from './slidable.controller.js';
  * @param {string} side `left` (default) | right. This defines the action bar and the resize bar position
  * @param {string} resizableKey Pass unique ID that will be used to store custom size in local storage (key = {data-prep-' + resizable_namespace + '-width}).<br/>
  * @param {string} controlBar If 'false', the action bar will not been displayed.<br/>
+ * @param {string} visibleStateKey Pass unique ID that will be used to store visibility in local storage (key = {data-prep-' + visibility_namespace}).<br/>
  * Resize feature is disabled by default and enabled if the attribute si set
  */
 const ScSlidableComponent = {
@@ -38,20 +39,21 @@ const ScSlidableComponent = {
                 <ng-transclude class="fixed-content"></ng-transclude>
             </div>
         </div>
-        <div class="action {{$ctrl.actionCssClass}}"
+        <div class="action {{::$ctrl.side}}"
              ng-if="$ctrl.controlBar"
-             ng-click="$ctrl.toggle()">
-            <span ng-if="::($ctrl.side == 'left')">
+             ng-click="$ctrl.toggle()"
+             ng-switch="::($ctrl.side)">
+            <span ng-switch-when="left">
                 <span ng-show="$ctrl.visible">&#8249;</span>
                 <span ng-show="!$ctrl.visible">&#8250;</span>
             </span>
-            <span ng-if="::($ctrl.side === 'right')">
+            <span ng-switch-when="right">
                 <span ng-show="$ctrl.visible">&#8250;</span>
                 <span ng-show="!$ctrl.visible">&#8249;</span>
             </span>
         </div>
-        <div class="resize-bar" ng-show="$ctrl.resizableKey"
-             ng-class="{'resize-left': $ctrl.side === 'left', 'resize-right': $ctrl.side === 'right'}">
+        <div class="resize-bar" ng-show="::($ctrl.resizableKey)"
+             ng-class="::{'resize-left': $ctrl.side === 'left', 'resize-right': $ctrl.side === 'right'}">
         </div>
 
     </div>`,
