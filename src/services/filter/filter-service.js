@@ -28,7 +28,7 @@ export default class FilterService {
         const result = actualFilter
             .map(filter => {
                 const newFilter = filter.update(configuration);
-                hasChanged = newFilter !== filter;
+                hasChanged = hasChanged ? hasChanged : newFilter !== filter;
                 return newFilter
             })
             //removing the filter which were removed
