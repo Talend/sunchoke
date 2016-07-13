@@ -25,5 +25,5 @@
 
 | **Name** | **Default** | **Description** |
 | -- | -- | -- |
-| $slidable-resize-bar-width | 3px | The width of the draggable resize bar. |
-| $slidable-action-font-size | 3em | The font of the action button. |
+| $sc-slidable-resize-bar-width | 3px | The width of the draggable resize bar. |
+| $sc-slidable-action-font-size | 3em | The font of the action button. |
