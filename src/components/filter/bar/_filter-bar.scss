@@ -48,6 +48,11 @@
   .filters-remove {
     font-size: 0.7em;
     padding-right: 10px;
-    color: $discrete-dark;;
+    color: $discrete-dark;
+    visibility: hidden;
+  }
+
+  &:hover > .filters-remove{
+    visibility: visible;
   }
 }

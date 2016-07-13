@@ -15,8 +15,24 @@
   @include ellipsis(180px);
   display: inline;
   padding: 0 5px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
+  font-weight: 500;
+
+  input[type="text"] {
+    border-radius: 2px;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 5px;
+    width: 30px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    &:focus{
+      background-color: rgba(255, 255, 255, 1);
+      color:  rgba(0, 0, 0, 1);
+    }
+  }
 
   &-btn-remove {
     margin-left: 5px;

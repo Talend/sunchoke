@@ -20,13 +20,16 @@ const ScFilterItemComponent = {
                   on-remove="$ctrl.onRemove()">
             <span>
                 <span class="filter-item-label">
-                    {{$ctrl.value.fieldName}}{{$ctrl.sign}}
+                    {{$ctrl.value.fieldName}}
+                </span>
+                <span class="operator">
+                    {{$ctrl.sign}}
                 </span>
                 <form ng-submit="$ctrl.submit()">
                         <ul class="filter-item-value" ng-class="{'multi': $ctrl.filterValues.length > 1}">
                         <li ng-repeat="filterValue in $ctrl.filterValues track by $index">
                             <sc-filter-value value="$ctrl.value.getLabel(filterValue)"
-                                          editable="$ctrl.editable && !filterValue.isEmpty"
+                                          editable="$ctrl.editable === true"
                                           on-edit="$ctrl.edit($index, value)"
                                           removable="!($first && $last)"
                                           on-remove="$ctrl.remove($index)">

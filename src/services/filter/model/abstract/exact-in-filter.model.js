@@ -29,7 +29,7 @@ export default class AbstractExactInFilter extends ScFilter {
             //overwrite the filter with the current configuration values
             if (configuration.overwriteMode) {
                 return configurationValues.length > 1 ?
-                    new InFilter(this.fieldId, this.fieldName, configuration.options) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options);
+                    new InFilter(this.fieldId, this.fieldName, configuration.options, true) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options, true);
             } else {
                 //process configuration to remove existing value and add new ones
                 const newValue = this.toggleFilterValues(configuration.options.values);
@@ -38,7 +38,7 @@ export default class AbstractExactInFilter extends ScFilter {
                 if (configuration.options.values.length === 0) {
                     return null;
                 } else {
-                    return configuration.options.values.length > 1 ? new InFilter(this.fieldId, this.fieldName, configuration.options) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options);
+                    return configuration.options.values.length > 1 ? new InFilter(this.fieldId, this.fieldName, configuration.options, true) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options, true);
                 }
             }
         }
@@ -56,9 +56,9 @@ export default class AbstractExactInFilter extends ScFilter {
      */
     setValues(newOptions) {
         if(newOptions.values.length > 1) {
-            return new InFilter(this.fieldId, this.fieldName, newOptions);
+            return new InFilter(this.fieldId, this.fieldName, newOptions, true);
         } else if (newOptions.values.length) {
-            return new ExactFilter(this.fieldId, this.fieldName, newOptions)
+            return new ExactFilter(this.fieldId, this.fieldName, newOptions, true)
         }
         return null;
     }

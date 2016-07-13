@@ -71,30 +71,26 @@ $matches-color: $ground;
 .filter-item {
   @extend %badge-colors;
 
+  .operator{
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
   &-label {
     // font-family: $inconsolota;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     font-weight: 500;
+    margin-left: 10px;
   }
 
   &-value {
     padding: 3px 2px;
     font-family: $base-font-family;
-    text-transform: uppercase;
+    font-style: italic;
 
     li > * {
       display: inline-block;
-    }
-
-    input[type="text"] {
-      text-overflow: ellipsis;
-      margin: 0;
-      padding: 2px;
-      width: 30px;
-      font-weight: 500;
-      // font-family: $inconsolota;
-      background: none;
-      border: none;
-      box-shadow: none;
     }
 
     &.multi {

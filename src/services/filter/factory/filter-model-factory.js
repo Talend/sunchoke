@@ -31,8 +31,8 @@ export default class FilterModelFactory {
                     if (configuration.options.values && configuration.options.values.length > 0) {
                         //creating filter object
                         return configuration.options.values.length > 1 ?
-                            new InFilter(configuration.fieldId, configuration.fieldName, configuration.options) :
-                            new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+                            new InFilter(configuration.fieldId, configuration.fieldName, configuration.options, true) :
+                            new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options, true);
                     }
                     break;
                     //return new InFilter(configuration.fieldId, configuration.fieldName, configuration.options);

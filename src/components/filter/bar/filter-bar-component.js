@@ -45,6 +45,7 @@ const ScFilterBarComponent = {
            ng-click="$ctrl.onRemoveAllFilters()"
            title="Remove all filters"
            ng-if="$ctrl.filters && $ctrl.filters.length > 0"></a>
+           
     </div>`,
     bindings: {
         filters: '<',
