@@ -313,7 +313,7 @@ describe('Pattern filter model', () => {
             };
             const filter = new PatternFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 
-            expect(filter.toDSL()).toBe("(Col1 complies 'tata' or Col1 complies 'toto')");
+            expect(filter.toDSL()).toBe("(Col1 # 'tata' or Col1 # 'toto')");
         }));
     });
 });
