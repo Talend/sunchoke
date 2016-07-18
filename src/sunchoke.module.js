@@ -27,7 +27,7 @@ import FILTER_BAR from './components/filter/bar/filter-bar-module.js';
 import FILTER_ITEM from './components/filter/item/filter-item-module.js';
 import FILTER_ITEM_VALUE from './components/filter/item/value/filter-value-module.js';
 import FILTER_LIST from './components/filter/list/filter-list-module.js';
-
+import LIST_EDITOR_MODULE from './components/list-editor/list-editor.module.js';
 import FILTER_MONITOR from './components/filter/monitor/filter-monitor-module.js';
 /*
 import FILTER_SEARCH from './components/filter/search/filter-search-module.js';
@@ -55,6 +55,7 @@ angular.module(SUNCHOKE_MODULE, [
     FILTER_ITEM_VALUE,
     FILTER_LIST,
     FILTER_MONITOR,
+    LIST_EDITOR_MODULE,
     /*
     FILTER_SEARCH,
     */
