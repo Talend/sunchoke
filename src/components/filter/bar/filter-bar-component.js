@@ -16,13 +16,13 @@ import ScFilterBarctrl from './filter-bar-controller.js';
 const ScFilterBarComponent = {
     template: `
     <div id="filter-bar" >
-        <sc-filter-monitor class="monitor"
+        <!-- <sc-filter-monitor class="monitor"
                         filters="$ctrl.filters"
-                        on-toogle="" <!-- // TODO when implementing toggle filters -->
+                        on-toogle=""
                         nb-lines="$ctrl.nbLines"
                         nb-total-lines="$ctrl.nbTotalLines"
                         percentage="$ctrl.state.playground.grid.displayLinesPercentage"
-                        title="Toggle all filters"></sc-filter-monitor> <!-- // TODO translate -->
+                        title="Toggle all filters"></sc-filter-monitor>  -->
       
     <!--
     TODO when implementing manual filter

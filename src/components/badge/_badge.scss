@@ -24,11 +24,9 @@ $badge-close-color: black;
   font-family: $base-font-family;
   font-size: $badge-font-size;
   font-weight: 300;
-  line-height: 24px;
   color: $badge-color;
   background-color: $background-color;
-  border-radius: 7px;
-  box-shadow: 5px 4px 6px -4px $discrete-dark;
+  border-radius: 4px;
 }
 
 .badge {
@@ -46,6 +44,7 @@ $badge-close-color: black;
     color: $badge-close-color;
     margin-left: 10px;
     margin-right: 10px;
+    vertical-align: middle;
 
     &:hover {
       color: darken($light, 10%);

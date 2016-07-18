@@ -11,7 +11,7 @@
 
   ============================================================================*/
 
-describe('Filter monitor directive', function() {
+/*describe('Filter monitor directive', function() {
     'use strict';
 
     var scope, createElement, element;
@@ -89,4 +89,4 @@ describe('Filter monitor directive', function() {
             expect(scope.toogle).toHaveBeenCalled();
         });
     });
-});
+});*/

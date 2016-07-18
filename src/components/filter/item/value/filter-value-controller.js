@@ -52,4 +52,32 @@ export default class ScFilterValueCtrl {
             event.stopPropagation();
         }
     }
+
+    /**
+     * @ngdoc method
+     * @name editable
+     * @methodOf data-prep.filter-item-value.controller:FilterValueCtrl
+     * @description checks if the value is editable or not
+     * @return true if the value is editable
+     */
+    isValueEditable() {
+        if (this.valueToDisplay) {
+            return this.editable;
+        }
+        return false;
+    }
+
+    /**
+     * @ngdoc method
+     * @name displayValueOrEmpty
+     * @methodOf data-prep.filter-item-value.controller:FilterValueCtrl
+     * @description displays empty text or value
+     * @return the string to display
+     */
+    displayValueOrEmpty() {
+        if (!this.valueToDisplay) {
+            return 'empty';
+        }
+        return this.valueToDisplay;
+    }
 }

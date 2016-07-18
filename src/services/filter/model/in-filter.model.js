@@ -23,10 +23,16 @@ export default class InFilter extends AbstractExactInFilter {
      */
     toDSL() {
         let valueToString = '';
+        let emptyString = '';
         this.options.values.forEach((value, index) => {
-            valueToString+=  index !== this.options.values.length - 1 ? "'" + value + "', " : "'" + value + "'";
+            if (value) {
+                valueToString+=  index !== this.options.values.length - 1 ? "'" + value + "', " : "'" + value + "'";
+            } else {
+                emptyString+= this.fieldId + " is empty or ";
+            }
         });
-        return "(" + this.fieldId + " in [" + valueToString +"])";
+
+        return "(" + emptyString + this.fieldId + " in [" + valueToString +"])";
     }
 
     /*getFilterFn() {

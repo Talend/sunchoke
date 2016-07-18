@@ -24,7 +24,8 @@ describe('Filter Item Component', () => {
             "fieldId": "EmployeeId",
             "fieldName": "EmployeeId",
             "sign": "in",
-            "options": {"values": ["TLND-1058", "TLND-1066", "TLND-1067"]}
+            "options": {"values": ["TLND-1058", "TLND-1066", "TLND-1067"]},
+            "getLabel": (label) => {return label;}
         };
         scope.editable = false;
         scope.removable = false;
@@ -57,7 +58,6 @@ describe('Filter Item Component', () => {
             //given
             scope.editable = true;
             createElement();
-
             //then
             expect(element.find('.filter-value input').size()).toBe(3);
         });

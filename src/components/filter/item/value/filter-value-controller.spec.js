@@ -94,4 +94,47 @@ describe('Filter item value controller', () => {
         //then
         expect(onEditFn).not.toHaveBeenCalled();
     });
+
+    describe('checking if value is editable', () => {
+
+        it('should return false when the value is empty', () => {
+            //given
+            const ctrl = createController();
+            ctrl.valueToDisplay = "";
+            //when
+            //then
+            expect(ctrl.isValueEditable()).toBeFalsy();
+        });
+
+        it('should return false when the value is not empty and filter is editable', () => {
+            //given
+            const ctrl = createController();
+            ctrl.valueToDisplay = "value1";
+            ctrl.editable = true;
+            //when
+            //then
+            expect(ctrl.isValueEditable()).toBeTruthy();
+        });
+    });
+
+    describe('display value when not editable', () => {
+
+        it('should return empty text', () => {
+            //given
+            const ctrl = createController();
+            ctrl.valueToDisplay = "";
+            //when
+            //then
+            expect(ctrl.displayValueOrEmpty()).toBe("empty");
+        });
+
+        it('should return value', () => {
+            //given
+            const ctrl = createController();
+            ctrl.valueToDisplay = "value2";
+            //when
+            //then
+            expect(ctrl.displayValueOrEmpty()).toBe("value2");
+        });
+    });
 });

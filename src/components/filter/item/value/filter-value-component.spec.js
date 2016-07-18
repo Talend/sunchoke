@@ -67,7 +67,7 @@ describe('Filter Item Value Component', () => {
 
         it('should render empty value with span with specific class', () => {
             //given
-            scope.filterValue = 'empty records';
+            scope.filterValue = 'empty';
 
             //when
             createElement();

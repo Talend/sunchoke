@@ -15,7 +15,7 @@ import ScFilterValueCtrl from './filter-value-controller.js';
 
 const ScFilterValueComponent = {
     template: `
-        <div class="filter-value" ng-switch="$ctrl.editable">
+        <div class="filter-value" ng-switch="$ctrl.isValueEditable()">
             <input type="text"
                    ng-switch-when="true"
                    ng-model="$ctrl.valueToDisplay"
@@ -27,10 +27,10 @@ const ScFilterValueComponent = {
                    resizable-input
                    resizable-input-offset="$ctrl.removable ? 10 : 0"
             />
-        
-            <span ng-class="{'empty': $ctrl.valueToDisplay === 'empty records'}"
-                  ng-switch-when="false">
-                {{$ctrl.valueToDisplay}}
+
+            <span ng-class="{'empty': $ctrl.displayValueOrEmpty() === 'empty'}"
+                  ng-switch-default>
+                {{$ctrl.displayValueOrEmpty()}}
             </span>
         
             <a class="filter-value-btn-remove"
