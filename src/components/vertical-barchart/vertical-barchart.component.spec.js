@@ -13,7 +13,7 @@
 
 describe('Vertical barchart component', () => {
     let createElement, scope, element, statsData, secondaryStatsData, ctrl;
-    const flushAllD3Transitions = function () {
+    const flushAllD3Transitions = () => {
         var now = Date.now;
         Date.now = function () {
             return Infinity;
@@ -66,19 +66,19 @@ describe('Vertical barchart component', () => {
         };
     }));
 
-    beforeEach(function () {
+    beforeEach(() => {
         jasmine.clock().install();
     });
 
-    afterEach(function () {
+    afterEach(() => {
         jasmine.clock().uninstall();
 
         scope.$destroy();
         element.remove();
     });
 
-    describe('render', function() {
-        it('should render y axis after a 100ms delay', inject(function ($timeout) {
+    describe('render', () => {
+        it('should render y axis after a 100ms delay', inject(($timeout) => {
             //given
             createElement();
 
@@ -92,7 +92,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.yAxis > text').text()).toBe('Occurrences');
         }));
 
-        it('should render grid after a 100ms delay', inject(function ($timeout) {
+        it('should render grid after a 100ms delay', inject(($timeout) => {
             //given
             createElement();
 
@@ -115,7 +115,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.grid > .tick').eq(9).text()).toBe('9');
         }));
 
-        it('should render hover bars after a 100ms delay', inject(function ($timeout) {
+        it('should render hover bars after a 100ms delay', inject(($timeout) => {
             //given
             createElement();
 
@@ -128,7 +128,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.bg-rect').length).toBe(statsData.length);
         }));
 
-        it('should render primary bars after a 100ms delay', inject(function ($timeout) {
+        it('should render primary bars after a 100ms delay', inject(($timeout) => {
             //given
             createElement();
 
@@ -144,7 +144,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.bg-rect').length).toBe(statsData.length);
         }));
 
-        it('should render x-axis', inject(function ($timeout) {
+        it('should render x-axis', inject(($timeout) => {
             //given
             createElement();
 
@@ -159,7 +159,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.x.axis').length).toBe(1);
         }));
 
-        it('should NOT render x-axis', inject(function ($timeout) {
+        it('should NOT render x-axis', inject(($timeout) => {
             //given
             createElement();
 
@@ -174,7 +174,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.x.axis').length).toBe(0);
         }));
 
-        it('should render primary and secondary bars after a 100ms delay', inject(function ($timeout) {
+        it('should render primary and secondary bars after a 100ms delay', inject(($timeout) => {
             //given
             createElement();
 
@@ -188,7 +188,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.secondaryBar > rect').length).toBe(secondaryStatsData.length);
         }));
 
-        it('should render secondary bars after a 100ms delay', inject(function ($timeout) {
+        it('should render secondary bars after a 100ms delay', inject(($timeout) => {
             //given
             createElement();
 
@@ -206,7 +206,7 @@ describe('Vertical barchart component', () => {
             expect(element.find('.secondaryBar > rect').length).toBe(secondaryStatsData.length);
         }));
 
-        it('should render tiny bars with a 3px height bar', inject(function ($timeout) {
+        it('should render tiny bars with a 3px height bar', inject(($timeout) => {
             //given
             createElement();
 
@@ -231,8 +231,8 @@ describe('Vertical barchart component', () => {
         }));
     });
 
-    describe('active bars', function() {
-        it('should set the initial bars to full opacity', inject(function ($timeout) {
+    describe('active bars', () => {
+        it('should set the initial bars to full opacity', inject(($timeout) => {
             //given
             createElement();
 
@@ -242,12 +242,12 @@ describe('Vertical barchart component', () => {
             $timeout.flush(100);
 
             //then
-            ctrl.buckets[0].forEach(function (bucket) {
+            ctrl.buckets[0].forEach((bucket) => {
                 expect(d3.select(bucket).style('opacity')).toBe('1');
             });
         }));
 
-        it('should set the bars to inactive opacity = 0.4', inject(function ($timeout) {
+        it('should set the bars to inactive opacity = 0.4', inject(($timeout) => {
             //given
             createElement();
 
@@ -269,7 +269,7 @@ describe('Vertical barchart component', () => {
             });
         }));
 
-        it('should update the bars opacity depending on the active limits', inject(function ($timeout) {
+        it('should update the bars opacity depending on the active limits', inject(($timeout) => {
             //given
             createElement();
 
@@ -287,13 +287,13 @@ describe('Vertical barchart component', () => {
             //then
             var expectedOpacities = ['0.4', '0.4', '0.4', '1.0'];
 
-            ctrl.buckets[0].forEach(function (bucket, index) {
+            ctrl.buckets[0].forEach( (bucket, index) => {
                 var opacity = Number(d3.select(bucket).style('opacity')).toFixed(1);
                 expect(opacity).toBe(expectedOpacities[index]);
             });
         }));
 
-        it('should set bars opacity to full opacity when it is in the intersection or a limit', inject(function ($timeout) {
+        it('should set bars opacity to full opacity when it is in the intersection or a limit', inject(($timeout) => {
             //given
             createElement();
 
@@ -312,7 +312,7 @@ describe('Vertical barchart component', () => {
             //then
             var expectedOpacities = ['0.4', '0.4', '1.0', '1.0'];
 
-            ctrl.buckets[0].forEach(function (bucket, index) {
+            ctrl.buckets[0].forEach((bucket, index) => {
                 var opacity = Number(d3.select(bucket).style('opacity')).toFixed(1);
                 expect(opacity).toBe(expectedOpacities[index]);
             });

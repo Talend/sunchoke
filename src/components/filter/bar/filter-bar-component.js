@@ -16,32 +16,34 @@ import ScFilterBarctrl from './filter-bar-controller.js';
 const ScFilterBarComponent = {
     template: `
     <div id="filter-bar" >
-        <!-- <sc-filter-monitor class="monitor"
-                        filters="$ctrl.filters"
-                        on-toogle=""
-                        nb-lines="$ctrl.nbLines"
-                        nb-total-lines="$ctrl.nbTotalLines"
-                        percentage="$ctrl.state.playground.grid.displayLinesPercentage"
-                        title="Toggle all filters"></sc-filter-monitor>  -->
+        <div class="filter-bar-header">
+            <sc-filter-monitor class="monitor"
+                filters="$ctrl.filters"
+                on-toogle=""
+                nb-lines="$ctrl.nbLines"
+                nb-total-lines="$ctrl.nbTotalLines"
+                percentage="$ctrl.state.playground.grid.displayLinesPercentage"
+                title="Toggle all filters">
+            </sc-filter-monitor>
+            <a id="reset-filters"
+               class="filters-remove"
+               data-icon="e"
+               ng-click="$ctrl.onRemoveAllFilters()"
+               title="Remove all filters"
+               ng-if="$ctrl.filters && $ctrl.filters.length > 0">
+            </a>
+        </div>
       
     <!--
     TODO when implementing manual filter
     <sc-filter-search class="search"></sc-filter-search>
         -->
-    
         <sc-filter-list class="list"
-                     filters="$ctrl.filters"
-                     on-filter-remove-value="$ctrl.removeFilterValue(filter, value)"
-                     on-filter-remove="$ctrl.removeFilter(filter)"
-                     removable="$ctrl.removable"></sc-filter-list>
-    
-        <a id="reset-filters"
-           class="filters-remove"
-           data-icon="e"
-           ng-click="$ctrl.onRemoveAllFilters()"
-           title="Remove all filters"
-           ng-if="$ctrl.filters && $ctrl.filters.length > 0"></a>
-           
+            filters="$ctrl.filters"
+            on-filter-remove-value="$ctrl.removeFilterValue(filter, value)"
+            on-filter-remove="$ctrl.removeFilter(filter)"
+            removable="$ctrl.removable">
+        </sc-filter-list>
     </div>`,
     bindings: {
         filters: '<',
