@@ -33,7 +33,10 @@ export default class ScListEditorCtrl {
   $onInit() {
     this.editMode = false;
     this.selectedIds = [];
-    this.ngModel = this.selectedIds;
+    this.ngModel = {
+      title: this.title,
+      items: this.selectedIds
+    };
   }
 
   /**
@@ -61,6 +64,7 @@ export default class ScListEditorCtrl {
   validateEditon() {
     if (this.editTitle !== '') {
       this.title = this.editTitle;
+      this.ngModel.title = this.title;
     }
     this.editMode = false;
   }
@@ -124,18 +128,18 @@ export default class ScListEditorCtrl {
    */
   getBadgeStyle(itemId){
 
-      const style = {};
-      for (let i = 0; i < this.groups.length; i++) {
-          for (let j = 0; j < this.groups[i].items.length; j++) {
-              if (this.groups[i].items[j].id === itemId) {
-                  const group = this.groups[i];
-                  if( group.badgeBackgroundColor ){
-                      style.backgroundColor = group.badgeBackgroundColor;
-                  }
-              }
+    const style = {};
+    for (let i = 0; i < this.groups.length; i++) {
+      for (let j = 0; j < this.groups[i].items.length; j++) {
+        if (this.groups[i].items[j].id === itemId) {
+          const group = this.groups[i];
+          if( group.badgeBackgroundColor ){
+            style.backgroundColor = group.badgeBackgroundColor;
           }
+        }
       }
-      return style;
+    }
+    return style;
   }
 
   /**
