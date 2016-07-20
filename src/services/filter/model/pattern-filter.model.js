@@ -26,8 +26,8 @@ export default class PatternFilter extends ScFilter {
     toDSL() {
         let valueToString = '';
         this.options.values.forEach((value, index) => {
-            valueToString+=  index !== this.options.values.length - 1 ?  this.fieldId + " # '" + value + "' or " :
-            this.fieldId + " # '" + value + "'";
+            valueToString+=  index !== this.options.values.length - 1 ?  this.fieldId + " complies '" + value + "' or " :
+            this.fieldId + " complies '" + value + "'";
         });
         return "(" + valueToString + ")";
     }

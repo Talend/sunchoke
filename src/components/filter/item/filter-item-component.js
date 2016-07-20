@@ -15,7 +15,7 @@ import ScFilterItemCtrl from './filter-item-controller.js';
 
 const ScFilterItemComponent = {
     template: `
-        <sc-talend-badge class="filter-item {{$ctrl.filter.type}}"
+        <sc-talend-badge class="filter-item {{$ctrl.badgeClass}}"
                   removable="$ctrl.removable"
                   on-remove="$ctrl.onRemove()">
             <span>

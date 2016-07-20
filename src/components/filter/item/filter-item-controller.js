@@ -16,6 +16,7 @@ export default class ScFilterItemCtrl {
     $onInit() {
         this.filter = this.value;
         this.filterValues = this.filter.options.values;
+        this.badgeClass = this.filter.options.badgeClass;
         this._setSign();
     }
 
@@ -27,6 +28,7 @@ export default class ScFilterItemCtrl {
                 this.filter = newModel;
                 this._setSign();
                 this.filterValues = newModel.options.values;
+                this.badgeClass = newModel.options.badgeClass;
             }
         }
     }
