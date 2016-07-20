@@ -11,7 +11,7 @@
 
  ============================================================================*/
 describe('Filter monitor directive', () => {
-    let createElement, scope, element, ctrl;
+    let createElement, scope, element;
 
     beforeEach(angular.mock.module('talend.sunchoke.filter-monitor'));
    /* beforeEach(angular.mock.module('pascalprecht.translate', ($translateProvider) => {
@@ -36,8 +36,6 @@ describe('Filter monitor directive', () => {
             angular.element('body').append(element);
             $compile(element)(scope);
             scope.$digest();
-
-            ctrl = element.controller('scFilterMonitor');
         }
 
         spyOn(scope,'toogle');
