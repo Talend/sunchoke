@@ -20,9 +20,9 @@ const ScFilterBarComponent = {
             <sc-filter-monitor class="monitor"
                 filters="$ctrl.filters"
                 on-toogle=""
+                state="$ctrl.state"
                 nb-lines="$ctrl.nbLines"
                 nb-total-lines="$ctrl.nbTotalLines"
-                percentage="$ctrl.state.playground.grid.displayLinesPercentage"
                 title="Toggle all filters">
             </sc-filter-monitor>
             <a id="reset-filters"
@@ -53,7 +53,8 @@ const ScFilterBarComponent = {
         removable: '<',
         onFilterChange: '&',
         nbLines: '<',
-        nbTotalLines: '<'
+        nbTotalLines: '<',
+        state: '='
 
     },
     controller: ScFilterBarctrl

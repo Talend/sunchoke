@@ -33,8 +33,8 @@ const ScFilterMonitorComponent = {
         onToogle: '&',
         nbLines: '<',
         nbTotalLines: '<',
-        percentage: '<'
-        //state: "=" -->
+        percentage: '<',
+        state: "="
     }
 };
 
