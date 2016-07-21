@@ -22,12 +22,13 @@ describe('Autofocus directive', () => {
         createElement = () => {
             const template = `
                 <div>
-                    <div id="parent" sc-autofocus>
-                        <div ng-if="renderChild" sc-autofocus></div>
+                    <div  tabindex="-1" id="parent" sc-autofocus>
+                        <div tabindex="-1" id="child" ng-if="renderChild" sc-autofocus></div>
                     </div>
                 </div>
             `;
             element = $compile(template)(scope);
+            angular.element('body').append(element);
             scope.$digest();
         };
     }));
@@ -37,23 +38,29 @@ describe('Autofocus directive', () => {
         element.remove();
     });
 
-    it('should focus on "sc-autofocus" tagged element', () => {
-        //given
+    it('should focus on "sc-autofocus" tagged element', inject(($timeout) => {
+        // given
+        scope.renderChild = false;
 
-        //when
+        // when
         createElement();
+        $timeout.flush();
 
-        //then
+        // then
+        const parent = element.find('#parent').eq(0)[0];
+        expect(document.activeElement).toBe(parent);
+    }));
 
-    });
+    it('should focus on the last rendered "sc-autofocus" tagged element',  inject(($timeout) => {
+        // given
+        scope.renderChild = true;
 
-    it('should focus on the last rendered "sc-autofocus" tagged element', () => {
-        //given
-
-        //when
+        // when
         createElement();
+        $timeout.flush();
 
-        //then
-
-    });
+        // then
+        const child = element.find('#child').eq(0)[0];
+        expect(document.activeElement).toBe(child);
+    }));
 });
