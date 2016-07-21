@@ -23,7 +23,8 @@ const ScFilterBarComponent = {
                 state="$ctrl.state"
                 nb-lines="$ctrl.nbLines"
                 nb-total-lines="$ctrl.nbTotalLines"
-                title="Toggle all filters">
+                title="Toggle all filters"
+                render-percentage-message= "$ctrl.renderPercentageMessage()">
             </sc-filter-monitor>
             <a id="reset-filters"
                class="filters-remove"
@@ -54,7 +55,8 @@ const ScFilterBarComponent = {
         onFilterChange: '&',
         nbLines: '<',
         nbTotalLines: '<',
-        state: '='
+        state: '=',
+        renderPercentageMessage: '&'
 
     },
     controller: ScFilterBarctrl

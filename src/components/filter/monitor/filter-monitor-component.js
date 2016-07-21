@@ -23,7 +23,7 @@ const ScFilterMonitorComponent = {
         </label>
 
         <div id="filters-monitor-stats"
-             title="percentage to compute">
+             title="{{$ctrl.renderPercentageMessage();}}">
             <span class="filtered-number" ng-bind="$ctrl.nbLines"></span>/{{$ctrl.nbTotalLines}}
         </div>
     </div>`,
@@ -34,7 +34,8 @@ const ScFilterMonitorComponent = {
         nbLines: '<',
         nbTotalLines: '<',
         percentage: '<',
-        state: "="
+        state: '=',
+        renderPercentageMessage: '&'
     }
 };
 

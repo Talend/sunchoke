@@ -68,7 +68,6 @@ describe('Filter monitor directive', () => {
 
             //then
             var statsElement = element.find('#filters-monitor-stats').eq(0);
-            expect(statsElement.attr('title')).toBe('percentage to compute');
             expect(statsElement.text().trim()).toBe('50/200');
         });
     });
