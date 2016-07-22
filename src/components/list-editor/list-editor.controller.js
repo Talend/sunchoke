@@ -37,6 +37,50 @@ export default class ScListEditorCtrl {
       title: this.title,
       items: this.selectedIds
     };
+    this.api = {
+      renameItem:this.renameItem,
+      deleteItem:this.deleteItem,
+      groups:this.groups,
+      selectedIds:this.selectedIds
+    }
+  }
+
+  /**
+   * @ngdoc method
+   * @name renameItem
+   * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+   * @description Member of the api, rename an item with a other
+   * @param oldName ancien label
+   * @param newName nouveau label
+   */
+  renameItem( oldName, newName ){
+    for( let i = 0 ; i < this.groups.length ; i ++ ){
+      for ( let j = this.groups[i].items.length -1 ; j -- ; ){
+        if( this.groups[i].items[j].label === oldName ){
+          this.groups[i].items[j].label = newName;
+        }
+      }
+    }
+  }
+
+  /**
+   * @ngdoc method
+   * @name renameItem
+   * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+   * @description Member of the api, rename an item with a other
+   * @param itemId the id to delete
+   */
+  deleteItem ( itemId ){
+    for( let i = 0 ; i < this.groups.length ; i ++ ){
+      for ( let j = this.groups[i].items.length -1 ; j -- ; ){
+        if( this.groups[i].items[j].id === itemId ){
+          this.groups[i].items.splice(j,1);
+        }
+      }
+    }
+    if( this.selectedIds.indexOf(itemId) !== -1 ){
+      this.selectedIds.splice(this.selectedIds.indexOf(itemId),1);
+    }
   }
 
   /**
@@ -46,7 +90,7 @@ export default class ScListEditorCtrl {
    * @description Function called when the title is edited
    */
   activateEdition() {
-    this.editTitle = this.title;
+    this.editTitle = this.listTitle;
     this.editMode = true;
 
     this.$timeout(()=> {
@@ -63,8 +107,8 @@ export default class ScListEditorCtrl {
    */
   validateEditon() {
     if (this.editTitle !== '') {
-      this.title = this.editTitle;
-      this.ngModel.title = this.title;
+      this.listTitle = this.editTitle;
+      this.ngModel.listTitle = this.listTitle;
     }
     this.editMode = false;
   }

@@ -41,7 +41,7 @@ const ScListEditorComponent = {
   template: `
             <div class="list-editor">
                 <div class="title-box">
-                    <span class="title" ng-bind="$ctrl.title" ng-if="!$ctrl.editMode"></span>
+                    <span class="title" ng-bind="$ctrl.listTitle" ng-if="!$ctrl.editMode"></span>
                     <input pu-elastic-input class="edit-title" placeholder="{{$ctrl.titlePlaceholder}}"
                            ng-model="$ctrl.editTitle" ng-if="$ctrl.editMode"
                            ng-blur="$ctrl.validateEditon()" ng-keydown="$ctrl.editModeKeyPressed($event)">
@@ -74,7 +74,7 @@ const ScListEditorComponent = {
                   <span class="badges">
                     <span class="list-editor-badge" ng-style="$ctrl.getBadgeStyle(badgeId)" ng-repeat="badgeId in $ctrl.selectedIds">
                       <span class="icon" ng-include="$ctrl.getBadgeIcon(badgeId)"></span>
-                      <span class="text" ng-bind="::$ctrl.getLabelById(badgeId)"></span>
+                      <span class="text" ng-bind="$ctrl.getLabelById(badgeId)"></span>
                       <span class="remove-button" ng-click="$ctrl.removeSelectedItem(badgeId)">
                         <svg width="9px" height="9px" viewBox="400 68 9 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="cross" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(402.000000, 70.000000)" stroke-linecap="square">
@@ -89,7 +89,9 @@ const ScListEditorComponent = {
             </div>
     `,
   bindings: {
+    api:'=',
     deleteHandler: "&",
+    deleteSelectedItemHandler: "&",
     deleteButtonTitle:"<",
     editButtonTitle: "<",
     groups: "<",
@@ -97,7 +99,7 @@ const ScListEditorComponent = {
     ngModel: "=",
     placeholder: "<",
     removable: "<",
-    title: "<",
+    listTitle: "<",
     titlePlaceholder: "<",
     titleEditable: "<",
     validateButtonTitle:"<"
