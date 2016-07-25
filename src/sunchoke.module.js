@@ -33,8 +33,6 @@ import FILTER_MONITOR from './components/filter/monitor/filter-monitor-module.js
 import FILTER_SEARCH from './components/filter/search/filter-search-module.js';
 */
 import BADGE from './components/badge/badge-module.js';
-import RESIZABLE_INPUT from './components/resizable-input/resizable-input-module.js';
-
 
 const SUNCHOKE_MODULE = 'talend.sunchoke';
 
@@ -59,8 +57,7 @@ angular.module(SUNCHOKE_MODULE, [
     /*
     FILTER_SEARCH,
     */
-    BADGE,
-    RESIZABLE_INPUT
+    BADGE
 
 ]);
 

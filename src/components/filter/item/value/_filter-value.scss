@@ -12,7 +12,6 @@
   ============================================================================*/
 
 .filter-value {
-  @include ellipsis(180px);
   vertical-align: middle;
   padding: 0;
   background-color: rgba(255, 255, 255, 0.2);
@@ -25,7 +24,8 @@
     text-overflow: ellipsis;
     margin: 0;
     padding: 2px 5px 2px 5px;
-    width: 30px;
+    min-width: 30px;
+    max-width: 260px;
     background: none;
     border: none;
     box-shadow: none;
@@ -44,8 +44,7 @@
   }
 
   &-btn-remove {
-    margin: 0 5px 0 5px;
+    margin: 0 5px 0 0;
     color: $light;
-    vertical-align: middle;
   }
 }

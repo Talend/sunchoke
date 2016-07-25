@@ -24,8 +24,7 @@ const ScFilterValueComponent = {
                    ng-blur="$ctrl.onEdit({value: $ctrl.valueToDisplay})"
                    ng-keydown="$ctrl.onKeydown($event)"
                    ng-trim="false"
-                   resizable-input
-                   resizable-input-offset="$ctrl.removable ? 10 : 0"
+                   pu-elastic-input
             />
 
             <span ng-class="{'empty': $ctrl.displayValueOrEmpty() === 'empty'}"

@@ -58,7 +58,7 @@ export default class ScFilterValueCtrl {
      * @name editable
      * @methodOf data-prep.filter-item-value.controller:FilterValueCtrl
      * @description checks if the value is editable or not
-     * @return true if the value is editable
+     * @return boolean if the value is editable
      */
     isValueEditable() {
         if (this.valueToDisplay) {
@@ -72,7 +72,7 @@ export default class ScFilterValueCtrl {
      * @name displayValueOrEmpty
      * @methodOf data-prep.filter-item-value.controller:FilterValueCtrl
      * @description displays empty text or value
-     * @return the string to display
+     * @return string string to display
      */
     displayValueOrEmpty() {
         if (!this.valueToDisplay) {

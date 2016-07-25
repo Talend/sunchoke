@@ -102,8 +102,6 @@ $matches-color: $ground;
     &.multi {
       input[type="text"] {
         text-overflow: ellipsis;
-        margin-right: -20px;
-        padding-right: 15px;
         transition: .2s width;
       }
     }
