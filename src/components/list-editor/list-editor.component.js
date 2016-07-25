@@ -51,7 +51,7 @@ const ScListEditorComponent = {
                 </div>
                 <div class="choices-box">
                   <span class="search-field">
-                    <span class="plus-icon"></span>
+                    <span class="plus-icon" ng-click="$ctrl.focusInput()"></span>
                     <input type="text" placeholder="{{$ctrl.placeholder}}"
                             ng-model="$ctrl.filter.label"
                             ng-disabled="!$ctrl.groups"

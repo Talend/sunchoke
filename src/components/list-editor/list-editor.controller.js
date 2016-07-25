@@ -45,6 +45,11 @@ export default class ScListEditorCtrl {
     }
   }
 
+
+  focusInput(){
+    this.$element.find("input")[0].focus();
+  }
+
   /**
    * @ngdoc method
    * @name renameItem
@@ -172,18 +177,18 @@ export default class ScListEditorCtrl {
    */
   getBadgeStyle(itemId){
 
-    const style = {};
-    for (let i = 0; i < this.groups.length; i++) {
-      for (let j = 0; j < this.groups[i].items.length; j++) {
-        if (this.groups[i].items[j].id === itemId) {
-          const group = this.groups[i];
-          if( group.badgeBackgroundColor ){
-            style.backgroundColor = group.badgeBackgroundColor;
+      const style = {};
+      for (let i = 0; i < this.groups.length; i++) {
+          for (let j = 0; j < this.groups[i].items.length; j++) {
+              if (this.groups[i].items[j].id === itemId) {
+                  const group = this.groups[i];
+                  if( group.badgeBackgroundColor ){
+                      style.backgroundColor = group.badgeBackgroundColor;
+                  }
+              }
           }
-        }
       }
-    }
-    return style;
+      return style;
   }
 
   /**
