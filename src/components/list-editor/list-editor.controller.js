@@ -34,7 +34,7 @@ export default class ScListEditorCtrl {
     this.editMode = false;
     this.selectedIds = [];
     this.ngModel = {
-      title: this.title,
+      listTitle: this.listTitle,
       items: this.selectedIds
     };
     this.api = {
@@ -45,7 +45,12 @@ export default class ScListEditorCtrl {
     }
   }
 
-
+  /**
+   * @ngdoc method
+   * @name focusInput
+   * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+   * @description Method called on + button to focus the input
+   */
   focusInput(){
     this.$element.find("input")[0].focus();
   }
