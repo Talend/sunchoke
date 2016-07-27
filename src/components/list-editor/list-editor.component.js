@@ -63,7 +63,7 @@ const ScListEditorComponent = {
                     <div class="auto-complete-box" ng-if="$ctrl.showAutocompleteBox === true">
                         <div class="group" ng-repeat="group in $ctrl.groups">
                             <div class="item" ng-repeat="item in group.items|filter:$ctrl.filter:strict"
-                                ng-class="{'disabled':$ctrl.selectedIds.indexOf(item.id) !== -1}"
+                                ng-class="{'disabled':$ctrl.selectedIds.indexOf(item) !== -1}"
                                 ng-mousedown="$ctrl.selectItem($event, item)">
                              <span class="icon" ng-if="::group.icon" ng-include="::group.icon"></span>
                              <span class="text" ng-bind="::item.label"></span>
@@ -72,10 +72,10 @@ const ScListEditorComponent = {
                     </div>
                   </span>
                   <span class="badges">
-                    <span class="list-editor-badge" ng-style="$ctrl.getBadgeStyle(badgeId)" ng-repeat="badgeId in $ctrl.selectedIds">
-                      <span class="icon" ng-include="$ctrl.getBadgeIcon(badgeId)"></span>
-                      <span class="text" ng-bind="$ctrl.getLabelById(badgeId)"></span>
-                      <span class="remove-button" ng-click="$ctrl.removeSelectedItem(badgeId)">
+                    <span class="list-editor-badge" ng-style="$ctrl.getBadgeStyle(item.id)" ng-repeat="item in $ctrl.selectedIds">
+                      <span class="icon" ng-include="$ctrl.getBadgeIcon(item.id)"></span>
+                      <span class="text" ng-bind="item.label"></span>
+                      <span class="remove-button" ng-click="$ctrl.removeSelectedItem(item)">
                         <svg width="9px" height="9px" viewBox="400 68 9 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="cross" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(402.000000, 70.000000)" stroke-linecap="square">
                                 <path d="M0,0 L5,5" id="line2" stroke-width="2"></path>

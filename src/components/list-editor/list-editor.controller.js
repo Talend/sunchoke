@@ -65,7 +65,7 @@ export default class ScListEditorCtrl {
    */
   renameItem( oldName, newName ){
     for( let i = 0 ; i < this.groups.length ; i ++ ){
-      for ( let j = this.groups[i].items.length -1 ; j -- ; ){
+      for ( let j = this.groups[i].items.length ; j -- ; ){
         if( this.groups[i].items[j].label === oldName ){
           this.groups[i].items[j].label = newName;
         }
@@ -81,15 +81,18 @@ export default class ScListEditorCtrl {
    * @param itemId the id to delete
    */
   deleteItem ( itemId ){
+
     for( let i = 0 ; i < this.groups.length ; i ++ ){
-      for ( let j = this.groups[i].items.length -1 ; j -- ; ){
-        if( this.groups[i].items[j].id === itemId ){
+      for ( let j = this.groups[i].items.length ; j -- ; ){
+        if( this.groups[i].items[j].id == itemId ){
           this.groups[i].items.splice(j,1);
         }
       }
     }
-    if( this.selectedIds.indexOf(itemId) !== -1 ){
-      this.selectedIds.splice(this.selectedIds.indexOf(itemId),1);
+    for( let i = 0 ; i < this.selectedIds.length ; i ++ ){
+      if( this.selectedIds[i].id == itemId ){
+        this.selectedIds.splice(i,1);
+      }
     }
   }
 
@@ -165,8 +168,8 @@ export default class ScListEditorCtrl {
    */
   selectItem(event, item) {
 
-    if (this.selectedIds.indexOf(item.id) === -1) {
-      this.selectedIds.unshift(item.id);
+    if (this.selectedIds.indexOf(item) === -1) {
+      this.selectedIds.unshift(item);
     }
     else {
       event.preventDefault();

@@ -26,7 +26,7 @@ describe('List editor component', () => {
             }
 
             const template = `
-                <sc-list-editor ng-model="modelValue">
+                <sc-list-editor ng-model="modelValue" api="api">
                 </sc-list-editor>
             `;
             element = $compile(template)(scope);
@@ -44,7 +44,7 @@ describe('List editor component', () => {
 
         //when
         createElement();
-        ctrl.title = "title1";
+        ctrl.listTitle = "title1";
 
         ctrl.activateEdition();
         $timeout.flush();
@@ -57,36 +57,36 @@ describe('List editor component', () => {
     it('should test the validateEditon function', () => {
 
         createElement();
-        ctrl.title = "title1";
-        expect(ctrl.title).toBe("title1");
+        ctrl.listTitle = "title1";
+        expect(ctrl.listTitle).toBe("title1");
 
         ctrl.editTitle = "title2";
         ctrl.validateEditon();
-        expect(ctrl.title).toBe("title2");
+        expect(ctrl.listTitle).toBe("title2");
 
         ctrl.editTitle = "title3";
         ctrl.validateEditon();
-        expect(ctrl.title).toBe("title3");
+        expect(ctrl.listTitle).toBe("title3");
 
         ctrl.editTitle = "";
         ctrl.validateEditon();
-        expect(ctrl.title).toBe("title3");
+        expect(ctrl.listTitle).toBe("title3");
 
     });
 
     it('should test the editModeKeyPressed function', () => {
 
         createElement();
-        ctrl.title = "title1";
+        ctrl.listTitle = "title1";
         ctrl.editTitle = "title2";
 
         const event = {keyCode:27};
         ctrl.editModeKeyPressed(event);
-        expect(ctrl.title).toBe("title1");
+        expect(ctrl.listTitle).toBe("title1");
 
         event.keyCode = 13;
         ctrl.editModeKeyPressed(event);
-        expect(ctrl.title).toBe("title2");
+        expect(ctrl.listTitle).toBe("title2");
 
     });
 
@@ -100,7 +100,7 @@ describe('List editor component', () => {
         ctrl.selectItem( event, item );
 
         expect(ctrl.selectedIds.length).toBe(1);
-        expect(ctrl.selectedIds[0]).toBe("id1");
+        expect(ctrl.selectedIds[0]).toBe(item);
 
         ctrl.selectItem( event, item );
 
