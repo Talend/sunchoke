@@ -79,7 +79,6 @@ describe('filter list controller', function () {
     it('should call filter render value function', function () {
         //given
         var ctrl = createController();
-        var filter = {};
 
         //when
         ctrl.renderValue("col1", "val1");

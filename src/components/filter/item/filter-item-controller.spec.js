@@ -10,7 +10,7 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
-import RangeFilter from '../../../services/filter/model/range-filter.model.js';
+import RangeFilter from '../../../services/filter/model/range-filter.model.js'; //eslint-disable-line no-unused-vars
 
 describe('Filter item controller', () => {
     let createController, scope;
@@ -60,7 +60,7 @@ describe('Filter item controller', () => {
                 removable: removable,
                 onRemove: onRemoveFn,
                 onRemoveValue: onRemoveValueFn,
-                renderValueFn: renderValueFn,
+                renderValueFn: renderValueFn
             });
             ctrl.$onInit();
             return ctrl;
