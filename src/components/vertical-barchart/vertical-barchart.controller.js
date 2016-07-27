@@ -40,12 +40,18 @@ export default class ScVerticalBarchartCtrl {
             .offset([0, -11])
             .direction('w')
             .html((primaryDatum, index) => {
-                var secondaryDatum = this.secondaryData ? this.secondaryData[index] : undefined;
+                // retrieve value in primaryData
+                let tooltipValuePrimary = this.primaryData[index].data;
+
+                // Check in secondaryData if value existing
+                let tooltipValueSecondary = this.secondaryData.find((obj) => {
+                    return (obj.data.min === tooltipValuePrimary.min && obj.data.max === tooltipValuePrimary.max)
+                });
                 return this.tooltipContent({
                     keyLabel: this.keyLabel,
                     key: this._getXAxisDomain(primaryDatum),
                     primaryValue: this._getPrimaryValue(primaryDatum),
-                    secondaryValue: secondaryDatum && this._getSecondaryValue(secondaryDatum)
+                    secondaryValue: tooltipValueSecondary ? this._getSecondaryValue(tooltipValueSecondary) : "0"
                 });
             });
     }
