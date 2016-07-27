@@ -38,12 +38,19 @@ export default class ScHorizontalBarchartCtrl {
             .attr('class', 'horizontal-barchart-cls d3-tip')
             .offset([-10, 0])
             .html((primaryDatum, index) => {
-                var secondaryDatum = this.secondaryData ? this.secondaryData[index] : undefined;
+                // retrieve value in primaryData
+                let tooltipValue = this.primaryData[index].formattedValue;
+
+                // Check in secondaryData if value existing
+                let toolTipFounded = this.secondaryData.find((obj) => {
+                    return obj.formattedValue === tooltipValue
+                });
+
                 return this.tooltipContent({
                     keyLabel: this.keyLabel,
                     key: this._getKey(primaryDatum),
                     primaryValue: this._getPrimaryValue(primaryDatum),
-                    secondaryValue: secondaryDatum && this._getSecondaryValue(secondaryDatum)
+                    secondaryValue: toolTipFounded ? this._getSecondaryValue(toolTipFounded) : "0"
                 });
             });
     }
@@ -57,15 +64,15 @@ export default class ScHorizontalBarchartCtrl {
             this.$element.empty();
             //because the tooltip is not a child of the horizontal barchart element
             d3.selectAll('.horizontal-barchart-cls.d3-tip').remove();
-                this.$timeout.cancel(this.renderPrimaryTimeout);
-                this.renderPrimaryTimeout = this.$timeout(this._renderWholeHBarchart.bind(this, firstVisuData, secondVisuData), 100, false);
+            this.$timeout.cancel(this.renderPrimaryTimeout);
+            this.renderPrimaryTimeout = this.$timeout(this._renderWholeHBarchart.bind(this, firstVisuData, secondVisuData), 100, false);
         }
 
-        else if(secondVisuData) {
+        else if (secondVisuData) {
             this.$timeout.cancel(this.renderSecondaryTimeout);
             this.renderSecondaryTimeout = this.$timeout(this._renderSecondaryBars.bind(this, secondVisuData), 100, false);
         }
-        
+
     }
 
     //------------------------------------------------------------------------------------------------------
@@ -168,7 +175,7 @@ export default class ScHorizontalBarchartCtrl {
             .selectAll('.' + barClassName)
             .data(statData, (d) => {
                 return this._getKey(d);
-            }) ;
+            });
 
         //enter
         bars.enter()
@@ -248,16 +255,16 @@ export default class ScHorizontalBarchartCtrl {
                 this.tooltip.hide(d);
             })
             .on('click', (d) => {
-                const eventKeyPressed = { ctrlPressed : false, shiftPressed : false };
+                const eventKeyPressed = {ctrlPressed: false, shiftPressed: false};
                 //create a new reference as the data object could be modified outside the component
-                if(d3.event.ctrlKey || d3.event.metaKey) {
+                if (d3.event.ctrlKey || d3.event.metaKey) {
                     eventKeyPressed.ctrlPressed = true;
                 }
-                else if(d3.event.shiftKey) {
+                else if (d3.event.shiftKey) {
                     eventKeyPressed.shiftPressed = true;
                 }
                 //create a new reference as the data object could be modified outside the component
-                this.onClick({eventObject: { eventKeyPressed: eventKeyPressed, item: { ...d}}});
+                this.onClick({eventObject: {eventKeyPressed: eventKeyPressed, item: {...d}}});
             });
     }
 
@@ -289,5 +296,5 @@ export default class ScHorizontalBarchartCtrl {
         this.$timeout.cancel(this.renderPrimaryTimeout);
         this.$timeout.cancel(this.renderSecondaryTimeout);
     }
-    
+
 }
