@@ -24,4 +24,8 @@ export default class FilterListCtrl {
     removeFilter(filter) {
         this.onFilterRemove({filter: filter});
     }
+
+    renderValue(colId, value) {
+        return this.renderValueFn({colId, value});
+    }
 }

@@ -10,13 +10,14 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
+import RangeFilter from '../../../services/filter/model/range-filter.model.js';
 
 describe('Filter item controller', () => {
     let createController, scope;
 
     let filter,
         editable, onEditFn,
-        removable, onRemoveFn, onRemoveValueFn;
+        removable, onRemoveFn, onRemoveValueFn, renderValueFn, getLabel;
 
     beforeEach(angular.mock.module('talend.sunchoke.filter-item'));
 
@@ -32,7 +33,6 @@ describe('Filter item controller', () => {
 
     beforeEach(inject(($rootScope, $componentController) => {
         scope = $rootScope.$new();
-
         filter = {
             fieldId: 'fieldId',
             fieldName: 'fieldName',
@@ -46,6 +46,9 @@ describe('Filter item controller', () => {
         removable = false;
         onRemoveFn = jasmine.createSpy('onRemoveFn');
         onRemoveValueFn = jasmine.createSpy('onRemoveValueFn');
+        renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue("formattedValue");
+        getLabel = jasmine.createSpy('getLabel');
+        filter.getLabel = getLabel;
 
         createController = () => {
             const ctrl = $componentController('scFilterItem', {
@@ -56,8 +59,8 @@ describe('Filter item controller', () => {
                 onEdit: onEditFn,
                 removable: removable,
                 onRemove: onRemoveFn,
-                onRemoveValue: onRemoveValueFn
-
+                onRemoveValue: onRemoveValueFn,
+                renderValueFn: renderValueFn,
             });
             ctrl.$onInit();
             return ctrl;
@@ -190,4 +193,19 @@ describe('Filter item controller', () => {
 
     });
 
+    describe('rendering value in filter item', () => {
+        it('should call filter render value callback and filter get label function', () => {
+            //given
+            const ctrl = createController();
+
+            //when
+            ctrl.renderValue('fieldId', 'value1');
+
+            //then
+            expect(renderValueFn).toHaveBeenCalledWith({
+                colId: 'fieldId', value: 'value1'
+            });
+            expect(getLabel).toHaveBeenCalledWith("formattedValue");
+        });
+    });
 });

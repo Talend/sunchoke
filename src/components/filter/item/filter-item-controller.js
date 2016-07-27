@@ -10,6 +10,7 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
+import RangeFilter from '../../../services/filter/model/range-filter.model.js';
 
 export default class ScFilterItemCtrl {
 
@@ -31,6 +32,20 @@ export default class ScFilterItemCtrl {
                 this.badgeClass = newModel.options.badgeClass;
             }
         }
+    }
+
+    renderValue(colId, value) {
+        let formattedValue = value;
+        if(this.filter instanceof RangeFilter) {
+            formattedValue = {
+                min: this.renderValueFn({colId: colId, value: value.min}),
+                max: this.renderValueFn({colId: colId, value: value.max})
+            };
+        } else {
+            formattedValue = this.renderValueFn({colId: colId, value: value});
+        }
+        //calling the filter getLabel function with the formatted value
+        return this.value.getLabel(formattedValue);
     }
 
     _setSign() {

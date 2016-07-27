@@ -28,7 +28,7 @@ const ScFilterItemComponent = {
                 <form ng-submit="$ctrl.submit()">
                         <ul class="filter-item-value" ng-class="{'multi': $ctrl.filterValues.length > 1}">
                         <li ng-repeat="filterValue in $ctrl.filterValues track by $index">
-                            <sc-filter-value value="$ctrl.value.getLabel(filterValue)"
+                            <sc-filter-value value="$ctrl.renderValue($ctrl.filter.fieldId, filterValue)"
                                           editable="$ctrl.editable === true"
                                           on-edit="$ctrl.edit($index, value)"
                                           removable="!($first && $last)"
@@ -46,8 +46,8 @@ const ScFilterItemComponent = {
         onEdit: '&',
         removable: '<',
         onRemove: '&',
-        onRemoveValue: '&'
-
+        onRemoveValue: '&',
+        renderValueFn: '&'
     }
 };
 

@@ -43,7 +43,8 @@ const ScFilterBarComponent = {
             filters="$ctrl.filters"
             on-filter-remove-value="$ctrl.removeFilterValue(filter, value)"
             on-filter-remove="$ctrl.removeFilter(filter)"
-            removable="$ctrl.removable">
+            removable="$ctrl.removable"
+            render-value-fn="$ctrl.renderValue(colId, value)">
         </sc-filter-list>
     </div>`,
     bindings: {
@@ -56,8 +57,8 @@ const ScFilterBarComponent = {
         nbLines: '<',
         nbTotalLines: '<',
         state: '=',
-        renderPercentageMessage: '&'
-
+        renderPercentageMessage: '&',
+        renderValueFn: '&'
     },
     controller: ScFilterBarctrl
 };

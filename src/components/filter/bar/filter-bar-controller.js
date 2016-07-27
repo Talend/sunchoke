@@ -21,6 +21,10 @@ export default class ScFilterBarCtrl {
         this.onFilterRemoveValue({filter: filter, value: value});
     }
 
+    renderValue(colId, value) {
+        return this.renderValueFn({colId, value});
+    }
+
     $onChanges(changes) {
         if (changes.filters) {
             this.onFilterChange();

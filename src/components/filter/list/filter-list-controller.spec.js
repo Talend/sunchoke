@@ -15,19 +15,22 @@ describe('filter list controller', function () {
     'use strict';
 
     var createController, scope;
-    var onFilterRemoveValue, onFilterRemove;
+    var onFilterRemoveValue, onFilterRemove, renderValueFn;
 
     beforeEach(angular.mock.module('talend.sunchoke.filter-list'));
 
     beforeEach(inject(function ($rootScope, $componentController) {
         onFilterRemove = jasmine.createSpy('onFilterRemove');
         onFilterRemoveValue = jasmine.createSpy('onFilterRemoveValue');
+        renderValueFn = jasmine.createSpy('renderValueFn');
+
         scope = $rootScope.$new();
 
         createController = () => {
             var ctrl = $componentController('scFilterList', {$scope: scope});
             ctrl.onFilterRemoveValue = onFilterRemoveValue;
             ctrl.onFilterRemove = onFilterRemove;
+            ctrl.renderValueFn = renderValueFn;
             return ctrl;
         };
 
@@ -71,5 +74,17 @@ describe('filter list controller', function () {
          * TODO when implementing edit
          */
 
+    });
+
+    it('should call filter render value function', function () {
+        //given
+        var ctrl = createController();
+        var filter = {};
+
+        //when
+        ctrl.renderValue("col1", "val1");
+
+        //then
+        expect(renderValueFn).toHaveBeenCalledWith({colId: "col1", value: "val1"});
     });
 });

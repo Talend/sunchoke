@@ -21,7 +21,8 @@ const ScFilterListComponent = {
                              on-edit="$ctrl.changeFilter(filter, value)"
                              removable ="$ctrl.removable"
                              on-remove="$ctrl.removeFilter(filter)"
-                             on-remove-value="$ctrl.removeFilterValue(filter, value)">
+                             on-remove-value="$ctrl.removeFilterValue(filter, value)"
+                             render-value-fn="$ctrl.renderValue(colId, value)">
                 </sc-filter-item>
             </li>
         </ul>`,
@@ -30,7 +31,8 @@ const ScFilterListComponent = {
         filters: '=',
         onFilterRemoveValue: '&',
         onFilterRemove: '&',
-        removable: "<"
+        removable: "<",
+        renderValueFn: "&"
     }
 };
 

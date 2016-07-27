@@ -22,24 +22,32 @@ export default class ExactFilter extends AbstractExactInFilter {
      * @return { string } the string DSL representing the object
      */
     toDSL() {
-        return this.options.values[0] !== "" ?
-            "(" + this.fieldId + "='"+ this.options.values[0] +"')" :
-        "(" + this.fieldId + " is empty)";
+        let dsl = "";
+        if (isNaN(this.options.values[0])) {
+            dsl = this.options.values[0] !== "" ?
+            "(" + this.fieldId + "='" + this.options.values[0] + "')" :
+            "(" + this.fieldId + " is empty)";
+        } else {
+            dsl = this.options.values[0] !== "" ?
+            "(" + this.fieldId + "=" + this.options.values[0] + ")" :
+            "(" + this.fieldId + " is empty)";
+        }
+        return dsl;
     }
-    
+
     /*getFilterFn() {
-        
-    }
-    
-    toTree() {
-        
-    }
-    
-    static fromTree(subtree) {
-        
-    }
-    
-    static fromDSL(subDSL) {
-        
-    }*/
+
+     }
+
+     toTree() {
+
+     }
+
+     static fromTree(subtree) {
+
+     }
+
+     static fromDSL(subDSL) {
+
+     }*/
 }

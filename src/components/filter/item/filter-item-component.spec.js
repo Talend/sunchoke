@@ -32,6 +32,7 @@ describe('Filter Item Component', () => {
         scope.onEdit = jasmine.createSpy('onEdit');
         scope.onRemove = jasmine.createSpy('onRemove');
         scope.onRemoveValue = jasmine.createSpy('onRemoveValue');
+        scope.renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue("value1");
 
         createElement = () => {
             element = angular.element(
@@ -40,7 +41,8 @@ describe('Filter Item Component', () => {
                               on-edit="onEdit()"
                               removable="removable"
                               on-remove="onRemove()"
-                              on-remove-value="onRemoveValue()"></sc-filter-item>`
+                              on-remove-value="onRemoveValue()"
+                              render-value-fn="renderValueFn()"></sc-filter-item>`
             );
             $compile(element)(scope);
             scope.$digest();
