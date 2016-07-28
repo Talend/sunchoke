@@ -79,7 +79,7 @@ export default class ScHorizontalBarchartCtrl {
     //---------------------------------------- Data manipulation -------------------------------------------
     //------------------------------------------------------------------------------------------------------
     _getKey(data) {
-        return data[this.keyField];
+        return data[this.keyField].label;
     }
 
     _getPrimaryValue(data) {

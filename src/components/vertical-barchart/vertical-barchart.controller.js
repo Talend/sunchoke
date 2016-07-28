@@ -102,7 +102,7 @@ export default class ScVerticalBarchartCtrl {
 
     _getInterval(data) {
         const range = this._getRangeInfos(data);
-        return [range.min, range.max];
+        return [range.minLabel, range.maxLabel];
     }
 
     _getRangeInfos(data) {

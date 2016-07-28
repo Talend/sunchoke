@@ -26,16 +26,16 @@ describe('Vertical barchart component', () => {
     beforeEach(inject(($rootScope, $compile) => {
 
         statsData = [
-            {'data': {min: 0, max: 5}, 'occurrences': 9},
-            {'data': {min: 5, max: 10}, 'occurrences': 8},
-            {'data': {min: 10, max: 15}, 'occurrences': 6},
-            {'data': {min: 15, max: 20}, 'occurrences': 5}
+            {'data': {min: 0, max: 5, minLabel: 0, maxLabel: 5}, 'occurrences': 9},
+            {'data': {min: 5, max: 10, minLabel: 5, maxLabel: 10}, 'occurrences': 8},
+            {'data': {min: 10, max: 15, minLabel: 10, maxLabel: 15}, 'occurrences': 6},
+            {'data': {min: 15, max: 20, minLabel: 15, maxLabel: 20}, 'occurrences': 5}
         ];
         secondaryStatsData = [
-            {'data': {min: 0, max: 5}, 'filteredOccurrences': 9},
-            {'data': {min: 5, max: 10}, 'filteredOccurrences': 8},
-            {'data': {min: 10, max: 15}, 'filteredOccurrences': 6},
-            {'data': {min: 15, max: 20}, 'filteredOccurrences': 5}
+            {'data': {min: 0, max: 5, minLabel: 0, maxLabel: 5}, 'filteredOccurrences': 9},
+            {'data': {min: 5, max: 10, minLabel: 5, maxLabel: 10}, 'filteredOccurrences': 8},
+            {'data': {min: 10, max: 15, minLabel: 10, maxLabel: 15}, 'filteredOccurrences': 6},
+            {'data': {min: 15, max: 20, minLabel: 15, maxLabel: 20}, 'filteredOccurrences': 5}
         ];
 
 
@@ -212,9 +212,9 @@ describe('Vertical barchart component', () => {
 
             //when
             scope.primaryData = [
-                {'data': {min: 0, max: 5}, 'occurrences': 9000000},
-                {'data': {min: 5, max: 10}, 'occurrences': 0},
-                {'data': {min: 10, max: 15}, 'occurrences': 1}
+                {'data': {min: 0, max: 5, minLabel: 0, maxLabel: 5}, 'occurrences': 9000000},
+                {'data': {min: 5, max: 10, minLabel: 5, maxLabel: 10}, 'occurrences': 0},
+                {'data': {min: 10, max: 15, minLabel: 10, maxLabel: 15}, 'occurrences': 1}
             ];
             scope.$digest();
             $timeout.flush(100);

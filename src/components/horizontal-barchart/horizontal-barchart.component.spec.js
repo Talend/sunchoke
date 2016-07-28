@@ -25,24 +25,24 @@ describe('Horizontal barchart component', () => {
 
     beforeEach(inject(($rootScope, $compile) => {
         statsData = [
-            {'data': 'Johnson', 'occurrences': 9},
-            {'data': 'Roosevelt', 'occurrences': 8},
-            {'data': 'Pierce', 'occurrences': 6},
-            {'data': 'Wilson', 'occurrences': 5},
-            {'data': 'Adams', 'occurrences': 4},
-            {'data': 'Quincy', 'occurrences': 4},
-            {'data': 'Clinton', 'occurrences': 4},
-            {'data': 'Harrison', 'occurrences': 4}
+            {'data': {value: 'Johnson', label: 'Johnson'}, 'occurrences': 9},
+            {'data': {value: 'Roosevelt', label: 'Roosevelt'}, 'occurrences': 8},
+            {'data': {value: 'Pierce', label: 'Pierce'}, 'occurrences': 6},
+            {'data': {value: 'Wilson', label: 'Wilson'}, 'occurrences': 5},
+            {'data': {value: 'Adams', label: 'Adams'}, 'occurrences': 4},
+            {'data': {value: 'Quincy', label: 'Quincy'}, 'occurrences': 4},
+            {'data': {value: 'Clinton', label: 'Clinton'}, 'occurrences': 4},
+            {'data': {value: 'Harrison', label: 'Harrison'}, 'occurrences': 4}
         ];
         filteredStatsData = [
-            {'data': 'Johnson', 'filteredOccurrences': 4},
-            {'data': 'Roosevelt', filteredOccurrences: 4},
-            {'data': 'Pierce', 'filteredOccurrences': 4},
-            {'data': 'Wilson', 'filteredOccurrences': 4},
-            {'data': 'Adams', 'filteredOccurrences': 4},
-            {'data': 'Quincy', 'filteredOccurrences': 4},
-            {'data': 'Clinton', 'filteredOccurrences': 4},
-            {'data': 'Harrison', 'filteredOccurrences': 4}
+            {'data': {value: 'Johnson', label: 'Johnson'}, 'filteredOccurrences': 4},
+            {'data': {value: 'Roosevelt', label: 'Roosevelt'}, filteredOccurrences: 4},
+            {'data': {value: 'Pierce', label: 'Pierce'}, 'filteredOccurrences': 4},
+            {'data': {value: 'Wilson', label: 'Wilson'}, 'filteredOccurrences': 4},
+            {'data': {value: 'Adams', label: 'Adams'}, 'filteredOccurrences': 4},
+            {'data': {value: 'Quincy', label: 'Quincy'}, 'filteredOccurrences': 4},
+            {'data': {value: 'Clinton', label: 'Clinton'}, 'filteredOccurrences': 4},
+            {'data': {value: 'Harrison', label: 'Harrison'}, 'filteredOccurrences': 4}
         ];
 
         scope = $rootScope.$new();
@@ -115,8 +115,8 @@ describe('Horizontal barchart component', () => {
 
             //when
             scope.primaryData = [
-                {'data': 'Johnson', 'occurrences': 9e9},
-                {'data': 'Roosevelt', 'occurrences': 8}
+                {'data': {value: 'Johnson', label: 'Johnson'}, 'occurrences': 9e9},
+                {'data': {value: 'Roosevelt', label: 'Roosevelt'}, 'occurrences': 8}
             ];
             scope.$digest();
             $timeout.flush(100);
@@ -133,8 +133,8 @@ describe('Horizontal barchart component', () => {
 
             //when
             scope.primaryData = [
-                {'data': 'Johnson', 'occurrences': 1e8},
-                {'data': 'Roosevelt', 'occurrences': 8}
+                {'data': {value: 'Johnson', label: 'Johnson'}, 'occurrences': 1e8},
+                {'data': {value: 'Roosevelt', label: 'Roosevelt'}, 'occurrences': 8}
             ];
             scope.$digest();
             $timeout.flush(100);
@@ -152,8 +152,8 @@ describe('Horizontal barchart component', () => {
 
             //when
             scope.primaryData = [
-                {'data': 'Johnson', 'occurrences': 1e5},
-                {'data': 'Roosevelt', 'occurrences': 8}
+                {'data': {value: 'Johnson', label: 'Johnson'}, 'occurrences': 1e5},
+                {'data': {value: 'Roosevelt', label: 'Roosevelt'}, 'occurrences': 8}
             ];
             scope.$digest();
             $timeout.flush(100);
@@ -245,9 +245,9 @@ describe('Horizontal barchart component', () => {
 
             //when
             scope.primaryData = [
-                {'data': 'Johnson', 'occurrences': 90000000},
-                {'data': 'Hoover', 'occurrences': 0},
-                {'data': 'Roosevelt', 'occurrences': 1}
+                {'data': {value: 'Johnson', label: 'Johnson'}, 'occurrences': 90000000},
+                {'data': {value: 'Hoover', label: 'Hoover'}, 'occurrences': 0},
+                {'data': {value: 'Roosevelt', label: 'Roosevelt'}, 'occurrences': 1}
             ];
             scope.$digest();
             $timeout.flush(100);
