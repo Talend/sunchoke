@@ -3,7 +3,11 @@
 ### Usage
 
 ```html
-    <sc-dropdown close-on-select="false" on-open="open()" side="left">
+    <sc-dropdown close-on-select="false" 
+                 on-open="open()" 
+                 side="left"
+                 visible-on-init="true"
+                 distance-from-border="50">
         <sc-dropdown-trigger>
             Click Me !
         </sc-dropdown-trigger>
@@ -23,7 +27,9 @@
 | **Name** | **Type** | **Element** | **Default** | **Description** |
 | -- | -- | -- | -- | -- |
 | close-on-select | boolean | sc-dropdown | true | If set to false, dropdown menu will not close on content click |
+| distance-from-border | number | sc-dropdown | 0 | Set a minimum distance from top/bottom border. A scrollbar will appear when content box goes beyond this limit. |
 | side | string | sc-dropdown | right | Force display on the specified side (left or right) |
+| visible-on-init | string | sc-dropdown | false | Show the content box on component instanciation. |
 
 
 ### Outputs
