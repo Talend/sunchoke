@@ -1,18 +1,20 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
 describe('Autofocus directive', () => {
-    let createElement, scope, element;
+    let createElement;
+    let scope;
+    let element;
 
     beforeEach(angular.mock.module('talend.sunchoke.autofocus'));
 
@@ -48,10 +50,10 @@ describe('Autofocus directive', () => {
 
         // then
         const parent = element.find('#parent').eq(0)[0];
-        expect(document.activeElement).toBe(parent);
+        expect(document.activeElement).toBe(parent); // eslint-disable-line angular/document-service
     }));
 
-    it('should focus on the last rendered "sc-autofocus" tagged element',  inject(($timeout) => {
+    it('should focus on the last rendered "sc-autofocus" tagged element', inject(($timeout) => {
         // given
         scope.renderChild = true;
 
@@ -61,6 +63,6 @@ describe('Autofocus directive', () => {
 
         // then
         const child = element.find('#child').eq(0)[0];
-        expect(document.activeElement).toBe(child);
+        expect(document.activeElement).toBe(child); // eslint-disable-line angular/document-service
     }));
 });

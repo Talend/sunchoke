@@ -29,9 +29,9 @@ const ScAutofocusDirective = ($timeout) => {
                 $timeout(() => {
                     element[0].focus();
                 }, 0, false);
-            }
-        }
-    }
+            },
+        },
+    };
 };
 
 export default ScAutofocusDirective;

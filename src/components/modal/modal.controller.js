@@ -37,8 +37,11 @@ export default class ScModalCtrl {
             case 13: // ENTER
                 // click on primary element
                 if (this.validateOnEnter) {
-                    const primaryElement = angular.element(this.$element[0].querySelector('.sc-modal-primary'));
-                    this.$timeout(() => { primaryElement.click(); }, 0, false);
+                    const domPrimaryElement = this.$element[0].querySelector('.sc-modal-primary');
+                    const primaryElement = angular.element(domPrimaryElement);
+                    this.$timeout(() => {
+                        primaryElement.click();
+                    }, 0, false);
                 }
                 break;
 
@@ -46,6 +49,8 @@ export default class ScModalCtrl {
                 if (this.closeOnEscape) {
                     this.close();
                 }
+                break;
+            default:
                 break;
         }
     }

@@ -1,15 +1,15 @@
 /*  ============================================================================
 
-  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 
-  This source code is available under agreement available at
-  https://github.com/Talend/data-prep/blob/master/LICENSE
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
 
-  You should have received a copy of the agreement
-  along with this program; if not, write to Talend SA
-  9 rue Pages 92150 Suresnes, France
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
 
-  ============================================================================*/
+ ============================================================================*/
 
 import ScModalCtrl from './modal.controller.js';
 
@@ -35,8 +35,8 @@ import ScModalCtrl from './modal.controller.js';
  * @param {boolean} closeButton Display a cross that close the modal on click
  * @param {boolean} closeOnEscape Determine if modal you close on ESC keydown
  * @param {boolean} closeOnOverlayClick Determine if modal you close on overlay click
- * @param {boolean} validateOnEnter Determine if .sc-modal-primary element should  be clicked on ENTER keydown
- * @param {function} beforeClose Called when a close is requested. 
+ * @param {boolean} validateOnEnter Click .sc-modal-primary element on ENTER keydown
+ * @param {function} beforeClose Called when a close is requested.
  * If the function returns explicitly false, the close is canceled. Otherwise the modal is closed.
  * @param {function} onClose Close callback
  * @param {string} sc-modal-close Class that tag an element to close the modal on click
@@ -62,11 +62,11 @@ const ScModalComponent = {
     `,
     transclude: {
         scModalHeader: '?scModalHeader',
-        scModalContent: 'scModalContent'
+        scModalContent: 'scModalContent',
     },
     bindings: {
         visible: '=',
-        
+
         // options configuration
         closeButton: '<',
         closeOnEscape: '<',
@@ -75,9 +75,9 @@ const ScModalComponent = {
 
         // close behavior
         beforeClose: '&',
-        onClose: '&'
+        onClose: '&',
     },
-    controller: ScModalCtrl
+    controller: ScModalCtrl,
 };
 
 export default ScModalComponent;
