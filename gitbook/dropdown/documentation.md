@@ -24,7 +24,8 @@
 | -- | -- | -- | -- | -- |
 | close-on-select | boolean | sc-dropdown | true | If set to false, dropdown menu will not close on content click |
 | side | string | sc-dropdown | right | Force display on the specified side (left or right) |
-
+| visible | boolean | sc-dropdown | false | Force display of the dropdown on load |
+| distanceFromBorder | integer | sc-dropdown | 30 | The distance between the top/bottom of the viewport and the dropdown |
 
 ### Outputs
 
