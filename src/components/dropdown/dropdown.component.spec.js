@@ -10,6 +10,7 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
+
 /* eslint-disable no-underscore-dangle */
 
 const clickDropdownTrigger = (elm) => {
@@ -38,7 +39,11 @@ describe('Dropdown component', () => {
 
         createElement = () => {
             element = angular.element(`
-                <sc-dropdown side="{{side}}" on-open="onOpen()" close-on-select="closeOnSelect">
+                <sc-dropdown side="{{side}}" 
+                             on-open="onOpen()" 
+                             close-on-select="closeOnSelect" 
+                             visible-on-init="visibleOnInit" 
+                             distance-from-border="distanceFromBorder">
                     <sc-dropdown-trigger id="trigger">
                         Trigger
                     </sc-dropdown-trigger>
@@ -239,6 +244,93 @@ describe('Dropdown component', () => {
         });
     });
 
+    describe('visible on init', () => {
+        it('should open content on init', inject(($timeout) => {
+            // given
+            scope.visibleOnInit = true;
+
+            // when
+            createElement();
+            $timeout.flush();
+
+            // then
+            expect(element.hasClass('show')).toBe(true);
+        }));
+
+        it('should not open content on init', inject(($timeout) => {
+            // given
+            scope.visibleOnInit = false;
+
+            // when
+            createElement();
+            $timeout.flush();
+
+            // then
+            expect(element.hasClass('show')).toBe(false);
+        }));
+    });
+
+    describe('close on select', () => {
+        it('should stop content mousedown propagation to avoid body callback that hide it', () => {
+            // given
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            // when
+            element.find('.sc-dropdown-content').eq(0).mousedown();
+
+            // then
+            expect(element.hasClass('show')).toBe(true);
+        });
+
+        it('should close dropdown on dropdown content click', () => {
+            // given
+            scope.closeOnSelect = true;
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            // when
+            clickDropdownContent(element);
+
+            // then
+            expect(element.hasClass('show')).toBe(false);
+        });
+
+        it('should NOT close dropdown on dropdown content click', () => {
+            // given
+            scope.closeOnSelect = false;
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            // when
+            clickDropdownContent(element);
+
+            // then
+            expect(element.hasClass('show')).toBe(true);
+        });
+
+        it('should close dropdown on "sc-dropdown-close" element click', () => {
+            // given
+            scope.closeOnSelect = false; // do NOT close on content click
+            createElement();
+            clickDropdownTrigger(element);
+
+            expect(element.hasClass('show')).toBe(true);
+
+            // when
+            element.find('#close').eq(0).click();
+
+            // then
+            expect(element.hasClass('show')).toBe(false);
+        });
+    });
+
     describe('horizontal position (side)', () => {
         const assertContentIsOnTheLeft = (content) => {
             expect(content.hasClass('right')).toBe(false);
@@ -316,7 +408,7 @@ describe('Dropdown component', () => {
         });
     });
 
-    describe('horizontal position (side)', () => {
+    describe('vertical position ', () => {
         it('should put the content on the bottom', () => {
             // given
             scope.side = 'left';
@@ -335,13 +427,19 @@ describe('Dropdown component', () => {
         it('should put the content on the top when content\'s bottom border is out of window',
             inject(($window) => {
                 // given
-                scope.side = '';
+                scope.side = 'left';
                 createElement();
+                const trigger = element.find('.sc-dropdown-trigger').eq(0);
                 const content = element.find('.sc-dropdown-content').eq(0);
                 const windowHeight = angular.element($window)[0].innerHeight;
 
+                spyOn(trigger[0], 'getBoundingClientRect').and.returnValue({
+                    top: windowHeight / 2 + 50,
+                    height: windowHeight,
+                    bottom: windowHeight / 2 + 50 + 30,
+                });
                 spyOn(content[0], 'getBoundingClientRect').and.returnValue({
-                    top: 50,
+                    top: windowHeight / 2 + 50 + 30,
                     height: windowHeight,
                     bottom: windowHeight + 50, // bottom border out of window
                 });
@@ -354,67 +452,40 @@ describe('Dropdown component', () => {
                 expect(content.hasClass('top')).toBe(true);
             })
         );
-    });
 
-    describe('close on select', () => {
-        it('should stop content mousedown propagation to avoid body callback that hide it', () => {
-            // given
-            createElement();
-            clickDropdownTrigger(element);
+        it('should set the content size to be at a defined minimum distance from top/bottom',
+            inject(($window) => {
+                // given
+                scope.side = 'left';
+                scope.distanceFromBorder = 50;
+                createElement();
+                const trigger = element.find('.sc-dropdown-trigger').eq(0);
+                const content = element.find('.sc-dropdown-content').eq(0);
+                const windowHeight = angular.element($window)[0].innerHeight;
 
-            expect(element.hasClass('show')).toBe(true);
+                spyOn(trigger[0], 'getBoundingClientRect').and.returnValue({
+                    top: windowHeight / 2 - 50,
+                    height: 50,
+                    bottom: windowHeight / 2,
+                });
+                spyOn(content[0], 'getBoundingClientRect').and.returnValue({
+                    top: windowHeight / 2,
+                    height: windowHeight / 2,
+                    bottom: windowHeight, // bottom is on the bottom edge
+                });
 
-            // when
-            element.find('.sc-dropdown-content').eq(0).mousedown();
+                // when
+                clickDropdownTrigger(element);
 
-            // then
-            expect(element.hasClass('show')).toBe(true);
-        });
-
-        it('should close dropdown on dropdown content click', () => {
-            // given
-            scope.closeOnSelect = true;
-            createElement();
-            clickDropdownTrigger(element);
-
-            expect(element.hasClass('show')).toBe(true);
-
-            // when
-            clickDropdownContent(element);
-
-            // then
-            expect(element.hasClass('show')).toBe(false);
-        });
-
-        it('should NOT close dropdown on dropdown content click', () => {
-            // given
-            scope.closeOnSelect = false;
-            createElement();
-            clickDropdownTrigger(element);
-
-            expect(element.hasClass('show')).toBe(true);
-
-            // when
-            clickDropdownContent(element);
-
-            // then
-            expect(element.hasClass('show')).toBe(true);
-        });
-
-        it('should close dropdown on "sc-dropdown-close" element click', () => {
-            // given
-            scope.closeOnSelect = false; // do NOT close on content click
-            createElement();
-            clickDropdownTrigger(element);
-
-            expect(element.hasClass('show')).toBe(true);
-
-            // when
-            element.find('#close').eq(0).click();
-
-            // then
-            expect(element.hasClass('show')).toBe(false);
-        });
+                // then
+                const expectedHeight =
+                    windowHeight / 2 // content size
+                    - 50 // offset
+                    - 5; // caret
+                expect(content.find('sc-dropdown-content').eq(0)[0].style.height)
+                    .toBe(`${expectedHeight}px`);
+            })
+        );
     });
 });
-/* eslint-disable no-underscore-dangle */
+/* eslint-enable no-underscore-dangle */

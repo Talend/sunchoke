@@ -21,7 +21,7 @@ const CLOSE_CLASS = 'sc-dropdown-close';
  * @description Dropdown controller
  */
 export default class ScDropdownCtrl {
-    constructor($window, $element, $timeout, $document) {
+    constructor($window, $element, $document, $timeout) {
         'ngInject';
 
         this.$element = $element;
@@ -29,7 +29,6 @@ export default class ScDropdownCtrl {
 
         this.body = angular.element($document[0].body);
         this.window = angular.element($window);
-        this.visible = false;
 
         this._escHideContent = this._escHideContent.bind(this);
         this._hideContent = this._hideContent.bind(this);
@@ -37,10 +36,23 @@ export default class ScDropdownCtrl {
         this._positionContent = this._positionContent.bind(this);
     }
 
+    $onInit() {
+        this.offsetBorder = isNaN(this.distanceFromBorder) ?
+            0 :
+            parseInt(this.distanceFromBorder, 10);
+    }
+
     $postLink() {
         this.trigger = this.$element.children().eq(0);
         this.content = this.$element.children().eq(1);
         this.content.on('mousedown', (e) => e.stopPropagation());
+
+        if (this.visibleOnInit) {
+            // time out needed cause we need to wait for caller to be initialized
+            this.$timeout(() => {
+                this._showContent();
+            });
+        }
     }
 
     $onDestroy() {
@@ -126,32 +138,56 @@ export default class ScDropdownCtrl {
             case 'right':
                 this._alignMenuRight(position);
                 break;
-            default:
-                {
-                    this._alignMenuRight(position);
-                    const menuPosition = this.content[0].getBoundingClientRect();
-                    if (menuPosition.left < 0) {
-                        this._alignMenuLeft(position);
-                    }
+            default: {
+                this._alignMenuRight(position);
+                const menuPosition = this.content[0].getBoundingClientRect();
+                if (menuPosition.left < 0) {
+                    this._alignMenuLeft(position);
                 }
+            }
         }
     }
 
     _positionVerticalMenu() {
-        const positionAction = this.trigger[0].getBoundingClientRect();
-        const positionMenu = this.content[0].getBoundingClientRect();
-        let menuTopPosition = positionAction.bottom + CARRET_HEIGHT;
+        const triggerPosition = this.trigger[0].getBoundingClientRect();
+        const contentPosition = this.content[0].getBoundingClientRect();
+        const windowHeight = this.window[0].innerHeight;
 
-        // when menu bottom is outside of the window, we position the menu at the top of the button
-        const bottomPosition = positionAction.bottom + positionMenu.height + CARRET_HEIGHT;
-        if (bottomPosition > this.window[0].innerHeight) {
-            menuTopPosition = positionAction.top - CARRET_HEIGHT - positionMenu.height;
-            this.content.addClass('top');
-        }
-        else {
+        let freeSpace;
+        let contentTopPosition;
+
+        // calculate free spaces on top/bottom of the trigger
+        const offset = this.offsetBorder + CARRET_HEIGHT;
+        const topFreeSpace = triggerPosition.top - offset;
+        const bottomFreeSpace = windowHeight - triggerPosition.bottom - offset;
+        const contentHeight = contentPosition.height;
+
+        // display menu at the bottom
+        // if there is enough space or more space than top
+        if (contentHeight < bottomFreeSpace || bottomFreeSpace > topFreeSpace) {
+            contentTopPosition = triggerPosition.bottom + CARRET_HEIGHT;
+            freeSpace = bottomFreeSpace;
             this.content.removeClass('top');
         }
-        this.content.css('top', `${menuTopPosition}px`);
+
+        // display menu at the top
+        // if there is not enough space at the bottom and more space on top
+        else {
+            contentTopPosition = triggerPosition.top - CARRET_HEIGHT - contentHeight;
+            if (contentTopPosition < this.offsetBorder) {
+                contentTopPosition = this.offsetBorder;
+            }
+            freeSpace = topFreeSpace;
+            this.content.addClass('top');
+        }
+
+        // scrollbar needed
+        // if the content is bigger than the available free space
+        if (contentHeight > freeSpace) {
+            this.content.children().css('height', `${freeSpace}px`);
+        }
+
+        this.content.css('top', `${contentTopPosition}px`);
     }
 
     _positionContent() {
@@ -160,6 +196,7 @@ export default class ScDropdownCtrl {
     }
 
     _resetPositionContent() {
+        this.content.children().css('height', '');
         this.content.css('top', 'auto');
         this.content.css('left', 'auto');
         this.content.css('right', 'auto');
