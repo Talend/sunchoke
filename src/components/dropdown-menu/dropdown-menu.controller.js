@@ -26,7 +26,12 @@ export default class ScDropdownMenuCtrl {
         this.bodyElement = angular.element($document[0].body);
 
         this._hideMenu = this._hideMenu.bind(this);
+
         this.visible = false;
+
+        if (this.visibleOnInit && this.visibleOnInit === true) {
+          this.visible = true;
+        }
     }
 
     $onInit() {
@@ -39,10 +44,21 @@ export default class ScDropdownMenuCtrl {
     }
 
     toggleMenu() {
+        this._callOnClose();
         this.visible = !this.visible;
     }
 
     _hideMenu() {
-        this.$timeout(() => this.visible = false);
+        this.$timeout(() => {
+          this._callOnClose();
+          this.visible = false;
+        });
+    }
+
+    _callOnClose() {
+      if (this.visible) {
+        //send the event only when the dropdown is already expanded
+        this.onClose();
+      }
     }
 }

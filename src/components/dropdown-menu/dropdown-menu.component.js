@@ -13,6 +13,29 @@
 
 import ScDropdownMenuCtrl from './dropdown-menu.controller.js';
 
+/**
+ * @ngdoc component
+ * @name talend.sunchoke.dropdown.component:ScDropdownComponent
+ * @description Dropdown widget.
+ * @restrict E
+ * @usage
+ <sc-dropdown-menu on-close="onClose()" visible-on-init="visibleOnInit">
+     <sc-dropdown-menu-trigger id="trigger">
+         <span class="sc-dropdown-menu-trigger">Username</span>
+     </sc-dropdown-menu-trigger>
+     <sc-dropdown-menu-dropdown id="dropdown">
+         <ul class="menu">
+             <li ng-click="logout()">
+                 <span class="sc-dropdown-menu-item-label">Logout</span>
+             </li>
+         </ul>
+     </sc-dropdown-menu-dropdown>
+ </sc-dropdown-menu>
+
+ * @param {function} onClose The callback to execute on dropdown close
+ * @param {boolean} visibleOnInit Force dropdown to load
+ */
+
 const ScDropdownMenuComponent = {
     template: `
         <div class="sc-dropdown-menu-trigger"
@@ -26,6 +49,10 @@ const ScDropdownMenuComponent = {
              ng-transclude="sc-dropdown-menu-dropdown">
         </div>
     `,
+    bindings: {
+        onClose: '&',
+        visibleOnInit: '<'
+    },
     transclude: {
         'sc-dropdown-menu-trigger': '?scDropdownMenuTrigger',
         'sc-dropdown-menu-dropdown': '?scDropdownMenuDropdown'

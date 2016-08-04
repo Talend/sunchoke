@@ -18,10 +18,11 @@ describe('Dropdown menu component', () => {
 
     beforeEach(inject(($rootScope, $compile) => {
         scope = $rootScope.$new();
+        scope.onClose = jasmine.createSpy('onClose');
 
         createElement = () => {
             element = angular.element(`
-                <sc-dropdown-menu>
+                <sc-dropdown-menu on-close="onClose()" visible-on-init="visibleOnInit">
                     <sc-dropdown-menu-trigger id="trigger">
                         <span class="sc-dropdown-menu-trigger">Username</span>
                     </sc-dropdown-menu-trigger>
@@ -129,7 +130,7 @@ describe('Dropdown menu component', () => {
     });
 
     describe('body events', () => {
-        it('should hide menu', inject(($timeout) => {
+        it('should hide menu and execute close callback', inject(($timeout) => {
             //given
             createElement();
             const ctrl = element.controller('scDropdownMenu');
@@ -144,6 +145,8 @@ describe('Dropdown menu component', () => {
 
             //then
             expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(0);
+            expect(scope.onClose).toHaveBeenCalled();
+
         }));
 
         it('should stop propagation on element mousedown to prevent body mousedown', () => {
@@ -175,6 +178,50 @@ describe('Dropdown menu component', () => {
 
             //then
             expect($._data(angular.element('body')[0], 'events')).not.toBeDefined();
+        });
+
+        describe('close callback', () => {
+            it('should execute close callback on dropdown close', () => {
+                //given
+                createElement();
+                const ctrl = element.controller('scDropdownMenu');
+                expect(scope.onClose).not.toHaveBeenCalled();
+                ctrl.visible = true;
+                scope.$digest();
+
+                //when
+                element.find('.sc-dropdown-menu-trigger').eq(0).click();
+                scope.$digest();
+
+                //then
+                expect(scope.onClose).toHaveBeenCalled();
+            });
+        });
+
+        describe('set to visible', () => {
+            it('should execute open show content', inject(function () {
+                //given
+                scope.visibleOnInit = true;
+
+                //when
+                createElement();
+                scope.$digest();
+
+                //then
+                expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(1);
+            }));
+
+            it('should not execute open show content if visible not true', inject(function () {
+                //given
+                scope.visibleOnInit = "test_val_erronée";
+
+                //when
+                createElement();
+                scope.$digest();
+
+                //then
+                expect(element.find('.sc-dropdown-menu-dropdown').length).toBe(0);
+            }));
         });
     });
 });
