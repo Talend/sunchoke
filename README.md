@@ -6,6 +6,7 @@ Sunchoke is a set of reusable components built with [AngularJS](https://angularj
 
 [![Dependency Status](https://david-dm.org/talend/sunchoke.svg)](https://david-dm.org/talend/sunchoke)
 [![devDependency Status](https://david-dm.org/talend/sunchoke/dev-status.svg)](https://david-dm.org/talend/sunchoke#info=devDependencies)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 * angularJS 1.5 min. The widgets are based on the component helper definition introduced with version 1.5.
 * angular-animate. Some widgets use angular-animate to perform some animations
