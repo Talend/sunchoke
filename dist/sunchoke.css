@@ -1,0 +1,2202 @@
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+.peace {
+  background-color: #8abc00; }
+
+.peace-dark {
+  background-color: #b6be00; }
+
+.peace-light {
+  background-color: #c1d906; }
+
+.peace-lighter {
+  background-color: #e6efa5; }
+
+.ground {
+  background-color: #B3AF76; }
+
+.ground-dark {
+  background-color: #55580D; }
+
+.wave {
+  background-color: #4fc1de; }
+
+.wave-dark {
+  background-color: #266092; }
+
+.wave-light {
+  background-color: #c1e9f3; }
+
+.wave-lighter {
+  background-color: #e1eff2; }
+
+.wave-pale {
+  background-color: #b1c6d8; }
+
+.discrete {
+  background-color: #99999a; }
+
+.discrete-dark {
+  background-color: #555964; }
+
+.discrete-light {
+  background-color: #DDDDDD; }
+
+.discrete-lighter {
+  background-color: #EEEEEF; }
+
+.juice {
+  background-color: #ffa616; }
+
+.juice-light {
+  background-color: #ffcd00; }
+
+.aggressive {
+  background-color: red; }
+
+.aggressive-light {
+  background-color: #ce6564; }
+
+.light {
+  background-color: #FFFFFF; }
+
+.dark {
+  background-color: #000000; }
+
+[class*='sc-button-'] {
+  padding: 10px 15px;
+  font-weight: bold;
+  border: 2px solid; }
+
+.sc-button-peace {
+  color: white;
+  background-color: #8abc00;
+  border-color: white; }
+  .sc-button-peace:hover {
+    color: #8abc00;
+    background-color: white;
+    border-color: #8abc00; }
+
+.sc-button-peace-dark {
+  color: white;
+  background-color: #b6be00;
+  border-color: white; }
+  .sc-button-peace-dark:hover {
+    color: #b6be00;
+    background-color: white;
+    border-color: #b6be00; }
+
+.sc-button-peace-light {
+  color: white;
+  background-color: #c1d906;
+  border-color: white; }
+  .sc-button-peace-light:hover {
+    color: #c1d906;
+    background-color: white;
+    border-color: #c1d906; }
+
+.sc-button-peace-lighter {
+  color: white;
+  background-color: #e6efa5;
+  border-color: white; }
+  .sc-button-peace-lighter:hover {
+    color: #e6efa5;
+    background-color: white;
+    border-color: #e6efa5; }
+
+.sc-button-ground {
+  color: white;
+  background-color: #B3AF76;
+  border-color: white; }
+  .sc-button-ground:hover {
+    color: #B3AF76;
+    background-color: white;
+    border-color: #B3AF76; }
+
+.sc-button-ground-dark {
+  color: white;
+  background-color: #55580D;
+  border-color: white; }
+  .sc-button-ground-dark:hover {
+    color: #55580D;
+    background-color: white;
+    border-color: #55580D; }
+
+.sc-button-wave {
+  color: white;
+  background-color: #4fc1de;
+  border-color: white; }
+  .sc-button-wave:hover {
+    color: #4fc1de;
+    background-color: white;
+    border-color: #4fc1de; }
+
+.sc-button-wave-dark {
+  color: white;
+  background-color: #266092;
+  border-color: white; }
+  .sc-button-wave-dark:hover {
+    color: #266092;
+    background-color: white;
+    border-color: #266092; }
+
+.sc-button-wave-light {
+  color: white;
+  background-color: #c1e9f3;
+  border-color: white; }
+  .sc-button-wave-light:hover {
+    color: #c1e9f3;
+    background-color: white;
+    border-color: #c1e9f3; }
+
+.sc-button-wave-lighter {
+  color: white;
+  background-color: #e1eff2;
+  border-color: white; }
+  .sc-button-wave-lighter:hover {
+    color: #e1eff2;
+    background-color: white;
+    border-color: #e1eff2; }
+
+.sc-button-wave-pale {
+  color: white;
+  background-color: #b1c6d8;
+  border-color: white; }
+  .sc-button-wave-pale:hover {
+    color: #b1c6d8;
+    background-color: white;
+    border-color: #b1c6d8; }
+
+.sc-button-discrete {
+  color: white;
+  background-color: #99999a;
+  border-color: white; }
+  .sc-button-discrete:hover {
+    color: #99999a;
+    background-color: white;
+    border-color: #99999a; }
+
+.sc-button-discrete-dark {
+  color: white;
+  background-color: #555964;
+  border-color: white; }
+  .sc-button-discrete-dark:hover {
+    color: #555964;
+    background-color: white;
+    border-color: #555964; }
+
+.sc-button-discrete-light {
+  color: white;
+  background-color: #DDDDDD;
+  border-color: white; }
+  .sc-button-discrete-light:hover {
+    color: #DDDDDD;
+    background-color: white;
+    border-color: #DDDDDD; }
+
+.sc-button-discrete-lighter {
+  color: white;
+  background-color: #EEEEEF;
+  border-color: white; }
+  .sc-button-discrete-lighter:hover {
+    color: #EEEEEF;
+    background-color: white;
+    border-color: #EEEEEF; }
+
+.sc-button-juice {
+  color: white;
+  background-color: #ffa616;
+  border-color: white; }
+  .sc-button-juice:hover {
+    color: #ffa616;
+    background-color: white;
+    border-color: #ffa616; }
+
+.sc-button-juice-light {
+  color: white;
+  background-color: #ffcd00;
+  border-color: white; }
+  .sc-button-juice-light:hover {
+    color: #ffcd00;
+    background-color: white;
+    border-color: #ffcd00; }
+
+.sc-button-aggressive {
+  color: white;
+  background-color: red;
+  border-color: white; }
+  .sc-button-aggressive:hover {
+    color: red;
+    background-color: white;
+    border-color: red; }
+
+.sc-button-aggressive-light {
+  color: white;
+  background-color: #ce6564;
+  border-color: white; }
+  .sc-button-aggressive-light:hover {
+    color: #ce6564;
+    background-color: white;
+    border-color: #ce6564; }
+
+.sc-button-light {
+  color: black;
+  background-color: #FFFFFF;
+  border-color: black; }
+  .sc-button-light:hover {
+    color: #FFFFFF;
+    background-color: black;
+    border-color: #FFFFFF; }
+
+.sc-button-dark {
+  color: white;
+  background-color: #000000;
+  border-color: white; }
+  .sc-button-dark:hover {
+    color: #000000;
+    background-color: white;
+    border-color: #000000; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.label-switch {
+  border-radius: 19px;
+  cursor: pointer;
+  display: inline-block;
+  height: 19px;
+  padding: 3px;
+  position: relative;
+  width: 36px;
+  float: right; }
+  .label-switch input[type="checkbox"] {
+    display: none; }
+    .label-switch input[type="checkbox"] + .checkbox {
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      background: #e8e8e8;
+      border-radius: 19px;
+      border: none;
+      cursor: pointer;
+      height: 19px;
+      margin-top: 7px;
+      padding: 0;
+      position: relative;
+      width: 36px;
+      z-index: 0; }
+      .label-switch input[type="checkbox"] + .checkbox:before {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        bottom: 0;
+        left: 2px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        background: white;
+        border-radius: 19px;
+        content: "";
+        height: 15px;
+        width: 32px;
+        z-index: 1; }
+      .label-switch input[type="checkbox"] + .checkbox:after {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        bottom: 0;
+        left: 2px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        height: 15px;
+        width: 15px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        content: "";
+        z-index: 2; }
+    .label-switch input[type="checkbox"]:checked + .checkbox {
+      background: #c0ce33 !important; }
+      .label-switch input[type="checkbox"]:checked + .checkbox:before {
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0); }
+      .label-switch input[type="checkbox"]:checked + .checkbox:after {
+        left: 19px; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-accordion-item .sc-accordion {
+  list-style: none; }
+
+sc-accordion-item .trigger-container {
+  cursor: pointer;
+  padding: 10px; }
+
+sc-accordion-item .content-container {
+  background-color: #DDDDDD;
+  height: 0;
+  visibility: hidden;
+  transition: height 0.2s linear; }
+  sc-accordion-item .content-container content {
+    display: block;
+    padding: 20px; }
+  sc-accordion-item .content-container.opening, sc-accordion-item .content-container.closing {
+    overflow: hidden;
+    visibility: visible; }
+  sc-accordion-item .content-container.open {
+    height: auto;
+    visibility: visible; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.sc-date-picker {
+  position: relative; }
+  .sc-date-picker input {
+    height: 24px;
+    padding-left: 30px;
+    width: 205px;
+    border-radius: 4px;
+    cursor: pointer; }
+  .sc-date-picker .calendar-icon {
+    position: absolute;
+    height: 15px;
+    width: 14px;
+    top: 7px;
+    left: 7px;
+    pointer-events: none;
+    opacity: 0.5;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzQ2MDNGNjIyNjM5MTFFNkE4QkJGQzY0Qjc3NEY4MzYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzQ2MDNGNjMyNjM5MTFFNkE4QkJGQzY0Qjc3NEY4MzYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDNDYwM0Y2MDI2MzkxMUU2QThCQkZDNjRCNzc0RjgzNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDNDYwM0Y2MTI2MzkxMUU2QThCQkZDNjRCNzc0RjgzNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvsCzUgAAAAzSURBVHjaYvj//z8DCAMBiPhPDB8MyNXICBUgGVCuEegERqI0MDL+H9U4DDXSLckBBBgAoedmy4KzrZgAAAAASUVORK5CYII="); }
+    .sc-date-picker .calendar-icon.active {
+      opacity: 1;
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjZBQzlEMjkyNjM5MTFFNjkzRUVBRjA1RTVCRDI2RTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjZBQzlEMkEyNjM5MTFFNjkzRUVBRjA1RTVCRDI2RTAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCNkFDOUQyNzI2MzkxMUU2OTNFRUFGMDVFNUJEMjZFMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCNkFDOUQyODI2MzkxMUU2OTNFRUFGMDVFNUJEMjZFMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjJMeW4AAABBSURBVHjaYvz//z8DCKgnTgYzbs7PZSSGz8RAJmBUS5j0nxyNZNvIAmPA3E4IwPxKto2jGgeVRhb0iKW5jQABBgAFphdPQ9tHiQAAAABJRU5ErkJggg=="); }
+
+.pika-single {
+  z-index: 9999;
+  display: block;
+  position: relative;
+  color: #FFFFFF;
+  background: transparent;
+  border-top-width: 0;
+  border-bottom-color: #bbb;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .pika-single:not(.top):before {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #266092;
+    margin-left: 110px; }
+  .pika-single.top > div:after {
+    content: '';
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    width: 10px;
+    margin-top: -5px;
+    height: 10px;
+    display: block;
+    transform: rotate(-45deg);
+    background: white;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
+    margin-left: 110px; }
+  .pika-single.is-hidden {
+    display: none; }
+  .pika-single.is-bound {
+    position: absolute;
+    box-shadow: 0 5px 3px -5px rgba(0, 0, 0, 0.5); }
+  .pika-single.top {
+    box-shadow: none !important; }
+
+.pika-single {
+  *zoom: 1; }
+  .pika-single:before, .pika-single:after {
+    content: " ";
+    display: table; }
+  .pika-single:after {
+    clear: both; }
+
+.pika-lendar {
+  float: left;
+  width: 240px; }
+
+.pika-title {
+  position: relative;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #266092;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+  .pika-title select {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9998;
+    margin: 0;
+    left: 0;
+    top: 5px;
+    filter: alpha(opacity=0);
+    opacity: 0; }
+
+.pika-label {
+  display: inline-block;
+  *display: inline;
+  position: relative;
+  z-index: 9999;
+  overflow: hidden;
+  margin: 0;
+  padding: 5px 3px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #266092; }
+
+.pika-prev,
+.pika-next {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: 0;
+  width: 5px;
+  height: 10px;
+  text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 16%;
+  padding: 15px; }
+  .pika-prev:hover,
+  .pika-next:hover {
+    opacity: 1; }
+  .pika-prev.is-disabled,
+  .pika-next.is-disabled {
+    cursor: default;
+    opacity: .2; }
+
+.pika-prev,
+.is-rtl .pika-next {
+  float: left;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MURDRERCNzkzNkM4MTFFNkE0MEJBN0EwQzc2ODVCRUIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MURDRERCN0EzNkM4MTFFNkE0MEJBN0EwQzc2ODVCRUIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRENEREI3NzM2QzgxMUU2QTQwQkE3QTBDNzY4NUJFQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRENEREI3ODM2QzgxMUU2QTQwQkE3QTBDNzY4NUJFQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pqa/abAAAABCSURBVHjaYvz//z8DGihlAAki4RYg/oAs0PgfAj6gC8AF6/6jgg9MQIOZ0W2CaW9H144u8QHdSb0gQUYsjq8DCDAAYruCspJbuowAAAAASUVORK5CYII=");
+  *left: 0; }
+
+.pika-next,
+.is-rtl .pika-prev {
+  float: right;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjY4NDM5MDUzNkM4MTFFNjk1NzA5RTg5NUMyRTA5NUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjY4NDM5MDYzNkM4MTFFNjk1NzA5RTg5NUMyRTA5NUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNjg0MzkwMzM2QzgxMUU2OTU3MDlFODk1QzJFMDk1QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyNjg0MzkwNDM2QzgxMUU2OTU3MDlFODk1QzJFMDk1QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhttPiAAAAA9SURBVHjaYvj//38dEDMgYxABAtXYBFEkkAVBoAIkyMKACtpBBBMDJmBG116HbmYjukWN6E5qR3c8QIABADNSiADNw1dZAAAAAElFTkSuQmCC");
+  *right: 0; }
+
+.pika-select {
+  display: inline-block;
+  *display: inline; }
+
+.table-container {
+  border: 1px solid #CCCCCC;
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: center;
+  background: white; }
+  .table-container .ghost-button {
+    background: transparent;
+    border: 1px solid #266092;
+    color: #266092;
+    padding: 7px;
+    border-radius: 4px;
+    margin: 7px;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer; }
+
+.pika-table {
+  width: 100%; }
+  .pika-table thead {
+    color: #FFFFFF;
+    background-color: #266092;
+    outline: 1px solid #266092; }
+  .pika-table th,
+  .pika-table td {
+    width: 14.285714285714286%;
+    padding: 1px;
+    border: 0; }
+  .pika-table th {
+    font-size: 12px;
+    line-height: 25px;
+    font-weight: bold;
+    text-align: center; }
+  .pika-table abbr {
+    border-bottom: none;
+    cursor: default; }
+
+.pika-button {
+  cursor: pointer;
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  text-align: center;
+  border: 0;
+  margin: 0;
+  width: 100%;
+  padding: 5px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 12px;
+  line-height: 15px;
+  background: #fff; }
+  .is-today .pika-button {
+    color: #266092;
+    font-weight: bold; }
+  .is-selected .pika-button {
+    color: #fff;
+    background: #266092;
+    border-radius: 3px;
+    font-weight: bold; }
+    .is-selected .pika-button:hover {
+      color: #fff;
+      background: #266092; }
+  .is-disabled .pika-button,
+  .is-outside-current-month .pika-button {
+    pointer-events: none;
+    cursor: default;
+    color: #999;
+    opacity: .6; }
+  .pika-button:hover {
+    background: #fff;
+    border: 1px solid #266092;
+    box-shadow: none;
+    border-radius: 3px;
+    padding: 4px; }
+
+.pika-week {
+  font-size: 11px;
+  color: #999; }
+
+.is-inrange .pika-button {
+  background: #D5E9F7; }
+
+.is-startrange .pika-button {
+  color: #fff;
+  background: #6CB31D;
+  box-shadow: none;
+  border-radius: 3px; }
+
+.is-endrange .pika-button {
+  color: #fff;
+  background: #33aaff;
+  box-shadow: none;
+  border-radius: 3px; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-dropdown-menu {
+  display: inline-block;
+  position: relative; }
+  sc-dropdown-menu .sc-dropdown-menu-trigger > * {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    line-height: 50px;
+    padding: 0 20px 0 7px; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > * .sc-dropdown-menu-icon {
+      margin-right: 10px; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > * .sc-dropdown-menu-text {
+      display: inline-block;
+      max-width: 130px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > *:after {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: auto;
+      left: auto;
+      content: '\25BE'; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > *.opened:after {
+      content: '\25b4'; }
+  sc-dropdown-menu .sc-dropdown-menu-dropdown {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+    -ms-flex-align: stretch;
+    min-width: 100%;
+    border: 1px solid #99999a;
+    position: absolute; }
+    sc-dropdown-menu .sc-dropdown-menu-dropdown ul {
+      margin: 0;
+      padding: 0; }
+    sc-dropdown-menu .sc-dropdown-menu-dropdown li {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -moz-box-align: center;
+      box-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      -ms-align-items: center;
+      -o-align-items: center;
+      align-items: center;
+      -ms-flex-align: center;
+      border-bottom: 1px solid #99999a;
+      cursor: pointer;
+      color: #555964;
+      background: #FFFFFF;
+      line-height: normal;
+      padding: 10px; }
+      sc-dropdown-menu .sc-dropdown-menu-dropdown li .sc-dropdown-menu-item-icon {
+        font-size: 0.8em;
+        margin-right: 10px; }
+      sc-dropdown-menu .sc-dropdown-menu-dropdown li:hover {
+        color: #FFFFFF;
+        background: #99999a; }
+      sc-dropdown-menu .sc-dropdown-menu-dropdown li:last-child {
+        border-bottom: none; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-dropdown {
+  display: inline-block;
+  position: relative;
+  line-height: 1.5em; }
+  sc-dropdown .sc-dropdown-trigger {
+    cursor: pointer;
+    position: relative;
+    padding: 0 20px 0 7px;
+    min-width: 20px; }
+    sc-dropdown .sc-dropdown-trigger:after {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: auto;
+      left: auto;
+      content: '\25BE'; }
+  sc-dropdown .sc-dropdown-content {
+    background-color: #FFFFFF;
+    border: 1px solid #99999a;
+    border-radius: 3px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    color: #555964;
+    overflow: visible;
+    display: none;
+    position: fixed;
+    z-index: 20; }
+    sc-dropdown .sc-dropdown-content sc-dropdown-content {
+      overflow-y: auto;
+      overflow-x: hidden; }
+    sc-dropdown .sc-dropdown-content > * {
+      display: block;
+      padding: 10px; }
+    sc-dropdown .sc-dropdown-content:before {
+      position: absolute;
+      top: -0.7em;
+      bottom: auto;
+      right: 0;
+      left: 0;
+      color: #FFFFFF;
+      content: "\25b2";
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.3); }
+    sc-dropdown .sc-dropdown-content:after {
+      position: absolute;
+      top: auto;
+      right: 0;
+      bottom: -0.5em;
+      left: 0;
+      color: #FFFFFF;
+      content: "";
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 6px 2px rgba(0, 0, 0, 0.3); }
+    sc-dropdown .sc-dropdown-content.top:before {
+      content: ""; }
+    sc-dropdown .sc-dropdown-content.top:after {
+      content: "\25bc"; }
+    sc-dropdown .sc-dropdown-content.right:before, sc-dropdown .sc-dropdown-content.right:after {
+      left: auto; }
+  sc-dropdown.show .sc-dropdown-content {
+    display: block; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.horizontal-barchart-cls {
+  /* Style northward tooltips differently */ }
+  .horizontal-barchart-cls .bg-rect {
+    fill: #99999a;
+    cursor: pointer; }
+  .horizontal-barchart-cls .primaryBar rect.transparentBar,
+  .horizontal-barchart-cls .secondaryBar rect.transparentBar {
+    fill: #e1eff2; }
+  .horizontal-barchart-cls .primaryBar rect.blueBar,
+  .horizontal-barchart-cls .secondaryBar rect.blueBar {
+    fill: #266092; }
+  .horizontal-barchart-cls .primaryBar rect.brownBar,
+  .horizontal-barchart-cls .secondaryBar rect.brownBar {
+    fill: #B3AF76; }
+  .horizontal-barchart-cls .label {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: .8em;
+    padding-top: 3px;
+    padding-left: 10px; }
+    .horizontal-barchart-cls .label.blueBar {
+      color: #b6be00; }
+    .horizontal-barchart-cls .label.brownBar {
+      color: #55580D; }
+  .horizontal-barchart-cls .grid {
+    shape-rendering: crispEdges; }
+    .horizontal-barchart-cls .grid path {
+      fill: none; }
+    .horizontal-barchart-cls .grid line {
+      stroke: #6c6769;
+      stroke-opacity: .1; }
+    .horizontal-barchart-cls .grid text {
+      font-size: .8em;
+      fill: #99999a; }
+  .horizontal-barchart-cls .hiddenChars {
+    background-color: #E9E9E9;
+    border: 1px dotted #BABABA;
+    white-space: pre; }
+  .horizontal-barchart-cls.d3-tip {
+    line-height: 1;
+    font-size: .8em;
+    font-weight: 400;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFFFFF;
+    border-radius: 2px;
+    z-index: 100000;
+    right: 15px; }
+    .horizontal-barchart-cls.d3-tip:after {
+      /* Creates a small triangle extender for the tooltip */
+      box-sizing: border-box;
+      display: inline;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center; }
+  .horizontal-barchart-cls.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-slidable .slidable {
+  position: relative; }
+  sc-slidable .slidable.slide-left {
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex: 0 0 350px;
+    -moz-flex: 0 0 350px;
+    -ms-flex: 0 0 350px;
+    flex: 0 0 350px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-lines: single;
+    -moz-box-lines: single;
+    box-lines: single;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-transition: 0.2s ease flex;
+    -moz-transition: 0.2s ease flex;
+    transition: 0.2s ease flex; }
+    sc-slidable .slidable.slide-left.slide-hide-add > .content, sc-slidable .slidable.slide-left.slide-hide-remove.slide-hide-remove-active > .content {
+      overflow: hidden; }
+    sc-slidable .slidable.slide-left > .action {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 20px;
+      -moz-flex: 0 0 20px;
+      -ms-flex: 0 0 20px;
+      flex: 0 0 20px; }
+    sc-slidable .slidable.slide-left > .resize-bar {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 2px;
+      -moz-flex: 0 0 2px;
+      -ms-flex: 0 0 2px;
+      flex: 0 0 2px; }
+    sc-slidable .slidable.slide-left.slide-hide {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 20px;
+      -moz-flex: 0 0 20px;
+      -ms-flex: 0 0 20px;
+      flex: 0 0 20px;
+      flex: 0 0 20px !important; }
+      sc-slidable .slidable.slide-left.slide-hide > .content {
+        width: 0; }
+    sc-slidable .slidable.slide-left > .content {
+      -webkit-transition: 0.2s ease width;
+      -moz-transition: 0.2s ease width;
+      transition: 0.2s ease width;
+      width: 330px;
+      overflow-x: hidden;
+      overflow-y: auto; }
+      sc-slidable .slidable.slide-left > .content > .content-container {
+        min-width: 330px; }
+  sc-slidable .slidable.slide-right {
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex: 0 0 350px;
+    -moz-flex: 0 0 350px;
+    -ms-flex: 0 0 350px;
+    flex: 0 0 350px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-lines: single;
+    -moz-box-lines: single;
+    box-lines: single;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-transition: 0.2s ease flex;
+    -moz-transition: 0.2s ease flex;
+    transition: 0.2s ease flex; }
+    sc-slidable .slidable.slide-right.slide-hide-add > .content, sc-slidable .slidable.slide-right.slide-hide-remove.slide-hide-remove-active > .content {
+      overflow: hidden; }
+    sc-slidable .slidable.slide-right > .action {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 20px;
+      -moz-flex: 0 0 20px;
+      -ms-flex: 0 0 20px;
+      flex: 0 0 20px; }
+    sc-slidable .slidable.slide-right > .resize-bar {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 2px;
+      -moz-flex: 0 0 2px;
+      -ms-flex: 0 0 2px;
+      flex: 0 0 2px; }
+    sc-slidable .slidable.slide-right.slide-hide {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 20px;
+      -moz-flex: 0 0 20px;
+      -ms-flex: 0 0 20px;
+      flex: 0 0 20px;
+      flex: 0 0 20px !important; }
+      sc-slidable .slidable.slide-right.slide-hide > .content {
+        width: 0; }
+    sc-slidable .slidable.slide-right > .content {
+      -webkit-transition: 0.2s ease width;
+      -moz-transition: 0.2s ease width;
+      transition: 0.2s ease width;
+      width: 330px;
+      overflow-x: hidden;
+      overflow-y: auto; }
+      sc-slidable .slidable.slide-right > .content > .content-container {
+        min-width: 330px; }
+  sc-slidable .slidable.slide-top {
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex: 0 0 350px;
+    -moz-flex: 0 0 350px;
+    -ms-flex: 0 0 350px;
+    flex: 0 0 350px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-lines: single;
+    -moz-box-lines: single;
+    box-lines: single;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-transition: 0.2s ease transform;
+    -moz-transition: 0.2s ease transform;
+    transition: 0.2s ease transform;
+    position: absolute;
+    background: #FFFFFF;
+    width: 100%;
+    z-index: 100;
+    top: 0; }
+    sc-slidable .slidable.slide-top.slide-hide-add > .content, sc-slidable .slidable.slide-top.slide-hide-remove.slide-hide-remove-active > .content {
+      overflow: hidden; }
+    sc-slidable .slidable.slide-top > .action {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 20px;
+      -moz-flex: 0 0 20px;
+      -ms-flex: 0 0 20px;
+      flex: 0 0 20px; }
+    sc-slidable .slidable.slide-top > .resize-bar {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 2px;
+      -moz-flex: 0 0 2px;
+      -ms-flex: 0 0 2px;
+      flex: 0 0 2px; }
+    sc-slidable .slidable.slide-top > .content {
+      height: 330px;
+      overflow: auto; }
+      sc-slidable .slidable.slide-top > .content > .content-container {
+        min-height: 330px; }
+    sc-slidable .slidable.slide-top.slide-hide {
+      transform: translateY(-100%); }
+  sc-slidable .slidable.slide-bottom {
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex: 0 0 350px;
+    -moz-flex: 0 0 350px;
+    -ms-flex: 0 0 350px;
+    flex: 0 0 350px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-lines: single;
+    -moz-box-lines: single;
+    box-lines: single;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-transition: 0.2s ease transform;
+    -moz-transition: 0.2s ease transform;
+    transition: 0.2s ease transform;
+    position: absolute;
+    background: #FFFFFF;
+    width: 100%;
+    z-index: 100;
+    bottom: 0; }
+    sc-slidable .slidable.slide-bottom.slide-hide-add > .content, sc-slidable .slidable.slide-bottom.slide-hide-remove.slide-hide-remove-active > .content {
+      overflow: hidden; }
+    sc-slidable .slidable.slide-bottom > .action {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 20px;
+      -moz-flex: 0 0 20px;
+      -ms-flex: 0 0 20px;
+      flex: 0 0 20px; }
+    sc-slidable .slidable.slide-bottom > .resize-bar {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      box-flex: 0;
+      -webkit-flex: 0 0 2px;
+      -moz-flex: 0 0 2px;
+      -ms-flex: 0 0 2px;
+      flex: 0 0 2px; }
+    sc-slidable .slidable.slide-bottom > .content {
+      height: 330px;
+      overflow: auto; }
+      sc-slidable .slidable.slide-bottom > .content > .content-container {
+        min-height: 330px; }
+    sc-slidable .slidable.slide-bottom.slide-hide {
+      transform: translateY(100%); }
+  sc-slidable .slidable > .content {
+    order: 3; }
+  sc-slidable .slidable > .action {
+    cursor: pointer;
+    font-size: 3em;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    order: 4; }
+    sc-slidable .slidable > .action.right, sc-slidable .slidable > .action.bottom {
+      order: 2; }
+  sc-slidable .slidable > .resize-bar {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    order: 5;
+    width: 3px;
+    cursor: col-resize; }
+    sc-slidable .slidable > .resize-bar.resize-right, sc-slidable .slidable > .resize-bar.bottom {
+      order: 1; }
+  sc-slidable .slidable.no-transition {
+    transition: none !important; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-splitter {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  sc-splitter .split-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+    sc-splitter .split-container .split-handler {
+      position: absolute;
+      text-align: center;
+      background: #EEEEEF;
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -moz-box-align: center;
+      box-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      -ms-align-items: center;
+      -o-align-items: center;
+      align-items: center;
+      -ms-flex-align: center;
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+      box-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      -ms-justify-content: center;
+      -o-justify-content: center;
+      justify-content: center;
+      -ms-flex-pack: center; }
+      sc-splitter .split-container .split-handler .split-handler-square {
+        margin: 0 2px;
+        width: 3px;
+        height: 3px;
+        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.3) inset;
+        background: white; }
+    sc-splitter .split-container .split-first-pane,
+    sc-splitter .split-container .split-second-pane {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+      sc-splitter .split-container .split-first-pane > *,
+      sc-splitter .split-container .split-second-pane > * {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto; }
+    sc-splitter .split-container.horizontal .split-handler {
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      box-orient: vertical;
+      -webkit-box-direction: normal;
+      -moz-box-direction: normal;
+      box-direction: normal;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-direction: column;
+      width: 12px;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      cursor: ew-resize; }
+      sc-splitter .split-container.horizontal .split-handler .split-handler-square {
+        margin: 2px 0; }
+    sc-splitter .split-container.horizontal .split-first-pane {
+      right: 50%; }
+    sc-splitter .split-container.horizontal .split-second-pane {
+      left: -webkit-calc(50% + 12px);
+      left: calc(50% + 12px); }
+    sc-splitter .split-container.vertical .split-handler {
+      height: 12px;
+      top: 50%;
+      left: 0;
+      right: 0;
+      cursor: ns-resize; }
+    sc-splitter .split-container.vertical .split-first-pane {
+      bottom: 50%; }
+    sc-splitter .split-container.vertical .split-second-pane {
+      top: -webkit-calc(50% + 12px);
+      top: calc(50% + 12px); }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-tabs {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  box-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -o-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: stretch;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column; }
+  sc-tabs > .tabs {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+    -ms-flex-align: stretch;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-grow: 0;
+    -moz-flex-grow: 0;
+    flex-grow: 0;
+    -ms-flex-positive: 0;
+    -webkit-flex-shrink: 0;
+    -moz-flex-shrink: 0;
+    flex-shrink: 0;
+    -ms-flex-negative: 0;
+    background-color: #EEEEEF;
+    box-shadow: -2px -5px 2px -4px rgba(0, 0, 0, 0.1) inset;
+    margin-bottom: 0.5em;
+    padding: 0; }
+    sc-tabs > .tabs > .tabs-header {
+      background-color: #EEEEEF;
+      box-shadow: inherit;
+      color: #99999a;
+      cursor: pointer;
+      font-size: 0.90em;
+      text-transform: uppercase;
+      width: auto;
+      padding: 10px;
+      position: relative;
+      overflow: hidden; }
+      sc-tabs > .tabs > .tabs-header.active {
+        background-color: #266092;
+        color: #FFFFFF;
+        font-weight: 600; }
+        sc-tabs > .tabs > .tabs-header.active:after {
+          -webkit-transform: translateX(-50%) rotate(45deg);
+          -moz-transform: translateX(-50%) rotate(45deg);
+          -ms-transform: translateX(-50%) rotate(45deg);
+          -o-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+          content: "";
+          background: #FFFFFF;
+          box-shadow: -1px -1px 5px 0 rgba(0, 0, 0, 0.3) inset;
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          bottom: -25px;
+          left: 50%; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.vertical-barchart-cls {
+  /**************** d3 tooltip *********************************/ }
+  .vertical-barchart-cls .bg-rect {
+    fill: #99999a;
+    cursor: pointer; }
+  .vertical-barchart-cls .primaryBar rect.bar,
+  .vertical-barchart-cls .secondaryBar rect.bar {
+    fill: #4fc1de; }
+  .vertical-barchart-cls .primaryBar rect.blueBar,
+  .vertical-barchart-cls .secondaryBar rect.blueBar {
+    fill: #266092; }
+  .vertical-barchart-cls .grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7; }
+    .vertical-barchart-cls .grid .tick text {
+      opacity: 0.7;
+      font-size: .8em;
+      stroke: black; }
+  .vertical-barchart-cls .grid path {
+    stroke-width: 0; }
+  .vertical-barchart-cls .grid .line {
+    fill: none;
+    stroke: darkorange;
+    stroke-width: 1.5px; }
+  .vertical-barchart-cls .axis {
+    font: 10px sans-serif; }
+    .vertical-barchart-cls .axis path,
+    .vertical-barchart-cls .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges; }
+    .vertical-barchart-cls .axis.x path {
+      display: block; }
+  .vertical-barchart-cls.d3-tip {
+    line-height: 1;
+    /*font-family: $inconsolota;*/
+    font-size: .8em;
+    font-weight: 400;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 2px;
+    z-index: 100000; }
+    .vertical-barchart-cls.d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BA";
+      position: relative;
+      text-align: end;
+      float: right;
+      margin-right: -22px; }
+  .vertical-barchart-cls.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #266092;
+  border-radius: 4px; }
+  .badge * {
+    display: inline; }
+  .badge-btn-close {
+    width: 9px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle; }
+    .badge-btn-close:hover {
+      color: #e6e6e6; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+#filter-bar {
+  background-color: #DDDDDD;
+  color: #555964;
+  min-height: 60px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  -ms-align-items: flex-start;
+  -o-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start; }
+  #filter-bar .filter-bar-header {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    width: 100%;
+    height: 30px;
+    padding-bottom: 5px; }
+    #filter-bar .filter-bar-header .monitor {
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      flex-grow: 1;
+      -ms-flex-positive: 1;
+      -webkit-flex-shrink: 0;
+      -moz-flex-shrink: 0;
+      flex-shrink: 0;
+      -ms-flex-negative: 0;
+      -webkit-flex-basis: 200px;
+      -moz-flex-basis: 200px;
+      flex-basis: 200px;
+      -ms-flex-preferred-size: 200px;
+      padding-left: 10px; }
+    #filter-bar .filter-bar-header a {
+      -webkit-flex-grow: 0;
+      -moz-flex-grow: 0;
+      flex-grow: 0;
+      -ms-flex-positive: 0;
+      -webkit-flex-shrink: 0;
+      -moz-flex-shrink: 0;
+      flex-shrink: 0;
+      -ms-flex-negative: 0;
+      -webkit-flex-basis: 40px;
+      -moz-flex-basis: 40px;
+      flex-basis: 40px;
+      -ms-flex-preferred-size: 40px;
+      text-align: right; }
+      #filter-bar .filter-bar-header a.filters-remove {
+        font-size: 0.5em;
+        padding: 10px;
+        color: #555964;
+        visibility: hidden; }
+  #filter-bar .label-switch input[type="checkbox"] + .checkbox {
+    margin: 0; }
+  #filter-bar .search {
+    -webkit-flex-grow: 0;
+    -moz-flex-grow: 0;
+    flex-grow: 0;
+    -ms-flex-positive: 0;
+    -webkit-flex-shrink: 0;
+    -moz-flex-shrink: 0;
+    flex-shrink: 0;
+    -ms-flex-negative: 0;
+    -webkit-flex-basis: 150px;
+    -moz-flex-basis: 150px;
+    flex-basis: 150px;
+    -ms-flex-preferred-size: 150px; }
+  #filter-bar .list {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    -webkit-flex-shrink: 1;
+    -moz-flex-shrink: 1;
+    flex-shrink: 1;
+    -ms-flex-negative: 1;
+    -webkit-flex-basis: 200px;
+    -moz-flex-basis: 200px;
+    flex-basis: 200px;
+    -ms-flex-preferred-size: 200px;
+    max-height: 50px;
+    width: 100%;
+    overflow-y: auto; }
+  #filter-bar:hover > .filter-bar-header a.filters-remove {
+    visibility: visible; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.valid_records.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #8abc00;
+  border-radius: 4px; }
+
+.invalid_records.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #ffa616;
+  border-radius: 4px; }
+
+.empty_records.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  color: #000000;
+  border-color: #8C8C8C; }
+  .empty_records.filter-item .badge-btn-close {
+    color: #000000;
+    vertical-align: middle; }
+
+.contains.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #266092;
+  border-radius: 4px; }
+
+.exact.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #266092;
+  border-radius: 4px; }
+
+.inside_range.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #4fc1de;
+  border-radius: 4px; }
+
+.matches.filter-item .badge {
+  display: inline-block;
+  padding: 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #B3AF76;
+  border-radius: 4px; }
+
+.filter-item .operator {
+  padding: 0 5px 0 5px;
+  border-radius: 2px;
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.2);
+  vertical-align: middle; }
+
+.filter-item-label {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  margin-left: 10px;
+  vertical-align: middle; }
+
+.filter-item-value {
+  padding: 3px 2px;
+  font-family: "Source Sans Pro", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  font-style: italic; }
+  .filter-item-value li > * {
+    display: inline-block; }
+  .filter-item-value.multi input[type="text"] {
+    text-overflow: ellipsis;
+    transition: .2s width; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+.filter-value {
+  vertical-align: middle;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  font-weight: 500;
+  font-style: normal; }
+  .filter-value input[type="text"] {
+    border-radius: 2px;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 2px 5px 2px 5px;
+    min-width: 30px;
+    max-width: 260px;
+    background: none;
+    border: none;
+    box-shadow: none; }
+    .filter-value input[type="text"]:focus {
+      background-color: white;
+      color: black; }
+  .filter-value span {
+    padding: 2px 5px 2px 5px; }
+    .filter-value span.empty {
+      font-style: italic; }
+  .filter-value-btn-remove {
+    margin: 0 5px 0 0;
+    color: #FFFFFF; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+#filter-list {
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  #filter-list > li {
+    margin: 0 3px 2px; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-list-editor .list-editor {
+  color: #404040; }
+  sc-list-editor .list-editor .title-box {
+    font-size: 14px; }
+    sc-list-editor .list-editor .title-box input {
+      border-bottom-color: #91AFC9;
+      border-left-width: 0;
+      border-right-width: 0;
+      border-top-width: 0;
+      font-size: 14px;
+      margin-left: 5px;
+      margin-right: 10px;
+      outline: 0;
+      padding: 0 5px;
+      text-transform: uppercase; }
+    sc-list-editor .list-editor .title-box > span {
+      display: inline-flex; }
+    sc-list-editor .list-editor .title-box .title {
+      text-transform: uppercase;
+      padding-left: 5px;
+      padding-bottom: 6px;
+      margin-right: 10px; }
+    sc-list-editor .list-editor .title-box .icon-button, sc-list-editor .list-editor .title-box .edit-button, sc-list-editor .list-editor .title-box .delete-button, sc-list-editor .list-editor .title-box .validate-button {
+      background-position: center center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      height: 16px;
+      opacity: 0.65;
+      padding: 10px;
+      width: 16px; }
+      sc-list-editor .list-editor .title-box .icon-button:hover, sc-list-editor .list-editor .title-box .edit-button:hover, sc-list-editor .list-editor .title-box .delete-button:hover, sc-list-editor .list-editor .title-box .validate-button:hover {
+        opacity: 1; }
+    sc-list-editor .list-editor .title-box .edit-button {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjZBODk2RDU0NEVFMTFFNkFGMDc5ODFCQUM4Qzc5OUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjZBODk2RDY0NEVFMTFFNkFGMDc5ODFCQUM4Qzc5OUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCNkE4OTZEMzQ0RUUxMUU2QUYwNzk4MUJBQzhDNzk5QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCNkE4OTZENDQ0RUUxMUU2QUYwNzk4MUJBQzhDNzk5QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pl77h5IAAADpSURBVHjatJPRCoIwFIad8yWiKIqCoFfoZcQHyQfxShAEQRC88j2iN+g6CIQuYp1/bHFQNzDoh59zNs93NtwmlFLBrwrnAkKIBXml8zkrA6RwM8NTZCa9HWgBYdJ7lmWplDKI4/ga8gKXsU3yI8/zNEmSlHc1QQVTJq3JTwIvKEJEPXnphS1YFIUGETH+fnfBpC25t2BZlgB78tkLW7CqKg3WdW3BDa8fwaQ9B5umseCO1TjhHgAm2rYF+ELDwc6cMHLVdZ0FDxP/YwyTpDkGZcCj4xR0fTS4SW9cuL89DK6IXfrZb/MjwAA1EjWWpw6CYwAAAABJRU5ErkJggg=="); }
+    sc-list-editor .list-editor .title-box .delete-button {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0REQkUxMkY0NEVFMTFFNkEzQjNDMzFEOTBCMjg0MDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0REQkUxMzA0NEVFMTFFNkEzQjNDMzFEOTBCMjg0MDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDRERCRTEyRDQ0RUUxMUU2QTNCM0MzMUQ5MEIyODQwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDRERCRTEyRTQ0RUUxMUU2QTNCM0MzMUQ5MEIyODQwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsUpwRIAAABoSURBVHja7JNRCsAwCEPNzXbrHi+zUkW3ljEGYx8LBFTy/JBWSEq2alNz4j6v2QkcwSRfWLIYQAhAH0DOsnnOWzOAW1IOsQlWEldQzj2Cy6HSwWRVe65c+4dfgL/xSNriKx7dnNkFGAAzSzh2ARwdjQAAAABJRU5ErkJggg=="); }
+    sc-list-editor .list-editor .title-box .validate-button {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAALCAYAAACgR9dcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RERFNEJDRDk0NTAzMTFFNkJDQkI5QTU4MjVFMUEzQzUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RERFNEJDRDg0NTAzMTFFNkJDQkI5QTU4MjVFMUEzQzUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2NkVFNDZFQjM4OTAxMUU2QjU3ODgyRTlDQkE3MjVBQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2NkVFNDZFQzM4OTAxMUU2QjU3ODgyRTlDQkE3MjVBQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pqy+iLoAAACbSURBVHjaYvz//z8DDBw8b8JABOAB4i8gBhMDaUACiM8AcR2Iw3jgnDEpGg8AsToQ3wRiEyY05xCr0QHkdJjmRqhzJIjU+ALmZ5CN4VDJA2gG4NQI0/wFKngTzQC8GkGABUq/gErCFB+Biivj0oisGdmAQ0CsChW7jUsjtngGKbID4rdA/AbKfoErCliwiIEUK0DZX/BFPECAAQBqQiwgdt0sqQAAAABJRU5ErkJggg=="); }
+  sc-list-editor .list-editor .choices-box {
+    background-color: #EAEFF5;
+    border: 1px solid #C9D7E4;
+    border-radius: 5px;
+    font-size: 15px;
+    height: 54px;
+    padding: 0 10px;
+    position: relative;
+    width: calc(100% - 20); }
+    sc-list-editor .list-editor .choices-box .plus-icon {
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTYwQzdBNDA0NzQ5MTFFNkI4NThGNkM1QkQzOEM5RkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTYwQzdBNDE0NzQ5MTFFNkI4NThGNkM1QkQzOEM5RkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxNjBDN0EzRTQ3NDkxMUU2Qjg1OEY2QzVCRDM4QzlGQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxNjBDN0EzRjQ3NDkxMUU2Qjg1OEY2QzVCRDM4QzlGQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pk5GMfcAAAA2SURBVHjaYvz//z8DMmBkZIQJMCLLMTEQCaivkBGI/1PVRGzgPzZbiDaRBUs4IowmJxwBAgwAZVAQCkAxzPgAAAAASUVORK5CYII=") no-repeat center center;
+      left: 11px;
+      height: 36px;
+      opacity: 0.4;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      width: 27px;
+      z-index: 6; }
+    sc-list-editor .list-editor .choices-box input {
+      border: 1px solid #D2D7DB;
+      border-radius: 5px;
+      height: 34px;
+      margin-top: 9px;
+      padding-left: 27px;
+      position: relative;
+      width: 150px;
+      z-index: 5; }
+      sc-list-editor .list-editor .choices-box input:focus {
+        border-color: #91AFC9;
+        outline-width: 0; }
+      sc-list-editor .list-editor .choices-box input::-webkit-input-placeholder {
+        font-style: italic; }
+      sc-list-editor .list-editor .choices-box input::-moz-placeholder {
+        font-style: italic; }
+      sc-list-editor .list-editor .choices-box input:-ms-input-placeholder {
+        font-style: italic; }
+    sc-list-editor .list-editor .choices-box .white-border {
+      border-right: 1px solid #D2D7DB;
+      border-left: 1px solid #D2D7DB;
+      position: absolute;
+      margin-top: -4px;
+      height: 4px;
+      background: white;
+      width: 177px;
+      z-index: 3; }
+    sc-list-editor .list-editor .choices-box .auto-complete-box {
+      background: white;
+      border-right: 1px solid #D2D7DB;
+      border-left: 1px solid #D2D7DB;
+      border-bottom: 1px solid #D2D7DB;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      max-height: 320px;
+      overflow: auto;
+      padding-right: 3px;
+      position: absolute;
+      width: 174px;
+      z-index: 10; }
+      sc-list-editor .list-editor .choices-box .auto-complete-box::-webkit-scrollbar {
+        width: 3px; }
+      sc-list-editor .list-editor .choices-box .auto-complete-box::-webkit-scrollbar-track {
+        visibility: hidden; }
+      sc-list-editor .list-editor .choices-box .auto-complete-box::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.5); }
+      sc-list-editor .list-editor .choices-box .auto-complete-box::-webkit-scrollbar-button {
+        height: 0;
+        visibility: hidden; }
+      sc-list-editor .list-editor .choices-box .auto-complete-box .group {
+        margin: 0 15px; }
+        sc-list-editor .list-editor .choices-box .auto-complete-box .group:not(:first-child) {
+          border-top: 1px solid #D2D7DB;
+          padding-top: 5px; }
+      sc-list-editor .list-editor .choices-box .auto-complete-box .icon {
+        padding-right: 3px;
+        fill: #266092; }
+      sc-list-editor .list-editor .choices-box .auto-complete-box .item {
+        padding: 7px 0;
+        cursor: pointer;
+        white-space: nowrap;
+        width: 146px;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        sc-list-editor .list-editor .choices-box .auto-complete-box .item.disabled {
+          opacity: 0.5; }
+          sc-list-editor .list-editor .choices-box .auto-complete-box .item.disabled:hover {
+            font-weight: normal; }
+        sc-list-editor .list-editor .choices-box .auto-complete-box .item:hover {
+          font-weight: bold; }
+  sc-list-editor .list-editor .badges .list-editor-badge {
+    background-color: #999999;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px 6px 10px 10px; }
+    sc-list-editor .list-editor .badges .list-editor-badge .icon {
+      fill: white;
+      padding-right: 3px; }
+    sc-list-editor .list-editor .badges .list-editor-badge .remove-button {
+      cursor: pointer;
+      display: inline-block;
+      padding: 0 5px; }
+      sc-list-editor .list-editor .badges .list-editor-badge .remove-button > svg path {
+        stroke: #FFFFFF; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+#filter-monitor {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-align-content: center;
+  -moz-align-content: center;
+  align-content: center;
+  -ms-flex-line-pack: center; }
+  #filter-monitor #reset-filters {
+    font-size: 0.7em;
+    color: #FFFFFF; }
+    #filter-monitor #reset-filters:hover {
+      color: #4fc1de; }
+  #filter-monitor #filters-monitor-stats {
+    padding: 0px 10px;
+    font-size: 15px; }
+    #filter-monitor #filters-monitor-stats .filtered-number {
+      font-weight: bold; }
+
+/*
+@import "../components/filter/search/filter-search";
+*/
