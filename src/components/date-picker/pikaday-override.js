@@ -474,6 +474,7 @@ import "moment";
                 }
                 if (!hasClass(target, 'pika-select')) {
                     // if this is touch event prevent mouse events emulation
+                    e.stopPropagation();
                     if (e.preventDefault) {
                         e.preventDefault();
                     } else {
@@ -647,7 +648,7 @@ import "moment";
                     self.gotoDate(defDate);
                 }
                 self._d = defDate;
-                this._o.onClose.call(this);
+                // this._o.onClose.call(this);
             } else {
                 self.gotoDate(new Date());
             }
