@@ -32,9 +32,11 @@ const ScDatePickerComponent = {
                     <div class="datepicker-container"></div>
                 </div>`,
     bindings: {
-        "ngModel":"=",
-        "config":"<",
-        "placeholder":"<"
+        "ngModel": "=",
+        "config": "<",
+        "placeholder": "<",
+        //ad a custom behavior after datepicker closing
+        "onCloseFn": "&"
     },
     controller: ScDatePickerCtrl
 };
