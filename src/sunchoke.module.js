@@ -18,6 +18,7 @@ import AUTOFOCUS_MODULE from './components/autofocus/autofocus.module.js';
 import DROPDOWN_MENU_MODULE from './components/dropdown-menu/dropdown-menu.module.js';
 import DROPDOWN_MODULE from './components/dropdown/dropdown.module.js';
 import MODAL_MODULE from './components/modal/modal.module.js';
+import SLIDABLE_MODULE from './components/slidable/slidable.module.js';
 import SPLITTER_MODULE from './components/splitter/splitter.module.js';
 import TABS_MODULE from './components/tabs/tabs.module.js';
 
@@ -31,6 +32,7 @@ angular.module(SUNCHOKE_MODULE, [
     MODAL_MODULE,
     SPLITTER_MODULE,
     TABS_MODULE,
+    SLIDABLE_MODULE,
 ]);
 
 export default SUNCHOKE_MODULE;
