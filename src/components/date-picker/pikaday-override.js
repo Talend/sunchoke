@@ -428,6 +428,8 @@ import "moment";
         {
             var self = this,
                 opts = self.config(options);
+            self.doNotCloseDp = false;
+            self.textErrorDate = null;
 
             self._onMouseDown = function(e)
             {
@@ -546,6 +548,12 @@ import "moment";
                 if (isDate(date)) {
                     self.setDate(date);
                 }
+                else{
+                    //event if it is not a date, save the value and call callback function
+                    self.textErrorDate = opts.field.value;
+                    self._o.onClose.call(self);
+
+                }
                 if (!self._v) {
                     self.show();
                 }
@@ -648,7 +656,10 @@ import "moment";
                     self.gotoDate(defDate);
                 }
                 self._d = defDate;
-                // this._o.onClose.call(this);
+
+                this.doNotCloseDp = true;
+                this._o.onClose.call(this);
+
             } else {
                 self.gotoDate(new Date());
             }
@@ -1197,12 +1208,19 @@ import "moment";
                 if (this._o.bound) {
                     removeEvent(document, 'click', this._onClick);
                 }
-                //this.el.style.position = 'static'; // reset
-                this.el.style.left = 'auto';
+                //Set date-picker left position
+                if(this._o.positionLeft){
+                    this.el.style.left = this._o.positionLeft;
+                }
+                else{
+                    this.el.style.left = 'auto';
+                }
+
                 this.el.style.top = 'auto';
                 addClass(this.el, 'is-hidden');
                 this._v = false;
                 if (v !== undefined && typeof this._o.onClose === 'function') {
+                    this.doNotCloseDp = false;
                     this._o.onClose.call(this);
                 }
             }

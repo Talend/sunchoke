@@ -46,6 +46,7 @@ export default class ScDatePickerCtrl {
             container: container,
             field: input,
             onClose: this.onCloseHandler,
+            positionLeft: this.positionLeft,
             i18n: {
                 previousMonth: 'Previous Month',
                 nextMonth: 'Next Month',
@@ -94,11 +95,23 @@ export default class ScDatePickerCtrl {
             const actualController = this._o.controller;
             //if there is a date
             if (this._d) {
-                //get the date timestamp
-                actualController.ngModel = this._d.getTime();
-                actualController.$timeout(() => {
-                    actualController.onCloseFn();
-                });
+
+                // if a bad date has been provided
+                if (this.textErrorDate) {
+                    actualController.ngModel = this.textErrorDate;
+                }
+                else {
+                    //get the date timestamp
+                    actualController.ngModel = this._d.getTime();
+                }
+
+                //Close only if not init
+                if (!this.doNotCloseDp || this.doNotCloseDp === false) {
+                    actualController.$timeout(() => {
+                        actualController.onCloseFn();
+                    });
+                }
+
             }
             //if there is no date, the value may be reset
             else {
