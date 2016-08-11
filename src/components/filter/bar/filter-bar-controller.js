@@ -28,8 +28,8 @@ export default class ScFilterBarCtrl {
     $onChanges(changes) {
         if (changes.filters) {
             if (changes.filters.isFirstChange()) {
-                this.onFilterChange();
-            } else if (changes.filters.previousValue.length !== 0 && changes.filters.currentValue.length !== 0) {
+                // this.onFilterChange();
+            } else if (!(changes.filters.previousValue.length === 0 && changes.filters.currentValue.length === 0)) {
                 //prevents from updating filters when the filters are empty
                 this.onFilterChange();
             }
