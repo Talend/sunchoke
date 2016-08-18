@@ -13,8 +13,8 @@
 
 export default class FilterListCtrl {
 
-    changeFilter(/*filter, value*/) {
-        // TODO when implementing edit
+    editFilter(filter, newValue, oldValue) {
+        this.onFilterEdit({filter, newValue, oldValue});
     }
 
     removeFilterValue(filter, value) {

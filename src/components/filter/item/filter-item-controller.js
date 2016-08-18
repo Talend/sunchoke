@@ -10,19 +10,18 @@
  9 rue Pages 92150 Suresnes, France
 
  ============================================================================*/
-import RangeFilter from '../../../services/filter/model/range-filter.model.js';
+import { FILTER_TYPE } from '../../../services/filter/model/filter-const.js';
 
 export default class ScFilterItemCtrl {
 
     $onInit() {
-        this.filter = this.value;
         this.filterValues = this.filter.options.values;
         this.badgeClass = this.filter.options.badgeClass;
         this._setSign();
     }
 
     $onChanges(changes) {
-        const model = changes.value;
+        const model = changes.filter;
         if (model) {
             const newModel = model.currentValue;
             if (newModel) {
@@ -34,62 +33,87 @@ export default class ScFilterItemCtrl {
         }
     }
 
-    renderValue(colId, value) {
-        let formattedValue = value;
-        if(this.filter instanceof RangeFilter) {
-            formattedValue = {
-                min: this.renderValueFn({colId: colId, value: value.min}),
-                max: this.renderValueFn({colId: colId, value: value.max})
-            };
-        } else {
-            formattedValue = this.renderValueFn({colId: colId, value: value});
-        }
+    /**
+     * @ngdoc method
+     * @name renderValue
+     * @methodOf talend.sunchoke.filter-item-value.controller:ScFilterItemCtrl
+     * @description This method render formatted value of the filter depending on its type
+     */
+    renderValue(value) {
+        let formattedValue = this.renderValueFn({ colId: this.filter.fieldId, value: value });
         //calling the filter getLabel function with the formatted value
-        return this.value.getLabel(formattedValue);
+        return this.filter.getLabel(formattedValue);
     }
 
+    /**
+     * @ngdoc method
+     * @name _setSign
+     * @methodOf talend.sunchoke.filter-item-value.controller:ScFilterItemCtrl
+     * @description This method sets operator
+     */
     _setSign() {
         if (this.filter) {
             switch (this.filter.sign) {
-                case 'in':
-                    this.sign = ' ≅ ';
-                    break;
-                case '=':
-                    this.sign = ' = ';
-                    break;
-                case 'inside_range':
-                    this.sign = ' in ';
-                    break;
-                default:
-                    this.sign = ' : '; // TODO to put in constants via translateprovider
+            case 'in':
+                this.sign = ' ≅ ';
+                break;
+            case '=':
+                this.sign = ' = ';
+                break;
+            case FILTER_TYPE.INSIDE_RANGE:
+                this.sign = ' in ';
+                break;
+            default:
+                this.sign = ' : '; // TODO to put in constants via translateprovider
             }
         }
     }
 
     /**
      * @ngdoc method
-     * @name submit
-     * @methodOf data-prep.filter-item:FilterItemCtrl
-     * @description Apply changes
+     * @name edit
+     * @methodOf talend.sunchoke.filter-item-value.controller:ScFilterItemCtrl
+     * @description This method manage edit action on filter
      */
-    edit(/*index, value*/) {
+    edit(index, newValue) {
 
-        //TODO WHEN IMPLEMENTING EDIT
+        // Manage incorrect values for range filter
+        if (newValue.min && (isNaN(newValue.min) || isNaN(newValue.max))) {
+            return;
+        }
 
-        /*
-         const filterValue = this.filterValues[index];
-         if (filterValue) {
-         filterValue.value = value;
-         this.submit();
-         }
-         */
+        //If only one value for range, set max too (only min has been set)
+        const oldValue = this.filterValues[index];
+        if (oldValue.min && oldValue.min === oldValue.max) {
+            newValue.max = newValue.min;
+        }
 
+        //Min > max : do nothing
+        if (newValue.min && newValue.min > newValue.max) {
+            return;
+        }
+
+        //same value : do nothing for normal value
+        if (!newValue.min && newValue == oldValue) {
+            return;
+        }
+        // for range
+        if (newValue.min && newValue.min == oldValue.min && newValue.max == oldValue.max) {
+            return;
+        }
+
+        // Call callback function to update filter value
+        this.onEdit({
+            filter: this.filter,
+            newValue: newValue,
+            oldValue: oldValue
+        });
     }
 
     /**
      * @ngdoc method
      * @name remove
-     * @methodOf data-prep.filter-item:FilterItemCtrl
+     * @methodOf talend.sunchoke.filter-item-value.controller:ScFilterItemCtrl
      * @description Remove criterion from a multi-valued filter
      * @param indexToRemove Position into the multi-valued list
      */
@@ -98,19 +122,6 @@ export default class ScFilterItemCtrl {
         this.onRemoveValue({
             filter: this.filter,
             value: valueToDelete
-        });
-    }
-
-    /**
-     * @ngdoc method
-     * @name submit
-     * @methodOf data-prep.filter-item:FilterItemCtrl
-     * @description Submit updated filter values
-     */
-    submit() {
-        this.onEdit({
-            filter: this.filter,
-            value: this.filterValues
         });
     }
 

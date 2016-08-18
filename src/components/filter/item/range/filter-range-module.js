@@ -11,22 +11,12 @@
 
  ============================================================================*/
 
-export default class ScFilterBarCtrl {
+import ScFilterRangeComponent from './filter-range-component';
 
-    removeFilter(filter) {
-        this.onFilterRemove({ filter: filter });
-    }
+const MODULE_NAME = 'talend.sunchoke.filter-item-range';
 
-    editFilter(filter, newValue, oldValue) {
-        this.onFilterEdit({ filter: filter, newValue: newValue, oldValue: oldValue });
-    }
+angular
+    .module(MODULE_NAME, [])
+    .component('scFilterRange', ScFilterRangeComponent);
 
-    removeFilterValue(filter, value) {
-        this.onFilterRemoveValue({ filter: filter, value: value });
-    }
-
-    renderValue(colId, value) {
-        return this.renderValueFn({ colId, value });
-    }
-
-}
+export default MODULE_NAME;

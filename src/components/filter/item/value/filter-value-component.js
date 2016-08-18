@@ -15,22 +15,17 @@ import ScFilterValueCtrl from './filter-value-controller.js';
 
 const ScFilterValueComponent = {
     template: `
-        <div class="filter-value" ng-switch="$ctrl.isValueEditable()">
-            <input type="text"
-                   ng-switch-when="true"
+        <div class="filter-value">
+            <input ng-if="$ctrl.valueToDisplay" type="text"
                    ng-model="$ctrl.valueToDisplay"
                    title="{{$ctrl.valueToDisplay}}"
-                   ng-model-options="{debounce: { 'default': 200, 'blur': 0 }}"
-                   ng-blur="$ctrl.onEdit({value: $ctrl.valueToDisplay})"
+                   ng-blur="$ctrl.onEdit({newValue: $ctrl.valueToDisplay})"
                    ng-keydown="$ctrl.onKeydown($event)"
                    ng-trim="false"
                    pu-elastic-input
             />
-
-            <span ng-class="{'empty': $ctrl.displayValueOrEmpty() === 'empty'}"
-                  ng-switch-default>
-                {{$ctrl.displayValueOrEmpty()}}
-            </span>
+                
+            <span ng-if="!$ctrl.valueToDisplay" class="empty">empty</span>
         
             <a class="filter-value-btn-remove"
                ng-show="$ctrl.removable"
@@ -38,11 +33,11 @@ const ScFilterValueComponent = {
         </div>`,
     controller: ScFilterValueCtrl,
     bindings: {
-        value: '<',
-        editable: '<',
+        filterValue: '<',
         onEdit: '&',
         removable: '<',
-        onRemove: '&'
+        onRemove: '&',
+        renderValueFn: '&'
     }
 };
 

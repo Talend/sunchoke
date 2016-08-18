@@ -11,60 +11,72 @@
 
  ============================================================================*/
 
-describe('Filter item value controller', () => {
+describe('Filter item range controller', () => {
     'use strict';
 
     let createController, scope;
-    let filterValue,
-        editable, onEditFn,
-        removable, onRemoveFn, renderValueFn;
+    let filterValue, onEditFn,
+        removable, onRemoveFn;
 
-    const originalFilterValue = 'lorem ipsum';
-    const newFilterValue = 'LOREM ISPUM DOLOR';
+    const originalFilterValue = { min: 1, max: 2 };
+    const newFilterValue = { min: 1, max: 3 };
 
-    beforeEach(angular.mock.module('talend.sunchoke.filter-item-value'));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-item-range'));
 
     beforeEach(inject(($rootScope, $componentController) => {
         scope = $rootScope.$new();
 
         filterValue = originalFilterValue;
-        editable = false;
         onEditFn = jasmine.createSpy('onEditFn');
         removable = false;
         onRemoveFn = jasmine.createSpy('onRemoveFn');
-        renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue('LOREM ipsum');
 
         createController = () => {
-            const ctrl = $componentController('scFilterValue', {
+            const ctrl = $componentController('scFilterRange', {
                 $scope: scope
             }, {
                 filterValue: filterValue,
-                editable: editable,
                 onEdit: onEditFn,
                 removable: removable,
-                onRemove: onRemoveFn,
-                renderValueFn: renderValueFn
+                onRemove: onRemoveFn
             });
             ctrl.$onInit();
             return ctrl;
         };
     }));
 
+    describe('init input', () => {
+
+        it('should init fromValue and toValue', () => {
+            //given when
+            const ctrl = createController();
+
+            //then
+            expect(ctrl.fromValue).toEqual(1);
+            expect(ctrl.fromValueSaved).toEqual(1);
+            expect(ctrl.toValue).toEqual(2);
+            expect(ctrl.toValueSaved).toEqual(2);
+        });
+
+    });
+
     describe('manage keyboard inputs', () => {
+
 
         it('should reset value if ESC key is pressed', () => {
             //given
             const ctrl = createController();
 
             //when
-            ctrl.valueToDisplay = newFilterValue;
+            ctrl.filterValue = newFilterValue;
 
             let escEvent = new angular.element.Event('keydown');
             escEvent.which = 27;
             ctrl.onKeydown(escEvent);
 
             //then
-            expect(ctrl.valueToDisplay).toEqual(originalFilterValue);
+            expect(ctrl.fromValue).toEqual(originalFilterValue.min);
+            expect(ctrl.toValue).toEqual(originalFilterValue.max);
         });
 
         it('should execute edit callback if ENTER key is pressed', () => {
@@ -72,16 +84,13 @@ describe('Filter item value controller', () => {
             const ctrl = createController();
 
             //when
-            ctrl.valueToDisplay = newFilterValue;
-
+            ctrl.toValue = 3;
             let enterEvent = new angular.element.Event('keydown');
             enterEvent.which = 13;
             ctrl.onKeydown(enterEvent);
 
             //then
-            expect(onEditFn).toHaveBeenCalledWith({
-                newValue: newFilterValue
-            });
+            expect(onEditFn).toHaveBeenCalledWith({ newValue: newFilterValue });
         });
 
         it('should do nothing if key is pressed and it is not ESC or ENTER keys', () => {
@@ -96,6 +105,7 @@ describe('Filter item value controller', () => {
             //then
             expect(onEditFn).not.toHaveBeenCalled();
         });
+
     });
 
 });

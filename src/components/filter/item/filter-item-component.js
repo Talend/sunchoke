@@ -20,7 +20,7 @@ const ScFilterItemComponent = {
                   on-remove="$ctrl.onRemove()">
             <span>
                 <span class="filter-item-label">
-                    {{$ctrl.value.fieldName}}
+                    {{$ctrl.filter.fieldName}}
                 </span>
                 <span class="operator">
                     {{$ctrl.sign}}
@@ -28,12 +28,22 @@ const ScFilterItemComponent = {
                 <form ng-submit="$ctrl.submit()">
                         <ul class="filter-item-value" ng-class="{'multi': $ctrl.filterValues.length > 1}">
                         <li ng-repeat="filterValue in $ctrl.filterValues track by $index">
-                            <sc-filter-value value="$ctrl.renderValue($ctrl.filter.fieldId, filterValue)"
-                                          editable="$ctrl.editable === true"
-                                          on-edit="$ctrl.edit($index, value)"
-                                          removable="!($first && $last)"
-                                          on-remove="$ctrl.remove($index)">
+                            <sc-filter-value ng-if="$ctrl.filter.sign !== 'inside_range' "
+                                             filter-value="filterValue"
+                                             render-value-fn="$ctrl.renderValue(value)"
+                                             on-edit="$ctrl.edit($index, newValue)"
+                                             removable="!($first && $last)"
+                                             on-remove="$ctrl.remove($index)">
                             </sc-filter-value>
+                            
+                            <sc-filter-range ng-if="$ctrl.filter.sign === 'inside_range' "
+                                             filter-value="filterValue"
+                                             editable="$ctrl.editable === true"
+                                             on-edit="$ctrl.edit($index, newValue)"
+                                             removable="!($first && $last)"
+                                             on-remove="$ctrl.remove($index)">
+                            </sc-filter-range>
+                            
                         </li>
                     </ul>
                 </form>
@@ -41,7 +51,7 @@ const ScFilterItemComponent = {
     </sc-talend-badge>`,
     controller: ScFilterItemCtrl,
     bindings: {
-        value: '<',
+        filter: '<',
         editable: '<',
         onEdit: '&',
         removable: '<',

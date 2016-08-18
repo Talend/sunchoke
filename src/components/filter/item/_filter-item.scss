@@ -82,7 +82,6 @@ $matches-color: $ground;
   }
 
   &-label {
-    // font-family: $inconsolota;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 500;
@@ -90,7 +89,7 @@ $matches-color: $ground;
     vertical-align: middle;
   }
 
-  &-value {
+  &-value, &-range {
     padding: 3px 2px;
     font-family: $base-font-family;
     font-style: italic;
@@ -106,4 +105,47 @@ $matches-color: $ground;
       }
     }
   }
+
+  .filter-value, .filter-range {
+    vertical-align: middle;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    font-weight: 500;
+    font-style: normal;
+
+    input[type="text"] {
+      border-radius: 2px;
+      text-overflow: ellipsis;
+      margin: 0;
+      padding: 2px 5px 2px 5px;
+      min-width: 30px;
+      max-width: 260px;
+      background: none;
+      border: none;
+      box-shadow: none;
+      &:focus{
+        background-color: rgba(255, 255, 255, 1);
+        color:  rgba(0, 0, 0, 1);
+      }
+    }
+
+    span {
+      padding: 2px 5px 2px 5px;
+
+      &.empty {
+        font-style: italic;
+      }
+    }
+
+    &-btn-remove {
+      margin: 0 5px 0 0;
+      color: $light;
+    }
+  }
+
+  .filter-range span {
+    background-color : $wave-dark;
+  }
+
 }

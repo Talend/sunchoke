@@ -16,9 +16,9 @@ import ScFilterListCtrl from './filter-list-controller.js';
 const ScFilterListComponent = {
     template: `<ul id="filter-list">
             <li ng-repeat="filter in $ctrl.filters track by $index">
-                <sc-filter-item value="filter"
+                <sc-filter-item filter="filter"
                              editable="filter.editable"
-                             on-edit="$ctrl.changeFilter(filter, value)"
+                             on-edit="$ctrl.editFilter(filter, newValue, oldValue)"
                              removable ="$ctrl.removable"
                              on-remove="$ctrl.removeFilter(filter)"
                              on-remove-value="$ctrl.removeFilterValue(filter, value)"
@@ -31,6 +31,7 @@ const ScFilterListComponent = {
         filters: '=',
         onFilterRemoveValue: '&',
         onFilterRemove: '&',
+        onFilterEdit: '&',
         removable: "<",
         renderValueFn: "&"
     }

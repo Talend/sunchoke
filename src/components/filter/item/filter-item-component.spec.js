@@ -24,7 +24,7 @@ describe('Filter Item Component', () => {
             "fieldId": "EmployeeId",
             "fieldName": "EmployeeId",
             "sign": "in",
-            "options": {"values": ["TLND-1058", "TLND-1066", "TLND-1067"]},
+            "options": { "values": ["TLND-1058", "TLND-1066", "TLND-1067"] },
             "getLabel": (label) => {return label;}
         };
         scope.editable = false;
@@ -36,7 +36,7 @@ describe('Filter Item Component', () => {
 
         createElement = () => {
             element = angular.element(
-                `<sc-filter-item value="filterItem"
+                `<sc-filter-item filter="filterItem"
                               editable="editable"
                               on-edit="onEdit()"
                               removable="removable"
@@ -81,35 +81,13 @@ describe('Filter Item Component', () => {
             const inputValue = element.find('.filter-value input').eq(1).val();
             expect(inputValue).toBe(newValue);
         });
-
-
-        /** TODO when implements edit feature
-
-         it('should call onEdit when a value has changed', () => {
-            //given
-            scope.editable = true;
-            createElement();
-
-            //when
-            const newValue = 'LOREM IPSUM DOLOR 1';
-            const enterKeyEvent = angular.element.Event('keydown');
-            enterKeyEvent.keyCode = 13;
-            element.find('input').eq(1)
-                .val(newValue)
-                .trigger(enterKeyEvent);
-
-            //then
-            expect(scope.onEdit).toHaveBeenCalled();
-        });
-
-         */
-
-        it('should render non-editable values with spans', () => {
+        
+        it('should render editable values with input', () => {
             //given
             createElement();
 
             //then
-            expect(element.find('.filter-value span').size()).toBe(3);
+            expect(element.find('.filter-value input').size()).toBe(3);
         });
     });
 

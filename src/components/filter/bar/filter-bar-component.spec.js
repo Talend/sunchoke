@@ -31,10 +31,9 @@ describe('Filter bar component', function () {
         element.remove();
     });
 
-
     it('should render "remove all" icon when there are filters', function () {
         //when
-        scope.filters = [{myfilter: 'myFilter'}]
+        scope.filters = [{ myfilter: 'myFilter' }]
 
         createElement();
 
@@ -42,7 +41,6 @@ describe('Filter bar component', function () {
         expect(element.find('#reset-filters').length).toBe(1);
         expect(element.find('#reset-filters').attr('title')).toBe('Remove all filters');
     });
-
 
     it('should NOT render "remove all" icon when there are not filters', function () {
         //when
@@ -52,34 +50,6 @@ describe('Filter bar component', function () {
         expect(element.find('#reset-filters').length).toBe(0);
     });
 
-    /* TODO when when features will be implemented in TDS
-     it('should execute reset callback on "remove all" icon click', function() {
-     //given
-
-     createElement();
-     scope.onRemoveAllFilters = function () {
-     console.log('remove all called')
-     };
-
-
-     //when
-     element.find('#reset-filters').click();
-
-     //then
-     expect(scope.onRemoveAllFilters).toHaveBeenCalled();
-     });
-
-
-     it('should render filter search', function() {
-     //when
-     createElement();
-
-     //then
-     expect(element.find('filter-search').length).toBe(1);
-     });
-
-     */
-
     it('should render filter list', function () {
         //when
         createElement();
@@ -88,14 +58,12 @@ describe('Filter bar component', function () {
         expect(element.find('sc-filter-list').length).toBe(1);
     });
 
-    /* TODO when when features will be implemented in TDS
-     it('should render filter monitor', function() {
-     //when
-     createElement();
-
-     //then
-     expect(element.find('filter-monitor').length).toBe(1);
-     });
-     */
+    it('should render filter monitor', function () {
+        //when
+        createElement();
+        
+        //then
+        expect(element.find('sc-filter-monitor').length).toBe(1);
+    });
 
 });

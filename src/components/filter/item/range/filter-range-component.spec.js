@@ -11,28 +11,27 @@
 
  ============================================================================*/
 
-describe('Filter Item Value Component', () => {
+describe('Filter Item Range Component', () => {
 
-    beforeEach(angular.mock.module('talend.sunchoke.filter-item-value'));
+    beforeEach(angular.mock.module('talend.sunchoke.filter-item-range'));
 
     let createElement, scope, element;
 
     beforeEach(inject(($rootScope, $compile) => {
         scope = $rootScope.$new();
 
-        scope.filterValue = 'lorem ipsum dolor';
+        scope.filterValue = { min: 1, max: 2 };
         scope.onEdit = jasmine.createSpy('onEdit');
         scope.removable = false;
         scope.onRemove = jasmine.createSpy('onRemove');
-        scope.renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue('Formatted text');
 
         createElement = () => {
             element = angular.element(
-                `<sc-filter-value filter-value="filterValue"
-                                  render-value-fn="renderValueFn()"
+                `<sc-filter-range filter-value="filterValue"
                                   on-edit="onEdit()"
                                   removable="removable"
-                                  on-remove="onRemove()"></sc-filter-value>`
+                                  on-remove="onRemove()">   
+                 </sc-filter-range>`
             );
 
             $compile(element)(scope);
@@ -45,26 +44,24 @@ describe('Filter Item Value Component', () => {
         element.remove();
     });
 
-    describe('editable option', () => {
-        it('should render editable value with input', () => {
+    describe('rendering filter range', () => {
+        it('should render editable range with 2 inputs when min != max', () => {
             //given
+            createElement();
+
+            //then
+            expect(element.find('input').size()).toBe(2);
+            expect(element.find('span').size()).toBe(3);
+        });
+
+        it('should render editable range with only one input when min == max', () => {
+            //given
+            scope.filterValue = { min: 2, max: 2 };
             createElement();
 
             //then
             expect(element.find('input').size()).toBe(1);
-            expect(element.find('span').size()).toBe(0);
-        });
-
-        it('should render empty value with span with specific class', () => {
-            //given
-            scope.renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue('');
-
-            //when
-            createElement();
-
-            //then
-            expect(element.find('span').size()).toBe(1);
-            expect(element.find('span').eq(0).hasClass('empty')).toBeTruthy();
+            expect(element.find('span').size()).toBe(2);
         });
 
         it('should call onEdit callback when blur on input', () => {

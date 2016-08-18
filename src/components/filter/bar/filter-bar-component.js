@@ -43,6 +43,7 @@ const ScFilterBarComponent = {
             filters="$ctrl.filters"
             on-filter-remove-value="$ctrl.removeFilterValue(filter, value)"
             on-filter-remove="$ctrl.removeFilter(filter)"
+            on-filter-edit="$ctrl.editFilter(filter, newValue, oldValue)"
             removable="$ctrl.removable"
             render-value-fn="$ctrl.renderValue(colId, value)">
         </sc-filter-list>
@@ -51,9 +52,9 @@ const ScFilterBarComponent = {
         filters: '<',
         onFilterRemoveValue: '&',
         onFilterRemove: '&',
+        onFilterEdit: '&',
         onRemoveAllFilters: '&',
         removable: '<',
-        onFilterChange: '&',
         nbLines: '<',
         nbTotalLines: '<',
         state: '=',

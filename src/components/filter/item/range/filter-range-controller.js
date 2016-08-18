@@ -13,31 +13,40 @@
 
 /**
  * @ngdoc controller
- * @name talend.sunchoke.filter-item-value.controller:ScFilterValueCtrl
- * @description FilterItemValue controller.
+ * @name talend.sunchoke.filter-item-range.controller:ScFilterRangeCtrl
+ * @description FilterItemRangecontroller.
  */
-export default class ScFilterValueCtrl {
+export default class ScFilterRangeCtrl {
 
     $onInit() {
-        this.valueToDisplay = this.renderValueFn({
-            value: this.filterValue
-        });
+        this.initInput();
     }
 
     /**
      * @ngdoc method
      * @name $onChanges
-     * @methodOf talend.sunchoke.filter-item-value.controller:ScFilterValueCtrl
-     * @description Manage filter values changes
+     * @methodOf talend.sunchoke.filter-item-range.controller:ScFilterRangeCtrl
+     * @description Initialize the filter ranges
+     */
+    initInput() {
+        this.fromValue = this.filterValue.min;
+        this.fromValueSaved = this.fromValue;
+        this.toValue = this.filterValue.max;
+        this.toValueSaved = this.toValue;
+    }
+
+    /**
+     * @ngdoc method
+     * @name $onChanges
+     * @methodOf talend.sunchoke.filter-item-range.controller:ScFilterRangeCtrl
+     * @description Manage filter range changes
      */
     $onChanges(changes) {
         const model = changes.filterValue;
         if (model) {
             const newModel = model.currentValue;
             if (newModel || newModel === '') {
-                this.valueToDisplay = this.renderValueFn({
-                    value: newModel
-                });
+                this.initInput();
             }
         }
     }
@@ -45,21 +54,20 @@ export default class ScFilterValueCtrl {
     /**
      * @ngdoc method
      * @name $onChanges
-     * @methodOf talend.sunchoke.filter-item-value.controller:ScFilterValueCtrl
-     * @description Manage keyboard action on normal filter (not range)
+     * @methodOf talend.sunchoke.filter-item-range.controller:ScFilterRangeCtrl
+     * @description Manage keyboard action on range filter
      */
     onKeydown(event) {
         // keydown escape
         if (event && event.which === 27) {
-            this.valueToDisplay = this.filterValue;
+            this.fromValue = this.fromValueSaved;
+            this.toValue = this.toValueSaved;
         }
-
         // keydown enter
         if (event && event.which === 13) {
             this.onEdit({
-                newValue: this.valueToDisplay
+                newValue: { min: this.fromValue, max: this.toValue }
             });
         }
     }
-
 }
