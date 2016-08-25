@@ -18,6 +18,11 @@
  */
 export default class ScFilterRangeCtrl {
 
+    constructor($element) {
+        'ngInject';
+        this.$element = $element;
+    }
+
     $onInit() {
         this.initInput();
     }
@@ -68,6 +73,7 @@ export default class ScFilterRangeCtrl {
             this.onEdit({
                 newValue: { min: this.fromValue, max: this.toValue }
             });
+            this.$element.find('input').blur();
         }
     }
 }

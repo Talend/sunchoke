@@ -14,47 +14,39 @@
 describe('Filter item value controller', () => {
     'use strict';
 
-    let createController, scope;
-    let filterValue,
-        editable, onEditFn,
-        removable, onRemoveFn, renderValueFn;
+    let createElement, scope, element, ctrl;
 
-    const originalFilterValue = 'lorem ipsum';
     const newFilterValue = 'LOREM ISPUM DOLOR';
 
     beforeEach(angular.mock.module('talend.sunchoke.filter-item-value'));
 
-    beforeEach(inject(($rootScope, $componentController) => {
+    beforeEach(inject(($rootScope, $compile) => {
         scope = $rootScope.$new();
 
-        filterValue = originalFilterValue;
-        editable = false;
-        onEditFn = jasmine.createSpy('onEditFn');
-        removable = false;
-        onRemoveFn = jasmine.createSpy('onRemoveFn');
-        renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue('LOREM ipsum');
+        scope.filterValue = 'lorem ipsum dolor';
+        scope.removable = false;
+        scope.onRemove = jasmine.createSpy('onRemove');
 
-        createController = () => {
-            const ctrl = $componentController('scFilterValue', {
-                $scope: scope
-            }, {
-                filterValue: filterValue,
-                editable: editable,
-                onEdit: onEditFn,
-                removable: removable,
-                onRemove: onRemoveFn,
-                renderValueFn: renderValueFn
-            });
-            ctrl.$onInit();
-            return ctrl;
+        createElement = () => {
+            element = angular.element(
+                `<sc-filter-value filter-value="filterValue"
+                                  on-edit="onEdit()"
+                                  removable="removable"
+                                  on-remove="onRemove()">
+                </sc-filter-value>`
+            );
+
+            $compile(element)(scope);
+            scope.$digest();
+            ctrl = element.controller('scFilterValue');
         };
     }));
 
-    describe('manage keyboard inputs', () => {
+    describe('manage user inputs', () => {
 
         it('should reset value if ESC key is pressed', () => {
             //given
-            const ctrl = createController();
+            createElement();
 
             //when
             ctrl.valueToDisplay = newFilterValue;
@@ -64,12 +56,13 @@ describe('Filter item value controller', () => {
             ctrl.onKeydown(escEvent);
 
             //then
-            expect(ctrl.valueToDisplay).toEqual(originalFilterValue);
+            expect(ctrl.valueToDisplay).toEqual('lorem ipsum dolor');
         });
 
         it('should execute edit callback if ENTER key is pressed', () => {
             //given
-            const ctrl = createController();
+            createElement();
+            spyOn(ctrl, 'onEdit')
 
             //when
             ctrl.valueToDisplay = newFilterValue;
@@ -79,14 +72,15 @@ describe('Filter item value controller', () => {
             ctrl.onKeydown(enterEvent);
 
             //then
-            expect(onEditFn).toHaveBeenCalledWith({
+            expect(ctrl.onEdit).toHaveBeenCalledWith({
                 newValue: newFilterValue
             });
         });
 
         it('should do nothing if key is pressed and it is not ESC or ENTER keys', () => {
             //given
-            const ctrl = createController();
+            createElement();
+            spyOn(ctrl, 'onEdit')
 
             //when
             let aEvent = new angular.element.Event('keydown');
@@ -94,7 +88,19 @@ describe('Filter item value controller', () => {
             ctrl.onKeydown(aEvent);
 
             //then
-            expect(onEditFn).not.toHaveBeenCalled();
+            expect(ctrl.onEdit).not.toHaveBeenCalled();
+        });
+        
+        it('should remove \'empty\' when editing an empty filter', () => {
+            //given
+            createElement();
+            ctrl.valueToDisplay = 'empty';
+
+            //when
+            ctrl.removeEmptyValue();
+
+            //then
+            expect(ctrl.valueToDisplay).toEqual('');
         });
     });
 

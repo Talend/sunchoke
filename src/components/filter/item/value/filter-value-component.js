@@ -16,16 +16,16 @@ import ScFilterValueCtrl from './filter-value-controller.js';
 const ScFilterValueComponent = {
     template: `
         <div class="filter-value">
-            <input ng-if="$ctrl.valueToDisplay" type="text"
+            <input type="text"
                    ng-model="$ctrl.valueToDisplay"
                    title="{{$ctrl.valueToDisplay}}"
                    ng-blur="$ctrl.onEdit({newValue: $ctrl.valueToDisplay})"
                    ng-keydown="$ctrl.onKeydown($event)"
                    ng-trim="false"
+                   ng-click="$ctrl.removeEmptyValue()"
+                   ng-class="{empty : $ctrl.valueToDisplay === 'empty'}"
                    pu-elastic-input
             />
-                
-            <span ng-if="!$ctrl.valueToDisplay" class="empty">empty</span>
         
             <a class="filter-value-btn-remove"
                ng-show="$ctrl.removable"

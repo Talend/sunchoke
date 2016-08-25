@@ -77,28 +77,30 @@ export default class ScFilterItemCtrl {
      */
     edit(index, newValue) {
 
-        // Manage incorrect values for range filter
-        if (newValue.min && (isNaN(newValue.min) || isNaN(newValue.max))) {
+        //Flag to check if range filter
+        const oldValue = this.filterValues[index];
+
+        // Manage incorrect values for range filter ; empty string or Nan
+        if (oldValue.min && (isNaN(newValue.min) || isNaN(newValue.max) || newValue.min === "" || newValue.max === "" )) {
             return;
         }
 
         //If only one value for range, set max too (only min has been set)
-        const oldValue = this.filterValues[index];
         if (oldValue.min && oldValue.min === oldValue.max) {
             newValue.max = newValue.min;
         }
 
         //Min > max : do nothing
-        if (newValue.min && newValue.min > newValue.max) {
+        if (oldValue.min && newValue.min > newValue.max) {
             return;
         }
 
         //same value : do nothing for normal value
-        if (!newValue.min && newValue == oldValue) {
+        if ((!oldValue.min && oldValue != '') && newValue == oldValue) {
             return;
         }
         // for range
-        if (newValue.min && newValue.min == oldValue.min && newValue.max == oldValue.max) {
+        if (oldValue.min && newValue.min == oldValue.min && newValue.max == oldValue.max) {
             return;
         }
 

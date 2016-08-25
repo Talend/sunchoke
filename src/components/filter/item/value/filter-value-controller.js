@@ -17,11 +17,40 @@
  * @description FilterItemValue controller.
  */
 export default class ScFilterValueCtrl {
+    constructor($element) {
+        'ngInject';
+        this.$element = $element;
+    }
 
     $onInit() {
         this.valueToDisplay = this.renderValueFn({
             value: this.filterValue
         });
+        this._initEmptyValue();
+    }
+
+    /**
+     * @ngdoc method
+     * @name removeEmptyValue
+     * @methodOf talend.sunchoke.filter-item-value.controller:checkEmpty
+     * @description Remove 'empty' when editing null value
+     */
+    removeEmptyValue() {
+        if (this.valueToDisplay === 'empty') {
+            this.valueToDisplay = '';
+        }
+    }
+
+    /**
+     * @ngdoc method
+     * @name _initEmptyValue
+     * @methodOf talend.sunchoke.filter-item-value.controller:_initEmptyValue
+     * @description Display 'empty' if empty or null value
+     */
+    _initEmptyValue() {
+        if (!this.valueToDisplay || this.valueToDisplay === "") {
+            this.valueToDisplay = 'empty'
+        }
     }
 
     /**
@@ -38,6 +67,7 @@ export default class ScFilterValueCtrl {
                 this.valueToDisplay = this.renderValueFn({
                     value: newModel
                 });
+                this._initEmptyValue();
             }
         }
     }
@@ -59,7 +89,9 @@ export default class ScFilterValueCtrl {
             this.onEdit({
                 newValue: this.valueToDisplay
             });
+
+            //Blur input to hide edit mode
+            this.$element.find('input').blur();
         }
     }
-
 }

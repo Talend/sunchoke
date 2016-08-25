@@ -14,42 +14,38 @@
 describe('Filter item range controller', () => {
     'use strict';
 
-    let createController, scope;
-    let filterValue, onEditFn,
-        removable, onRemoveFn;
-
-    const originalFilterValue = { min: 1, max: 2 };
-    const newFilterValue = { min: 1, max: 3 };
+    let createElement, scope, element, ctrl;
 
     beforeEach(angular.mock.module('talend.sunchoke.filter-item-range'));
 
-    beforeEach(inject(($rootScope, $componentController) => {
+    beforeEach(inject(function ($rootScope, $compile) {
         scope = $rootScope.$new();
-
-        filterValue = originalFilterValue;
-        onEditFn = jasmine.createSpy('onEditFn');
-        removable = false;
-        onRemoveFn = jasmine.createSpy('onRemoveFn');
-
-        createController = () => {
-            const ctrl = $componentController('scFilterRange', {
-                $scope: scope
-            }, {
-                filterValue: filterValue,
-                onEdit: onEditFn,
-                removable: removable,
-                onRemove: onRemoveFn
-            });
-            ctrl.$onInit();
-            return ctrl;
+        scope.filterValue = { min: 1, max: 2 };
+        createElement = () => {
+            element = angular.element(
+                `<sc-filter-range filter-value="filterValue"
+                                  on-edit="onEdit()"
+                                  removable="removable"
+                                  on-remove="onRemove()">   
+                 </sc-filter-range>`
+            );
+            $compile(element)(scope);
+            scope.$digest();
+            ctrl = element.controller('scFilterRange');
         };
     }));
 
-    describe('init input', () => {
+    afterEach(() => {
+        scope.$destroy();
+        element.remove();
+    });
+
+
+    describe('init range', () => {
 
         it('should init fromValue and toValue', () => {
-            //given when
-            const ctrl = createController();
+            //given
+            createElement();
 
             //then
             expect(ctrl.fromValue).toEqual(1);
@@ -57,31 +53,29 @@ describe('Filter item range controller', () => {
             expect(ctrl.toValue).toEqual(2);
             expect(ctrl.toValueSaved).toEqual(2);
         });
-
     });
 
     describe('manage keyboard inputs', () => {
 
-
         it('should reset value if ESC key is pressed', () => {
             //given
-            const ctrl = createController();
+            createElement();
 
             //when
-            ctrl.filterValue = newFilterValue;
-
+            ctrl.filterValue = { min: 1, max: 3 };
             let escEvent = new angular.element.Event('keydown');
             escEvent.which = 27;
             ctrl.onKeydown(escEvent);
 
             //then
-            expect(ctrl.fromValue).toEqual(originalFilterValue.min);
-            expect(ctrl.toValue).toEqual(originalFilterValue.max);
+            expect(ctrl.fromValue).toEqual(1);
+            expect(ctrl.toValue).toEqual(2);
         });
 
         it('should execute edit callback if ENTER key is pressed', () => {
             //given
-            const ctrl = createController();
+            createElement();
+            spyOn(ctrl, 'onEdit');
 
             //when
             ctrl.toValue = 3;
@@ -90,12 +84,13 @@ describe('Filter item range controller', () => {
             ctrl.onKeydown(enterEvent);
 
             //then
-            expect(onEditFn).toHaveBeenCalledWith({ newValue: newFilterValue });
+            expect(ctrl.onEdit).toHaveBeenCalledWith({ newValue: { min: 1, max: 3 } });
         });
 
         it('should do nothing if key is pressed and it is not ESC or ENTER keys', () => {
             //given
-            const ctrl = createController();
+            createElement();
+            spyOn(ctrl, 'onEdit');
 
             //when
             let aEvent = new angular.element.Event('keydown');
@@ -103,9 +98,7 @@ describe('Filter item range controller', () => {
             ctrl.onKeydown(aEvent);
 
             //then
-            expect(onEditFn).not.toHaveBeenCalled();
+            expect(ctrl.onEdit).not.toHaveBeenCalled();
         });
-
     });
-
 });

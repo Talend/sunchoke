@@ -161,7 +161,6 @@ describe('Filter item controller', () => {
 
     describe('edit filter value', () => {
 
-
         it('should call onEdit callback for normal filter value', () => {
             //given
             const ctrl = createController();
@@ -176,7 +175,6 @@ describe('Filter item controller', () => {
                 oldValue: 'val1'
             });
         });
-
 
         it('should call onEdit callback for range filter value', () => {
             //given

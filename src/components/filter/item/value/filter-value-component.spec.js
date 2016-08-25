@@ -24,7 +24,6 @@ describe('Filter Item Value Component', () => {
         scope.onEdit = jasmine.createSpy('onEdit');
         scope.removable = false;
         scope.onRemove = jasmine.createSpy('onRemove');
-        scope.renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue('Formatted text');
 
         createElement = () => {
             element = angular.element(
@@ -32,7 +31,8 @@ describe('Filter Item Value Component', () => {
                                   render-value-fn="renderValueFn()"
                                   on-edit="onEdit()"
                                   removable="removable"
-                                  on-remove="onRemove()"></sc-filter-value>`
+                                  on-remove="onRemove()">
+                </sc-filter-value>`
             );
 
             $compile(element)(scope);
@@ -55,28 +55,25 @@ describe('Filter Item Value Component', () => {
             expect(element.find('span').size()).toBe(0);
         });
 
-        it('should render empty value with span with specific class', () => {
+        it('should render empty editable value with input', () => {
             //given
-            scope.renderValueFn = jasmine.createSpy('renderValueFn').and.returnValue('');
-
-            //when
             createElement();
 
             //then
-            expect(element.find('span').size()).toBe(1);
-            expect(element.find('span').eq(0).hasClass('empty')).toBeTruthy();
+            expect(element.find('input').size()).toBe(1);
+            expect(element.find('span').size()).toBe(0);
         });
 
-        it('should call onEdit callback when blur on input', () => {
+        it('should display \'empty\' when filter is empty', () => {
             //given
+            scope.filterValue = '';
             createElement();
 
             //when
-            const inputElement = element.find('input').eq(0); //only one input
-            inputElement.blur();
+            const inputElement = element.find('input').eq(0);
 
             //then
-            expect(scope.onEdit).toHaveBeenCalled();
+            expect(inputElement.val()).toEqual('empty');
         });
     });
 
