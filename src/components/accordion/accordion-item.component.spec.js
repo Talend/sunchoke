@@ -80,6 +80,7 @@ describe('Accordion item component', () => {
 
             //then
             expect(element.find('.sc-accordion').eq(0).hasClass('open')).toBe(true);
+            expect(element.find('.trigger-container').eq(0).hasClass('opened')).toBe(true);
         });
     });
 });

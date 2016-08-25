@@ -41,7 +41,7 @@ import ScAccordionItemCtrl from './accordion-item.controller';
 const ScAccordionItemComponent = {
     template: `
     <li class="sc-accordion" ng-class="{open: $ctrl.opened}">
-        <div class="trigger-container" ng-transclude="trigger" ng-click="$ctrl.toggle()"></div>
+        <div class="trigger-container" ng-class="{opened: $ctrl.opened, closed: !$ctrl.opened}" ng-transclude="trigger" ng-click="$ctrl.toggle()"></div>
         <div class="content-container" ng-transclude="content" sc-accordion-animation="$ctrl.opened"></div>
     </li>
     `,
