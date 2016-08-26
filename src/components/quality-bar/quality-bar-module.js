@@ -11,8 +11,18 @@
 
  ============================================================================*/
 
-@import "./common/colors";
-@import "./common/buttons";
-@import "./common/chevron";
-@import "./common/switch";
-@import "./common/menu_list";
+import angular from 'angular';
+
+import ScQualityBarComponent from './quality-bar-component.js';
+
+const MODULE_NAME = 'talend.sunchoke.quality-bar';
+
+/**
+ * @ngdoc object
+ * @name talend.sunchoke.quality-bar
+ * @description quality-bar
+ */
+angular.module(MODULE_NAME, [])
+    .component('scQualityBar', ScQualityBarComponent);
+
+export default MODULE_NAME;

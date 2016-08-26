@@ -34,6 +34,7 @@ import FILTER_MONITOR from './components/filter/monitor/filter-monitor-module.js
 import FILTER_SEARCH from './components/filter/search/filter-search-module.js';
 */
 import BADGE from './components/badge/badge-module.js';
+import QUALITY_BAR from './components/quality-bar/quality-bar-module.js';
 
 const SUNCHOKE_MODULE = 'talend.sunchoke';
 
@@ -59,7 +60,8 @@ angular.module(SUNCHOKE_MODULE, [
     /*
     FILTER_SEARCH,
     */
-    BADGE
+    BADGE,
+    QUALITY_BAR
 
 ]);
 
