@@ -117,6 +117,9 @@ export default class ScDatePickerCtrl {
             else {
                 //set null to ngmodel
                 actualController.ngModel = null;
+                actualController.$timeout(() => {
+                    actualController.onCloseFn();
+                });
             }
         }
     }
