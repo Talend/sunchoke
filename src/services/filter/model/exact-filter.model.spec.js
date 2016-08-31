@@ -409,6 +409,30 @@ describe('exact filter model', () => {
             expect(filter.toDSL()).toBe("(Col1='toto')");
         }));
 
+        it('return filter in tql form with integer in param', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                options: {values: [3]}
+            };
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.toDSL()).toBe("(Col1=3)");
+        }));
+
+        it('return filter in tql form with integer as a string in param', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                options: {values: ["3"]}
+            };
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.toDSL()).toBe("(Col1='3')");
+        }));
+
         it('return filter in tql form is empty', inject(function () {
             //given
             const configuration = {

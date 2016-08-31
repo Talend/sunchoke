@@ -23,7 +23,7 @@ export default class ExactFilter extends AbstractExactInFilter {
      */
     toDSL() {
         let dsl = "";
-        if (isNaN(this.options.values[0])) {
+        if (typeof(this.options.values[0]) !== 'number') {  // eslint-disable-line angular/typecheck-number
             dsl = this.options.values[0] !== "" ?
             "(" + this.fieldId + "='" + this.options.values[0] + "')" :
             "(" + this.fieldId + " is empty)";
