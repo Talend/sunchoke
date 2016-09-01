@@ -19,7 +19,7 @@ const ScFilterBarComponent = {
         <div class="filter-bar-header">
             <sc-filter-monitor class="monitor"
                 filters="$ctrl.filters"
-                on-toogle=""
+                on-toogle="$ctrl.onFilterState()"
                 state="$ctrl.state"
                 nb-lines="$ctrl.nbLines"
                 nb-total-lines="$ctrl.nbTotalLines"
@@ -54,6 +54,7 @@ const ScFilterBarComponent = {
         onFilterRemove: '&',
         onFilterEdit: '&',
         onRemoveAllFilters: '&',
+        onFilterState: '&',
         removable: '<',
         nbLines: '<',
         nbTotalLines: '<',
