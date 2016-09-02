@@ -19,6 +19,7 @@
 export default class ScQualityBarCtrl {
 
     constructor($timeout) {
+        'ngInject';
         this.MIN_QUALITY_WIDTH = 10;
         this.$timeout = $timeout;
     }
@@ -58,10 +59,10 @@ export default class ScQualityBarCtrl {
 
         this.enableTransition();
 
-        this.$timeout( () => {
+        this.$timeout(() => {
             this.computePercent();
             this.computeQualityWidth();
-        }, 300, false);
+        }, 300);
     }
 
     /**
@@ -116,11 +117,11 @@ export default class ScQualityBarCtrl {
             .filter((key) => {
                 return widthObject[key] > this.MIN_QUALITY_WIDTH;
             })
-            .sort(function(a, b) {
-                if(widthObject[a] > widthObject[b]){
+            .sort(function (a, b) {
+                if (widthObject[a] > widthObject[b]) {
                     return -1;
                 }
-                if(widthObject[a] < widthObject[b]){
+                if (widthObject[a] < widthObject[b]) {
                     return 1;
                 }
                 return 0;
@@ -134,8 +135,8 @@ export default class ScQualityBarCtrl {
      * @param {string} qualityValue The value to translate : VALID_RECORDS, INVALID_RECORDS, EMPTY_RECORD
      * @description Execute the callback function to get the translation
      */
-    callTranslate(qualityValue){
-        var res = this.translateFn({quality : qualityValue});
+    callTranslate(qualityValue) {
+        var res = this.translateFn({ quality: qualityValue });
         return res;
     }
 
@@ -211,7 +212,7 @@ export default class ScQualityBarCtrl {
      * @ngdoc method
      * @name hashQuality
      * @methodOf talend.sunchoke.quality-bar:ScQualityBarCtrl
-     * @description [PRIVATE] Calculate a simple hash from concatenating values
+     * @description Calculate a simple hash from concatenating values
      */
     hashQuality() {
         return this.quality.empty + '' + this.quality.invalid + '' + this.quality.valid;

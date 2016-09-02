@@ -37,7 +37,7 @@ describe('Quality bar component', () => {
         scope.$destroy();
         element.remove();
     });
-    
+
     describe('with enter animation', () => {
         it(' should enable transition', () => {
             //given

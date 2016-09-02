@@ -27,11 +27,11 @@ describe('Quality bar controller', function () {
             const ctrl = $componentController('scQualityBar', {
                 $scope: scope
             }/*, {
-                enterAnimation: enterAnimation,
-                quality: quality,
-                isTrusted: isTrusted,
-                hasMenu: hasMenu
-            }*/);
+             enterAnimation: enterAnimation,
+             quality: quality,
+             isTrusted: isTrusted,
+             hasMenu: hasMenu
+             }*/);
 
             ctrl.$onInit();
             return ctrl;
