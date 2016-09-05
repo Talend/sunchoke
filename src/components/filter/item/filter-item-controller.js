@@ -40,7 +40,10 @@ export default class ScFilterItemCtrl {
      * @description This method render formatted value of the filter depending on its type
      */
     renderValue(value) {
-        let formattedValue = this.renderValueFn({ colId: this.filter.fieldId, value: value });
+        let formattedValue = value;
+        if (this.filter.sign !== 'quality' ) {
+            formattedValue = this.renderValueFn({ colId: this.filter.fieldId, value: value });
+        }
         //calling the filter getLabel function with the formatted value
         return this.filter.getLabel(formattedValue);
     }

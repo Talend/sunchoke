@@ -5,8 +5,7 @@ export const FILTER_TYPE = {
     EXACT: "exact",
     IN: "in",
     INSIDE_RANGE: "inside_range",
-    INVALID_RECORDS: "invalid_records",
     MATCHES: "matches",
     PATTERN: 'pattern',
-    VALID_RECORDS: "valid_records"
+    QUALITY: "quality",
 }

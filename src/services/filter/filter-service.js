@@ -21,9 +21,8 @@ export default class FilterService {
      * @param configuration the configuration to apply to the filter list
      * @description updates the current filter list with the given configuration
      */
-    updateFilter(actualFilter, configuration /*{ type: '', options: { value: [], overwriteMode : true }, ... }*/) {
+    updateFilter(actualFilter, configuration /* { type: '', options: { value: [], overwriteMode : true }, ... } */) {
         let hasChanged = false;
-        //const configuration = processConfiguration(newConfiguration/*({ filterType: '', values: [], ... }*/);
         //processing filter to look for modifications
         const result = actualFilter
             .map(filter => {
@@ -42,7 +41,7 @@ export default class FilterService {
             const newFilter = this.FilterModelFactory.createFilter(configuration);
             return result.concat(newFilter);
         }
-        //state.filters = ScFilter.fromTQL(tql);
+        // state.filters = ScFilter.fromTQL(tql);
     }
 
     /**

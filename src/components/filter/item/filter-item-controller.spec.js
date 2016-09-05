@@ -146,6 +146,19 @@ describe('Filter item controller', () => {
     });
 
     describe('rendering value in filter item', () => {
+        it('should not call filter render value callback and  call filter get label function', () => {
+            //given
+            const ctrl = createController();
+            ctrl.filter.sign = 'quality';
+
+            //when
+            ctrl.renderValue('value1');
+
+            //then
+            expect(renderValueFn).not.toHaveBeenCalledWith({ colId: 'fieldId', value: 'value1' });
+            expect(getLabel).toHaveBeenCalledWith("value1");
+        });
+
         it('should call filter render value callback and filter get label function', () => {
             //given
             const ctrl = createController();

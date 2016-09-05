@@ -17,8 +17,22 @@ $empty_records-color: $light;
 $valid_records-color: $peace;
 $invalid_records-color: $juice;
 $matches-color: $ground;
+$sc-metadata-color: $wave-light !default;
+$sc-pattern-color: $wave-light !default;
 
 %badge-colors {
+  &.metadataBadge {
+    .badge {
+      @include badge($sc-metadata-color);
+    }
+  }
+
+  &.patternBadge {
+    .badge {
+      @include badge($sc-pattern-color);
+    }
+  }
+
   &.valid_records {
     .badge {
       @include badge($valid_records-color);
