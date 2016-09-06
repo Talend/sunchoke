@@ -43,8 +43,7 @@ const ScFilterItemComponent = {
                                              on-remove="$ctrl.remove($index)">
                             </sc-filter-range>
                             
-                            <span ng-if="!$ctrl.editable">{{$ctrl.renderValue(filterValue)}}</span>
-                            
+                            <span class="readonly" ng-if="!$ctrl.editable">{{$ctrl.renderValue(filterValue)}}</span>
                         </li>
                     </ul>
                 </form>
