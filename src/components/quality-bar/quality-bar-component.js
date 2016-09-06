@@ -64,21 +64,24 @@ const QualityBarComponent = {
              ng-style="{width: $ctrl.width.valid + '%'}"
              ng-class="{'no-transition' : $ctrl.blockTransition}"
              ng-show="$ctrl.quality.valid > 0"
-             title="{{ $ctrl.quality.valid }} {{$ctrl.callTranslate('VALID_RECORDS')}} ({{ $ctrl.percent.valid }}%)">
+             title="{{ $ctrl.quality.valid }} {{$ctrl.callTranslate('VALID_RECORDS')}} ({{ $ctrl.percent.valid }}%)"
+             ng-click="$ctrl.applyValidFilter()">
         </div>
 
         <div class="empty-partition"
              ng-style="{width: $ctrl.width.empty + '%'}"
              ng-class="{'no-transition' : $ctrl.blockTransition}"
              ng-show="$ctrl.quality.empty > 0"
-             title="{{ $ctrl.quality.empty }} {{$ctrl.callTranslate('EMPTY_RECORDS')}} ({{ $ctrl.percent.empty }}%)">
+             title="{{ $ctrl.quality.empty }} {{$ctrl.callTranslate('EMPTY_RECORDS')}} ({{ $ctrl.percent.empty }}%)"
+             ng-click="$ctrl.applyEmptyFilter()">
         </div>
 
         <div class="invalid-partition"
              ng-style="{width: $ctrl.width.invalid + '%'}"
              ng-class="{'no-transition' : $ctrl.blockTransition}"
              ng-show="$ctrl.quality.invalid > 0"
-             title="{{ $ctrl.quality.invalid }} {{$ctrl.callTranslate('INVALID_RECORDS')}} ({{ $ctrl.percent.invalid }}%)">
+             title="{{ $ctrl.quality.invalid }} {{$ctrl.callTranslate('INVALID_RECORDS')}} ({{ $ctrl.percent.invalid }}%)"
+             ng-click="$ctrl.applyInvalidFilter()">
         </div>
     </div>
 </div>
@@ -89,7 +92,10 @@ const QualityBarComponent = {
         quality: '<',
         isTrusted: '<',
         hasMenu: '<',
-        translateFn: '&'
+        translateFn: '&',
+        applyValidFilter: '&',
+        applyInvalidFilter: '&',
+        applyEmptyFilter: '&'
     },
     controller: ScQualityBarCtrl,
     transclude: {

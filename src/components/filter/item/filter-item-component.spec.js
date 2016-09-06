@@ -54,7 +54,7 @@ describe('Filter Item Component', () => {
         element.remove();
     });
 
-    describe('editable option', () => {
+    describe('editable badges', () => {
 
         it('should render editable values with inputs', () => {
             //given
@@ -84,14 +84,16 @@ describe('Filter Item Component', () => {
         
         it('should render editable values with input', () => {
             //given
+            scope.editable = true;
             createElement();
 
             //then
             expect(element.find('.filter-value input').size()).toBe(3);
         });
+
     });
 
-    describe('removable option', () => {
+    describe('removable badges', () => {
 
         it('should render badge close button', () => {
             // given
@@ -123,4 +125,5 @@ describe('Filter Item Component', () => {
             expect(element.find('a.badge-btn-close').size()).toBe(0);
         });
     });
+
 });

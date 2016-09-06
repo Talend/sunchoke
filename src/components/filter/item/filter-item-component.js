@@ -28,7 +28,7 @@ const ScFilterItemComponent = {
                 <form ng-submit="$ctrl.submit()">
                         <ul class="filter-item-value" ng-class="{'multi': $ctrl.filterValues.length > 1}">
                         <li ng-repeat="filterValue in $ctrl.filterValues track by $index">
-                            <sc-filter-value ng-if="$ctrl.filter.sign !== 'inside_range' "
+                            <sc-filter-value ng-if="$ctrl.filter.sign !== 'inside_range' && $ctrl.editable"
                                              filter-value="filterValue"
                                              render-value-fn="$ctrl.renderValue(value)"
                                              on-edit="$ctrl.edit($index, newValue)"
@@ -36,13 +36,14 @@ const ScFilterItemComponent = {
                                              on-remove="$ctrl.remove($index)">
                             </sc-filter-value>
                             
-                            <sc-filter-range ng-if="$ctrl.filter.sign === 'inside_range' "
+                            <sc-filter-range ng-if="$ctrl.filter.sign === 'inside_range' && $ctrl.editable"
                                              filter-value="filterValue"
-                                             editable="$ctrl.editable === true"
                                              on-edit="$ctrl.edit($index, newValue)"
                                              removable="!($first && $last)"
                                              on-remove="$ctrl.remove($index)">
                             </sc-filter-range>
+                            
+                            <span ng-if="!$ctrl.editable">{{$ctrl.renderValue(filterValue)}}</span>
                             
                         </li>
                     </ul>
