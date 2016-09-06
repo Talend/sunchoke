@@ -20,7 +20,71 @@ $matches-color: $ground;
 $sc-metadata-color: $wave-light !default;
 $sc-pattern-color: $wave-light !default;
 
+%badge-colors {
+  &.metadataBadge {
+    .badge {
+      @include badge($sc-metadata-color);
+    }
+  }
+
+  &.patternBadge {
+    .badge {
+      @include badge($sc-pattern-color);
+    }
+  }
+
+  &.valid_records {
+    .badge {
+      @include badge($valid_records-color);
+    }
+  }
+
+  &.invalid_records {
+    .badge {
+      @include badge($invalid_records-color);
+    }
+  }
+
+  &.empty_records {
+    .badge {
+      @include badge($empty_records-color);
+      color: $dark;
+      border-color: #8C8C8C;
+
+      &-btn-close {
+        color: $dark;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &.contains {
+    .badge {
+      @include badge($contains-color);
+    }
+  }
+
+  &.exact {
+    .badge {
+      @include badge($contains-color);
+    }
+  }
+
+  &.inside_range {
+    .badge {
+      @include badge($inside_range-color);
+    }
+  }
+
+  &.matches {
+    .badge {
+      @include badge($matches-color);
+    }
+  }
+}
+
 .filter-item {
+  @extend %badge-colors;
 
   .operator{
     padding: 0 5px 0 5px;
