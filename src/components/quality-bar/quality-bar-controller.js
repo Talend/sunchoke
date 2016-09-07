@@ -29,7 +29,17 @@ export default class ScQualityBarCtrl {
     }
 
     $onChanges(changes) {
-        if (changes.hashQuality) {
+
+        if(changes.quality.isFirstChange()){
+            return;
+        }
+
+        const qualityCurrentValue = changes.quality.currentValue ?
+            this.hashQuality(changes.quality.currentValue) : '';
+        const qualityPreviousValue = changes.quality.previousValue ?
+            this.hashQuality(changes.quality.previousValue) : '';
+
+        if (qualityCurrentValue !== qualityPreviousValue) {
             this.refreshBars();
         }
     }
@@ -214,7 +224,7 @@ export default class ScQualityBarCtrl {
      * @methodOf talend.sunchoke.quality-bar:ScQualityBarCtrl
      * @description Calculate a simple hash from concatenating values
      */
-    hashQuality() {
-        return this.quality.empty + '' + this.quality.invalid + '' + this.quality.valid;
+    hashQuality(quality) {
+        return quality.empty + '' + quality.invalid + '' + quality.valid;
     }
 }

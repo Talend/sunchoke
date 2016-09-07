@@ -7,5 +7,5 @@ export const FILTER_TYPE = {
     INSIDE_RANGE: "inside_range",
     MATCHES: "matches",
     PATTERN: 'pattern',
-    QUALITY: "quality",
+    QUALITY: "quality"
 }

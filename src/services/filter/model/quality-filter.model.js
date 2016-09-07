@@ -50,7 +50,7 @@ export default class QualityFilter extends ScFilter {
 	 * @description creates a new filter from the current one usin²g the given options object
 	 * @return the new filter
 	 */
-	setValues(newOptions) {
+	setValues(/*newOptions*/) {
 		// not needed
 	}
 
@@ -62,7 +62,7 @@ export default class QualityFilter extends ScFilter {
 	 * @description remove a value from the filter
 	 * @return a new filter after removing the given one
 	 */
-	removeValue(value) {
+	removeValue(/*value*/) {
 		// not needed
 	}
 
@@ -74,7 +74,7 @@ export default class QualityFilter extends ScFilter {
 	 * @description add a value to the filter's values
 	 * @return the new filter with containing the added value
 	 */
-	addValue(value) {
+	addValue(/*value*/) {
 		// not needed
 	}
 
@@ -86,7 +86,7 @@ export default class QualityFilter extends ScFilter {
 	 * @description add a value to the filter's values
 	 * @return the new filter with containing the added value
 	 */
-	updateValue(oldValue, newValue) {
+	updateValue(/*oldValue, newValue*/) {
 		// not needed
 	}
 
@@ -98,7 +98,7 @@ export default class QualityFilter extends ScFilter {
 	 * @description toggle a value of the filter's values
 	 * @return the new filter with containing the new filter value list
 	 */
-	toggleValue(value) {
+	toggleValue(/*value*/) {
 		// not needed
 	}
 
@@ -155,7 +155,7 @@ export default class QualityFilter extends ScFilter {
 	 * @param configuration the configuration to apply to the filter list
 	 * @description process the configuration for simple value filter
 	 */
-	toggleFilterValues(values) {
+	toggleFilterValues(/*values*/) {
 		// filter value not toggable
 	}
 }
