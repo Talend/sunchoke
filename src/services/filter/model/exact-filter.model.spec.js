@@ -444,6 +444,18 @@ describe('exact filter model', () => {
             const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
             expect(filter.toDSL()).toBe("(Col1 is empty)");
         }));
+
+        it('return filter in tql form with boolean param', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                options: {values: [true]}
+            };
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.toDSL()).toBe("(Col1=true)");
+        }));
     });
 
     describe('get label', () => {
