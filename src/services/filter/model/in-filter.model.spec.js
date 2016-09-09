@@ -404,5 +404,18 @@ describe('IN filter model', () => {
 
             expect(filter.toDSL()).toBe("(Col1 is empty or Col1 in ['tata', 'toto'])");
         }));
+
+        it('return filter in tql form with boolean and string', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.IN,
+                options: {values: ['2', true, false]}
+            };
+            const filter = new InFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+
+            expect(filter.toDSL()).toBe("(Col1 in [false, true, '2'])");
+        }));
     });
 });

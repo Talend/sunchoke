@@ -25,8 +25,8 @@ export default class InFilter extends AbstractExactInFilter {
         let valueToString = '';
         let emptyString = '';
         this.options.values.forEach((value, index) => {
-            if (value) {
-                if (isNaN(value)) {
+            if (value || value === false) {
+                if (typeof(value) === 'string') {
                     valueToString+=  index !== this.options.values.length - 1 ? "'" + value + "', " : "'" + value + "'";
                 } else {
                     valueToString+=  index !== this.options.values.length - 1 ? value + ", " : value;

@@ -226,7 +226,8 @@ export default class ScHorizontalBarchartCtrl {
             .append('xhtml:div')
             .attr('class', 'label ' + this._getSecondaryClassName())
             .html((d) => {
-                return this._getKey(d) || '(EMPTY)';
+                const value = this._getKey(d);
+                return value || value === false ? value : '(EMPTY)';
             });
     }
 
