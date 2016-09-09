@@ -139,7 +139,7 @@ describe('filter factory', () => {
                 fieldId: 'Col1',
                 fieldName: 'Col1',
                 type: FILTER_TYPE.QUALITY,
-                options: {isValid : true},
+                options: {isValid : true}
             };
 
             //when

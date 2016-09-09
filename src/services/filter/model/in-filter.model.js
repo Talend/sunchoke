@@ -26,7 +26,7 @@ export default class InFilter extends AbstractExactInFilter {
         let emptyString = '';
         this.options.values.forEach((value, index) => {
             if (value || value === false) {
-                if (typeof(value) === 'string') {
+                if (typeof(value) === 'string') { //eslint-disable-line angular/typecheck-string
                     valueToString+=  index !== this.options.values.length - 1 ? "'" + value + "', " : "'" + value + "'";
                 } else {
                     valueToString+=  index !== this.options.values.length - 1 ? value + ", " : value;
