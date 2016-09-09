@@ -19,6 +19,9 @@ $invalid_records-color: $juice;
 $matches-color: $ground;
 $sc-metadata-color: $wave-light !default;
 $sc-pattern-color: $wave-light !default;
+$sc-valid_records-color: $peace !default;
+$sc-invalid_records-color: $aggressive !default;
+$sc-empty_records-color: $light !default;
 
 %badge-colors {
   &.metadataBadge {
@@ -35,19 +38,19 @@ $sc-pattern-color: $wave-light !default;
 
   &.valid_records {
     .badge {
-      @include badge($valid_records-color);
+      @include badge($sc-valid_records-color);
     }
   }
 
   &.invalid_records {
     .badge {
-      @include badge($invalid_records-color);
+      @include badge($sc-invalid_records-color);
     }
   }
 
   &.empty_records {
     .badge {
-      @include badge($empty_records-color);
+      @include badge($sc-empty_records-color);
       color: $dark;
       border-color: #8C8C8C;
 

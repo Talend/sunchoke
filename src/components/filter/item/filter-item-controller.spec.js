@@ -170,6 +170,18 @@ describe('Filter item controller', () => {
             expect(renderValueFn).toHaveBeenCalledWith({ colId: 'fieldId', value: 'value1' });
             expect(getLabel).toHaveBeenCalledWith("formattedValue");
         });
+
+        it('should set the value to \'empty\' if value is empty', () => {
+            //given
+            const ctrl = createController();
+
+            //when
+            const res = ctrl.renderValue('');
+
+            //then
+            expect(res).toEqual('empty');
+        });
+
     });
 
     describe('edit filter value', () => {

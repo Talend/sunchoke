@@ -41,14 +41,14 @@ describe('Quality bar controller', function () {
     it('should calculate simple hash from quality values', function () {
         //given
         var ctrl = createController();
-        ctrl.quality = {
+        let quality = {
             invalid: 10,
             empty: 5,
             valid: 72
         };
 
         //when
-        var hash = ctrl.hashQuality();
+        var hash = ctrl.hashQuality(quality);
 
         //then
         expect(hash).toBe('51072');

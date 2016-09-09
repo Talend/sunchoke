@@ -26,7 +26,6 @@ export default class ScFilterValueCtrl {
         this.valueToDisplay = this.renderValueFn({
             value: this.filterValue
         });
-        this._initEmptyValue();
     }
 
     /**
@@ -38,18 +37,6 @@ export default class ScFilterValueCtrl {
     removeEmptyValue() {
         if (this.valueToDisplay === 'empty') {
             this.valueToDisplay = '';
-        }
-    }
-
-    /**
-     * @ngdoc method
-     * @name _initEmptyValue
-     * @methodOf talend.sunchoke.filter-item-value.controller:_initEmptyValue
-     * @description Display 'empty' if empty or null value
-     */
-    _initEmptyValue() {
-        if (!this.valueToDisplay || this.valueToDisplay === "") {
-            this.valueToDisplay = 'empty'
         }
     }
 
@@ -67,7 +54,6 @@ export default class ScFilterValueCtrl {
                 this.valueToDisplay = this.renderValueFn({
                     value: newModel
                 });
-                this._initEmptyValue();
             }
         }
     }

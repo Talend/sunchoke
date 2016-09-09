@@ -64,17 +64,6 @@ describe('Filter Item Value Component', () => {
             expect(element.find('span').size()).toBe(0);
         });
 
-        it('should display \'empty\' when filter is empty', () => {
-            //given
-            scope.filterValue = '';
-            createElement();
-
-            //when
-            const inputElement = element.find('input').eq(0);
-
-            //then
-            expect(inputElement.val()).toEqual('empty');
-        });
     });
 
     describe('removable option', () => {
