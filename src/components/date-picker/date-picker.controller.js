@@ -88,39 +88,41 @@ export default class ScDatePickerCtrl {
      * @description This method is called when datepicker value changed ( onClose )
      */
     onCloseHandler() {
-
         //if there is a controller
         if (this._o && this._o.controller) {
+
             //get the controller
             const actualController = this._o.controller;
-            //if there is a date
+
+            //if a valid date has been provided
             if (this._d) {
 
                 // if a bad date has been provided
-                if (this.textErrorDate) {
+                if (this.textErrorDate !== null) {
                     actualController.ngModel = this.textErrorDate;
                 }
                 else {
-                    //get the date timestamp
-                    actualController.ngModel = this._d.getTime();
-                }
-
-                //Close only if not init
-                if (!this.doNotCloseDp || this.doNotCloseDp === false) {
+                    // Need timeout to update value
                     actualController.$timeout(() => {
-                        actualController.onCloseFn();
+                        actualController.ngModel = this._d.getTime();
                     });
                 }
-
             }
-            //if there is no date, the value may be reset
+            // incorrect date : save even tough
             else {
-                //set null to ngmodel
-                actualController.ngModel = null;
-                actualController.$timeout(() => {
-                    actualController.onCloseFn();
-                });
+                // erroneous date has been typed
+                if (this.textErrorDate !== null) {
+                    actualController.ngModel = this.textErrorDate;
+                }
+                else{
+                    actualController.ngModel = null;
+                }
             }
+
+            // In all cases, we call the callback function to close date picker
+            actualController.$timeout(() => {
+                actualController.onCloseFn({isEscape : this.isEscape });
+            });
         }
     }
 

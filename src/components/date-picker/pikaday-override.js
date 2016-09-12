@@ -135,7 +135,11 @@ import "moment";
         compareDates = function(a,b)
         {
             // weak date comparison (use setToStartOfDay(date) to ensure correct result)
-            return a.getTime() === b.getTime();
+            //The comparaison has been changed from the normal implementation : do not check the hour ( because it can be various ones)
+            if(a.getDate() == b.getDate() && a.getMonth() == b.getMonth() && a.getYear() == b.getYear()){
+                return true;
+            }
+            return false;
         },
 
         extend = function(to, from, overwrite)
@@ -428,8 +432,13 @@ import "moment";
         {
             var self = this,
                 opts = self.config(options);
-            self.doNotCloseDp = false;
+
+            // As we want to save invalid values, we put the value into this variable
             self.textErrorDate = null;
+
+            // We need a flag to indicate to the client if it an escape when closing date-picker.
+            // If yes, the client will certainly not want to save the new value
+            self.isEscape = false;
 
             self._onMouseDown = function(e)
             {
@@ -510,8 +519,9 @@ import "moment";
                 if (self.isVisible()) {
 
                     switch(e.keyCode){
-                        case 13:
                         case 27:
+                            self.isEscape = true;
+                        case 13:
                             opts.field.blur();
                             break;
                         case 37:
@@ -552,7 +562,6 @@ import "moment";
                     //event if it is not a date, save the value and call callback function
                     self.textErrorDate = opts.field.value;
                     self._o.onClose.call(self);
-
                 }
                 if (!self._v) {
                     self.show();
@@ -656,9 +665,6 @@ import "moment";
                     self.gotoDate(defDate);
                 }
                 self._d = defDate;
-
-                this.doNotCloseDp = true;
-                this._o.onClose.call(this);
 
             } else {
                 self.gotoDate(new Date());
@@ -981,6 +987,7 @@ import "moment";
          */
         draw: function(force)
         {
+
             if (!this._v && !force) {
                 return;
             }
@@ -1220,7 +1227,6 @@ import "moment";
                 addClass(this.el, 'is-hidden');
                 this._v = false;
                 if (v !== undefined && typeof this._o.onClose === 'function') {
-                    this.doNotCloseDp = false;
                     this._o.onClose.call(this);
                 }
             }

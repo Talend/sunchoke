@@ -119,27 +119,15 @@ describe('Date picker component', () => {
             expect(ctrl.ngModel).toBeUndefined();
         });
 
-        it('should test the timestamp initilisation', () => {
-            //given
-            const configuration = '{\"noneButton\":false, \"field\":\"testValue\", \"controller\":\"testController\", \"defaultTimeStamp\":1464818400000}';
-            createElement(configuration);
-
-            //when
-            element.find('input')[0].focus();
-            scope.$digest();
-
-            expect(ctrl.ngModel).toBe(1464818400000);
-        });
-
-    });
+     });
 
     describe('should test the datepicker graphic component', () => {
 
         it('should test select a date',  function(done) {
 
-            inject(($document) => {
+            inject(($document, $timeout) => {
                 //given
-                const configuration = '{\"noneButton\":true}';
+                const configuration = '{"noneButton":true}';
                 createElement(configuration);
 
                 //when
@@ -151,10 +139,10 @@ describe('Date picker component', () => {
                 const date = new Date(randomDay.data('pika-year'), randomDay.data('pika-month'), randomDay.data('pika-day') );
                 randomDay[0].dispatchEvent(new Event('mousedown'));
 
-
                 //Test setTimeout Third part library
                 /* eslint-disable angular/timeout-service */
                 setTimeout(function(){
+                    $timeout.flush();
                     expect(ctrl.ngModel).toBe(date.getTime());
                     done();
                 },101);
@@ -166,7 +154,7 @@ describe('Date picker component', () => {
 
         it('should test the none button',  function(done) {
 
-            inject(($document) => {
+            inject(($document, $timeout) => {
                 //given
                 const configuration = '{\"noneButton\":true}';
                 createElement(configuration);
@@ -183,6 +171,7 @@ describe('Date picker component', () => {
                 //Test setTimeout Third part library
                 /* eslint-disable angular/timeout-service */
                 setTimeout(function(){
+                    $timeout.flush();
                     expect(ctrl.ngModel).toBe(date.getTime());
 
                     element.find('input')[0].focus();
@@ -191,6 +180,7 @@ describe('Date picker component', () => {
                     //Test setTimeout Third part library
                     /* eslint-disable angular/timeout-service */
                     setTimeout(function(){
+                          $timeout.flush();
                         expect(ctrl.ngModel).toBeNull();
                         done();
                     },101);
