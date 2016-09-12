@@ -79,6 +79,12 @@ export default class ScHorizontalBarchartCtrl {
     //---------------------------------------- Data manipulation -------------------------------------------
     //------------------------------------------------------------------------------------------------------
     _getKey(data) {
+        // return the true value
+        return data[this.keyField].value;
+    }
+
+    _getLabel(data) {
+        //return the formated value
         return data[this.keyField].label;
     }
 
@@ -226,7 +232,7 @@ export default class ScHorizontalBarchartCtrl {
             .append('xhtml:div')
             .attr('class', 'label ' + this._getSecondaryClassName())
             .html((d) => {
-                const value = this._getKey(d);
+                const value = this._getLabel(d);
                 return value || value === false ? value : '(EMPTY)';
             });
     }

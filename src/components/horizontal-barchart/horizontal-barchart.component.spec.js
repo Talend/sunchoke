@@ -26,7 +26,7 @@ describe('Horizontal barchart component', () => {
     beforeEach(inject(($rootScope, $compile) => {
         statsData = [
             {'data': {value: 'Johnson', label: 'Johnson'}, 'occurrences': 9},
-            {'data': {value: 'Roosevelt', label: 'Roosevelt'}, 'occurrences': 8},
+            {'data': {value: 'Roosevelt', label: 'Johnson'}, 'occurrences': 8},
             {'data': {value: 'Pierce', label: 'Pierce'}, 'occurrences': 6},
             {'data': {value: 'Wilson', label: 'Wilson'}, 'occurrences': 5},
             {'data': {value: 'Adams', label: 'Adams'}, 'occurrences': 4},
@@ -36,7 +36,7 @@ describe('Horizontal barchart component', () => {
         ];
         filteredStatsData = [
             {'data': {value: 'Johnson', label: 'Johnson'}, 'filteredOccurrences': 4},
-            {'data': {value: 'Roosevelt', label: 'Roosevelt'}, filteredOccurrences: 4},
+            {'data': {value: 'Roosevelt', label: 'Johnson'}, filteredOccurrences: 4},
             {'data': {value: 'Pierce', label: 'Pierce'}, 'filteredOccurrences': 4},
             {'data': {value: 'Wilson', label: 'Wilson'}, 'filteredOccurrences': 4},
             {'data': {value: 'Adams', label: 'Adams'}, 'filteredOccurrences': 4},
@@ -87,7 +87,7 @@ describe('Horizontal barchart component', () => {
             //then
             expect(element.find('.label').length).toBe(statsData.length);
             expect(element.find('.label').eq(0).text()).toBe('Johnson');
-            expect(element.find('.label').eq(1).text()).toBe('Roosevelt');
+            expect(element.find('.label').eq(1).text()).toBe('Johnson');
             expect(element.find('.label').eq(2).text()).toBe('Pierce');
             expect(element.find('.label').eq(3).text()).toBe('Wilson');
             expect(element.find('.label').eq(4).text()).toBe('Adams');
@@ -238,7 +238,7 @@ describe('Horizontal barchart component', () => {
             //then
             expect(element.find('.secondaryBar > rect').length).toBe(statsData.length);
         }));
-        
+
         it('should render tiny bars with a 3px width bar', inject(function ($timeout) {
             //given
             createElement();
