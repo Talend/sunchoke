@@ -15,6 +15,58 @@ import ExactFilter from './exact-filter.model.js';
 import InFilter from './in-filter.model.js';
 
 describe('exact filter model', () => {
+    describe('creating filter', () => {
+        it('should return an editable one', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                overwriteMode: true,
+                options: {values: ["toto"]}
+            };
+
+            // when
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options, true);
+
+            //then
+            expect(filter.editable).toBeTruthy();
+        }));
+
+        it('should return an non-editable one', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                overwriteMode: true,
+                options: {values: ["toto"]}
+            };
+
+            // when
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options, false);
+
+            //then
+            expect(filter.editable).toBeFalsy();
+        }));
+
+        it('should return an non editable one (empty filter)', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.EXACT,
+                overwriteMode: true,
+                options: {values: [""]}
+            };
+
+            // when
+            const filter = new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+
+            //then
+            expect(filter.editable).toBeFalsy();
+        }));
+    });
     describe('when not the same field', () => {
         it('should return the given filter', inject(function () {
             //given

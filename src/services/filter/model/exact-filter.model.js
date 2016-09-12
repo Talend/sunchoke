@@ -9,9 +9,9 @@ import AbstractExactInFilter from "./abstract/exact-in-filter.model.js";
  */
 export default class ExactFilter extends AbstractExactInFilter {
 
-	constructor(fieldId, fieldName, options) {
-		super(fieldId, fieldName, options, true);
-		this.editable = options.values[0].length > 1 ? true : false;
+	constructor(fieldId, fieldName, options, editable) {
+		super(fieldId, fieldName, options, editable);
+		this.editable = options.values[0].length > 1 ? editable : false;
 		this.sign = '=';
 	}
 

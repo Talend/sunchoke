@@ -32,16 +32,17 @@ export default class FilterModelFactory {
 				if (configuration.options.values && configuration.options.values.length > 0) {
 					//creating filter object
 					return configuration.options.values.length > 1 ?
-						new InFilter(configuration.fieldId, configuration.fieldName, configuration.options, true) :
-						new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+						new InFilter(configuration.fieldId, configuration.fieldName, configuration.options, configuration.editable) :
+						new ExactFilter(configuration.fieldId, configuration.fieldName, configuration.options, configuration.editable);
 				}
 				break;
-				//return new InFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 			case FILTER_TYPE.INSIDE_RANGE:
+				// not editable
 				return new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 			case FILTER_TYPE.PATTERN:
-				return new PatternFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+				return new PatternFilter(configuration.fieldId, configuration.fieldName, configuration.options, configuration.editable);
 			case FILTER_TYPE.QUALITY:
+				// not editable
 				return new QualityFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 
 				/*case FILTER_TYPE.INVALID_RECORDS:

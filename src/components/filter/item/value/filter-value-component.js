@@ -24,6 +24,7 @@ const ScFilterValueComponent = {
                    ng-trim="false"
                    ng-click="$ctrl.removeEmptyValue()"
                    ng-class="{empty : $ctrl.valueToDisplay === 'empty'}"
+                   ng-disabled="!$ctrl.editable"
                    pu-elastic-input
             />
         
@@ -37,7 +38,8 @@ const ScFilterValueComponent = {
         onEdit: '&',
         removable: '<',
         onRemove: '&',
-        renderValueFn: '&'
+        renderValueFn: '&',
+        editable: "<"
     }
 };
 

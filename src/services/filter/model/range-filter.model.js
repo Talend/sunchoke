@@ -8,8 +8,8 @@ import { FILTER_TYPE } from "./filter-const.js";
  */
 export default class RangeFilter extends ScFilter {
 
-    constructor(fieldId, fieldName, options, editable) {
-        super(fieldId, fieldName, options, editable);
+    constructor(fieldId, fieldName, options) {
+        super(fieldId, fieldName, options, false);
         this.sign = 'inside_range';
 
         //sort value

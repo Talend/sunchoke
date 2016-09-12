@@ -84,13 +84,15 @@ export default class ScQualityBarCtrl {
      */
     refreshBars() {
         // Do NOT animate on first values and enterAnimation is false
-        if (this.enterAnimation === 'false') {
-            this.blockTransition = true;
-            this.computePercent();
-            this.computeQualityWidth();
-        }
-        else {
-            this.refreshBarsWithAnimation();
+        if (this.quality) {
+            if (this.enterAnimation === 'false') {
+                this.blockTransition = true;
+                this.computePercent();
+                this.computeQualityWidth();
+            }
+            else {
+                this.refreshBarsWithAnimation();
+            }
         }
     }
 

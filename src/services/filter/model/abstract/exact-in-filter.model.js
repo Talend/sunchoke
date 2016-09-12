@@ -29,7 +29,7 @@ export default class AbstractExactInFilter extends ScFilter {
             //overwrite the filter with the current configuration values
             if (configuration.overwriteMode) {
                 return configurationValues.length > 1 ?
-                    new InFilter(this.fieldId, this.fieldName, configuration.options, true) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options, true);
+                    new InFilter(this.fieldId, this.fieldName, configuration.options, configuration.editable) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options, configuration.editable);
             } else {
                 //process configuration to remove existing value and add new ones
                 const newValue = this.toggleFilterValues(configuration.options.values);
@@ -38,7 +38,7 @@ export default class AbstractExactInFilter extends ScFilter {
                 if (configuration.options.values.length === 0) {
                     return null;
                 } else {
-                    return configuration.options.values.length > 1 ? new InFilter(this.fieldId, this.fieldName, configuration.options, true) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options, true);
+                    return configuration.options.values.length > 1 ? new InFilter(this.fieldId, this.fieldName, configuration.options, configuration.editable) :  new ExactFilter(this.fieldId, this.fieldName, configuration.options, configuration.editable);
                 }
             }
         }
@@ -56,9 +56,9 @@ export default class AbstractExactInFilter extends ScFilter {
      */
     setValues(newOptions) {
         if(newOptions.values.length > 1) {
-            return new InFilter(this.fieldId, this.fieldName, newOptions, true);
+            return new InFilter(this.fieldId, this.fieldName, newOptions, this.editable);
         } else if (newOptions.values.length) {
-            return new ExactFilter(this.fieldId, this.fieldName, newOptions, true)
+            return new ExactFilter(this.fieldId, this.fieldName, newOptions, this.editable)
         }
         return null;
     }

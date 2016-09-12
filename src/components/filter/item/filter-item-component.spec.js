@@ -90,16 +90,6 @@ describe('Filter Item Component', () => {
             //then
             expect(element.find('.filter-value input').size()).toBe(3);
         });
-
-        it('should render non-editable values with input', () => {
-            //given
-            scope.editable = false;
-            createElement();
-
-            //then
-            expect(element.find('sc-filter-value').length).toBe(0);
-            expect(element.find('.readonly').length).toBe(3);
-        });
     });
 
     describe('removable badges', () => {
