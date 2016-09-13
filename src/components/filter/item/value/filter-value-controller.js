@@ -50,7 +50,7 @@ export default class ScFilterValueCtrl {
         const model = changes.filterValue;
         if (model) {
             const newModel = model.currentValue;
-            if (newModel || newModel === '') {
+            if (newModel || newModel === false || newModel === '') {
                 this.valueToDisplay = this.renderValueFn({
                     value: newModel
                 });
