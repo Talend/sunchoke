@@ -135,6 +135,7 @@ $pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 .pika-lendar {
   float: left;
   width: 240px;
+  white-space: normal; // to display button prev and next day normally
 }
 
 .pika-title {
@@ -219,6 +220,7 @@ $pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 .pika-select {
   display: inline-block;
   *display: inline;
+  color: black;
 }
 
 .table-container{
