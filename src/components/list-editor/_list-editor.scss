@@ -19,7 +19,7 @@ $sc-list-editor-title-color: #404040 !default;
 $sc-list-editor-badge-default-color: #FFFFFF !default;
 $sc-list-editor-badge-default-background-color: #999999 !default;
 $sc-list-editor-icon-color: #266092 !default;
-
+$sc-box-radius: 4px !default;
 
 sc-list-editor {
 
@@ -89,7 +89,7 @@ sc-list-editor {
 
       background-color: $sc-list-editor-background;
       border: 1px solid $sc-list-editor-border;
-      border-radius: 5px;
+      border-radius: $sc-box-radius;
       font-size: 15px;
       height: 54px;
       padding: 0 $padding-size;
