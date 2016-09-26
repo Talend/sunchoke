@@ -60,11 +60,17 @@ export default class RangeFilter extends ScFilter {
             if (clone[0].min > value.min) {
                 //smallest range so we select everything from the biggest range max to the smallest range min
                 clone = [{
-                    min: value.min, max: clone[clone.length - 1].max
+                    min: value.min,
+                    minLabel: value.minLabel,
+                    max: clone[clone.length - 1].max,
+                    maxLabel: clone[clone.length - 1].maxLabel
                 }];
             } else {
                 const newRange = {
-                    min: clone[0].min, max: value.max
+                    min: clone[0].min,
+                    minLabel: clone[0].minLabel,
+                    max: value.max,
+                    maxLabel: value.maxLabel
                 };
                 if (!this.inAnotherRange(clone, newRange)) {
                     //removing all the duplicate range (in the new range)
@@ -81,6 +87,7 @@ export default class RangeFilter extends ScFilter {
                         if (rangeToUpdate > -1) {
                             //as when using merge mode the begining point is always the min of the smallest range
                             clone[rangeToUpdate].min = newRange.min;
+                            clone[rangeToUpdate].minLabel = newRange.minLabel;
                         }
                     }
                 }
@@ -274,14 +281,17 @@ export default class RangeFilter extends ScFilter {
         //if the given range is consecutive to an existing range (after or before), fuse them together
         if (previousRangeIndex > -1) {
             filterList[previousRangeIndex].max = value.max;
+            filterList[previousRangeIndex].maxLabel = value.maxLabel;
         }
         if (nextRangeIndex > -1) {
             filterList[nextRangeIndex].min = value.min;
+            filterList[nextRangeIndex].min = value.minlabel;
         }
 
         if (previousRangeIndex > -1 && nextRangeIndex > -1) {
             //merging the 3 ranges
             filterList[previousRangeIndex].max = filterList[nextRangeIndex].max;
+            filterList[previousRangeIndex].maxLabel = filterList[nextRangeIndex].maxLabel;
             filterList.splice(nextRangeIndex, 1);
         }
 
@@ -343,11 +353,23 @@ export default class RangeFilter extends ScFilter {
      * @description converts the value into a label
      */
     getLabel(value) {
-        if (value.min !== value.max) {
-            return !this.options.isSingleValueRange ? ("[" + value.min + ", " + value.max + "[") :
-                ("[" + value.min + ", " + value.max + "]");
+        let keyMin = 'min';
+        let keyMax = 'max';
+
+        if (value.minLabel && value.maxLabel) {
+          keyMin = 'minLabel';
+          keyMax = 'maxLabel';
         }
-        return "["+ value.min + "]";
+
+        if (value[keyMin] !== value[keyMax]) {
+            return !this.options.isSingleValueRange ? ("[" + value[keyMin] + ", " + value[keyMax] + "[") :
+                ("[" + value[keyMin] + ", " + value[keyMax] + "]");
+        }
+
+        if (value.min === value.max) {
+          return '[' + value[keyMin] + ']';
+        }
+        return value[keyMin];
     }
 
     /**
@@ -383,14 +405,26 @@ export default class RangeFilter extends ScFilter {
                     });
 
                     //default range (split case)
-                    let newRanges = [{min: clone[rangeToUpdate].min, max: value.min}, {
+                    let newRanges = [{
+                        min: clone[rangeToUpdate].min,
+                        max: value.min,
+                        minLabel: clone[rangeToUpdate].minLabel,
+                        maxLabel: clone[rangeToUpdate].maxLabel
+                      }, {
                         min: value.max,
-                        max: clone[rangeToUpdate].max
+                        max: clone[rangeToUpdate].max,
+                        minLabel: value.maxLabel,
+                        maxLabel: clone[rangeToUpdate].maxLabel
                     }];
 
                     //if the range to update is the first one
                     if (clone[rangeToUpdate].max === value.max) {
-                        newRanges = [{min: clone[rangeToUpdate].min, max: value.min}];
+                        newRanges = [{
+                          min: clone[rangeToUpdate].min,
+                            minLabel: clone[rangeToUpdate].minLabel,
+                            max: value.min,
+                            maxLabel: value.minLabel
+                          }];
                     }
                     clone.splice(rangeToUpdate, 1);
                     clone = clone.concat(newRanges);

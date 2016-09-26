@@ -181,7 +181,7 @@ describe('range filter model', () => {
                 fieldId: 'Col1',
                 fieldName: 'Col1',
                 type: FILTER_TYPE.INSIDE_RANGE,
-                options: {values: [{min:20, max:30}, {min:40, max:90}]}
+                options: {values: [{min:20, minLabel: 'Value20', max:30, maxLabel: 'Value30'}, {min:40, max:90}]}
             };
             const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 
@@ -190,18 +190,19 @@ describe('range filter model', () => {
                 fieldId: 'Col1',
                 fieldName: 'Col1',
                 type: FILTER_TYPE.INSIDE_RANGE,
-                options: {values: [{min:90, max:100}]}
+                options: {values: [{min:90, max:100, maxLabel: 'Value100'}]}
             };
-
             const result = filter.update(newConfiguration);
 
             //then
             expect(result instanceof RangeFilter).toBeTruthy();
             expect(result.options.values.length).toBe(2);
             expect(result.options.values[0].min).toBe(20);
+            expect(result.options.values[0].minLabel).toBe('Value20');
             expect(result.options.values[0].max).toBe(30);
             expect(result.options.values[1].min).toBe(40);
             expect(result.options.values[1].max).toBe(100);
+            expect(result.options.values[1].maxLabel).toBe('Value100');
         }));
 
         it('should merge 3 ranges', inject(function () {
@@ -266,13 +267,13 @@ describe('range filter model', () => {
     });
 
     describe('when updating filter in range merge mode', () => {
-        it('should modify biggest range min when giving a smaller range', inject(function () {
+      it('should modify biggest range min when giving a smaller range', inject(function () {
             //given
             const configuration = {
                 fieldId: 'Col1',
                 fieldName: 'Col1',
                 type: FILTER_TYPE.INSIDE_RANGE,
-                options: {values: [{min: 20, max: 30}, {min: 5, max: 10}]}
+                options: {values: [{min: 20, minLabel: 'Value20', max: 30, maxLabel: 'Value30'}, {min: 5, minLabel: 'Value5', max: 10, maxLabel: 'Value10'}]}
             };
             const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 
@@ -282,7 +283,7 @@ describe('range filter model', () => {
                 fieldName: 'Col1',
                 type: FILTER_TYPE.INSIDE_RANGE,
                 rangeMergeMode: true,
-                options: {values: [{min: 1, max: 5}]}
+                options: {values: [{min: 1, minLabel: 'Value1', max: 5, maxLabel: 'Value5'}]}
             };
             const result = filter.update(newConfiguration);
 
@@ -290,7 +291,9 @@ describe('range filter model', () => {
             expect(result instanceof RangeFilter).toBeTruthy();
             expect(result.options.values.length).toBe(1);
             expect(result.options.values[0].min).toBe(1);
+            expect(result.options.values[0].minLabel).toBe('Value1');
             expect(result.options.values[0].max).toBe(30);
+            expect(result.options.values[0].maxLabel).toBe('Value30');
         }));
 
         it('should modify biggest range which is smaller than the given one', inject(function () {
@@ -299,7 +302,7 @@ describe('range filter model', () => {
                 fieldId: 'Col1',
                 fieldName: 'Col1',
                 type: FILTER_TYPE.INSIDE_RANGE,
-                options: {values: [{min: 5, max: 10}, {min: 20, max: 30}]}
+                options: {values: [{min: 5, minLabel: 'Value5', max: 10, maxLabel: 'Value10'}, {min: 20, minLabel: 'Value20', max: 30, maxLabel: 'Value30'}]}
             };
             const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
 
@@ -309,7 +312,7 @@ describe('range filter model', () => {
                 fieldName: 'Col1',
                 type: FILTER_TYPE.INSIDE_RANGE,
                 rangeMergeMode: true,
-                options: {values: [{min: 11, max: 17}, {min: 18, max: 19}, {min: 25, max: 50}, {min: 31, max: 40}]}
+                options: {values: [{min: 11, max: 17}, {min: 18, max: 19}, {min: 25, max: 50, maxLabel: 'Value50'}, {min: 31, max: 40}]}
             };
             const result = filter.update(newConfiguration);
 
@@ -317,7 +320,9 @@ describe('range filter model', () => {
             expect(result instanceof RangeFilter).toBeTruthy();
             expect(result.options.values.length).toBe(1);
             expect(result.options.values[0].min).toBe(5);
+            expect(result.options.values[0].minLabel).toBe('Value5');
             expect(result.options.values[0].max).toBe(50);
+            expect(result.options.values[0].maxLabel).toBe('Value50');
         }));
 
         it('should remove range inside the new one and keep the other', inject(function () {
@@ -718,6 +723,30 @@ describe('range filter model', () => {
             };
             const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
             expect(filter.getLabel({min: 5, max: 5})).toBe("[5]");
+        }));
+
+        it('should return label', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min: 5, max: 5}, {min: 10, max: 30}, {min: 35, max: 40}]}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.getLabel({min: 5, minLabel: 'Value5', max: 10, maxLabel: 'Value10'})).toBe("[Value5, Value10[");
+        }));
+
+        it('should return label alone without bracket', inject(function () {
+            //given
+            const configuration = {
+                fieldId: 'Col1',
+                fieldName: 'Col1',
+                type: FILTER_TYPE.INSIDE_RANGE,
+                options: {values: [{min: 5, max: 5}, {min: 10, max: 30}, {min: 35, max: 40}]}
+            };
+            const filter = new RangeFilter(configuration.fieldId, configuration.fieldName, configuration.options);
+            expect(filter.getLabel({min: 5, minLabel: 'Value5', max: 15, maxLabel: 'Value5'})).toBe("Value5");
         }));
     });
 });
