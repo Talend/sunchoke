@@ -561,7 +561,6 @@ import "moment";
                 else{
                     //event if it is not a date, save the value and call callback function
                     self.textErrorDate = opts.field.value;
-                    self._o.onClose.call(self);
                 }
                 if (!self._v) {
                     self.show();

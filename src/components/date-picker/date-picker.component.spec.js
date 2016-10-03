@@ -152,6 +152,32 @@ describe('Date picker component', () => {
             })
         });
 
+        it('should not trigger onCloseHandler event when the user type nothing',  function(done) {
+
+            inject(($document, $timeout) => {
+                //given
+                const configuration = '{"noneButton":true}';
+                createElement(configuration);
+                spyOn(ctrl, 'onCloseFn');
+
+                //when
+                element.find('input')[0].focus();
+                scope.$digest();
+
+                //because take the first may be out of the current month
+                element.find('input')[0].dispatchEvent(new Event('change'));
+
+                //Test setTimeout Third part library
+                /* eslint-disable angular/timeout-service */
+                setTimeout(function(){
+                    $timeout.flush();
+                    expect(ctrl.onCloseFn.calls.any()).toBe(false);
+                    done();
+                },101);
+                /* eslint-enable angular/timeout-service */
+            })
+        });
+
         it('should test the none button',  function(done) {
 
             inject(($document, $timeout) => {
