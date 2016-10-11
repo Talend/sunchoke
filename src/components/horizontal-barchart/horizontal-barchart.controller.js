@@ -39,11 +39,11 @@ export default class ScHorizontalBarchartCtrl {
             .offset([-10, 0])
             .html((primaryDatum, index) => {
                 // retrieve value in primaryData
-                let tooltipValue = this.primaryData[index].formattedValue;
+                let tooltipValue = this.primaryData[index][this.keyField];
 
                 // Check in secondaryData if value existing
                 let toolTipFounded = this.secondaryData.find((obj) => {
-                    return obj.formattedValue === tooltipValue
+                    return obj[this.keyField].value === tooltipValue.value
                 });
 
                 return this.tooltipContent({
