@@ -31,7 +31,6 @@ export default class ScHorizontalBarchartCtrl {
     }
 
     $onInit() {
-
         this.margin = {top: 15, right: 20, bottom: 10, left: 10};
         this.containerWidth = +this.$attrs.width;
         this.tooltip = d3.tip()
@@ -57,11 +56,13 @@ export default class ScHorizontalBarchartCtrl {
 
     $onChanges(changesObj) {
         var firstVisuData = changesObj.primaryData ? changesObj.primaryData.currentValue : null;
-        var secondVisuData = changesObj.secondaryData ? changesObj.secondaryData.currentValue : null;
+        var secondVisuData = changesObj.secondaryData ? this._sanitizedSecondaryData(changesObj.secondaryData.currentValue) : null;
         var firstDataHasChanged = firstVisuData !== this.oldVisuData;
+
         if (firstDataHasChanged && firstVisuData) {
             this.oldVisuData = firstVisuData;
             this.$element.empty();
+
             //because the tooltip is not a child of the horizontal barchart element
             d3.selectAll('.horizontal-barchart-cls.d3-tip').remove();
             this.$timeout.cancel(this.renderPrimaryTimeout);
@@ -78,7 +79,28 @@ export default class ScHorizontalBarchartCtrl {
     //------------------------------------------------------------------------------------------------------
     //---------------------------------------- Data manipulation -------------------------------------------
     //------------------------------------------------------------------------------------------------------
-    _getKey(data) {
+		_sanitizedSecondaryData(secondaryData) {
+			if(!this.primaryData) {
+				return secondaryData;
+			}
+
+			let primaryDataClone = JSON.parse(JSON.stringify(this.primaryData));
+
+			return primaryDataClone.map((primaryDatum) => {
+				let secondaryDatum = secondaryData.find((secondaryDatum) => {
+					return this._getKey(primaryDatum) === this._getKey(secondaryDatum)
+				});
+				if(!secondaryDatum) {
+					delete primaryDatum[this.primaryValueField];
+					primaryDatum[this.secondaryValueField] = 0;
+					return primaryDatum;
+				} else {
+					return secondaryDatum;
+				}
+			});
+		}
+
+		_getKey(data) {
         // return the true value
         return data[this.keyField].value;
     }
