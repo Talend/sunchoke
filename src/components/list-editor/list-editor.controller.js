@@ -33,11 +33,13 @@ export default class ScListEditorCtrl {
 	$onInit() {
 		this.editMode = false;
 		this.selectedIds = [];
-		if (!this.ngModel) {
-			this.ngModel = {
-				listTitle: this.listTitle,
-				items: this.selectedIds
-			};
+		this.ngModel = {
+			listTitle: this.listTitle,
+			items: this.selectedIds
+		};
+
+		if (this.initialSelectedIds) {
+			this.selectedIds = this.initialSelectedIds;
 		}
 		this.api = {
 			renameItem: this.renameItem,

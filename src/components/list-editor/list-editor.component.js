@@ -20,14 +20,14 @@ import ScListEditorCtrl from './list-editor.controller.js';
  * @restrict E
  * @usage
  * <sc-list-editor delete-handler="deleteHandler()"
-                   groups="groups"
-                   ng-model="ngModel"
-                   placeholder="placeholderText"
-                   title="defaultTitle"
-                   title-placeholder="TitleInputPlaceholder"
-                   title-editable="true/false"
-                   removable="true/false">
-    </sc-list-editor>
+ groups="groups"
+ ng-model="ngModel"
+ placeholder="placeholderText"
+ title="defaultTitle"
+ title-placeholder="TitleInputPlaceholder"
+ title-editable="true/false"
+ removable="true/false">
+ </sc-list-editor>
  *
  * @param {function} delete-handler Function called when trash button is pressed
  * @param {array} groups list of item's groups
@@ -38,7 +38,7 @@ import ScListEditorCtrl from './list-editor.controller.js';
  * @param {Boolean} removable allow to remove the show the trash icon
  */
 const ScListEditorComponent = {
-  template: `
+	template: `
             <div class="list-editor">
                 <div class="title-box">
                     <span class="title" ng-bind="$ctrl.listTitle" ng-if="!$ctrl.editMode"></span>
@@ -88,23 +88,24 @@ const ScListEditorComponent = {
                 </div>
             </div>
     `,
-  bindings: {
-    api:'=',
-    deleteHandler: "&",
-    deleteSelectedItemHandler: "&",
-    deleteButtonTitle:"<",
-    editButtonTitle: "<",
-    groups: "<",
-    groupOrder: "<",
-    ngModel: "=",
-    placeholder: "<",
-    removable: "<",
-    listTitle: "<",
-    titlePlaceholder: "<",
-    titleEditable: "<",
-    validateButtonTitle:"<"
-  },
-  controller: ScListEditorCtrl
+	bindings: {
+		api: '=',
+		deleteHandler: "&",
+		deleteSelectedItemHandler: "&",
+		initialSelectedIds: '<',
+		deleteButtonTitle: "<",
+		editButtonTitle: "<",
+		groups: "<",
+		groupOrder: "<",
+		ngModel: "=",
+		placeholder: "<",
+		removable: "<",
+		listTitle: "<",
+		titlePlaceholder: "<",
+		titleEditable: "<",
+		validateButtonTitle: "<"
+	},
+	controller: ScListEditorCtrl
 };
 
 export default ScListEditorComponent;
