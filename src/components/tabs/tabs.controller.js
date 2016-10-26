@@ -62,7 +62,8 @@ export default class ScTabsCtrl {
             tabToDeactivate.active = false;
         });
         tab.active = true;
-        this.onTabChange();
+        const tabIndex = this.tabs.indexOf(tab);
+        this.onTabChange({tabIndex});
     }
 
     /**
