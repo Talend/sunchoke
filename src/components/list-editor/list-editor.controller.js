@@ -39,7 +39,7 @@ export default class ScListEditorCtrl {
 		};
 
 		if (this.initialSelectedIds) {
-			this.selectedIds = this.initialSelectedIds;
+			this.selectedIds.push.apply(this.selectedIds, this.initialSelectedIds);
 		}
 		this.api = {
 			renameItem: this.renameItem,
