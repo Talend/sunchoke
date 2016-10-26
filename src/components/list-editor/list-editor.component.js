@@ -63,7 +63,7 @@ const ScListEditorComponent = {
                     <div class="auto-complete-box" ng-if="$ctrl.showAutocompleteBox === true">
                         <div class="group" ng-repeat="group in $ctrl.groups">
                             <div class="item" ng-repeat="item in group.items|filter:$ctrl.filter:strict"
-                                ng-class="{'disabled':$ctrl.selectedIds.indexOf(item) !== -1}"
+                                ng-class="{'disabled':$ctrl.isSelected(item)}"
                                 ng-mousedown="$ctrl.selectItem($event, item)">
                              <span class="icon" ng-if="::group.icon" ng-include="::group.icon"></span>
                              <span class="text" ng-bind="::item.label"></span>

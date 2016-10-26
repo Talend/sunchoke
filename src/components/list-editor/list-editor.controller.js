@@ -27,7 +27,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name $onInit
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @description Hook when controller is initialized
 	 */
 	$onInit() {
@@ -52,7 +52,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name focusInput
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @description Method called on + button to focus the input
 	 */
 	focusInput() {
@@ -62,7 +62,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name renameItem
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @description Member of the api, rename an item with a other
 	 * @param oldName ancien label
 	 * @param newName nouveau label
@@ -80,7 +80,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name renameItem
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @description Member of the api, rename an item with a other
 	 * @param itemId the id to delete
 	 */
@@ -103,7 +103,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name activateEdition
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @description Function called when the title is edited
 	 */
 	activateEdition() {
@@ -119,7 +119,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name validateEditon
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @description validate the title edition
 	 */
 	validateEditon() {
@@ -133,7 +133,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name onFilterKeyDown
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param {object} event the keydown event
 	 * @description keydown on filter box
 	 */
@@ -147,7 +147,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name editModeKeyPressed
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param {object} event the keypressed event
 	 * @description keypressed handler on title
 	 */
@@ -165,14 +165,14 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name selectItem
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param {object} event the mousedown event
 	 * @param {object} item the item in one group
 	 * @description mousedown handler on item
 	 */
 	selectItem(event, item) {
 
-		if (this.selectedIds.indexOf(item) === -1) {
+		if (!this.isSelected(item)) {
 			this.selectedIds.unshift(item);
 		}
 		else {
@@ -183,7 +183,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name getBadgeStyle
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param string itemId item's id
 	 * @description get badge background color
 	 */
@@ -206,7 +206,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name getBadgeIcon
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param string itemId item's id
 	 * @description get badge's icon
 	 */
@@ -224,7 +224,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name getLabelById
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param string itemId item's id
 	 * @description get badge's label
 	 */
@@ -242,7 +242,7 @@ export default class ScListEditorCtrl {
 	/**
 	 * @ngdoc method
 	 * @name removeSelectedItem
-	 * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
 	 * @param string itemId item's id
 	 * @description remove the label, triggered by click on cross
 	 */
@@ -250,6 +250,22 @@ export default class ScListEditorCtrl {
 		if (this.selectedIds.indexOf(itemId) !== -1) {
 			this.selectedIds.splice(this.selectedIds.indexOf(itemId), 1);
 		}
+	}
+
+	/**
+	 * @ngdoc method
+	 * @name isSelected
+	 * @methodOf talend.sunchoke.list-editor.controller:ScListEditorCtrl
+	 * @param Object an item with an id
+	 * @description This function allow to know if an item is selected
+	 */
+	isSelected(item) {
+		for (let i = 0; i < this.selectedIds.length; i++) {
+			if (this.selectedIds[i].id === item.id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
