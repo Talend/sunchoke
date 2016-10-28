@@ -651,7 +651,7 @@ import "moment";
                 }
             }
 
-            if (opts.defaultTimeStamp) {
+            if (opts.defaultTimeStamp || opts.defaultTimeStamp === 0) {
                 opts.defaultDate = new Date(opts.defaultTimeStamp);
             }
 
