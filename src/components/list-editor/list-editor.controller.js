@@ -44,9 +44,10 @@ export default class ScListEditorCtrl {
 		this.api = {
 			renameItem: this.renameItem,
 			deleteItem: this.deleteItem,
+			selectItem: this.selectItem.bind(this),
 			groups: this.groups,
 			selectedIds: this.selectedIds
-		}
+		};
 	}
 
 	/**
@@ -176,7 +177,9 @@ export default class ScListEditorCtrl {
 			this.selectedIds.unshift(item);
 		}
 		else {
-			event.preventDefault();
+			if (event) {
+				event.preventDefault();
+			}
 		}
 	}
 
