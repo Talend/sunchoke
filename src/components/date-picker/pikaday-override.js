@@ -1217,12 +1217,15 @@ import "moment";
                 //Set date-picker left position
                 if(this._o.positionLeft){
                     this.el.style.left = this._o.positionLeft;
-                }
-                else{
+                } else{
                     this.el.style.left = 'auto';
                 }
 
-                this.el.style.top = 'auto';
+                if(this._o.positionTop){
+                    this.el.style.top = this._o.positionTop;
+                } else {
+                    this.el.style.top = 'auto';
+                }
                 addClass(this.el, 'is-hidden');
                 this._v = false;
                 if (v !== undefined && typeof this._o.onClose === 'function') {

@@ -81,7 +81,7 @@ sc-splitter {
       }
 
       .split-second-pane {
-        @include calc(left, "50% + #{$split-handler-size}");
+        @include calc(left, "50%");
       }
     }
 
@@ -89,7 +89,7 @@ sc-splitter {
     &.vertical {
       .split-handler {
         height: $split-handler-size;
-        top: 50%;
+        top: calc(50% - #{$split-handler-size});
         left: 0;
         right: 0;
         cursor: ns-resize;
@@ -100,7 +100,7 @@ sc-splitter {
       }
 
       .split-second-pane {
-        @include calc(top, "50% + #{$split-handler-size}");
+        @include calc(top, "50%");
       }
     }
   }

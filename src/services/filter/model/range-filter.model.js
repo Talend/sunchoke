@@ -362,7 +362,7 @@ export default class RangeFilter extends ScFilter {
         }
 
         if (value[keyMin] !== value[keyMax]) {
-            return !this.options.isSingleValueRange ? ("[" + value[keyMin] + ", " + value[keyMax] + "[") :
+            return !this.options.isSingleValueRange  && !this.options.includeDateMax ? ("[" + value[keyMin] + ", " + value[keyMax] + "[") :
                 ("[" + value[keyMin] + ", " + value[keyMax] + "]");
         }
 
