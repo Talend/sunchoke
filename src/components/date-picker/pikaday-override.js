@@ -590,6 +590,7 @@ import "moment";
 
                 if (!self._c) {
                     self._b = sto(function() {
+                        self.isEscape = true;
                         self.hide();
                     }, 50);
                 }
