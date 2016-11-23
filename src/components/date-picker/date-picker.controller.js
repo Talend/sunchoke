@@ -94,6 +94,7 @@ export default class ScDatePickerCtrl {
 				//get the controller
 				const actualController = this._o.controller;
 
+				//the user can't change a value from the component, we return the previous value
 				if (!this.isSetDate) {
 					actualController.$timeout(() => {
 						actualController.ngModel = actualController.config.initialValue;

@@ -518,6 +518,10 @@ import "moment";
                 e = e || window.event;
 
                 if (self.isVisible()) {
+										if ([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+											e.preventDefault();
+											e.stopPropagation();
+										}
 
                     switch(e.keyCode){
                         case 27:
@@ -526,7 +530,6 @@ import "moment";
                             opts.field.blur();
                             break;
                         case 37:
-                            e.preventDefault();
                             self.adjustDate('subtract', 1);
                             break;
                         case 38:
@@ -592,7 +595,6 @@ import "moment";
 
                 if (!self._c) {
                     self._b = sto(function() {
-                        //self.isEscape = true;
                         self.hide();
                     }, 50);
                 }
@@ -630,7 +632,7 @@ import "moment";
             addEvent(self.el, 'mousedown', self._onMouseDown, true);
             addEvent(self.el, 'touchend', self._onMouseDown, true);
             addEvent(self.el, 'change', self._onChange);
-            addEvent(document, 'keydown', self._onKeyChange);
+            addEvent(document, 'keydown', self._onKeyChange, true);
 
             if (opts.field) {
 
