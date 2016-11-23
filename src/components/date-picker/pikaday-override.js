@@ -439,6 +439,7 @@ import "moment";
             // We need a flag to indicate to the client if it an escape when closing date-picker.
             // If yes, the client will certainly not want to save the new value
             self.isEscape = false;
+						self.isSetDate = false;
 
             self._onMouseDown = function(e)
             {
@@ -543,6 +544,7 @@ import "moment";
 
             self._onInputChange = function(e)
             {
+								self.isSetDate = true;
                 var date;
 
                 if (e.firedBy === self) {
@@ -590,7 +592,7 @@ import "moment";
 
                 if (!self._c) {
                     self._b = sto(function() {
-                        self.isEscape = true;
+                        //self.isEscape = true;
                         self.hide();
                     }, 50);
                 }
@@ -785,6 +787,7 @@ import "moment";
          */
         setDate: function(date, preventOnSelect)
         {
+						this.isSetDate = true;
             if (!date) {
                 this._d = null;
 

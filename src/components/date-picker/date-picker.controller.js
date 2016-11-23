@@ -38,6 +38,7 @@ export default class ScDatePickerCtrl {
         const input = this.$element.find('input')[0];
         //date picker container
         const container = this.$element.find('div')[2];
+				this.initialNgModel = this.ngModel;
 
         //Config object for pikaday
         const config = {
@@ -87,44 +88,48 @@ export default class ScDatePickerCtrl {
      * @methodOf talend.sunchoke.date-picker.controller:ScDatePickerCtrl
      * @description This method is called when datepicker value changed ( onClose )
      */
-    onCloseHandler() {
-        //if there is a controller
-        if (this._o && this._o.controller) {
+		onCloseHandler() {
+			//if there is a controller
+			if (this._o && this._o.controller) {
+				//get the controller
+				const actualController = this._o.controller;
 
-            //get the controller
-            const actualController = this._o.controller;
+				if (!this.isSetDate) {
+					actualController.$timeout(() => {
+						actualController.ngModel = actualController.config.initialValue;
+					});
+				} else {
+					//if a valid date has been provided
+					if (this._d) {
+						// if a bad date has been provided
+						if (this.textErrorDate !== null) {
+							actualController.ngModel = this.textErrorDate;
+						} else {
+							// Need timeout to update value
+							actualController.$timeout(() => {
+								actualController.ngModel = this._d.getTime();
+							});
+						}
+					}
+					// incorrect date : save even tough
+					else {
+						// erroneous date has been typed
+						if (this.textErrorDate !== null) {
+							actualController.ngModel = this.textErrorDate;
+						} else {
+							actualController.ngModel = null;
+						}
+					}
+				}
 
-            //if a valid date has been provided
-            if (this._d) {
-
-                // if a bad date has been provided
-                if (this.textErrorDate !== null) {
-                    actualController.ngModel = this.textErrorDate;
-                }
-                else {
-                    // Need timeout to update value
-                    actualController.$timeout(() => {
-                        actualController.ngModel = this._d.getTime();
-                    });
-                }
-            }
-            // incorrect date : save even tough
-            else {
-                // erroneous date has been typed
-                if (this.textErrorDate !== null) {
-                    actualController.ngModel = this.textErrorDate;
-                }
-                else{
-                    actualController.ngModel = null;
-                }
-            }
-
-            // In all cases, we call the callback function to close date picker
-            actualController.$timeout(() => {
-                actualController.onCloseFn({isEscape : this.isEscape });
-            });
-        }
-    }
+				// In all cases, we call the callback function to close date picker
+				actualController.$timeout(() => {
+					actualController.onCloseFn({
+						isEscape: this.isEscape
+					});
+				});
+			}
+		}
 
     /**
      * @ngdoc method
