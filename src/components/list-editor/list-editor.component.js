@@ -42,7 +42,8 @@ const ScListEditorComponent = {
             <div class="list-editor">
                 <div class="title-box">
                     <span class="title" ng-bind="$ctrl.listTitle" ng-if="!$ctrl.editMode"></span>
-                    <input pu-elastic-input class="edit-title" placeholder="{{$ctrl.titlePlaceholder}}"
+                    <input pu-elastic-input autocomplete="off"
+                    			class="edit-title" placeholder="{{$ctrl.titlePlaceholder}}"
                            ng-model="$ctrl.editTitle" ng-if="$ctrl.editMode"
                            ng-blur="$ctrl.validateEditon()" ng-keydown="$ctrl.editModeKeyPressed($event)">
                     <span class="edit-button" ng-attr-title="{{$ctrl.editButtonTitle}}" ng-if="!$ctrl.editMode && $ctrl.titleEditable !== false" ng-click="$ctrl.activateEdition()"></span>
@@ -53,6 +54,7 @@ const ScListEditorComponent = {
                   <span class="search-field">
                     <span class="plus-icon" ng-click="$ctrl.focusInput()"></span>
                     <input type="text" placeholder="{{$ctrl.placeholder}}"
+                    				autocomplete="off"
                             ng-model="$ctrl.filter.label"
                             ng-disabled="!$ctrl.groups"
                             ng-keydown="$ctrl.onFilterKeyDown($event)"
