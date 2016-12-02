@@ -58,7 +58,7 @@ const ScListEditorComponent = {
                             ng-model="$ctrl.filter.label"
                             ng-disabled="!$ctrl.groups"
                             ng-keydown="$ctrl.onFilterKeyDown($event)"
-                            ng-click="$ctrl.showAutocompleteBox = true"
+                            ng-click="$ctrl.showAutocompleteBox = true;$ctrl.onOpen()"
                             ng-focus="$ctrl.showAutocompleteBox = true"
                             ng-blur="$ctrl.showAutocompleteBox = false">
                     <div class="white-border" ng-if="$ctrl.showAutocompleteBox === true"></div>
@@ -91,6 +91,7 @@ const ScListEditorComponent = {
             </div>
     `,
 	bindings: {
+		onOpen: '&',
 		api: '=',
 		deleteHandler: "&",
 		deleteSelectedItemHandler: "&",
