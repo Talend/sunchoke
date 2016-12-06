@@ -23,6 +23,39 @@ sc-tabs {
   @include align-items(stretch);
   @include flex-direction(column);
 
+	sc-tabs-item {
+		flex-basis: auto;
+		min-height: 0%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	sc-tabs-item > ng-transclude{
+		display: flex;
+		flex-direction: column;
+		min-height: 0%;
+		flex-direction: column;
+	}
+
+
+
+
+	/*sc-tabs-item ng-transclude{
+		height: 100%;
+	}*/
+
+	> ng-transclude{
+		flex-grow: 1;
+		min-height: 0%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	> ng-transclude > div{
+		display: flex;
+		flex-direction: column;
+	}
+
   >.tabs {
     @include display(flex);
     @include align-items(stretch);

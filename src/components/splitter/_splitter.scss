@@ -96,7 +96,7 @@ sc-splitter {
       }
 
       .split-first-pane  {
-        bottom: 50%;
+        bottom: calc(50% + 12px);
       }
 
       .split-second-pane {

@@ -28,6 +28,7 @@ sc-accordion-item {
     height: 0;
     visibility: hidden;
     transition: height 0.2s linear;
+		overflow: hidden;
 
     content {
       display: block;
