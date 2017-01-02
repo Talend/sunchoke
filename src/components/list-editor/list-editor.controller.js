@@ -68,15 +68,15 @@ export default class ScListEditorCtrl {
 	 * @param oldName ancien label
 	 * @param newName nouveau label
 	 */
-	renameItem(oldName, newName) {
-		for (let i = 0; i < this.groups.length; i++) {
-			for (let j = this.groups[i].items.length; j--;) {
-				if (this.groups[i].items[j].label === oldName) {
-					this.groups[i].items[j].label = newName;
-				}
-			}
-		}
-	}
+	 renameItem(id, newName) {
+ 		for (let i = 0; i < this.groups.length; i++) {
+ 			for (let j = this.groups[i].items.length; j--;) {
+ 				if (this.groups[i].items[j].id === id) {
+ 					this.groups[i].items[j].label = newName;
+ 				}
+ 			}
+ 		}
+ 	}
 
 	/**
 	 * @ngdoc method
