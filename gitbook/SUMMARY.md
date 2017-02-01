@@ -19,3 +19,6 @@
 
 * [Tabs](tabs/README.md)
     * [Documentation](tabs/documentation.md)
+
+* [Vertical barchart](vertical-barchart/README.md)
+    * [Documentation](vertical-barchart/documentation.md)
