@@ -1,0 +1,931 @@
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+/*  ============================================================================
+
+ Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+ This source code is available under agreement available at
+ https://github.com/Talend/data-prep/blob/master/LICENSE
+
+ You should have received a copy of the agreement
+ along with this program; if not, write to Talend SA
+ 9 rue Pages 92150 Suresnes, France
+
+ ============================================================================*/
+.peace {
+  background-color: #8ABC00; }
+
+.peace-dark {
+  background-color: #B6BE00; }
+
+.peace-light {
+  background-color: #C1D906; }
+
+.peace-lighter {
+  background-color: #E6EFA5; }
+
+.ground {
+  background-color: #B3AF76; }
+
+.ground-dark {
+  background-color: #55580D; }
+
+.wave {
+  background-color: #4FC1DE; }
+
+.wave-dark {
+  background-color: #266092; }
+
+.wave-light {
+  background-color: #C1E9F3; }
+
+.wave-lighter {
+  background-color: #E1EFF2; }
+
+.wave-pale {
+  background-color: #B1C6D8; }
+
+.discrete {
+  background-color: #99999A; }
+
+.discrete-dark {
+  background-color: #555964; }
+
+.discrete-light {
+  background-color: #DDD; }
+
+.discrete-lighter {
+  background-color: #EEEEEF; }
+
+.juice {
+  background-color: #FFA616; }
+
+.juice-light {
+  background-color: #FFCD00; }
+
+.aggressive {
+  background-color: #F00; }
+
+.aggressive-light {
+  background-color: #CE6564; }
+
+.light {
+  background-color: #FFF; }
+
+.dark {
+  background-color: #000; }
+
+[class*='sc-button-'] {
+  border: 2px solid;
+  font-weight: bold;
+  padding: 10px 15px; }
+
+.sc-button-peace {
+  background-color: #8ABC00;
+  border-color: white;
+  color: white; }
+  .sc-button-peace:hover {
+    background-color: white;
+    border-color: #8ABC00;
+    color: #8ABC00; }
+
+.sc-button-peace-dark {
+  background-color: #B6BE00;
+  border-color: white;
+  color: white; }
+  .sc-button-peace-dark:hover {
+    background-color: white;
+    border-color: #B6BE00;
+    color: #B6BE00; }
+
+.sc-button-peace-light {
+  background-color: #C1D906;
+  border-color: white;
+  color: white; }
+  .sc-button-peace-light:hover {
+    background-color: white;
+    border-color: #C1D906;
+    color: #C1D906; }
+
+.sc-button-peace-lighter {
+  background-color: #E6EFA5;
+  border-color: white;
+  color: white; }
+  .sc-button-peace-lighter:hover {
+    background-color: white;
+    border-color: #E6EFA5;
+    color: #E6EFA5; }
+
+.sc-button-ground {
+  background-color: #B3AF76;
+  border-color: white;
+  color: white; }
+  .sc-button-ground:hover {
+    background-color: white;
+    border-color: #B3AF76;
+    color: #B3AF76; }
+
+.sc-button-ground-dark {
+  background-color: #55580D;
+  border-color: white;
+  color: white; }
+  .sc-button-ground-dark:hover {
+    background-color: white;
+    border-color: #55580D;
+    color: #55580D; }
+
+.sc-button-wave {
+  background-color: #4FC1DE;
+  border-color: white;
+  color: white; }
+  .sc-button-wave:hover {
+    background-color: white;
+    border-color: #4FC1DE;
+    color: #4FC1DE; }
+
+.sc-button-wave-dark {
+  background-color: #266092;
+  border-color: white;
+  color: white; }
+  .sc-button-wave-dark:hover {
+    background-color: white;
+    border-color: #266092;
+    color: #266092; }
+
+.sc-button-wave-light {
+  background-color: #C1E9F3;
+  border-color: white;
+  color: white; }
+  .sc-button-wave-light:hover {
+    background-color: white;
+    border-color: #C1E9F3;
+    color: #C1E9F3; }
+
+.sc-button-wave-lighter {
+  background-color: #E1EFF2;
+  border-color: white;
+  color: white; }
+  .sc-button-wave-lighter:hover {
+    background-color: white;
+    border-color: #E1EFF2;
+    color: #E1EFF2; }
+
+.sc-button-wave-pale {
+  background-color: #B1C6D8;
+  border-color: white;
+  color: white; }
+  .sc-button-wave-pale:hover {
+    background-color: white;
+    border-color: #B1C6D8;
+    color: #B1C6D8; }
+
+.sc-button-discrete {
+  background-color: #99999A;
+  border-color: white;
+  color: white; }
+  .sc-button-discrete:hover {
+    background-color: white;
+    border-color: #99999A;
+    color: #99999A; }
+
+.sc-button-discrete-dark {
+  background-color: #555964;
+  border-color: white;
+  color: white; }
+  .sc-button-discrete-dark:hover {
+    background-color: white;
+    border-color: #555964;
+    color: #555964; }
+
+.sc-button-discrete-light {
+  background-color: #DDD;
+  border-color: white;
+  color: white; }
+  .sc-button-discrete-light:hover {
+    background-color: white;
+    border-color: #DDD;
+    color: #DDD; }
+
+.sc-button-discrete-lighter {
+  background-color: #EEEEEF;
+  border-color: white;
+  color: white; }
+  .sc-button-discrete-lighter:hover {
+    background-color: white;
+    border-color: #EEEEEF;
+    color: #EEEEEF; }
+
+.sc-button-juice {
+  background-color: #FFA616;
+  border-color: white;
+  color: white; }
+  .sc-button-juice:hover {
+    background-color: white;
+    border-color: #FFA616;
+    color: #FFA616; }
+
+.sc-button-juice-light {
+  background-color: #FFCD00;
+  border-color: white;
+  color: white; }
+  .sc-button-juice-light:hover {
+    background-color: white;
+    border-color: #FFCD00;
+    color: #FFCD00; }
+
+.sc-button-aggressive {
+  background-color: #F00;
+  border-color: white;
+  color: white; }
+  .sc-button-aggressive:hover {
+    background-color: white;
+    border-color: #F00;
+    color: #F00; }
+
+.sc-button-aggressive-light {
+  background-color: #CE6564;
+  border-color: white;
+  color: white; }
+  .sc-button-aggressive-light:hover {
+    background-color: white;
+    border-color: #CE6564;
+    color: #CE6564; }
+
+.sc-button-light {
+  background-color: #FFF;
+  border-color: black;
+  color: black; }
+  .sc-button-light:hover {
+    background-color: black;
+    border-color: #FFF;
+    color: #FFF; }
+
+.sc-button-dark {
+  background-color: #000;
+  border-color: white;
+  color: white; }
+  .sc-button-dark:hover {
+    background-color: white;
+    border-color: #000;
+    color: #000; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-accordion-item .sc-accordion {
+  list-style: none; }
+
+sc-accordion-item .trigger-container {
+  cursor: pointer;
+  padding: 10px; }
+
+sc-accordion-item .content-container {
+  background-color: #DDD;
+  height: 0;
+  transition: height 0.2s linear;
+  visibility: hidden; }
+  sc-accordion-item .content-container content {
+    display: block;
+    padding: 20px; }
+  sc-accordion-item .content-container.opening, sc-accordion-item .content-container.closing {
+    overflow: hidden;
+    visibility: visible; }
+  sc-accordion-item .content-container.open {
+    height: auto;
+    visibility: visible; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-dropdown-menu {
+  display: inline-block;
+  position: relative; }
+  sc-dropdown-menu .sc-dropdown-menu-trigger > * {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    color: #FFF;
+    cursor: pointer;
+    line-height: 50px;
+    padding: 0 20px 0 7px; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > * .sc-dropdown-menu-icon {
+      margin-right: 10px; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > * .sc-dropdown-menu-text {
+      display: inline-block;
+      max-width: 130px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > *:after {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: auto;
+      left: auto;
+      content: '\25BE'; }
+    sc-dropdown-menu .sc-dropdown-menu-trigger > *.opened:after {
+      content: '\25b4'; }
+  sc-dropdown-menu .sc-dropdown-menu-dropdown {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+    -ms-flex-align: stretch;
+    border: 1px solid #99999A;
+    min-width: 100%;
+    position: absolute; }
+    sc-dropdown-menu .sc-dropdown-menu-dropdown ul {
+      margin: 0;
+      padding: 0; }
+    sc-dropdown-menu .sc-dropdown-menu-dropdown li {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -moz-box-align: center;
+      box-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      -ms-align-items: center;
+      -o-align-items: center;
+      align-items: center;
+      -ms-flex-align: center;
+      background: #FFF;
+      border-bottom: 1px solid #99999A;
+      color: #555964;
+      cursor: pointer;
+      line-height: normal;
+      padding: 10px; }
+      sc-dropdown-menu .sc-dropdown-menu-dropdown li .sc-dropdown-menu-item-icon {
+        font-size: 0.8em;
+        margin-right: 10px; }
+      sc-dropdown-menu .sc-dropdown-menu-dropdown li:hover {
+        background: #99999A;
+        color: #FFF; }
+      sc-dropdown-menu .sc-dropdown-menu-dropdown li:last-child {
+        border-bottom: none; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-dropdown {
+  display: inline-block;
+  line-height: 1.5em;
+  position: relative; }
+  sc-dropdown .sc-dropdown-trigger {
+    cursor: pointer;
+    min-width: 20px;
+    padding: 0 20px 0 7px;
+    position: relative; }
+    sc-dropdown .sc-dropdown-trigger:after {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: auto;
+      left: auto;
+      content: '\25BE'; }
+  sc-dropdown .sc-dropdown-content {
+    background-color: #FFF;
+    border: 1px solid #99999A;
+    border-radius: 3px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    color: #555964;
+    display: none;
+    overflow: visible;
+    position: fixed;
+    z-index: 20; }
+    sc-dropdown .sc-dropdown-content sc-dropdown-content {
+      overflow-y: auto;
+      overflow-x: hidden;
+      box-sizing: border-box; }
+    sc-dropdown .sc-dropdown-content > * {
+      display: block;
+      padding: 10px; }
+    sc-dropdown .sc-dropdown-content:before {
+      position: absolute;
+      top: -0.8em;
+      bottom: auto;
+      right: 0;
+      left: 0;
+      color: #FFF;
+      content: '\25b2';
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.3); }
+    sc-dropdown .sc-dropdown-content:after {
+      position: absolute;
+      top: auto;
+      right: 0;
+      bottom: -0.5em;
+      left: 0;
+      color: #FFF;
+      content: '';
+      font-size: 1.4em;
+      pointer-events: none;
+      text-shadow: 0 6px 2px rgba(0, 0, 0, 0.3); }
+    sc-dropdown .sc-dropdown-content.top:before {
+      content: ''; }
+    sc-dropdown .sc-dropdown-content.top:after {
+      content: '\25bc'; }
+    sc-dropdown .sc-dropdown-content.right:before, sc-dropdown .sc-dropdown-content.right:after {
+      left: auto; }
+  sc-dropdown.show .sc-dropdown-content {
+    display: block; }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@-moz-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+sc-modal .sc-modal-overlay {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7); }
+  @media screen and (min-width: 40em) {
+    sc-modal .sc-modal-overlay {
+      padding-top: 2em; } }
+  @media screen and (min-width: 53.75em) {
+    sc-modal .sc-modal-overlay {
+      padding-top: 4em; } }
+  @media screen and (min-width: 114em) {
+    sc-modal .sc-modal-overlay {
+      padding-top: 8em; } }
+  sc-modal .sc-modal-overlay.ng-enter {
+    -webkit-animation: fadeIn 0.25s ease-in;
+    -moz-animation: fadeIn 0.25s ease-in;
+    animation: fadeIn 0.25s ease-in; }
+  sc-modal .sc-modal-overlay.ng-leave {
+    -webkit-animation: fadeOut 0.2s ease-in;
+    -moz-animation: fadeOut 0.2s ease-in;
+    animation: fadeOut 0.2s ease-in; }
+
+sc-modal .sc-modal-inner {
+  background: #FFF;
+  border-radius: 3px;
+  margin: 0 auto auto;
+  overflow: hidden;
+  padding: 1.5em 2em;
+  position: relative;
+  width: 95%; }
+  @media screen and (min-width: 40em) {
+    sc-modal .sc-modal-inner {
+      width: 80%; } }
+  @media screen and (min-width: 53.75em) {
+    sc-modal .sc-modal-inner {
+      max-width: 900px; } }
+
+sc-modal .sc-modal-header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: justify;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  margin-bottom: 1.5em;
+  position: relative; }
+
+sc-modal .sc-modal-title {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  flex-grow: 1;
+  -ms-flex-positive: 1;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 300;
+  font-size: 1.6em;
+  overflow: hidden;
+  text-transform: uppercase; }
+  sc-modal .sc-modal-title sc-modal-header {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    border-bottom: 1px solid #99999A; }
+
+sc-modal .sc-modal-close-btn {
+  height: 2em;
+  width: 2em;
+  cursor: pointer;
+  position: absolute;
+  right: 0; }
+  sc-modal .sc-modal-close-btn:after, sc-modal .sc-modal-close-btn:before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 2em;
+    width: 0.15em;
+    position: absolute;
+    left: 50%;
+    background: #DDD;
+    content: '';
+    display: block; }
+  sc-modal .sc-modal-close-btn:hover:after, sc-modal .sc-modal-close-btn:hover:before {
+    background: #c4c4c4; }
+  sc-modal .sc-modal-close-btn:before {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-splitter {
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 100%; }
+  sc-splitter .split-container {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0; }
+    sc-splitter .split-container .split-handler {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -moz-box-align: center;
+      box-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      -ms-align-items: center;
+      -o-align-items: center;
+      align-items: center;
+      -ms-flex-align: center;
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+      box-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      -ms-justify-content: center;
+      -o-justify-content: center;
+      justify-content: center;
+      -ms-flex-pack: center;
+      background: #EEEEEF;
+      position: absolute;
+      text-align: center; }
+      sc-splitter .split-container .split-handler .split-handler-square {
+        background: white;
+        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.3) inset;
+        height: 3px;
+        margin: 0 2px;
+        width: 3px; }
+    sc-splitter .split-container .split-first-pane,
+    sc-splitter .split-container .split-second-pane {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0; }
+      sc-splitter .split-container .split-first-pane > *,
+      sc-splitter .split-container .split-second-pane > * {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        overflow: auto; }
+    sc-splitter .split-container.horizontal .split-handler {
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      box-orient: vertical;
+      -webkit-box-direction: normal;
+      -moz-box-direction: normal;
+      box-direction: normal;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-direction: column;
+      bottom: 0;
+      cursor: ew-resize;
+      left: 50%;
+      top: 0;
+      width: 12px; }
+      sc-splitter .split-container.horizontal .split-handler .split-handler-square {
+        margin: 2px 0; }
+    sc-splitter .split-container.horizontal .split-first-pane {
+      right: 50%; }
+    sc-splitter .split-container.horizontal .split-second-pane {
+      left: -webkit-calc(50% + 12px);
+      left: calc(50% + 12px); }
+    sc-splitter .split-container.vertical .split-handler {
+      cursor: ns-resize;
+      height: 12px;
+      left: 0;
+      right: 0;
+      top: 50%; }
+    sc-splitter .split-container.vertical .split-first-pane {
+      bottom: 50%; }
+    sc-splitter .split-container.vertical .split-second-pane {
+      top: -webkit-calc(50% + 12px);
+      top: calc(50% + 12px); }
+
+/*  ============================================================================
+
+  Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+
+  This source code is available under agreement available at
+  https://github.com/Talend/data-prep/blob/master/LICENSE
+
+  You should have received a copy of the agreement
+  along with this program; if not, write to Talend SA
+  9 rue Pages 92150 Suresnes, France
+
+  ============================================================================*/
+sc-tabs {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  box-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -o-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: stretch;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column; }
+  sc-tabs > .tabs {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+    -ms-flex-align: stretch;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-grow: 0;
+    -moz-flex-grow: 0;
+    flex-grow: 0;
+    -ms-flex-positive: 0;
+    -webkit-flex-shrink: 0;
+    -moz-flex-shrink: 0;
+    flex-shrink: 0;
+    -ms-flex-negative: 0;
+    background-color: #EEEEEF;
+    margin-bottom: 0.5em;
+    padding: 0; }
+  sc-tabs > .tabs > .tabs-header {
+    background-color: #EEEEEF;
+    color: #99999A;
+    cursor: pointer;
+    font-size: 0.9em;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-transform: uppercase;
+    width: auto; }
+    sc-tabs > .tabs > .tabs-header.active {
+      background-color: #266092;
+      color: #FFF;
+      font-weight: 600;
+      border-bottom: 2px solid #9cb9e5; }
