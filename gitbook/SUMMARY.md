@@ -5,6 +5,9 @@
 
 * [Colors](color/README.md)
 
+* [DatePicker](date-picker/README.md)
+    * [Documentation](date-picker/documentation.md)
+
 * [Dropdown](dropdown/README.md)
     * [Documentation](dropdown/documentation.md)
 
