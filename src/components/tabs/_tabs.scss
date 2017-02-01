@@ -31,14 +31,12 @@ sc-tabs {
     @include flex-shrink(0);
 
     background-color: $sc-tabs-headers-background;
-    box-shadow: -2px -5px 2px -4px rgba(0, 0, 0, 0.1) inset;
     margin-bottom: 0.5em;
     padding: 0;
   }
 
   >.tabs >.tabs-header {
     background-color: $sc-tabs-header-background-disabled;
-    box-shadow: inherit;
     color: $sc-tabs-header-color-disabled;
     cursor: pointer;
     font-size: 0.9em;
@@ -52,18 +50,7 @@ sc-tabs {
       background-color: $sc-tabs-header-background-enabled;
       color: $sc-tabs-header-color-enabled;
       font-weight: 600;
-
-      &:after {
-        @include transform(translateX(-50%) rotate(45deg));
-        background: $light;
-        bottom: -25px;
-        box-shadow: -1px -1px 5px 0 rgba(0, 0, 0, 0.3) inset;
-        content: '';
-        height: 30px;
-        left: 50%;
-        position: absolute;
-        width: 30px;
-      }
+      border-bottom: 2px solid #9cb9e5;
     }
   }
 }
