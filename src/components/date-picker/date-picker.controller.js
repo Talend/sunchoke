@@ -58,7 +58,8 @@ export default class ScDatePickerCtrl {
             },
             firstDay: 0,
             noneButton: false,
-            format: 'MMM D, YYYY'
+            format: 'MMM D, YYYY',
+            yearRange: [1900,2099]
         };
 
         //Get all specific configuration
