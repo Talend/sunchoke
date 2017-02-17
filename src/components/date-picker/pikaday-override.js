@@ -6,17 +6,21 @@
  */
 
 import "moment";
+import "tether";
 
 (function (root, factory)
 {
     'use strict';
 
-    var moment;
+    var moment, tether;
     if (typeof exports === 'object') {
         // CommonJS module
         // Load moment.js as an optional dependency
-        try { moment = require('moment'); } catch (e) {}
-        module.exports = factory(moment);
+        try {
+            moment = require('moment');
+            tether = require('tether');
+        } catch (e) {}
+        module.exports = factory(moment, tether);
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(function (req)
@@ -29,7 +33,7 @@ import "moment";
     } else {
         root.Pikaday = factory(root.moment);
     }
-}(this, function (moment)
+}(this, function (moment, tether)
 {
     'use strict';
 
@@ -439,7 +443,7 @@ import "moment";
             // We need a flag to indicate to the client if it an escape when closing date-picker.
             // If yes, the client will certainly not want to save the new value
             self.isEscape = false;
-						self.isSetDate = false;
+            self.isSetDate = false;
 
             self._onMouseDown = function(e)
             {
@@ -1044,9 +1048,6 @@ import "moment";
         {
             var field, pEl, width, height, viewportWidth, viewportHeight, scrollTop, left, top, clientRect;
 
-            if( this._o.container ){
-                return;
-            }
             this.el.style.position = 'absolute';
 
             if( this.el.classList.contains('top') ){
@@ -1210,6 +1211,21 @@ import "moment";
                 if (typeof this._o.onOpen === 'function') {
                     this._o.onOpen.call(this);
                 }
+
+                // tether to well position the dp
+                let dpTether = new tether({
+                    element: this.el,
+                    attachment: 'top left',
+                    target: this._o.field,
+                    targetAttachment: 'bottom left',
+                    offset: '0 100px',
+                    constraints: [{
+                        to: 'window',
+                        attachment: 'together none',
+                    }],
+                });
+
+                dpTether.position();
             }
         },
 
