@@ -45,14 +45,14 @@ $valid-color: $peace !default;
   }
 
   .sub-bar {
-    @include transition(width .75s ease-out);
+    transition: width .75s ease-out;
     border: 1px solid transparent;
     height: 100%;
     display: inline-block;
     float: left;
 
     &.no-transition {
-      @include transition(none);
+      transition: none;
     }
 
     &:hover {

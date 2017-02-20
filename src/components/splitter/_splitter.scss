@@ -37,9 +37,9 @@ sc-splitter {
       text-align: center;
       background: $split-handler-background;
 
-      @include display(flex);
-      @include align-items(center);
-      @include justify-content(center);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .split-handler-square {
         margin: 0 2px;
@@ -54,7 +54,7 @@ sc-splitter {
     .split-second-pane {
       @include fullContainer();
 
-      >* {
+      > * {
         @include fullContainer();
         overflow: auto;
       }
@@ -63,7 +63,7 @@ sc-splitter {
     //--------------------------------Horizontal-----------------------------------
     &.horizontal {
       .split-handler {
-        @include flex-direction(column);
+        flex-direction: column;
 
         width: $split-handler-size;
         left: 50%;
@@ -76,12 +76,12 @@ sc-splitter {
         }
       }
 
-      .split-first-pane  {
+      .split-first-pane {
         right: 50%;
       }
 
       .split-second-pane {
-        @include calc(left, "50%");
+        left: 50%;
       }
     }
 
@@ -95,12 +95,12 @@ sc-splitter {
         cursor: ns-resize;
       }
 
-      .split-first-pane  {
+      .split-first-pane {
         bottom: calc(50% + 12px);
       }
 
       .split-second-pane {
-        @include calc(top, "50%");
+        top: 50%;
       }
     }
   }

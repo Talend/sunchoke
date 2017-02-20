@@ -12,17 +12,17 @@
   ============================================================================*/
 
 #filter-monitor {
-  @include display(flex);
-  @include flex-direction(row);
-  @include justify-content(flex-start);
-  @include align-items(center);
-  @include align-content(center);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
 
-  #reset-filters{
+  #reset-filters {
     font-size: 0.7em;
     color: $light;
 
-    &:hover{
+    &:hover {
       color: $wave;
     }
   }

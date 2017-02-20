@@ -19,56 +19,53 @@ $sc-tabs-header-color-enabled: $light !default;
 $sc-tabs-header-padding: 10px !default;
 
 sc-tabs {
-  @include display(flex);
-  @include align-items(stretch);
-  @include flex-direction(column);
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
 
-	sc-tabs-item {
-		flex-basis: auto;
-		min-height: 0%;
-		display: flex;
-		flex-direction: column;
-	}
+  sc-tabs-item {
+    flex-basis: auto;
+    min-height: 0%;
+    display: flex;
+    flex-direction: column;
+  }
 
-	sc-tabs-item > ng-transclude{
-		display: flex;
-		flex-direction: column;
-		min-height: 0%;
-		flex-direction: column;
-	}
+  sc-tabs-item > ng-transclude {
+    display: flex;
+    flex-direction: column;
+    min-height: 0%;
+    flex-direction: column;
+  }
 
+  /*sc-tabs-item ng-transclude{
+      height: 100%;
+  }*/
 
+  > ng-transclude {
+    flex-grow: 1;
+    min-height: 0%;
+    display: flex;
+    flex-direction: column;
+  }
 
+  > ng-transclude > div {
+    display: flex;
+    flex-direction: column;
+  }
 
-	/*sc-tabs-item ng-transclude{
-		height: 100%;
-	}*/
-
-	> ng-transclude{
-		flex-grow: 1;
-		min-height: 0%;
-		display: flex;
-		flex-direction: column;
-	}
-
-	> ng-transclude > div{
-		display: flex;
-		flex-direction: column;
-	}
-
-  >.tabs {
-    @include display(flex);
-    @include align-items(stretch);
-    @include flex-direction(row);
-    @include flex-grow(0);
-    @include flex-shrink(0);
+  > .tabs {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
 
     background-color: $sc-tabs-headers-background;
     box-shadow: -2px -5px 2px -4px rgba(0, 0, 0, 0.1) inset;
     margin-bottom: 0.5em;
     padding: 0;
 
-    >.tabs-header {
+    > .tabs-header {
       background-color: $sc-tabs-header-background-disabled;
       box-shadow: inherit;
       color: $sc-tabs-header-color-disabled;
@@ -87,11 +84,11 @@ sc-tabs {
         font-weight: 600;
 
         &:after {
-          @include transform(translateX(-50%) rotate(45deg));
+          transform: translateX(-50%) rotate(45deg);
           content: "";
 
           background: $light;
-          box-shadow: -1px -1px 5px 0 rgba(0,0,0,0.3) inset;
+          box-shadow: -1px -1px 5px 0 rgba(0, 0, 0, 0.3) inset;
 
           position: absolute;
           width: 30px;
