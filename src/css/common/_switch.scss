@@ -68,7 +68,11 @@ $slide-action-background: $base-background-color;
       }
 
       &:after {
-        @include position(absolute, 2px 0 0 2px);
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        bottom: 0;
+        right: 0;
         transition: all 0.3s ease;
         width: $knob-size;
         height: $knob-size;

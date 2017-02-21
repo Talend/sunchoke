@@ -1,6 +1,6 @@
 {
   "name": "tds-sunchoke-new",
-  "version": "0.1.75",
+  "version": "0.1.76",
   "description": "Talend front-end common widgets",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "scripts:dev": "webpack --config webpack.config.dev.js",
     "scripts:prod": "webpack --config webpack.config.prod.js",
     "styles": "npm run styles:dev && npm run styles:prod",
-    "styles:dev": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ src/sunchoke.full.scss dist/sunchoke.css",
-    "styles:prod": "node-sass --include-path ./node_modules/bourbon/app/assets/stylesheets/ --output-style compressed src/sunchoke.full.scss dist/sunchoke.min.css",
+    "styles:dev": "node-sass src/sunchoke.full.scss dist/sunchoke.css",
+    "styles:prod": "node-sass --output-style compressed src/sunchoke.full.scss dist/sunchoke.min.css",
     "dist": "npm run clean && npm run scripts && npm run styles",
     "test": "karma start",
     "test:auto": "karma start --auto",
@@ -38,8 +38,7 @@
   "homepage": "https://github.com/Talend/sunchoke#readme",
   "dependencies": {
     "angular": "^1.5.3",
-    "angular-animate": "^1.5.3",
-    "bourbon": "^4.2.6"
+    "angular-animate": "^1.5.3"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.3",
