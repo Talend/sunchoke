@@ -1,14 +1,17 @@
 {
   "name": "tds-sunchoke-new",
   "description": "Talend front-end common widgets",
-  "main": ["dist/sunchoke.js", "src/sunchoke.scss"],
+  "main": [
+    "dist/sunchoke.js",
+    "src/sunchoke.scss"
+  ],
   "authors": [
     "Talend"
   ],
   "dependencies": {
     "angular": "^1.5.3",
     "angular-animate": "^1.5.3",
-    "bourbon": "^4.2.6"
+    "bourbon": "v5.0.0.beta.7"
   },
   "license": "SEE LICENSE IN https://github.com/Talend/sunchoke/blob/master/LICENSE",
   "keywords": [

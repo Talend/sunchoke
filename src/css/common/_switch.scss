@@ -39,7 +39,7 @@ $slide-action-background: $base-background-color;
     display: none;
 
     + .checkbox {
-      @include transition(all 0.3s ease);
+      transition: all 0.3s ease;
       background: $switch-border-background;
       border-radius: $switch-radius;
       border: none;
@@ -52,9 +52,13 @@ $slide-action-background: $base-background-color;
       z-index: 0;
 
       &:before {
-        @include position(absolute, 2px 0 0 2px);
-        @include transform(scale(1));
-        @include transition(all 0.3s ease);
+        position: absolute;
+        top: 2px;
+        right: 0;
+        bottom: 0px;
+        left: 2px;
+        transform: scale(1);
+        transition: all 0.3s ease;
         background: $switch-background;
         border-radius: $switch-radius;
         content: "";
@@ -65,8 +69,9 @@ $slide-action-background: $base-background-color;
 
       &:after {
         @include position(absolute, 2px 0 0 2px);
-        @include transition(all 0.3s ease);
-        @include size($knob-size);
+        transition: all 0.3s ease;
+        width: $knob-size;
+        height: $knob-size;
         background: $switch-background;
         border-radius: $knob-radius;
         box-shadow: $switch-shadow;
@@ -80,7 +85,7 @@ $slide-action-background: $base-background-color;
         background: $action-color;
 
         &:before {
-          @include transform(scale(0));
+          transform: scale(0);
         }
 
         &:after {
