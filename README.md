@@ -1,6 +1,6 @@
 # [Talend Sunchoke](http://talend.github.io/sunchoke/doc/index.html)
 
-Sunchoke is a set of reusable components built with [AngularJS](https://angularjs.org/) and [Bourbon](http://bourbon.io/)
+Sunchoke is a set of reusable components built with [AngularJS](https://angularjs.org/)
 
 ### Dependencies
 
@@ -9,7 +9,6 @@ Sunchoke is a set of reusable components built with [AngularJS](https://angularj
 
 * angularJS 1.5 min. The widgets are based on the component helper definition introduced with version 1.5.
 * angular-animate. Some widgets use angular-animate to perform some animations
-* Bourbon 4. Bourbon is a sass library.
 
 ### Getting started
 
@@ -89,7 +88,7 @@ You can freely submit a pull request. [Github documentation](https://help.github
 
 Before that : 
 * use ES6
-* use Sass and bourbon mixins
+* use Sass
 * lint and clean your code
 * test your code
 * Please squash ! [Documentation](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits)

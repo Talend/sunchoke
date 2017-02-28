@@ -2,8 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var _ = require('lodash');
 
-var bourbon = require('bourbon').includePaths;
-
 function getLicence() {
     var licenceTemplate = _.template(
         '============================================================================\n' +

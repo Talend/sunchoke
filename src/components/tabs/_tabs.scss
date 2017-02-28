@@ -19,16 +19,16 @@ $sc-tabs-header-color-enabled: $light !default;
 $sc-tabs-header-padding: 10px !default;
 
 sc-tabs {
-  @include display(flex);
-  @include align-items(stretch);
-  @include flex-direction(column);
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
 
   >.tabs {
-    @include display(flex);
-    @include align-items(stretch);
-    @include flex-direction(row);
-    @include flex-grow(0);
-    @include flex-shrink(0);
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
 
     background-color: $sc-tabs-headers-background;
     margin-bottom: 0.5em;
