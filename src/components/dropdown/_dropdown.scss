@@ -32,9 +32,9 @@ sc-dropdown {
     &:after {
       position: absolute;
       top: 0;
-      left: 5px;
+      right: 5px;
       bottom: auto;
-      right: auto;
+      left: auto;
       content: '\25BE';
     }
   }
