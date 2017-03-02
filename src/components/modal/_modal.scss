@@ -11,9 +11,9 @@
 
   ============================================================================*/
 
-$sc-modal-medium-screen: em(640) !default;
-$sc-modal-large-screen: em(860) !default;
-$sc-modal-x-large-screen: em(1824) !default;
+$sc-modal-medium-screen: 640em !default;
+$sc-modal-large-screen: 860em !default;
+$sc-modal-x-large-screen: 1824em !default;
 
 $sc-modal-overlay-background: rgba(0, 0, 0, 0.7) !default;
 $sc-modal-background: $light !default;
@@ -24,7 +24,7 @@ $sc-modal-z-index: 20 !default;
 $sc-modal-header-border-color: $discrete !default;
 $sc-modal-close-color: $discrete-light !default;
 
-@include keyframes(fadeIn) {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -34,7 +34,7 @@ $sc-modal-close-color: $discrete-light !default;
   }
 }
 
-@include keyframes(fadeOut) {
+@keyframes fadeOut {
   from {
     opacity: 1;
   }
@@ -46,8 +46,8 @@ $sc-modal-close-color: $discrete-light !default;
 
 sc-modal {
   .sc-modal-overlay {
-    @include display(flex);
-    @include justify-content(center);
+    display: flex;
+    justify-content: center;
 
     position: fixed;
     top: 0;
@@ -71,11 +71,11 @@ sc-modal {
     }
 
     &.ng-enter {
-      @include animation(fadeIn 0.25s ease-in);
+      animation: fadeIn 0.25s ease-in;
     }
 
     &.ng-leave {
-      @include animation(fadeOut 0.2s ease-in);
+      animation: fadeOut 0.2s ease-in;
     }
   }
 
@@ -98,17 +98,17 @@ sc-modal {
   }
 
   .sc-modal-header {
-    @include display(flex);
-    @include justify-content(space-between);
-    @include align-items(center);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     margin-bottom: 1.5em;
     position: relative;
   }
 
   .sc-modal-title {
-    @include flex-grow(1);
-    @include display(flex);
+    display: flex;
+    flex-grow: 1;
 
     font-weight: 300;
     font-size: 1.6em;
@@ -116,13 +116,14 @@ sc-modal {
     text-transform: uppercase;
 
     sc-modal-header {
-      @include flex-grow(1);
+      flex-grow: 1;
       border-bottom: 1px solid $sc-modal-header-border-color;
     }
   }
 
   .sc-modal-close-btn {
-    @include size(2em);
+    width: 2em;
+    height: 2em;
 
     cursor: pointer;
     position: absolute;
@@ -130,8 +131,9 @@ sc-modal {
 
     &:after,
     &:before {
-      @include transform(rotate(45deg));
-      @include size(0.15em 2em);
+      transform: rotate(45deg);
+      width: 0.15em;
+      height: 2em;
 
       position: absolute;
       left: 50%;
@@ -146,7 +148,7 @@ sc-modal {
     }
 
     &:before {
-      @include transform(rotate(-45deg));
+      transform: rotate(-45deg);
     }
   }
 }

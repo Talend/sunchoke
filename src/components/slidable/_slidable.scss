@@ -15,11 +15,11 @@ $sc-slidable-resize-bar-width: 3px;
 $sc-slidable-action-font-size: 3em;
 
 @mixin slidable-common($size, $actionSize) {
-  @include flex(0 0 $size);
+  flex: 0 0 $size;
 
-  @include display(flex);
-  @include flex-wrap(nowrap);
-  @include justify-content(space-between);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 
   &.slide-hide-add,
   &.slide-hide-remove.slide-hide-remove-active {
@@ -29,22 +29,21 @@ $sc-slidable-action-font-size: 3em;
   }
 
   > .action {
-    @include flex(0 0 $actionSize);
+    flex: 0 0 $actionSize;
   }
 
   > .resize-bar {
-    @include flex(0 0 2px);
+    flex: 0 0 2px;
   }
 }
 
 @mixin slidable-width($size, $actionSize) {
   $width: $size - $actionSize;
   @include slidable-common($size, $actionSize);
-  @include flex-direction(row);
-  @include transition(0.20s ease flex);
+  flex-direction: row;
+  transition: flex 0.2s ease;
 
   &.slide-hide {
-    @include flex(0 0 $actionSize);
     flex: 0 0 $actionSize !important;
     > .content {
       width: 0;
@@ -52,7 +51,7 @@ $sc-slidable-action-font-size: 3em;
   }
 
   > .content {
-    @include transition(0.20s ease width);
+    transition: width 0.2s ease;
     width: $width;
     overflow-x: hidden;
     overflow-y: auto;
@@ -66,8 +65,8 @@ $sc-slidable-action-font-size: 3em;
 @mixin slidable-height($size, $actionSize) {
   $height: $size - $actionSize;
   @include slidable-common($size, $actionSize);
-  @include flex-direction(column);
-  @include transition(0.20s ease transform);
+  flex-direction: column;
+  transition: transform 0.2s ease;
 
   position: absolute;
   background: $light;
@@ -136,9 +135,9 @@ sc-slidable {
       cursor: pointer;
       font-size: $sc-slidable-action-font-size;
 
-      @include display(flex);
-      @include align-items(center);
-      @include justify-content(center);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       order: 4;
 
@@ -149,7 +148,7 @@ sc-slidable {
     }
 
     > .resize-bar {
-      @include display(flex);
+      display: flex;
 
       order: 5;
       width: $sc-slidable-resize-bar-width;

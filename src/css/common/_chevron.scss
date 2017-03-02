@@ -1,5 +1,5 @@
 @mixin chevron($size: 25px, $color: $dark) {
-  @include transform(rotate(135deg));
+  transform: rotate(135deg);
   border: 1px solid $color;
   border-width: 1px 1px 0 0;
   display: inline-block;

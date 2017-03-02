@@ -33,9 +33,9 @@ sc-splitter {
     @include full-container;
 
     .split-handler {
-      @include display(flex);
-      @include align-items(center);
-      @include justify-content(center);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       background: $split-handler-background;
       position: absolute;
@@ -63,7 +63,7 @@ sc-splitter {
     //--------------------------------Horizontal-----------------------------------
     &.horizontal {
       .split-handler {
-        @include flex-direction(column);
+        flex-direction: column;
 
         bottom: 0;
         cursor: ew-resize;
@@ -81,7 +81,7 @@ sc-splitter {
       }
 
       .split-second-pane {
-        @include calc(left, '50% + #{$split-handler-size}');
+        left: calc(50% + #{$split-handler-size});
       }
     }
 
@@ -100,7 +100,7 @@ sc-splitter {
       }
 
       .split-second-pane {
-        @include calc(top, '50% + #{$split-handler-size}');
+        top: calc(50% + #{$split-handler-size});
       }
     }
   }

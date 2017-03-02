@@ -30,7 +30,11 @@ sc-dropdown {
     position: relative;
 
     &:after {
-      @include position(absolute, 0 5px auto auto);
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: auto;
+      left: auto;
       content: '\25BE';
     }
   }
