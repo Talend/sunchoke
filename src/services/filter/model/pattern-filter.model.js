@@ -1,4 +1,4 @@
-import {FILTER_TYPE} from "./filter-const.js"; //eslint-disable-line no-unused-vars
+import { FILTER_TYPE } from "./filter-const.js"; //eslint-disable-line no-unused-vars
 import ScFilter from "./abstract/filter.model.js";
 
 /**
@@ -26,8 +26,17 @@ export default class PatternFilter extends ScFilter {
 	toDSL() {
 		let valueToString = '';
 		this.options.values.forEach((value, index) => {
-			valueToString += index !== this.options.values.length - 1 ? this.fieldId + " complies '" + value + "' or " :
-			this.fieldId + " complies '" + value + "'";
+			const isLastIndex = index !== this.options.values.length - 1;
+
+			if (value === '') {
+				valueToString += " " + this.fieldId + " is empty ";
+			} else {
+				valueToString += " " + this.fieldId + " complies '" + value + "'";
+			}
+
+			if (isLastIndex) {
+				valueToString += " or ";
+			}
 		});
 		return "(" + valueToString + ")";
 	}
