@@ -7,7 +7,13 @@ describe('Accordion component controller', () => {
     beforeEach(inject(($rootScope, $componentController) => {
         scope = $rootScope.$new();
 
-        createController = () => $componentController('scAccordion', { $scope: scope });
+        createController = () => $componentController(
+            'scAccordion',
+            { $scope: scope },
+            {
+                onToggle: jasmine.createSpy('on toggle'),
+            }
+        );
     }));
 
     describe('init', () => {
@@ -162,6 +168,36 @@ describe('Accordion component controller', () => {
             // then
             expect(accordion2.close).toHaveBeenCalled();
             expect(accordion2.open).not.toHaveBeenCalled();
+        });
+
+        it('should call onToggle with active state to true', () => {
+            const ctrl = createController();
+
+            const accordion1 = {
+                item: 1,
+                opened: false,
+                open: jasmine.createSpy('open-accordion-1'),
+                close: jasmine.createSpy('close-accordion-1'),
+            };
+            ctrl.accordions = [accordion1];
+
+            ctrl.toggle(accordion1);
+            expect(ctrl.onToggle).toHaveBeenCalledWith({ item: 1, active: true });
+        });
+
+        it('should call onToggle with active state to false', () => {
+            const ctrl = createController();
+
+            const accordion1 = {
+                item: 1,
+                opened: true,
+                open: jasmine.createSpy('open-accordion-1'),
+                close: jasmine.createSpy('close-accordion-1'),
+            };
+            ctrl.accordions = [accordion1];
+
+            ctrl.toggle(accordion1);
+            expect(ctrl.onToggle).toHaveBeenCalledWith({ item: 1, active: false });
         });
     });
 });
