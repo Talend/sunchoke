@@ -56,6 +56,7 @@ const ScAccordionItemComponent = {
     bindings: {
         onOpen: '&',
         default: '<',
+        item: '<',
     },
     require: {
         parent: '^^scAccordion',

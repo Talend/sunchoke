@@ -58,6 +58,7 @@ export default class ScAccordionCtrl {
      */
     toggle(accordion) {
         const wasActive = accordion.opened;
+        this.onToggle({ item: accordion.item, active: !wasActive });
         this.accordions.forEach((next) => next.close());
 
         if (!wasActive) {

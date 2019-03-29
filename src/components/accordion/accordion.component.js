@@ -29,6 +29,9 @@ const ScAccordionComponent = {
     template: '<ul ng-transclude></ul>',
     controller: ScAccordionCtrl,
     transclude: true,
+    bindings: {
+        onToggle: '&',
+    },
 };
 
 export default ScAccordionComponent;
