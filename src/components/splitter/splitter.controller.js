@@ -25,7 +25,7 @@ export default class ScSplitterCtrl {
 
         this.startDrag = this.startDrag.bind(this);
         this.stopDrag = this.stopDrag.bind(this);
-        this.updateSize = this.updateSize.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     $onInit() {
@@ -57,7 +57,7 @@ export default class ScSplitterCtrl {
 
         this.splitHandler.on('mousedown', this.startDrag);
         this.window.on('mouseup', this.stopDrag);
-        this.window.on('resize', event => this.updateSize(event, true));
+        this.window.on('resize', this.reset);
     }
 
     startDrag() {
@@ -69,7 +69,6 @@ export default class ScSplitterCtrl {
     }
 
     updateSize(event = {}, fromWindow) {
-
         const bounds = this.splitContainer.getBoundingClientRect();
 
         if (this.orientation === 'vertical') {
