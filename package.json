@@ -1,6 +1,6 @@
 {
   "name": "sunchoke",
-  "version": "1.0.0",
+  "version": "2.1.1",
   "description": "Talend front-end common widgets",
   "main": "index.js",
   "scripts": {
