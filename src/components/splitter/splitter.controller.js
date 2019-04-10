@@ -25,6 +25,7 @@ export default class ScSplitterCtrl {
 
         this.startDrag = this.startDrag.bind(this);
         this.stopDrag = this.stopDrag.bind(this);
+        this.updateSize = this.updateSize.bind(this);
     }
 
     $onInit() {
@@ -38,10 +39,11 @@ export default class ScSplitterCtrl {
 
     initElements() {
         this.minSize = +this.minSize || 256;
-        this.splitContainer = this.$element[0].querySelector('.split-container');
-        this.firstPane = angular.element(this.$element[0].querySelector('.split-first-pane'));
-        this.splitHandler = angular.element(this.$element[0].querySelector('.split-handler'));
-        this.secondPane = angular.element(this.$element[0].querySelector('.split-second-pane'));
+        const element = this.$element[0];
+        this.splitContainer = element.querySelector('.split-container');
+        this.firstPane = angular.element(element.querySelector('.split-first-pane'));
+        this.splitHandler = angular.element(element.querySelector('.split-handler'));
+        this.secondPane = angular.element(element.querySelector('.split-second-pane'));
     }
 
     attachListeners() {
@@ -55,6 +57,7 @@ export default class ScSplitterCtrl {
 
         this.splitHandler.on('mousedown', this.startDrag);
         this.window.on('mouseup', this.stopDrag);
+        this.window.on('resize', event => this.updateSize(event, true));
     }
 
     startDrag() {
@@ -65,8 +68,10 @@ export default class ScSplitterCtrl {
         this.drag = false;
     }
 
-    updateSize(event) {
+    updateSize(event = {}, fromWindow) {
+
         const bounds = this.splitContainer.getBoundingClientRect();
+        console.log('updateSize', bounds, event);
 
         if (this.orientation === 'vertical') {
             this.splitHandlerSize = this.splitHandlerSize || this.splitHandler[0].offsetHeight;
@@ -76,7 +81,7 @@ export default class ScSplitterCtrl {
                 return;
             }
 
-            this.firstPane.css('bottom', `${bounds.height - pos}px`);
+            this.firstPane.css('bottom', `${fromWindow ? pos : bounds.height - pos}px`);
             this.splitHandler.css('top', `${pos}px`);
             this.secondPane.css('top', `${pos + this.splitHandlerSize}px`);
         }
