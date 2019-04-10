@@ -25,6 +25,7 @@ export default class ScSplitterCtrl {
 
         this.startDrag = this.startDrag.bind(this);
         this.stopDrag = this.stopDrag.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     $onInit() {
@@ -38,10 +39,11 @@ export default class ScSplitterCtrl {
 
     initElements() {
         this.minSize = +this.minSize || 256;
-        this.splitContainer = this.$element[0].querySelector('.split-container');
-        this.firstPane = angular.element(this.$element[0].querySelector('.split-first-pane'));
-        this.splitHandler = angular.element(this.$element[0].querySelector('.split-handler'));
-        this.secondPane = angular.element(this.$element[0].querySelector('.split-second-pane'));
+        const element = this.$element[0];
+        this.splitContainer = element.querySelector('.split-container');
+        this.firstPane = angular.element(element.querySelector('.split-first-pane'));
+        this.splitHandler = angular.element(element.querySelector('.split-handler'));
+        this.secondPane = angular.element(element.querySelector('.split-second-pane'));
     }
 
     attachListeners() {
@@ -55,6 +57,7 @@ export default class ScSplitterCtrl {
 
         this.splitHandler.on('mousedown', this.startDrag);
         this.window.on('mouseup', this.stopDrag);
+        this.window.on('resize', this.reset);
     }
 
     startDrag() {
@@ -91,6 +94,19 @@ export default class ScSplitterCtrl {
             this.firstPane.css('right', `${bounds.width - pos}px`);
             this.splitHandler.css('left', `${pos}px`);
             this.secondPane.css('left', `${pos + this.splitHandlerSize}px`);
+        }
+    }
+
+    reset() {
+        if (this.orientation === 'vertical') {
+            this.firstPane.css('bottom', '');
+            this.splitHandler.css('top', '');
+            this.secondPane.css('top', '');
+        }
+        else {
+            this.firstPane.css('right', '');
+            this.splitHandler.css('left', '');
+            this.secondPane.css('left', '');
         }
     }
 }
