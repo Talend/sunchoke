@@ -68,7 +68,7 @@ export default class ScSplitterCtrl {
         this.drag = false;
     }
 
-    updateSize(event = {}, fromWindow) {
+    updateSize(event) {
         const bounds = this.splitContainer.getBoundingClientRect();
 
         if (this.orientation === 'vertical') {
@@ -79,7 +79,7 @@ export default class ScSplitterCtrl {
                 return;
             }
 
-            this.firstPane.css('bottom', `${fromWindow ? pos : bounds.height - pos}px`);
+            this.firstPane.css('bottom', `${bounds.height - pos}px`);
             this.splitHandler.css('top', `${pos}px`);
             this.secondPane.css('top', `${pos + this.splitHandlerSize}px`);
         }
