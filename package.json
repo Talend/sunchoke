@@ -48,6 +48,7 @@
     "babel-loader": "^6.2.3",
     "babel-preset-es2015": "^6.5.0",
     "css-loader": "^0.23.1",
+    "cz-conventional-changelog": "^1.1.6",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-loader": "^1.3.0",
@@ -77,5 +78,10 @@
   },
   "engines": {
     "node": ">=4.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
