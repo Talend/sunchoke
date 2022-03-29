@@ -1,6 +1,6 @@
 {
   "name": "sunchoke",
-  "version": "1.0.0",
+  "version": "2.1.2",
   "description": "Talend front-end common widgets",
   "main": "index.js",
   "scripts": {
@@ -65,7 +65,7 @@
     "karma-webpack": "^1.7.0",
     "lodash": "^4.5.1",
     "ng-annotate-loader": "^0.1.0",
-    "node-sass": "^3.4.2",
+    "node-sass": "^7.0.1",
     "phantomjs-polyfill": "0.0.1",
     "phantomjs-prebuilt": "^2.1.4",
     "postcss-cli": "^3.0.0-beta",
